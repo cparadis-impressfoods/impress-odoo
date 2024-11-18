@@ -22,3 +22,6 @@
 [submodule "impress_manufacturing_customizations"]
 	path = impress_manufacturing_customizations
 	url = https://github.com/cparadis-impressfoods/impress_manufacturing_customizations
+[submodule "impress_account_report"]
+	path = impress_account_report
+	url = https://github.com/cparadis-impressfoods/impress_account_report

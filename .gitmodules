@@ -25,3 +25,6 @@
 [submodule "impress_account_report"]
 	path = impress_account_report
 	url = https://github.com/cparadis-impressfoods/impress_account_report
+[submodule "impress_datetime_widget"]
+	path = impress_datetime_widget
+	url = https://github.com/cparadis-impressfoods/impress_datetime_widget

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<t t-name="TestPatchingShopFloor.QualityCheck" t-inherit="mrp_workorder.QualityCheck" t-inherit-mode="extension" owl="1">
+    <xpath expr="//t/li/button" position="attributes">
+        <attribute name="t-att-class">
+            {
+                'pass fa fa-check text-success' : shouldDisplayCheckmark,
+                'fail fa fa-times text-danger' : failed
+            }
+        </attribute>
+    </xpath>
+</t>
+

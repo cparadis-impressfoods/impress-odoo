@@ -12,12 +12,14 @@
         'maintenance',
         'mrp',
         'mrp_workorder',
-        'mrp_maintenance'
+        'mrp_maintenance',
+        'maintenance_worksheet'
     ],
     'data': [
         'actions/server_actions.xml',
         'data/maintenance_teams.xml',
-        'views/maintenance_views.xml'
+        'views/maintenance_views.xml',
+        'views/mrp_workcenter.xml'
     ],
 
     'auto_install': False,

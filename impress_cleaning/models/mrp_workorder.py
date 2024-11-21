@@ -23,7 +23,8 @@ class MrpProductionWorkcenterLine(models.Model):
                 'default_duration': 0.5,
                 'default_maintenance_for': 'workcenter',
                 'default_workcenter_id': self.workcenter_id.id,
-                'default_maintenance_team_id': self.env.ref('impress_cleaning.cleaning_team').id,
+                'default_maintenance_team_id': self.workcenter_id.cleaning_team_id.id,
+                'default_user_id': self.workcenter_id.cleaning_user_id.id,
                 'default_description': """
                     Cleaning after {}
                 """.format(self.product_id.display_name)

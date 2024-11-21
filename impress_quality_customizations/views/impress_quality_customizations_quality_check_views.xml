@@ -28,7 +28,7 @@
                 <attribute name="decoration-success">x_signature</attribute>
             </xpath>
             <xpath expr="//tree[1]" position="inside">
-                <field name="x_signature" invisible="1"/>
+                <field name="x_signature" widget="signature"/>
             </xpath>
         </field>
     </record>

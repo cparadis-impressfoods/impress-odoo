@@ -1,100 +1,109 @@
 <?xml version='1.0' encoding="utf-8"?>
-<odoo><data>
-    <record id="impress_stock_lot_lab_analysis" model="ir.ui.view">
-        <field name="name">impress.stock.lot.lab_analysis</field>
-        <field name="model">stock.lot</field>
-        <field name="inherit_id" ref="stock.view_production_lot_form"/>
-        <field name="priority">16</field>
-        <field name="arch" type="xml">
-            <xpath expr="//page[@name='description']" position="after">
-                <page string="Quality" name="quality">
-                    <group>
-                        <field name="x_sent_to_lab" widget="checkbox"/>
-                    </group>
-                </page>
-            </xpath>
-        </field>
-    </record>
-    <record id="impress_stock_lot_tree_lab" model="ir.ui.view">
-        <field name="name">impress.stock.lot.tree.lab</field>
-        <field name="model">stock.lot</field>
-        <field name="priority">16</field>
-        <field name="arch" type="xml">
-            <tree string="Lots" 
-                multi_edit="1"
-                edit="true"
-                decoration-info="x_sent_to_lab"
-            >   
-                <field name="name" decoration-bf="1" />
-                <field name="ref" optional="show"/>
-                <field name="product_id" readonly="1" />
-                <field name="create_date" optional="show" />
-                <field name="x_sent_to_lab" />
-            </tree>
-        </field>
-    </record>
+<odoo>
+    <data>
+        <record id="impress_stock_lot_lab_analysis" model="ir.ui.view">
+            <field name="name">impress.stock.lot.lab_analysis</field>
+            <field name="model">stock.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_form" />
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='description']" position="after">
+                    <page string="Quality" name="quality">
+                        <group>
+                            <field name="x_sent_to_lab" widget="checkbox" />
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="impress_stock_lot_tree_lab" model="ir.ui.view">
+            <field name="name">impress.stock.lot.tree.lab</field>
+            <field name="model">stock.lot</field>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <tree string="Lots"
+                    multi_edit="1"
+                    edit="true"
+                    decoration-info="x_sent_to_lab"
+                >
+                    <field name="name" decoration-bf="1" />
+                    <field name="ref" optional="show" />
+                    <field name="product_id" readonly="1" />
+                    <field name="create_date" optional="show" />
+                    <field name="x_sent_to_lab" />
+                </tree>
+            </field>
+        </record>
 
-    <record id="impress_stock_lot_kanban_lab" model="ir.ui.view">
-        <field name="name">impress.stock.lot.kanban.lab</field>
-        <field name="model">stock.lot</field>
-        <field name="priority">16</field>
-        <field name="arch" type="xml">
-            <kanban
-                default_group_by="create_date:day"
-                default_order="create_date desc"
-            >            
-                <templates>
-                    <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_global_click">
-                            <div class="o_kanban_record_top">
-                                <div class="o_kanban_record_headings">
-                                    <strong class="o_kanban_record_title"><span><field name="product_id"/></span></strong>
+        <record id="impress_stock_lot_kanban_lab" model="ir.ui.view">
+            <field name="name">impress.stock.lot.kanban.lab</field>
+            <field name="model">stock.lot</field>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <kanban
+                    default_group_by="create_date:day"
+                    default_order="create_date desc"
+                >
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <span>
+                                                <field name="product_id" />
+                                            </span>
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <p>
+                                        <field name="name" />
+                                    </p>
+                                    <t t-if="record.x_sent_to_lab.raw_value == true">
+                                        <span class="badge rounded-pill text-bg-success">Sent to lab</span>
+                                    </t>
+                                    <field name="x_sent_to_lab" invisible="true" />
                                 </div>
                             </div>
-                            <div class="o_kanban_record_body">
-                                <p><field name="name"/></p>
-                                <t t-if="record.x_sent_to_lab.raw_value == true">
-                                    <span class="badge rounded-pill text-bg-success">Sent to lab</span>
-                                </t>
-                                <field name="x_sent_to_lab" invisible="true" />
-                            </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
 
-    <record id="impress_stock_lot_search_lab" model="ir.ui.view">
-        <field name="name">impress.stock.lot.search_lab</field>
-        <field name="model">stock.lot</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="create_date"/>
-                <filter string="Previous 7 days" name="previous_seven_days" 
-                domain="[['create_date', '&gt;', (context_today() - datetime.timedelta(days = 7)).strftime('%Y-%m-%d')]]"/>
-            </search>
-        </field>
-    </record>
+        <record id="impress_stock_lot_search_lab" model="ir.ui.view">
+            <field name="name">impress.stock.lot.search_lab</field>
+            <field name="model">stock.lot</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="create_date" />
+                    <filter string="Previous 7 days" name="previous_seven_days"
+                        domain="[['create_date', '&gt;', (context_today() - datetime.timedelta(days = 7)).strftime('%Y-%m-%d')]]" />
+                </search>
+            </field>
+        </record>
 
-    <record id="impress_stock_lot_tree_lab_action" model="ir.actions.act_window">
-        <field name="name">Lab analysis</field>
-        <field name="res_model">stock.lot</field>
-        <field name="views">[[%(impress_stock_lot_tree_lab)d,'tree'],[%(impress_stock_lot_kanban_lab)d,'kanban']]</field>
-        <field name="view_mode">tree,kanban,form</field>
-        <field name="search_view_id" ref="impress_stock_lot_search_lab"/>  
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                No lots found.
-            </p>
-        </field> 
-    </record>
-    
+        <record id="impress_stock_lot_tree_lab_action" model="ir.actions.act_window">
+            <field name="name">Lab analysis</field>
+            <field name="res_model">stock.lot</field>
+            <field name="views">
+                [[%(impress_stock_lot_tree_lab)d,'tree'],[%(impress_stock_lot_kanban_lab)d,'kanban']]</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="search_view_id" ref="impress_stock_lot_search_lab" />
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No lots found.
+                </p>
+            </field>
+        </record>
+
         <menuitem
-        id="impress_stock_lot_tree_lab_menu" 
-        name="Lots"
-        action="impress_stock_lot_tree_lab_action"
-        parent="quality_control.menu_quality_control"
-        sequence="8"/>
+            id="impress_stock_lot_tree_lab_menu"
+            name="Lots"
+            action="impress_stock_lot_tree_lab_action"
+            parent="quality_control.menu_quality_control"
+            sequence="8" />
 
-</data></odoo>
+    </data>
+</odoo>

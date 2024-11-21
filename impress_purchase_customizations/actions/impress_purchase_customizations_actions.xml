@@ -4,76 +4,77 @@
         <!-- Define server action for direct invoice creation -->
         <record id="action_create_billback_invoice" model="ir.actions.server">
             <field name="name">Create Customer Invoice from PO Line</field>
-            <field name="model_id" ref="purchase.model_purchase_order_line"/>
-            <field name="binding_model_id" ref="purchase.model_purchase_order_line"/>
+            <field name="model_id" ref="purchase.model_purchase_order_line" />
+            <field name="binding_model_id" ref="purchase.model_purchase_order_line" />
             <field name="binding_view_types">list,form</field>
             <field name="state">code</field>
             <field name="code">
-# Search for existing draft invoice
-draft_invoice = env['account.move'].search([
-    ('partner_id', '=', record.order_id.partner_id.id),
-    ('move_type', '=', 'out_invoice'),
-    ('state', '=', 'draft'),
-    ('ref', '=', record.order_id.name)
-], limit=1)
+                # Search for existing draft invoice
+                draft_invoice = env['account.move'].search([
+                ('partner_id', '=', record.order_id.partner_id.id),
+                ('move_type', '=', 'out_invoice'),
+                ('state', '=', 'draft'),
+                ('ref', '=', record.order_id.name)
+                ], limit=1)
 
-if not draft_invoice:
-    draft_invoice = env['account.move'].create({
-        'partner_id': record.order_id.partner_id.id,
-        'move_type': 'out_invoice',
-        'ref': record.order_id.name,
-        'invoice_origin': record.order_id.name,
-        'journal_id': env['account.journal'].search([
-            ('type', '=', 'sale'),
-            ('company_id', '=', record.company_id.id)
-        ], limit=1).id
-    })
+                if not draft_invoice:
+                draft_invoice = env['account.move'].create({
+                'partner_id': record.order_id.partner_id.id,
+                'move_type': 'out_invoice',
+                'ref': record.order_id.name,
+                'invoice_origin': record.order_id.name,
+                'journal_id': env['account.journal'].search([
+                ('type', '=', 'sale'),
+                ('company_id', '=', record.company_id.id)
+                ], limit=1).id
+                })
 
-revenue_account = record.product_id.categ_id.property_account_income_categ_id or \
-                 record.company_id.account_sale_default_id
+                revenue_account = record.product_id.categ_id.property_account_income_categ_id or \
+                record.company_id.account_sale_default_id
 
-env['account.move.line'].create({
-    'move_id': draft_invoice.id,
-    'product_id': record.product_id.id,
-    'name': f"Material Cost: {record.product_id.name} (PO: {record.order_id.name})",
-    'quantity': record.product_qty,
-    'price_unit': record.price_unit,
-    'account_id': revenue_account.id,
-    'tax_ids': [(6, 0, record.product_id.taxes_id.ids)],
-    'analytic_distribution': record.account_analytic_id and {
-        str(record.account_analytic_id.id): 100
-    },
-    'purchase_line_id': record.id
-})
+                env['account.move.line'].create({
+                'move_id': draft_invoice.id,
+                'product_id': record.product_id.id,
+                'name': f"Material Cost: {record.product_id.name} (PO: {record.order_id.name})",
+                'quantity': record.product_qty,
+                'price_unit': record.price_unit,
+                'account_id': revenue_account.id,
+                'tax_ids': [(6, 0, record.product_id.taxes_id.ids)],
+                'analytic_distribution': record.account_analytic_id and {
+                str(record.account_analytic_id.id): 100
+                },
+                'purchase_line_id': record.id
+                })
 
-draft_invoice.message_post(
-    body=f"Invoice line automatically created from Purchase Order {record.order_id.name}"
-)
+                draft_invoice.message_post(
+                body=f"Invoice line automatically created from Purchase Order
+                {record.order_id.name}"
+                )
 
-action = {
-    'type': 'ir.actions.client',
-    'tag': 'display_notification',
-    'params': {
-        'title': 'Success',
-        'message': 'Customer invoice has been created',
-        'type': 'success',
-        'sticky': False,
-    }
-}</field>
+                action = {
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'params': {
+                'title': 'Success',
+                'message': 'Customer invoice has been created',
+                'type': 'success',
+                'sticky': False,
+                }
+                }</field>
         </record>
 
         <!-- Add the button to purchase order line views -->
         <record id="view_purchase_order_line_form_inherit" model="ir.ui.view">
             <field name="name">purchase.order.line.form.inherit</field>
             <field name="model">purchase.order.line</field>
-            <field name="inherit_id" ref="purchase.purchase_order_line_form2"/>
+            <field name="inherit_id" ref="purchase.purchase_order_line_form2" />
             <field name="arch" type="xml">
                 <xpath expr="//form" position="inside">
                     <header>
-                        <button 
-                            name="%(action_create_billback_invoice)d" 
-                            string="Create Customer Invoice" 
-                            type="action" 
+                        <button
+                            name="%(action_create_billback_invoice)d"
+                            string="Create Customer Invoice"
+                            type="action"
                             class="oe_highlight"
                         />
                     </header>
@@ -85,14 +86,14 @@ action = {
         <record id="view_purchase_order_line_tree_inherit" model="ir.ui.view">
             <field name="name">purchase.order.line.tree.inherit</field>
             <field name="model">purchase.order.line</field>
-            <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+            <field name="inherit_id" ref="purchase.purchase_order_line_tree" />
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="inside">
                     <header>
-                        <button 
-                            name="%(action_create_billback_invoice)d" 
-                            string="Create Customer Invoice" 
-                            type="action" 
+                        <button
+                            name="%(action_create_billback_invoice)d"
+                            string="Create Customer Invoice"
+                            type="action"
                             class="oe_highlight"
                         />
                     </header>

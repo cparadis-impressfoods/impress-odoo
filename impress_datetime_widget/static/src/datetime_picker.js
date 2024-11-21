@@ -1,6 +1,6 @@
 /** @odoo-module **/
-import {patch} from "@web/core/utils/patch"
-import {DateTimePicker} from "@web/core/datetime/datetime_picker"
+import { patch } from "@web/core/utils/patch"
+import { DateTimePicker } from "@web/core/datetime/datetime_picker"
 import { ensureArray } from "@web/core/utils/arrays";
 
 import {

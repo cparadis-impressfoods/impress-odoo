@@ -1,61 +1,77 @@
 <?xml version='1.0' encoding="utf-8"?>
-<odoo><data>
-    <record id="production_add_qty_producing" model="ir.ui.view">
-        <field name="name">production.add_qty_producing</field>
-        <field name="model">mrp.production</field>
-        <field name="inherit_id" ref="mrp.mrp_production_kanban_view"/>
-        <field name="priority">16</field>
-        <field name="arch" type="xml">
-            <xpath  expr="//field[@name='activity_state']" position="after">
-                <field name='qty_producing'/>
-            </xpath>
-            <xpath expr="//t[@t-name='kanban-box']/div[1]/div[1]/span[1]" position="replace">
-                <span t-if="record.state.raw_value !='done'" class="float-end text-end">
-                    <t t-esc="record.product_qty.value"/><small><t t-esc="record.product_uom_id.value"/></small>
-                </span>
-                <span t-if="record.state.raw_value=='done'" class="float-end text-end">
-                    <t t-esc="record.qty_producing.value"/>/<t t-esc="record.product_qty.value"/><small><t t-esc="record.product_uom_id.value"/></small>
-                </span>
-            </xpath>
-        </field>
-    </record>
-    <record id="production_gantt" model="ir.ui.view">
-        <field name="name">production.gantt</field>
-        <field name="model">mrp.production</field>
-        <field name="priority">14</field>
-        <field name="arch" type="xml">
-            <gantt 
-            date_start="date_start" 
-            date_stop="date_finished"
-            default_group_by="x_studio_field_l2DBU"
-            total_row="false"
-            default_scale="day"
-            string="Gantt"
-            display_unavailability="true" 
-            precision="{'day':'hour:quarter','week':'day:half','month':'day:full'}"
-            decoration-danger="state == 'cancel'" 
-            decoration-success="state == 'done'" 
-            decoration-warning="state == 'cancel'" 
-            decoration-info="state == 'draft'" 
-            color="product_id"
-            >
-                <field name="product_id"/>
-                <field name="state"/>
-                <field name="x_studio_po_origine"/>
-                <templates>
-                    <div t-name="gantt-popover" class="container-fluid">
-                        <div class="row g-0">
-                            <div class="col">
-                                <ul class="ps-1 mb-0 list-unstyled">
-                                    <li><strong>Start Date: </strong> <t t-esc="date_start.toFormat('F')"/></li>
-                                    <li><strong>Stop Date: </strong> <t t-esc="date_finished.toFormat('F')"/></li>
-                                    <li><strong>Product: </strong> <t t-esc="product_id[1]"/></li>
-                                </ul>
+<odoo>
+    <data>
+        <record id="production_add_qty_producing" model="ir.ui.view">
+            <field name="name">production.add_qty_producing</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_kanban_view" />
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='activity_state']" position="after">
+                    <field name='qty_producing' />
+                </xpath>
+                <xpath expr="//t[@t-name='kanban-box']/div[1]/div[1]/span[1]" position="replace">
+                    <span t-if="record.state.raw_value !='done'" class="float-end text-end">
+                        <t t-esc="record.product_qty.value" />
+                        <small>
+                            <t t-esc="record.product_uom_id.value" />
+                        </small>
+                    </span>
+                    <span t-if="record.state.raw_value=='done'" class="float-end text-end">
+                        <t t-esc="record.qty_producing.value" />/<t t-esc="record.product_qty.value" /><small>
+                            <t t-esc="record.product_uom_id.value" />
+                        </small>
+                    </span>
+                </xpath>
+            </field>
+        </record>
+        <record id="production_gantt" model="ir.ui.view">
+            <field name="name">production.gantt</field>
+            <field name="model">mrp.production</field>
+            <field name="priority">14</field>
+            <field name="arch" type="xml">
+                <gantt
+                    date_start="date_start"
+                    date_stop="date_finished"
+                    default_group_by="x_studio_field_l2DBU"
+                    total_row="false"
+                    default_scale="day"
+                    string="Gantt"
+                    display_unavailability="true"
+                    precision="{'day':'hour:quarter','week':'day:half','month':'day:full'}"
+                    decoration-danger="state == 'cancel'"
+                    decoration-success="state == 'done'"
+                    decoration-warning="state == 'cancel'"
+                    decoration-info="state == 'draft'"
+                    color="product_id"
+                >
+                    <field name="product_id" />
+                    <field name="state" />
+                    <field name="x_studio_po_origine" />
+                    <templates>
+                        <div t-name="gantt-popover" class="container-fluid">
+                            <div class="row g-0">
+                                <div class="col">
+                                    <ul class="ps-1 mb-0 list-unstyled">
+                                        <li>
+                                            <strong>Start Date: </strong>
+                                            <t t-esc="date_start.toFormat('F')" />
+                                        </li>
+                                        <li>
+                                            <strong>Stop Date: </strong>
+                                            <t t-esc="date_finished.toFormat('F')" />
+                                        </li>
+                                        <li>
+                                            <strong>Product: </strong>
+                                            <t t-esc="product_id[1]" />
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </templates>
-            </gantt>
-        </field>
-    </record>
-</data></odoo>
+                    </templates>
+                </gantt>
+            </field>
+        </record>
+    </data>
+</odoo>

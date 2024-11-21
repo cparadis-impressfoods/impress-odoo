@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding="utf-8"?>
+<odoo><data>
+    <record id="action_create_billback" model="ir.actions.server">
+        <field name="name">Create Billback invoice from vendor bill</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+        # Available variables:
+#  - env: environment on which the action is triggered
+#  - model: model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - float_compare: utility function to compare floats based on specific precision
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - _logger: _logger.info(message): logger to emit messages in server logs
+#  - UserError: exception class for raising user-facing warning messages
+#  - Command: x2many commands namespace
+# To return an action, assign: action = {...}
+
+### CHECK IF THE BILLBACK PARTNER IS SET ON THE VENDOR BILL.
+if not record.x_billback_partner:
+    raise UserError("Le Billback Partner doit être indiqué afin d'effectuer le billback")
+### CHECK IF MOVE_TYPE IS "IN_INVOICE", OTHERWISE UNABLE TO BILL BACK
+elif record.move_type != "in_invoice":
+    raise UserError("Can only billback vendor bills")
+### IF SET, PROCEED WITH REST OF BUSINESS LOGIC FOR BILLBACK
+else:
+### CREATE A NEW INVOICE WITH SOME BASIC INFO
+    new_invoice = env['account.move'].create({
+        'move_type': 'out_invoice',
+        'partner_id': record.x_billback_partner.id,
+        "date": record.date,
+        "x_studio_description_interne": "Billback {}".format(record.x_studio_description_interne)
+    })
+    
+    record.write({
+        "x_billback_invoice": new_invoice.id
+    })
+    
+### CREATE SOME NEW MOVE LINEs FOR THE BILLBACK INVOICE FROM THE ORIGINAL BILL
+    for line in record.line_ids:
+        if line.price_total != 0 :
+            new_line= env['account.move.line'].create({
+                "move_id": new_invoice.id,
+                "name": line.name,
+                "quantity": line.quantity,
+                "price_unit": line.price_unit
+            })
+            
+### CREATE A CHATTER MESSAGE IN THE NEW INVOICE LINKING BACK TO THE ORIGINAL BILL
+    new_invoice.message_post_with_source(
+        'mail.message_origin_link',
+        render_values={'self': new_invoice, 'origin': record},
+        subtype_xmlid='mail.mt_note',
+    )
+
+
+### CREATE A SUCCESS POPUP TO GIVE FEEDBACK TO THE USER
+    action = {
+
+                'type': 'ir.actions.client',
+
+                'tag': 'display_notification',
+
+                'params': {
+
+                    'message': ('Billback created, invoice:"{}"'.format(new_invoice.display_name)),
+
+                    'type': 'success',
+
+                },
+
+            }
+
+        </field>
+    </record>
+</data></odoo>

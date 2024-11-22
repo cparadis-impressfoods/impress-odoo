@@ -6,3 +6,4 @@ class CleaningMixin(models.AbstractModel):
 
     cleaning_team_id =  fields.Many2one('maintenance.team', string='Cleaning Team')
     cleaning_user_id = fields.Many2one('res.users', string='Cleaning Responsible')
+    cleaning_time = fields.Float(string='Cleaning Time')

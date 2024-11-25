@@ -13,10 +13,11 @@
                         pass
 
                     else:
-                        lot_number = lot_number[0:4]
+                        lot_number = lot_number[0:5]
                         year, day = "20"+lot_number[:2], int(lot_number[2:])
                         year_date = datetime.datetime.fromisoformat(year+"-01-01")
                         create_date = year_date + datetime.timedelta(days=(day))
+                        log('{}: {}'.format(lot_number, create_date), level='info')
                         expiration_date = create_date + datetime.timedelta(days=record.product_id[0].expiration_time)
                         best_before_date = expiration_date - datetime.timedelta(days=record.product_id[0].use_time)
                         removal_date = expiration_date - datetime.timedelta(days=record.product_id[0].removal_time+1)

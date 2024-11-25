@@ -13,6 +13,7 @@
                         pass
 
                     else:
+                        lot_number = lot_number[0:4]
                         year, day = "20"+lot_number[:2], int(lot_number[2:])
                         year_date = datetime.datetime.fromisoformat(year+"-01-01")
                         create_date = year_date + datetime.timedelta(days=(day))

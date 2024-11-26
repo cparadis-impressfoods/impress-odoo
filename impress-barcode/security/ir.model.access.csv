@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_impress-barcode_impress-barcode,impress-barcode.impress-barcode,model_impress-barcode_impress-barcode,base.group_user,1,1,1,1

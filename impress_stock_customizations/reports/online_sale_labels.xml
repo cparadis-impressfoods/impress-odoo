@@ -7,7 +7,7 @@
             ^FO100,50
             ^A0N,44,33^FDCommande: <t t-out="transfer.origin"/>^FS
             ^FO100,100
-            ^A0N,44,33^FDClient: <t t-out="transfert.partner_id.display_name"/>^FS
+            ^A0N,44,33^FDClient: <t t-out="transfer.partner_id.display_name"/>^FS
 
             ^FO425,150^BY3
             ^BXN,8,200

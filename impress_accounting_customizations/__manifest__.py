@@ -7,6 +7,8 @@
     'description': """
     Customizations for the accounting module
     """,
+
+    'license': 'GPL-2',
     # data files always loaded at installation
     'data': [
         'views/impress_accounting_customizations_account_move_views.xml',

@@ -7,6 +7,7 @@
     'description': """
     Customizations for the stock module developped in-house by Impress Foods SEC
     """,
+    'license': 'GPL-2',
     # data files always loaded at installation
     'data': [
         'reports/impress_stock_customizations_stock_delivery_document_views.xml',

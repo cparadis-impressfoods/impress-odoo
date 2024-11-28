@@ -15,7 +15,7 @@
     # for the full list
     'category': 'Hidden',
     'version': '0.1.0',
-
+    'license': 'GPL-2',
     # any module necessary for this one to work correctly
     'depends': ['base', 'stock', 'sale_management', 'stock_barcode'],
 

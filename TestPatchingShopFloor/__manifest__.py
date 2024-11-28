@@ -10,7 +10,7 @@
     # data files always loaded at installation
     'data': [
     ],
-    'licence': 'GPL-2',
+    'license': 'GPL-2',
     'assets': {
         'web.assets_backend': [
             'TestPatchingShopFloor/static/src/**/*.xml',

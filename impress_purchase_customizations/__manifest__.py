@@ -8,7 +8,7 @@
     """,
     'category': 'Accounting/Manufacturing',
     'author': 'Cédric Paradis',
-    'license': 'LGPL-3',
+    'license': 'GPL-2',
     
     # Dependencies
     'depends': [

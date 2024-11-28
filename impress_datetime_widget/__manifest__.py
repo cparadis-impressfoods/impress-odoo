@@ -8,6 +8,7 @@
     Module to restore the default DateTime picker widget behavior from Odoo V15 where the default time selected
     when a widget is opened is the current time without any rounding.
     """,
+    'license': 'GPL-2',
     # data files always loaded at installation
 
     'assets': {

@@ -7,7 +7,7 @@
     'summary': 'Quality checks on demand - Impress',
     'author': 'Cédric Paradis',
     'website': '',
-    'license': 'LGPL-3',
+    'license': 'GPL-2',
     'category': '',
     'depends': [
         'quality','quality_control', 'stock'

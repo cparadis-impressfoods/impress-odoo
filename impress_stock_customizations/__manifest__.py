@@ -13,8 +13,6 @@
         'reports/impress_stock_customizations_labels.xml',
         'views/impress_stock_customizations_lot_views.xml',
         'reports/online_sale_labels.xml',
-        'actions/automation_rules.xml',
-        'actions/server_actions.xml'
     ],
     'assets': {
         'web.assets_common': [

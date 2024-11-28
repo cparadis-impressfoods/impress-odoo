@@ -20,8 +20,8 @@
         <field name="name">Online Sale Label</field>
         <field name="model">stock.picking</field>
         <field name="report_type">qweb-text</field>
-        <field name="report_name">impress_stock_customizations.online_sale_label</field>
-        <field name="report_file">impress_stock_customizations.online_sale_label</field>
+        <field name="report_name">impress_stock_customizations.report_online_sale_label</field>
+        <field name="report_file">impress_stock_customizations.report_online_sale_label</field>
         <field name="print_report_name">'Online Sale Label - %s - %s' % (object.partner_id.name or '', object.origin)</field>
         <field name="binding_model_id" ref="stock.model_stock_picking"/>
         <field name="binding_type">report</field>

@@ -107,5 +107,19 @@
                 </xpath>
             </field>
         </record>
+            <record id="impress_stock_report_delivery_document_add_barcode" model="ir.ui.view">
+            <field name="name">stock.report_delivery_document.impress.add_barcode</field>
+            <field name="inherit_id" ref="stock.report_delivery_document" />
+            <field name="priority">53</field>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='main']/h2[1]" position="after" class="d-flex flex-row-reverse">
+                    <div t-field="o.name" t-options="{'widget': 'barcode', 'width': 600, 'height': 100, 'img_style': 'width:300px;height:50px;'}">
+                        <div class="bg-light border-1 rounded d-flex flex-column align-items-center justify-content-center p-3 opacity-75 text-muted text-center">
+                            (document barcode)
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record> 
     </data>
 </odoo>

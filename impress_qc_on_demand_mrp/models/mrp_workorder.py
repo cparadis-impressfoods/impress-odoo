@@ -1,9 +1,10 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
-class MrpProduction(models.Model):
-    _inherit="mrp.production"
-    _name="mrp.production"
+class MrpProductionWorkcenterline(models.Model):
+    _name = 'mrp.workorder'
+    _inherit = 'mrp.workorder'
+
 
     def action_open_on_demand_quality_check(self):
         self.ensure_one()
@@ -16,7 +17,8 @@ class MrpProduction(models.Model):
             'views': [(self.env.ref('impress_qc_on_demand.quality_check_on_demand_view_form').id, 'form')],
             'target': 'new',
             'context': {
-                'default_production_id': self.id,
+                'default_production_id': self.production_id.id,
+                'default_workorder_id': self.id,
                 'on_demand_wizard': True,
             }
         }

@@ -15,7 +15,7 @@
     'data': [
 
     ],
-    'auto_install': False,
+    'auto_install': ['impress_qc_on_demand_mrp', 'mrp_workorder'],
 
     'assets': {
         "web.assets_backend": [

@@ -16,7 +16,7 @@
         'views/mrp_production_views.xml',
         'wizard/on_demand_quality_check_wizard_views.xml',
     ],
-    'auto_install': ['impress_qc_on_demand_mrp', 'mrp_workorder'],
+    'auto_install': ['mrp_workorder'],
     'application': False,
     'assets': {
         

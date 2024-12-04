@@ -10,12 +10,12 @@
     'license': 'GPL-2',
     'category': '',
     'depends': [
-         'impress_qc_on_demand', 'mrp_workorder'
+         'impress_qc_on_demand', 'mrp_workorder', 'impress_qc_on_demand_mrp'
     ],
     'data': [
 
     ],
-    'auto_install': ['impress_qc_on_demand_mrp', 'mrp_workorder'],
+    'auto_install': ['impress_qc_on_demand_mrp', 'mrp_workorder', 'impress_qc_on_demand'],
 
     'assets': {
         "web.assets_backend": [

@@ -75,6 +75,7 @@ class MrpProduction(models.Model):
                 self.billing_sale_order_line_id.unlink()
 
     def _recompute_billing_line_qty(self):
+        # Optional feature, used to compute the total qty to deliver based on the MOs linked to the SOL.
         if self.billing_sale_order_line_id and self.env.context.get('compute_mo_billing_qty'):
             shared_order_line_production = self.env['mrp.production'].search(
                 [('billing_sale_order_line_id', '=', self.billing_sale_order_line_id.id), ('state', 'not in', ['cancel'])])

@@ -22,7 +22,10 @@ class MrpProduction(models.Model):
             if rec.billing_sale_order_ref:
                 value = self.env['sale.order'].search([('client_order_ref', '=', rec.billing_sale_order_ref)], limit=1)
                 _logger.warning('Trying to set SO to {}'.format(value))
-                rec.billing_sale_order_id = value
+                if not value:
+                    raise ValidationError('No Sale Order found with reference {}'.format(rec.billing_sale_order_ref))
+                else:
+                    rec.billing_sale_order_id = value
             else:
                 rec.billing_sale_order_id = None
 
@@ -38,26 +41,30 @@ class MrpProduction(models.Model):
             elif self.billing_sale_order_line_id and self.billing_sale_order_line_id.order_id != self.billing_sale_order_id:
                 self._unlink_sale_order_line()
 
-            # No SOL, we must create it
+            # No SOL, we must link it  
             if not self.billing_sale_order_line_id:
                 sale_order_line_dict = {product: sale_order_line for (product, sale_order_line) in  zip(self.billing_sale_order_id.order_line.mapped('product_id'), self.billing_sale_order_id.order_line)}
+                
                 if self._get_matching_service_product() in sale_order_line_dict:
                     self.billing_sale_order_line_id = sale_order_line_dict[self._get_matching_service_product()]
                     self._recompute_billing_line_qty()
                 else:
-                    new_order_line = self.env['sale.order.line'].create({
-                        'order_id': self.billing_sale_order_id.id,
-                        'product_id': self._get_matching_service_product().id,
-                        'product_uom_qty': self.product_uom_qty,
-                    })
-                    self.billing_sale_order_line_id = new_order_line
-                    self._recompute_billing_line_qty()
-        
+                    raise ValidationError('No Sale Order Line found in SO. Expected line with product {}'.format(self._get_matching_service_product().display_name))
+
         # No Billing sale order, we must unlink the MO from the SOL
         elif not self.billing_sale_order_id:
             if self.billing_sale_order_line_id:
                 self._unlink_sale_order_line()
 
+    def _create_billing_sale_order_line(self):
+        new_order_line = self.env['sale.order.line'].create({
+            'order_id': self.billing_sale_order_id.id,
+            'product_id': self._get_matching_service_product().id,
+            'product_uom_qty': self.product_uom_qty,
+        })
+        self.billing_sale_order_line_id = new_order_line
+        self._recompute_billing_line_qty()
+        
     def _unlink_sale_order_line(self):
         if self.env['mrp.production'].search([('billing_sale_order_line_id', '=', self.billing_sale_order_line_id.id)]) != self:
             self._recompute_billing_line_qty()
@@ -68,7 +75,7 @@ class MrpProduction(models.Model):
                 self.billing_sale_order_line_id.unlink()
 
     def _recompute_billing_line_qty(self):
-        if self.billing_sale_order_line_id:
+        if self.billing_sale_order_line_id and self.env.context.get('compute_mo_billing_qty'):
             shared_order_line_production = self.env['mrp.production'].search(
                 [('billing_sale_order_line_id', '=', self.billing_sale_order_line_id.id), ('state', 'not in', ['cancel'])])
             total_qty_to_deliver = sum(shared_order_line_production.mapped('product_uom_qty'))
@@ -77,7 +84,11 @@ class MrpProduction(models.Model):
     def _get_matching_service_product(self):
         self.ensure_one()
         reference_to_match = 'S' +self.product_id.default_code[1:]
-        return self.env['product.product'].search([('default_code', '=', reference_to_match)])
+        matching_product = self.env['product.product'].search([('default_code', '=', reference_to_match)])
+        if matching_product:
+            return matching_product
+        else:
+            raise ValidationError('No matching service product found. Expected product with reference {}'.format(reference_to_match))
 
     def button_mark_done(self):
         res = super().button_mark_done()

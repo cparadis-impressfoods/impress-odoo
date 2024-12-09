@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mrp_production_form_inherit_billing" model="ir.ui.view">
+        <field name="name">mrp.production.form.inherit.billing</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+        <field name="priority">16</field>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='bom_id']" position="before">
+                <field name="billing_sale_order_ref" readonly="state in ['done', 'cancel']" invisible="not product_id"/>
+                <field name='billing_sale_order_id' readonly="1" invisible="not product_id"/>
+                <field name='billing_sale_order_line_id' readonly="1" invisible="not product_id"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

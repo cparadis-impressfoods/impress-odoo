@@ -7,6 +7,7 @@
     'description': """
     Module that allows to automatically calculate to correct dates for a lot's expiry,
     """,
+    'license': 'GPL-2',
     # data files always loaded at installation
     'data': [
         'actions/server_actions.xml',

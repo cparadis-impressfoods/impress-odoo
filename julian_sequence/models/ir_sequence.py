@@ -31,6 +31,7 @@ class IrSequence(models.Model):
             if not self.env['stock.lot'].search([('name', '=', base_serial),('product_id','=', self.env.context['julian_product_id'])], limit=1):
                 return base_serial
             else:
+                # If standard YYDDD serial exists for that product, append -N where N is the next available number starting from 1.
                 unique_serial = False
                 appended_number = 1
                 serial_to_try = base_serial + '-' + str(appended_number)

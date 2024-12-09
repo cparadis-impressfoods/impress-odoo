@@ -7,7 +7,7 @@
     'summary': 'Quality checks on demand - Impress',
     'author': 'Cédric Paradis',
     'website': '',
-    'license': 'LGPL-3',
+    'license': 'GPL-2',
     'category': '',
     'depends': [
         'quality','quality_control', 'mrp', 'mrp_workorder', 'quality_mrp', 'impress_qc_on_demand'
@@ -16,7 +16,7 @@
         'views/mrp_production_views.xml',
         'wizard/on_demand_quality_check_wizard_views.xml',
     ],
-    'auto_install': False,
+    'auto_install': ['mrp_workorder'],
     'application': False,
     'assets': {
         

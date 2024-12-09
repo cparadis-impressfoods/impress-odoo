@@ -6,7 +6,7 @@
     'summary': 'Module to handle cleanings for Impress Foods',
     'author': 'Cédric Paradis',
     'website': '',
-    'license': 'LGPL-3',
+    'license': 'GPL-2',
     'category': 'maintenance',
     'depends': [
         'maintenance',

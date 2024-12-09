@@ -17,11 +17,10 @@ class MrpProduction(models.Model):
 
     @api.depends('billing_sale_order_ref')
     def _compute_billing_sale_order_id(self):
-        _logger.warning('Computing SO from ref')
         for rec in self:
             if rec.billing_sale_order_ref:
                 value = self.env['sale.order'].search([('client_order_ref', '=', rec.billing_sale_order_ref)], limit=1)
-                _logger.warning('Trying to set SO to {}'.format(value))
+
                 if not value:
                     raise ValidationError('No Sale Order found with reference {}'.format(rec.billing_sale_order_ref))
                 else:

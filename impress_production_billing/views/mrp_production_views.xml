@@ -9,8 +9,17 @@
         <field name="arch" type="xml">
             <xpath expr="//label[@for='bom_id']" position="before">
                 <field name="billing_sale_order_ref" readonly="state in ['done', 'cancel']" invisible="not product_id" decoration-success="billing_sale_order_line_id"/>
-                <field name='billing_sale_order_id' readonly="1" invisible="not product_id"/>
-                <field name='billing_sale_order_line_id' readonly="1" invisible="not product_id"/>
+
+            </xpath>
+            <xpath expr="//page[@name='miscellaneous']" position="before">
+                <page string="Billing" name="billing">
+                    <group>
+                        <group>
+                            <field name='billing_sale_order_id' readonly="1" invisible="not product_id"/>
+                            <field name='billing_sale_order_line_id' readonly="1" invisible="not product_id"/>
+                        </group>
+                    </group>
+                </page>
             </xpath>
         </field>
     </record>

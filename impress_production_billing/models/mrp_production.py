@@ -20,6 +20,7 @@ class MrpProduction(models.Model):
         for rec in self:
             if rec.billing_sale_order_ref:
                 value = self.env['sale.order'].search([('client_order_ref', '=', rec.billing_sale_order_ref)], limit=1)
+
                 if not value:
                     raise ValidationError('No Sale Order found with reference {}'.format(rec.billing_sale_order_ref))
                 else:

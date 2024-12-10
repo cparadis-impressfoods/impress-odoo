@@ -25,12 +25,12 @@
                 invisible="not billback_partner_id or move_type not in ['in_invoice','entry'] or state in ['draft', 'cancel'] or billback_invoice_id " />
             </xpath>
               <xpath expr="//div[@name='button_box']" position="inside">
-                <button type="object" name="action_view_billback_invoice" class="oe_stat_button" icon="fa-pencil-square-o" invisible="not billback_invoice_id">
+                <button type="object" name="action_view_billback_invoice" class="oe_stat_button" icon="fa-refresh" invisible="not billback_invoice_id">
                   <field name="billback_invoice_id" widget="statinfo" string="Billback"/>
               </button>            
             </xpath>
               <xpath expr="//div[@name='button_box']" position="inside">
-                <button type="object" name="action_view_billback_bill" class="oe_stat_button" icon="fa-pencil-square-o" invisible="not billback_bill_id">
+                <button type="object" name="action_view_billback_bill" class="oe_stat_button" icon="fa-refresh" invisible="not billback_bill_id">
                   <field name="billback_bill_id" widget="statinfo" string="Billback"/>
               </button>            
             </xpath>

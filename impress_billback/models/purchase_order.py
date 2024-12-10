@@ -13,7 +13,6 @@ class PurchaseOrder(models.Model):
     billback_invoice_ids = fields.Many2many('account.move', compute='_compute_billback_invoice_ids')
     billback_invoice_count = fields.Integer(compute='_compute_billback_invoice_ids')
 
-
     def _compute_billback_invoice_ids(self):
         self.billback_invoice_ids = self.invoice_ids.filtered(lambda inv: inv.billback_invoice_id).mapped(lambda inv: inv.billback_invoice_id.id)
         self.billback_invoice_count = len(self.billback_invoice_ids)

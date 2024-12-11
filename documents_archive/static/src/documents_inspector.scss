@@ -1,0 +1,12 @@
+////// ============ Inspector ===============
+////// ======================================
+/// 
+.o_documents_inspector {
+    .o_documents_inspector_info {
+        .o_inspector_button {
+            &.o_archive:not(:disabled):hover {
+                background-color: #eed202;
+            }
+        }
+    }
+}

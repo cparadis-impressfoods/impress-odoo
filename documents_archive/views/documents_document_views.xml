@@ -30,10 +30,11 @@
       </field>
     </record>
 
-    <record id="documents_document_action" model="ir.actions.act_window">
+    <record id="documents.document_action" model="ir.actions.act_window">
+        <field name="name">Documents</field>
         <field name="res_model">documents.document</field>
         <field name="view_mode">kanban,tree,activity</field>
-        <field name="context">{'search_default_active': 1}</field>
+        <field name="context">{'search_default_active_filter': 1}</field>
         <field name="domain">[]</field>
         <field name="view_ids" eval="[(5, 0, 0),
             (0, 0, {'view_mode': 'kanban', 'view_id': ref('documents.document_view_kanban')}),

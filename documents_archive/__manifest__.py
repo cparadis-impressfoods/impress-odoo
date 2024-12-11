@@ -2,7 +2,7 @@
 {
     'name': 'Documents_archive',
     'version': '0.0.1',
-    'summary': """ Documents_archive Summary """,
+    'summary': """ Module to allow a "soft" archive feature for documents. """,
     'author': 'Cédric Paradis',
     'website': '',
     'category': 'Hidden',

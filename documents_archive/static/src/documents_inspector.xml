@@ -67,12 +67,12 @@
     <t t-name="documents.DocumentsInspector.buttons.inherit.add_soft_archive" t-inherit="documents.DocumentsInspector.buttons" t-inherit-mode="extension" owl="1">
         <xpath expr="//button[@title='Move to trash']" position="before">
 
-            <button t-if="records[0].data.archived and records[0].data.res_model" class="o_inspector_button o_archive o_active btn float-end" title="Unarchive"
+            <button t-if="records[0].data.archived and records[0].data.res_model" class="o_inspector_button o_soft_unarchive o_active btn float-end" title="Unarchive"
                 t-on-click.stop.prevent="onSoftUnarchive" t-att-disabled="editDisabled || locked">
                 <i class="fa fa-fw fa-recycle"/>
             </button>   
        
-            <button t-if="!records[0].data.archived and records[0].data.res_model" class="o_inspector_button o_archive o_active btn float-end" title="Archive"
+            <button t-if="!records[0].data.archived and records[0].data.res_model" class="o_inspector_button o_soft_archive o_active btn float-end" title="Archive"
                 t-on-click.stop.prevent="onSoftArchive" t-att-disabled="editDisabled || locked">
                     <i class="fa fa-fw fa-archive"/>
             </button>

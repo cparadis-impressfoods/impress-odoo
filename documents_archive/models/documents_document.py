@@ -34,7 +34,6 @@ class DocumentsDocument(models.Model):
 
     def _get_matching_attachment(self):
         records = self.env['product.document'].search([('ir_attachment_id', '=', self.attachment_id.id),('active', 'in', [True, False])])
-        _logger.warning("Found matching attachments: %s", records)
         if records:
             return records[0]
         else:

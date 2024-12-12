@@ -1,7 +1,8 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+import logging
 
-
+_logger = logging.getLogger(__name__)
 class QualityCheckOnDemand(models.TransientModel):
     _inherit = 'quality.check.on.demand'
       
@@ -39,4 +40,5 @@ class QualityCheckOnDemand(models.TransientModel):
         check_values = super()._get_check_values()
         for check in check_values:
             check['production_id'] = self.production_id.id
+            check['workorder_id'] = self.env.context.get('default_workorder_id')
         return check_values

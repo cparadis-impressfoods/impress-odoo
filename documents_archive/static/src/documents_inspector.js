@@ -7,14 +7,6 @@ inspectorFields.push('archived');
 
 patch(DocumentsInspector.prototype, {
 
-    async isArchived() {
-        const record = this.props.documents[0];
-        const is_archived = await this.orm.call(record.data.res_model, 'is_archived', [[record.data.res_id]])
-        await console.log(is_archived)
-        return is_archived
-    },
-
-
     async onSoftArchive() {
         const record = this.props.documents[0];
         await this.orm.call('documents.document',

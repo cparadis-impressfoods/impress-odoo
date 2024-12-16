@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Documents_archive',
-    'version': '0.0.1',
+    'version': '0.1.0',
     'summary': """ Module to allow a "soft" archive feature for documents. """,
     'author': 'Cédric Paradis',
     'website': '',

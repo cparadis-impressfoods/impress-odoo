@@ -1,6 +1,6 @@
 {
     'name': "impress_quality_customizations",
-    'version': '1.0.0',
+    'version': '0.1.0',
     'depends': ['base', 'quality_control'],
     'author': "Cédric Paradis",
     'category': 'Quality',

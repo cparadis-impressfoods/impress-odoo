@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Shop_floor_show_manual_qc',
-    'version': '0.0.1',
+    'version': '0.1.0',
     'summary': """ Module that allows the insertion of manual quality checks in the quality check chain. Quality checks created
     manually will appear in the shop floor interface.
     """,

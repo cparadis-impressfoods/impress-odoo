@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'impress_purchase_customizations',
-    'version': '1.0.0',
+    'version': '0.1.0',
     'summary': 'Impress Foods purchase customizations',
     'description': """
         Impress Foods purchase customizations

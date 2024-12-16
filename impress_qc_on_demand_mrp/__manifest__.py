@@ -2,7 +2,7 @@
 
 {
     'name': 'impress_qc_on_demand_mrp',
-    'version': '1.0',
+    'version': '0.1.0',
     'description': 'Backport of the V18 on demand quality check feature',
     'summary': 'Quality checks on demand - Impress',
     'author': 'Cédric Paradis',

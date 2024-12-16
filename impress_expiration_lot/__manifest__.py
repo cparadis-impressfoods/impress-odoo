@@ -1,6 +1,6 @@
 {
     'name': "impress_expiration_lot",
-    'version': '1.0.0',
+    'version': '0.1.0',
     'depends': ['base', 'stock', 'product_expiry', 'base_automation'],
     'author': "Cédric Paradis",
     'category': 'Inventory',

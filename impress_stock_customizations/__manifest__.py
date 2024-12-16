@@ -1,6 +1,6 @@
 {
     'name': "impress_stock_customizations",
-    'version': '1.0.2',
+    'version': '0.1.0',
     'depends': ['base', 'stock', 'quality_control'],
     'author': "Cédric Paradis",
     'category': 'Inventory',

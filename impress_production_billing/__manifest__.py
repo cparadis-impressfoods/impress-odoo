@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'impress_production_billing',
-    'version': '17.0.1.0.1',
+    'version': '0.1.1',
     'summary': """ Module to allow billing of MOs directly through SOs """,
     'author': 'Cédric Paradis',
     'website': '',

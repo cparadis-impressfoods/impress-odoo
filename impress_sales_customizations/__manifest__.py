@@ -1,6 +1,6 @@
 {
     'name': "impress_sales_customizations",
-    'version': '1.0',
+    'version': '0.1.0',
     'depends': ['base', 'sale_management'],
     'author': "Cédric Paradis",
     'category': 'Sales',

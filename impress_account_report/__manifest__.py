@@ -2,7 +2,7 @@
 
 {
     'name': "Impress Account report customizations",
-    'version': '1.0.2',
+    'version': '0.1.0',
     'depends': ['account_accountant'],
     'author': "Cédric Paradis",
     'category': 'Accounting',

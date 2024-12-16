@@ -9,7 +9,7 @@
                         <div t-on-click="_cancel" type="button" class="btn-close" aria-label="Close"/>
                     </div>
                 </t>
-                <TextField name="'log_note'" record="props.record"/>
+                <TextField name="'log_note'" record="props.record" readonly="true"/>
                 <t t-set-slot="footer">
                     <t t-if="false"/> <!-- Hide footer buttons -->
                 </t>

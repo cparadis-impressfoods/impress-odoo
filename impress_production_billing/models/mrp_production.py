@@ -28,32 +28,34 @@ class MrpProduction(models.Model):
             else:
                 rec.billing_sale_order_id = None
 
+
     @api.depends('billing_sale_order_id')
     def _compute_billing_sale_order_line_id(self):
+        for rec in self:
         # There is a billing SO, we must update the SOL or create it
-        if self.billing_sale_order_id:
-            # There is a SOL and it belongs to the same SO, we must update it.
-            if self.billing_sale_order_line_id and self.billing_sale_order_line_id.order_id == self.billing_sale_order_id:
-                self._recompute_billing_line_qty()
+            if rec.billing_sale_order_id:
+                # There is a SOL and it belongs to the same SO, we must update it.
+                if rec.billing_sale_order_line_id and rec.billing_sale_order_line_id.order_id == rec.billing_sale_order_id:
+                    rec._recompute_billing_line_qty()
 
-            # There is a SOL and it belongs to a different SO, we must unlink it
-            elif self.billing_sale_order_line_id and self.billing_sale_order_line_id.order_id != self.billing_sale_order_id:
-                self._unlink_sale_order_line()
+                # There is a SOL and it belongs to a different SO, we must unlink it
+                elif rec.billing_sale_order_line_id and rec.billing_sale_order_line_id.order_id != rec.billing_sale_order_id:
+                    rec._unlink_sale_order_line()
 
-            # No SOL, we must link it  
-            if not self.billing_sale_order_line_id:
-                sale_order_line_dict = {product: sale_order_line for (product, sale_order_line) in  zip(self.billing_sale_order_id.order_line.mapped('product_id'), self.billing_sale_order_id.order_line)}
-                
-                if self._get_matching_service_product() in sale_order_line_dict:
-                    self.billing_sale_order_line_id = sale_order_line_dict[self._get_matching_service_product()]
-                    self._recompute_billing_line_qty()
-                else:
-                    raise ValidationError('No Sale Order Line found in SO. Expected line with product {}'.format(self._get_matching_service_product().display_name))
+                # No SOL, we must link it  
+                if not rec.billing_sale_order_line_id:
+                    sale_order_line_dict = {product: sale_order_line for (product, sale_order_line) in  zip(rec.billing_sale_order_id.order_line.mapped('product_id'), rec.billing_sale_order_id.order_line)}
+                    
+                    if rec._get_matching_service_product() in sale_order_line_dict:
+                        rec.billing_sale_order_line_id = sale_order_line_dict[rec._get_matching_service_product()]
+                        rec._recompute_billing_line_qty()
+                    else:
+                        raise ValidationError('No Sale Order Line found in SO. Expected line with product {}'.format(rec._get_matching_service_product().display_name))
 
-        # No Billing sale order, we must unlink the MO from the SOL
-        elif not self.billing_sale_order_id:
-            if self.billing_sale_order_line_id:
-                self._unlink_sale_order_line()
+            # No Billing sale order, we must unlink the MO from the SOL
+            elif not rec.billing_sale_order_id:
+                if rec.billing_sale_order_line_id:
+                    rec._unlink_sale_order_line()
 
     def _create_billing_sale_order_line(self):
         new_order_line = self.env['sale.order.line'].create({

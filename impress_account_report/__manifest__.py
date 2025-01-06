@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': "Impress Account report customizations",
+    'name': "impress account report customizations",
     'version': '0.1.0',
     'depends': ['account_accountant'],
     'author': "Cédric Paradis",

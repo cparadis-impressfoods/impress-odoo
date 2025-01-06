@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <templates xml:space="preserve">
-    <t t-name="test_menu_shop_floor" t-inherit="mrp_workorder.MrpDisplayMenuDialog" t-inherit-mode="extension" owl="1">
+    <t t-name="add_quality_check" t-inherit="mrp_workorder.MrpDisplayMenuDialog" t-inherit-mode="extension" owl="1">
         <xpath expr="//button[@name='addComponent']" position="after">
 
             <button class="btn btn-outline-secondary d-flex justify-content-between align-items-center p-3 fs-3"

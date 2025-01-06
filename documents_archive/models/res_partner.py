@@ -14,7 +14,6 @@ class Partner(models.Model):
     def action_see_documents(self):
         self.ensure_one()
         action = super().action_see_documents()
-        _logger.warning(action['context'])
         return action
 
     def _compute_document_count(self):

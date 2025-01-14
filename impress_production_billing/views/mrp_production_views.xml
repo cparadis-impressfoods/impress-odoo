@@ -12,11 +12,11 @@
 
             </xpath>
             <xpath expr="//page[@name='miscellaneous']" position="before">
-                <page string="Billing" name="billing">
+                <page string="Billing" name="billing" invisible="not billing_sale_order_ref">
                     <group>
                         <group>
-                            <field name='billing_sale_order_id' readonly="1" invisible="not product_id"/>
-                            <field name='billing_sale_order_line_id' readonly="1" invisible="not product_id"/>
+                            <field name='billing_sale_order_id' readonly="1" />
+                            <field name='billing_sale_order_line_id' readonly="1" />
                         </group>
                     </group>
                 </page>

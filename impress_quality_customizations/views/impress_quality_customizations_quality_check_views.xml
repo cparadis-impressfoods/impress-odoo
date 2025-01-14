@@ -29,7 +29,7 @@
                 <attribute name="decoration-success">x_signature</attribute>
             </xpath>
             <xpath expr="//tree[1]" position="inside">
-                <field name="x_signature" widget="signature"/>
+                <field name="x_signature" widget="signature" optional="show"/>
             </xpath>
         </field>
     </record>

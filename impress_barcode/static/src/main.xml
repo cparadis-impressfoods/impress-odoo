@@ -4,9 +4,6 @@
     t-inherit="stock_barcode.MainComponent"
     t-inherit-mode="extension" owl="1">
         <xpath expr="//span[@class='o_title navbar-text']" position="replace">
-            <t t-js='ctx'>
-                console.log(ctx.env.model)
-            </t>
             <t t-if="env.model.orm.read()">
                 <span class="o_title navbar-text" t-esc="env.model.name + ' ' + env.model.origin"/>
             </t>

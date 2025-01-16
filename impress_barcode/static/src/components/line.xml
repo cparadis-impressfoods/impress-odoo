@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="stock_barcode.lineQuantity_add_total_demand" 
+        t-inherit="stock_barcode.LineQuantity"
+        t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[1]" position="after">
+            <t t-if="!props.subline">
+                <i class="fa fa-fw fa-cubes text-muted"/>
+                <t t-if="qtyDemand == totalDemand">
+                    <span style="color: green" t-if="qtyDemand" t-esc="' Total: ' + totalDemand"/>
+                </t>
+                <t t-else="">
+                    <span style="color: red" t-if="qtyDemand" t-esc="' Total: ' + totalDemand"/>
+                </t>
+            </t>
+        </xpath>
+
+    </t>
+    
+    
+</templates>

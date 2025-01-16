@@ -13,11 +13,12 @@
                         <i class="fa fa-exclamation-triangle"/>
                     </div>
                 </div>
+                
                 <t t-set="index" t-value="1"/>
-                    <t t-foreach="unreservedMoves" t-as="move" t-key="index">
-                        <MoveComponent move="move" />
-                        <t t-set="index" t-value="index+1"/>
-                    </t>
+                <t t-foreach="unreservedMoves" t-as="move" t-key="index">
+                    <MoveComponent move="move" />
+                    <t t-set="index" t-value="index+1"/>
+                </t>
             </t>
         </xpath>
     </t>

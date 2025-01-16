@@ -16,6 +16,7 @@
     'category': 'Hidden',
     'version': '0.1.0',
     'license': 'GPL-2',
+
     # any module necessary for this one to work correctly
     'depends': ['base', 'stock', 'sale_management', 'stock_barcode'],
 
@@ -33,9 +34,6 @@
             "impress_barcode/static/src/main.xml",
             "impress_barcode/static/src/**/*.js",
         ],
-        'web.assets_common': [
-            "impress_barcode/static/src/**/*.css",
-        ]
 
 
     }

@@ -23,11 +23,22 @@
     'data': [
         'views/stock_picking_views.xml',
     ],
-    #'assets': {
-    #    'web.assets_backend':[
-    #        'impress_barcode/static/src/**/*.xml',
-    #    ]
-    #}
+    'assets': {
+        'web.assets_backend':[
+            "impress_barcode/static/src/components/move.xml",
+            "impress_barcode/static/src/components/move.js",
+            "impress_barcode/static/src/components/line.xml",
+            "impress_barcode/static/src/components/main.js",
+            "impress_barcode/static/src/components/main.xml",
+            "impress_barcode/static/src/main.xml",
+            "impress_barcode/static/src/**/*.js",
+        ],
+        'web.assets_common': [
+            "impress_barcode/static/src/**/*.css",
+        ]
+
+
+    }
 
 }
 

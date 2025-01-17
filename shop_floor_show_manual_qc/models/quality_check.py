@@ -16,8 +16,10 @@ class QualityCheck(models.Model):
         self.workorder_id = matching_wo      
 
     def _handle_insert_into_chain(self):
-        last_check = self.workorder_id.check_ids.filtered(lambda check: check != self).filtered(lambda check: not check.next_check_id)[0]
-        self._insert_in_chain('after', last_check)
+        check_chain = self.workorder_id.check_ids.filtered(lambda check: check != self).filtered(lambda check: not check.next_check_id)
+        if len(check_chain) != 0:
+            last_check = self.workorder_id.check_ids.filtered(lambda check: check != self).filtered(lambda check: not check.next_check_id)[0]
+            self._insert_in_chain('after', last_check)
 
     def _remove_from_chain(self):
         current_previous_check = self.previous_check_id

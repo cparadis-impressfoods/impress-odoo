@@ -9,8 +9,8 @@
     """,
     'license': 'GPL-2',
     # data files always loaded at installation
-    'data': [
-        'views/impress_mrp_customizations_production_order_views.xml',
+    "data": [
+        "views/impress_mrp_customizations_production_order_views.xml",
     ],
     # data files containing optionally loaded demonstration data
     'demo': [

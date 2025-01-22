@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="utf-8"?>
 <odoo>
-    <data>
-        <record id="impress_stock_lot_lab_analysis" model="ir.ui.view">
+
+        <record id="impress_lot_lab_lot_lab_analysis" model="ir.ui.view">
             <field name="name">impress.stock.lot.lab_analysis</field>
             <field name="model">stock.lot</field>
             <field name="inherit_id" ref="stock.view_production_lot_form" />
@@ -10,13 +10,13 @@
                 <xpath expr="//page[@name='description']" position="after">
                     <page string="Quality" name="quality">
                         <group>
-                            <field name="x_sent_to_lab" widget="checkbox" />
+                            <field name="x_lab_state" />
                         </group>
                     </page>
                 </xpath>
             </field>
         </record>
-        <record id="impress_stock_lot_tree_lab" model="ir.ui.view">
+        <record id="impress_lot_lab_lot_tree_lab" model="ir.ui.view">
             <field name="name">impress.stock.lot.tree.lab</field>
             <field name="model">stock.lot</field>
             <field name="priority">16</field>
@@ -24,18 +24,20 @@
                 <tree string="Lots"
                     multi_edit="1"
                     edit="true"
-                    decoration-info="x_sent_to_lab"
+                    decoration-info="x_lab_state == 'sent'"
+                    decoration-success="x_lab_state == 'received_ok'"
+                    decoration-danger="x_lab_state == 'received_problem'"
                 >
                     <field name="name" decoration-bf="1" />
                     <field name="ref" optional="show" />
                     <field name="product_id" readonly="1" />
                     <field name="create_date" optional="show" />
-                    <field name="x_sent_to_lab" />
+                    <field name="x_lab_state" />
                 </tree>
             </field>
         </record>
 
-        <record id="impress_stock_lot_kanban_lab" model="ir.ui.view">
+        <record id="impress_lot_lab_lot_kanban_lab" model="ir.ui.view">
             <field name="name">impress.stock.lot.kanban.lab</field>
             <field name="model">stock.lot</field>
             <field name="priority">16</field>
@@ -60,10 +62,13 @@
                                     <p>
                                         <field name="name" />
                                     </p>
-                                    <t t-if="record.x_sent_to_lab.raw_value == true">
-                                        <span class="badge rounded-pill text-bg-success">Sent to lab</span>
-                                    </t>
-                                    <field name="x_sent_to_lab" invisible="true" />
+                                    <field name="x_lab_state" invisible="true" />
+
+                                    <span t-if="record.x_lab_state.raw_value == 'sent'" class="badge rounded-pill text-bg-info">Sent to lab</span>
+                                    <span t-if="record.x_lab_state.raw_value == 'received_ok'" class="badge rounded-pill text-bg-success">Received and OK</span>
+                                    <span t-if="record.x_lab_state.raw_value == 'received_problem'" class="badge rounded-pill text-bg-danger">Received and follow-up needed</span>
+
+
                                 </div>
                             </div>
                         </t>
@@ -72,7 +77,7 @@
             </field>
         </record>
 
-        <record id="impress_stock_lot_search_lab" model="ir.ui.view">
+        <record id="impress_lot_lab_lot_search_lab" model="ir.ui.view">
             <field name="name">impress.stock.lot.search_lab</field>
             <field name="model">stock.lot</field>
             <field name="arch" type="xml">
@@ -84,13 +89,13 @@
             </field>
         </record>
 
-        <record id="impress_stock_lot_tree_lab_action" model="ir.actions.act_window">
+        <record id="impress_lot_lab_lot_tree_lab_action" model="ir.actions.act_window">
             <field name="name">Lab analysis</field>
             <field name="res_model">stock.lot</field>
             <field name="views">
-                [[%(impress_stock_lot_tree_lab)d,'tree'],[%(impress_stock_lot_kanban_lab)d,'kanban']]</field>
+                [[%(impress_lot_lab_lot_tree_lab)d,'tree'],[%(impress_lot_lab_lot_kanban_lab)d,'kanban']]</field>
             <field name="view_mode">tree,kanban,form</field>
-            <field name="search_view_id" ref="impress_stock_lot_search_lab" />
+            <field name="search_view_id" ref="impress_lot_lab_lot_search_lab" />
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     No lots found.
@@ -99,11 +104,11 @@
         </record>
 
         <menuitem
-            id="impress_stock_lot_tree_lab_menu"
+            id="impress_lot_lab_lot_tree_lab_menu"
             name="Lots"
-            action="impress_stock_lot_tree_lab_action"
+            action="impress_lot_lab_lot_tree_lab_action"
             parent="quality_control.menu_quality_control"
             sequence="8" />
 
-    </data>
+
 </odoo>

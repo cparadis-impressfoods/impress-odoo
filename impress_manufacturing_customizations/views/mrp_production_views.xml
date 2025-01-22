@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <odoo>
+      
+    <!-- View mrp.production form -->
+    <record id="view_mrp_production_form" model="ir.ui.view">
+        <field name="name">view.mrp.production.form</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='components_availability']" position="replace"/>
+          <xpath expr="//form[1]/header[1]/button[@name='button_mark_done']" position="attributes">
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+          <xpath expr="//form[1]/header[1]/button[@name='button_mark_done'][2]" position="attributes">
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+          <xpath expr="//form[1]/header[1]/button[@name='button_mark_done'][3]" position="attributes">
+            <attribute name="effect">{"message":"Well Done!","fadeout":"medium"}</attribute>
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+          <xpath expr="//form[1]/header[1]/button[@name='button_mark_done'][4]" position="attributes">
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+          <xpath expr="//button[@name='do_unreserve']" position="attributes">
+            <attribute name="effect">{"message":"Well Done!!!","fadeout":"medium"}</attribute>
+          </xpath>
+          <xpath expr="//button[@name='button_scrap']" position="attributes">
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+          <xpath expr="//button[@name='check_quality']" position="attributes">
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+          <xpath expr="//form[1]/header[1]/button[@name='button_quality_alert']" position="attributes">
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+          <xpath expr="//form[1]/header[1]/button[@name='button_quality_alert'][2]" position="attributes">
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+          <xpath expr="//form[1]/header[1]/button[@name='action_cancel']" position="attributes">
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+
+          <xpath expr="//form[1]/header[1]/button[@name='action_cancel'][2]" position="attributes">
+            <attribute name="studio_approval">True</attribute>
+          </xpath>
+
+          <xpath expr="//button[@name='action_open_label_type']" position="after">
+            <button string="Print Production" name="1942" type="action"/>
+          </xpath>
+          <xpath expr="//field[@name='qty_produced']" position="after">
+            <xpath expr="//form[1]/sheet[1]/field[@name='workorder_ids']" position="move"/>
+            <xpath expr="//field[@name='reservation_state']" position="move"/>
+            <xpath expr="//field[@name='qty_produced']" position="move"/>
+          </xpath>
+          <xpath expr="//field[@name='priority']" position="before">
+            <xpath expr="//form[1]/sheet[1]/div[not(@name)][1]/h1[1]/field[@name='name']" position="move"/>
+          </xpath>
+          <xpath expr="//field[@name='id']" position="before">
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='product_id']" position="move"/>
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='company_id']" position="move"/>
+            <xpath expr="//field[@name='components_availability_state']" position="move"/>
+          </xpath>
+          <xpath expr="//field[@name='product_tracking']" position="attributes">
+            <attribute name="invisible">True</attribute>
+          </xpath>
+          <xpath expr="//field[@name='show_valuation']" position="after">
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[@name='group_extra_info']/field[@name='date_finished']" position="move"/>
+          </xpath>
+          <xpath expr="//field[@name='product_description_variants']" position="attributes">
+            <attribute name="invisible">1</attribute>
+            <attribute name="readonly">(state != 'draft') or (state != 'draft')</attribute>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/div[1]/div[1]" position="inside">
+            <xpath expr="//field[@name='qty_producing']" position="move"/>
+            <!-- <xpath expr="//field[@name='qty_producing']" position="move"/> -->
+          </xpath>
+          <xpath expr="//label[@name='bom_label']" position="attributes">
+            <attribute name="string">Bill of Material</attribute>
+          </xpath>
+          <xpath expr="//field[@name='bom_id']" position="attributes">
+            <attribute name="invisible">False</attribute>
+            <attribute name="readonly">(state != 'draft') or (state != 'draft')</attribute>
+          </xpath>
+          <xpath expr="//field[@name='bom_id']" position="after">
+            <field name="x_studio_related_field_zprf6" invisible="1"/>
+            <field name="x_studio_reference" string="Reference" invisible="1"/>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/label[not(@name)][2]" position="attributes">
+            <attribute name="string">Lot</attribute>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/div[not(@name)][2]" position="after">
+            <field name="x_studio_field_l2DBU"/>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/group[1]/group[@name='group_extra_info']/label[1]" position="before">
+            <field name="x_studio_can_kg" invisible="x_studio_related_field_zprf6 != 'CAN / USA'"/>
+            <field name="x_studio_usa_kg_1" invisible="x_studio_related_field_zprf6 != 'CAN / USA'"/>
+            <field name="x_studio_order_port_date_time_planned" string="Order Port Date &amp; Time Planned" invisible="1"/>
+          </xpath>
+          <xpath expr="//field[@name='date_start']" position="attributes">
+            <attribute name="force_save">1</attribute>
+            <attribute name="readonly">state in ["done", "cancel"]</attribute>
+          </xpath>
+          <xpath expr="//field[@name='user_id']" position="attributes">
+            <attribute name="invisible">1</attribute>
+            <attribute name="readonly">(state in ['cancel', 'done']) or (state in ['done', 'cancel'])</attribute>
+          </xpath>
+          <xpath expr="//field[@name='user_id']" position="after">
+            <field name="create_date" invisible="1"/>
+            <field name="x_studio_datetime_field_iixUa" string="Activities scheduled date automation" invisible="1"/>
+            <field name="x_studio_to_plan" widget="boolean"/>
+            <field name="x_studio_prpar" invisible="x_studio_field_l2DBU in [&quot;Embouteillage&quot;, &quot;Embouteillage USA&quot;, &quot;Embouteillage Baby Food&quot;]"/>
+            <field name="x_studio_press" invisible="x_studio_field_l2DBU in [&quot;Embouteillage&quot;, &quot;Embouteillage USA&quot;, &quot;Embouteillage Baby Food&quot;]"/>
+            <field name="x_studio_ph" invisible="x_studio_field_l2DBU in [&quot;Embouteillage Baby Food&quot;, &quot;Embouteillage&quot;, &quot;Embouteillage USA&quot;]"/>
+            <field name="x_studio_embouteill" invisible="x_studio_field_l2DBU in [&quot;Pressage Puree&quot;, &quot;Pressage&quot;]"/>
+            <field name="x_studio_hpp_1" invisible="x_studio_field_l2DBU in [&quot;Pressage&quot;, &quot;Pressage Puree&quot;]"/>
+            <field name="x_studio_mo" string="Comptage HPP" placeholder="#" invisible="x_studio_field_l2DBU in [&quot;Pressage Puree&quot;, &quot;Pressage&quot;]"/>
+            <field name="x_studio_field_yRdvZ" invisible="x_studio_field_l2DBU in [&quot;Pressage&quot;, &quot;Pressage Puree&quot;]"/>
+            <field name="x_studio_qualit" invisible="x_studio_field_l2DBU in [&quot;Pressage&quot;, &quot;Pressage Puree&quot;]"/>
+            <field name="x_studio_loma_inspection_trigger" string="Loma Inspection Trigger" invisible="1"/>
+          </xpath>
+          <xpath expr="//field[@name='move_finished_ids']" position="attributes">
+            <attribute name="readonly">(state == 'cancel' or (state == 'done' and is_locked)) or (((is_locked == True) and (state == 'done')) or (state == 'cancel'))</attribute>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+            <group name="studio_group_0kFKm">
+              <group name="studio_group_0kFKm_left">
+                <field name="x_studio_125ml_kg" invisible="x_studio_related_field_zprf6 != '125ml / 500ml'"/>
+                <field name="x_studio_500ml_kg" invisible="x_studio_related_field_zprf6 != '125ml / 500ml'"/>
+                <field name="x_studio_1l_kg" invisible="x_studio_related_field_zprf6 != '125ml / 500ml'"/>
+              </group>
+              <group name="studio_group_0kFKm_right" string="Compilation" invisible="x_studio_field_l2DBU in [&quot;Pressage&quot;, &quot;Pressage Puree&quot;]">
+                <field name="x_studio_bouteilles_remis_jus_en_production" string="Bouteilles remis à jus en production"/>
+                <field name="x_studio_bouteilles_jetes" string="Bouteilles Jetées"/>
+                <field name="x_studio_bouteilles_qualit" string="Bouteilles Qualité"/>
+                <field name="x_studio_nombre_de_caisses_produites"/>
+                <field name="x_studio_" string="Signature" widget="signature"/>
+              </group>
+            </group>
+          </xpath>
+          <xpath expr="//field[@name='should_consume_qty']" position="attributes">
+            <attribute name="invisible">False</attribute>
+            <attribute name="options">{"enable_formatting":true}</attribute>
+            <attribute name="widget">float</attribute>
+          </xpath>
+          <xpath expr="//field[@name='move_raw_ids']" position="after">
+            <field name="x_studio_note_pour_la_production" string="NOTE POUR LA PRODUCTION"/>
+            <field name="x_studio_text_field_VLfGo" string="Note de production :" placeholder="Note :"/>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='miscellaneous']/group[1]/group[1]/field[@name='location_src_id']" position="after">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='miscellaneous']/group[1]/group[1]/field[@name='location_dest_id']" position="move"/>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='miscellaneous']/group[1]/group[1]/field[@name='picking_type_id']" position="move"/>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+            <page string="Qualité" name="studio_page_s5Vzf" invisible="x_studio_field_l2DBU in [&quot;Embouteillage Baby Food&quot;, &quot;Embouteillage&quot;, &quot;Embouteillage USA&quot;]">
+              <group name="studio_group_s5Vzf">
+                <group name="studio_group_s5Vzf_left" string="Analyses CCP-1B">
+                  <field name="x_studio_mlangeur_" string="Mélangeur :" widget="selection_badge"/>
+                  <field name="x_studio_aspect_visuel_" string="Aspect Visuel :" widget="selection_badge"/>
+                  <field name="x_studio_ph_du_jus_fini_" string="pH du Jus fini :" invisible="1"/>
+                  <field name="x_studio_degr_brix_" string="Degré Brix :"/>
+                  <field name="x_studio_note_de_qualit_" string="Note de Qualité :"/>
+                  <field name="x_studio_instruction_" string="Instruction :"/>
+                  <field invisible="1" name="x_studio_hpp_report_filename"/>
+                </group>
+                <group name="studio_group_s5Vzf_right" string="Aide-mémoire de Contrôle Qualité">
+                  <field name="x_studio_intervalle_de_ph_" string="Intervalle de pH :"/>
+                  <field name="x_studio_intervalle_de_brix_" string="Intervalle de Brix :"/>
+                  <field name="x_studio_standard_" string="Standard :"/>
+                  <field name="x_studio_apparence_" string="Apparence :"/>
+                  <field name="x_studio_points_surveiller_" string="Points à Surveiller :"/>
+                  <field name="x_studio_couleur_" string="Couleur :" options="{&quot;size&quot;:[0,180]}" widget="image"/>
+                </group>
+              </group>
+              <group name="studio_group_dUzWq">
+                <group name="studio_group_dUzWq_left" string="Dossier (1/Jour) Vérifié par le Coordonateur HACCP ou son substitut">
+                  <field name="x_studio_date_heure_3" string="Date &amp; Heure"/>
+                  <field name="x_studio_vrification" widget="selection_badge" string="Vérification"/>
+                  <field widget="signature" name="x_studio_signature_2" string="Signature"/>
+                </group>
+                <group name="studio_group_dUzWq_right" string="Sur place (1/mois) Vérifié par le Coordonnateur HACCP ou son substitut">
+                  <field name="x_studio_date_heure_4" string="Date &amp; Heure"/>
+                  <field name="x_studio_vrification_1" string="Vérification" widget="selection_badge"/>
+                  <field widget="signature" name="x_studio_signature_3" string="Signature"/>
+                </group>
+              </group>
+              <group name="studio_group_wjdZi">
+                </group>
+            </page>
+            <page string="Embouteillage" name="studio_page_i3TL9" invisible="(x_studio_field_l2DBU == 'Pressage Puree') or (x_studio_field_l2DBU == 'Pressage')">
+              <field name="x_studio_related_field_KvEv4" widget="text" placeholder="Test"/>
+              <div class="alert alert-warning" role="alert" name="studio_div_3b1faf">
+                <p>Détecteur métal : Si l'éjection de l'un des témoins de métal est Non-Conforme, appeler le contrôle de la qualité, remplir un registre d'écart, réajuster l'appareil et repasser tous les produits depuis la dernière vérification conforme. S'il y a un rejet de métal durant la production, aviser le contrôle de la qualité.</p>
+                <p>Fréquence :
+                <ul><li name="studio_li_620841">Au début de l'embouteillage</li><li name="studio_li_bddcbf">À chaque changement de produit (changement de format, de recette, de lot, d'étiquette US/CAD ou lors de réglage de l'appareil)</li><li name="studio_li_fdedf4">Aux 2 heures si aucun changement lors d'une production en continue</li><li name="studio_li_0e1ab8">Une fois l'embouteillage terminé</li></ul>
+                </p>
+                <p>
+                Calibration : Comparer le poids d'une bouteille avec la balance de table et la Loma, si l'écart est de 2g et +, faire une calibration. <br/>
+                Remplissage : Comparer le poids moyen des bouteilles vs le poids visé. Si l'écart est de + / - 3g, ajuster l'embouteilleuse. <br/>
+                Lors de la dernière vérification, vérifier qu'aucune bouteille ne reste dans les bacs de rejet. <br/>
+                </p>
+                <p>À l'exclusivité de: Impress Foods / Créée le 6 septembre 2016 / Modifiée le 12 janvier 2023.</p>
+              </div>
+              <field name="x_mrp_production_line_ids_a18ff" invisible="1">
+                <form>
+                  <header/>
+                  <sheet string="Mrp Production  Lines" name="studio_sheet_a156b6">
+                    <div class="oe_title" name="studio_div_33799d">
+                      <h1>
+                        <field name="x_name" required="1" placeholder="Name..."/>
+                      </h1>
+                    </div>
+                    <group name="studio_group_29b92f">
+                      <group name="studio_group_29b92f_left">
+                        <field name="x_studio_ferreux_20mm_1" string="Ferreux 2.0mm"/>
+                        <field name="x_studio_non_ferreux_25mm_1" string="Non-ferreux 2.5mm"/>
+                      </group>
+                      <group name="studio_group_29b92f_right"/>
+                    </group>
+                  </sheet>
+                </form>
+                <tree editable="bottom">
+                  <field name="x_studio_sequence" widget="handle"/>
+                  <field optional="show" name="x_studio_heure_1" string="Heure"/>
+                  <field name="x_name"/>
+                  <field name="x_studio_ferreux_20mm" optional="show"/>
+                  <field name="x_studio_non_ferreux_25mm_1" optional="show"/>
+                  <field name="x_studio_stainless_35mm" optional="show"/>
+                  <field name="x_studio_jection" optional="show"/>
+                  <field name="x_studio_calibration" optional="show"/>
+                  <field name="x_studio_torque" optional="show"/>
+                  <field optional="show" name="x_studio_initiales" string="Initiales"/>
+                </tree>
+              </field>
+              <field name="x_studio_one2many_field_mQRmO">
+                <form>
+                  <header/>
+                  <sheet string="Détecteur Métal" name="studio_sheet_69fd3c">
+                    <widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="x_active == True"/>
+                    <field name="x_active" invisible="1"/>
+                    <field name="x_avatar_image" widget="image" class="oe_avatar ml-3 mr-3" invisible="1"/>
+                    <div class="oe_title" name="studio_div_ea725f">
+                      <h1>
+                        <field name="x_name" placeholder="Name..." invisible="1"/>
+                      </h1>
+                    </div>
+                    <group name="studio_group_15387d">
+                      <group name="studio_group_15387d_left">
+                        <field name="x_studio_many2one_field_Ewz7o" force_save="True" readonly="1"/>
+                        <field name="x_studio_valeur_de_rejet" string="Valeur de Rejet" required="1"/>
+                        <field name="x_studio_ferreux" string="Ferreux" required="1"/>
+                        <field name="x_studio_non_ferreux" string="Non-ferreux" required="1"/>
+                        <field name="x_studio_stainless" string="Stainless" required="1"/>
+                      </group>
+                      <group name="studio_group_15387d_right">
+                        <field name="x_studio_torque" string="Torque" invisible="1"/>
+                        <field name="x_studio_poids_moyen" string="Poids Moyen" required="False"/>
+                        <field name="x_studio_calibration" string="Calibration" required="1"/>
+                        <field name="x_studio_jection" string="Éjection" required="1"/>
+                        <field name="x_studio_heure" string="Heure" required="False" options="{&quot;rounding&quot;:1,&quot;warn_future&quot;:false}" widget="datetime"/>
+                        <field name="x_studio_datetime_field_715_1i0joa0ub" widget="task_confirm_date_end_with_warning"/>
+                      </group>
+                    </group>
+                    <group name="studio_group_Kx0aF">
+                      <field widget="signature" name="x_studio_signature" string="Signature" required="True"/>
+                    </group>
+                  </sheet>
+                </form>
+                <tree>
+                  <field name="x_studio_sequence" widget="handle"/>
+                  <field name="x_studio_many2one_field_Ewz7o" optional="show"/>
+                  <field name="x_studio_valeur_de_rejet" optional="show"/>
+                  <field name="x_studio_ferreux" optional="show"/>
+                  <field name="x_studio_non_ferreux" optional="show"/>
+                  <field name="x_studio_stainless" optional="show"/>
+                  <field name="x_studio_torque" optional="show" column_invisible="True"/>
+                  <field name="x_studio_poids_moyen" optional="show"/>
+                  <field name="x_studio_calibration" optional="show"/>
+                  <field name="x_studio_jection" optional="show"/>
+                  <field name="x_studio_heure" optional="show" options="{&quot;warn_future&quot;:false,&quot;rounding&quot;:1}"/>
+                  <field name="x_name" column_invisible="1"/>
+                </tree>
+              </field>
+              <group name="studio_group_tLHYH">
+                <group name="studio_group_tLHYH_left" string="Dossier (1/Jour) Vérifié par le Coordonateur HACCP ou son substitut">
+                  <field name="x_studio_date_heure_2" string="Date &amp; Heure" options="{&quot;rounding&quot;:1}"/>
+                  <field name="x_studio_verification" widget="selection_badge"/>
+                  <field name="x_studio_binary_field_od111" string="Signature" widget="signature"/>
+                </group>
+                <group name="studio_group_tLHYH_right" string="Sur place (1/mois) Vérifié par le Coordonnateur HACCP ou son substitut">
+                  <field name="x_studio_date_heure_1" options="{&quot;rounding&quot;:1}"/>
+                  <field name="x_studio_verification_metal_monthly" widget="selection_badge" string="Verification"/>
+                  <field widget="signature" name="x_studio_signature_1" string="Signature"/>
+                </group>
+              </group>
+            </page>
+            <page string="Emballage" name="studio_page_bsyu4" invisible="x_studio_field_l2DBU in [&quot;Pressage&quot;, &quot;Pressage Puree&quot;]">
+              <field name="x_studio_related_field_0wmwX"/>
+              <group name="studio_group_nNVuy">
+                <group name="studio_group_nNVuy_left" string="Codage">
+                  <field name="x_studio_expiration_date" string="Expiration Date"/>
+                  <field name="x_studio_related_field_tJKS9" widget="date" string="M.A. / B.B."/>
+                  <field name="x_studio_dure_de_vie_jour" string="Durée de vie (jour)" widget="many2one_reference"/>
+                  <field name="x_studio_lot_1" string="Lot" invisible="1"/>
+                  <field name="x_studio_bouteille_cups" string="Bouteille / Cups" widget="selection_badge"/>
+                  <field name="x_studio_caisses_cabaret" string="Caisses / Cabaret" widget="selection_badge"/>
+                  <field name="x_studio_bon_emballage" string="Bon Emballage" widget="selection_badge"/>
+                  <field name="x_studio_signature_du_responsable_1" string="Signature" widget="signature"/>
+                </group>
+                <group name="studio_group_nNVuy_right" string="Analyses CCP-##">
+                  <field name="x_studio_field_9ZfRt" string="Compilation HPP" widget="selection_badge"/>
+                  <field filename="x_studio_hpp_report_filename" name="x_studio_hpp_report" string="HPP Report"/>
+                  <field name="x_studio_note_hpp" string="Note HPP"/>
+                </group>
+              </group>
+              <group name="studio_group_Kdg78">
+                <group name="studio_group_Kdg78_left">
+                  
+                </group>
+                <group name="studio_group_Kdg78_right">
+                  
+                  
+                  
+                </group>
+              </group>
+              <group name="studio_group_8a62c">
+                <group name="studio_group_8a62c_left" invisible="1"/>
+                <group name="studio_group_8a62c_right" invisible="1">
+                  <field name="x_studio_type_de_palette_" string="Type de Palette :"/>
+                  <field name="x_studio_caisses_par_tage_" string="Caisses par Étage :"/>
+                  <field name="x_studio_tage_maximum_" string="Étage Maximum :"/>
+                  <field name="x_studio_palettisation_" string="Palettisation :"/>
+                </group>
+              </group>
+              <field name="x_studio_related_field_Snbk9" invisible="1"/>
+            </page>
+          </xpath>
+          <xpath expr="//field[@name='components_availability_state']" position="attributes">
+            <attribute name="invisible">False</attribute>
+            <attribute name="widget">badge</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[1]/field[1]" position="inside">
+            <form string="Move Detail">
+              <field name="sequence" invisible="1"/>
+              <field name="company_id" invisible="1"/>
+              <field name="state" invisible="1"/>
+              <field name="location_id" invisible="1"/>
+              <field name="location_dest_id" invisible="1"/>
+              <field name="picking_id" invisible="1" readonly="state == 'done'"/>
+              <field name="picking_type_id" invisible="1"/>
+              <field name="is_locked" invisible="1"/>
+              <field name="picking_type_entire_packs" invisible="1"/>
+              <field name="display_assign_serial" invisible="1"/>
+              <field name="display_import_lot" invisible="1"/>
+              <field name="product_uom_category_id" invisible="1"/>
+              <field name="product_uom" invisible="1" groups="!uom.group_uom"/>
+              <field name="picking_code" invisible="1"/>
+              <field name="has_tracking" invisible="1"/>
+              <field name="show_reserved" invisible="1"/>
+              <field name="show_quant" invisible="1"/>
+              <field name="show_lots_text" invisible="1"/>
+              <field name="show_lots_m2o" invisible="1"/>
+              <group>
+                <group>
+                  <field name="product_id" readonly="id or move_line_ids"/>
+                  <field name="picking_code" invisible="1"/>
+                  <field name="use_expiration_date" invisible="1"/>
+                  <label for="product_uom_qty"/>
+                  <div class="o_row">
+                    <span>
+                      <field name="product_uom_qty" readonly="state != 'draft'" nolabel="1"/>
+                    </span>
+                    <span>
+                      <field name="product_uom" groups="uom.group_uom" readonly="state != 'draft'" nolabel="1" options="{'no_open': True}"/>
+                    </span>
+                  </div>
+                </group>
+                <group/>
+              </group>
+              <div class="d-flex">
+                <widget class="btn btn-link btn-group" name="generate_serials" invisible="not display_assign_serial"/>
+                <widget class="btn btn-link btn-group" name="import_lots" invisible="not display_import_lot"/>
+              </div>
+              <field name="move_line_ids" readonly="state == 'cancel' or (state == 'done' and is_locked) or not product_id" context="{'tree_view_ref': 'stock.view_stock_move_line_operation_tree', 'form_view_ref': 'stock.view_move_line_mobile_form', 'default_picking_id': picking_id, 'default_move_id': id, 'default_product_id': product_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id, 'default_company_id': company_id, 'active_picking_id': picking_id}" widget="sml_x2_many"/>
+            </form>
+          </xpath>
+          <xpath expr="//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+              <attribute name="required">0</attribute>
+          </xpath>
+        <!--
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+            <attribute name="widget">datetime</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+            <attribute name="options">{"rounding":6}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+            <attribute name="options">{"rounding":7}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+            <attribute name="options">{"rounding":8}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+            <attribute name="options">{"rounding":0}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+            <attribute name="options">{"rounding":5}</attribute>
+          </xpath>
+
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+            <attribute name="options">{"rounding":4}</attribute>
+          </xpath>
+
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+            <attribute name="options">{"rounding":3}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="attributes">
+            <attribute name="options">{"rounding":2}</attribute>
+            <attribute name="required">0</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="after">
+            <field name="create_date"/>
+          </xpath>
+          -->
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_datetime_field_715_1i0joa0ub']" position="replace"/>
+
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_valeur_de_rejet']" position="after">
+            <field optional="show" name="x_studio_poids_nominal"/>
+          </xpath>
+          
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_poids_nominal']" position="attributes">
+            <attribute name="options">{"step":1}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_poids_nominal']" position="attributes">
+            <attribute name="options">{"step":0}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_poids_nominal']" position="attributes">
+            <attribute name="options">{"step":-1}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_poids_nominal']" position="attributes">
+            <attribute name="options">{}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_poids_nominal']" position="attributes">
+            <attribute name="options">{"digits":[2,1]}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_poids_nominal']" position="attributes">
+            <attribute name="options">{"digits":[4,2]}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_ferreux']" position="after">
+            <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_poids_nominal']" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_poids_moyen']" position="before">
+            <field name="x_studio_poids_nominal"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_poids_nominal']" position="attributes">
+            <attribute name="options">{"digits":[2,1]}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_poids_nominal']" position="attributes">
+            <attribute name="options">{"digits":[4,2]}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='x_studio_poids_nominal']" position="attributes">
+            <attribute name="options">{"digits":[4,2],"enable_formatting":false}</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/form[1]//field[@name='create_date']" position="attributes">
+            <attribute name="invisible">True</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/div[1]/button[14]" position="attributes">
+            <attribute name="invisible">not check_ids or quality_check_fail or not quality_check_todo</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/div[1]/field[1]" position="attributes">
+            <attribute name="force_save">0</attribute>
+            <attribute name="readonly">False</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[13]" position="after">
+            <field name="x_studio_groupe_reference"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/field[10]" position="after">
+            <field name="x_studio_colour_mo"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/field[11]" position="after">
+            <field name="x_color"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/field[11]" position="attributes">
+            <attribute name="invisible">True</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/field[12]" position="attributes">
+            <attribute name="invisible">True</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/field[12]" position="replace"/>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[2]/field[11]" position="replace"/>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[1]/field[1]/tree[1]//field[@name='forecast_availability']" position="attributes">
+            <attribute name="invisible">False</attribute>
+            <attribute name="column_invisible">False</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[3]" position="after">
+            <field name="x_color"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/div[2]/h1[1]/field[2]" position="attributes">
+            <attribute name="widget">radio</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/div[2]/h1[1]/field[2]" position="attributes">
+            <attribute name="widget">status_with_color</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/div[2]/h1[1]/field[2]" position="attributes">
+            <attribute name="widget">priority</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[3]" position="after">
+            <field widget="priority" name="x_studio_selection_field_6vv_1i5m1v2od"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[4]" position="attributes">
+            <attribute name="widget">status_with_color</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[4]" position="attributes">
+            <attribute name="widget">selection_badge</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[4]" position="replace"/>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[4]" position="attributes">
+            <attribute name="invisible">True</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[1]" position="after">
+            <field name="x_studio_po_origine"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[2]" position="attributes">
+            <attribute name="widget">badge</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[2]" position="attributes">
+            <attribute name="widget">color</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_torque']" position="attributes">
+            <attribute name="invisible">False</attribute>
+            <attribute name="column_invisible">False</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_torque']" position="attributes">
+            <attribute name="column_invisible">True</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[1]/field[1]/tree[1]//field[@name='picked']" position="after">
+            <field name="workorder_id" optional="show"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_poids_nominal']" position="after">
+            <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_ferreux']" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_stainless']" position="after">
+            <xpath expr="/form[1]/sheet[1]/notebook[1]/page[6]/field[3]/tree[1]//field[@name='x_studio_poids_nominal']" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/notebook[1]/page[1]/field[1]/tree[1]//field[@name='location_id']" position="attributes">
+            <attribute name="readonly">False</attribute>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[2]" position="after">
+            <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[17]" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[2]" position="after">
+            <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[16]" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/div[1]" position="after">
+            <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[13]" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/div[1]" position="after">
+            <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[6]" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/div[1]" position="after">
+            <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[4]" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/div[1]" position="after">
+            <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[3]" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[15]" position="after">
+            <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[14]" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[13]" position="after">
+            <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[2]" position="move"/>
+          </xpath>
+          <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[1]" position="after">
+            <xpath expr="/form[1]/sheet[1]/group[1]/group[1]/field[13]" position="move"/>
+          </xpath>
+
+        </field>
+    </record>
+
+  </odoo>

@@ -1,7 +1,7 @@
 {
     'name': "impress_stock_customizations",
-    'version': '0.1.0',
-    'depends': ['base', 'stock', 'quality_control'],
+    'version': '0.1.1',
+    'depends': ['base', 'stock'],
     'author': "Cédric Paradis",
     'category': 'Inventory',
     'description': """
@@ -12,8 +12,8 @@
     'data': [
         'reports/impress_stock_customizations_stock_delivery_document_views.xml',
         'reports/impress_stock_customizations_labels.xml',
-        'views/impress_stock_customizations_lot_views.xml',
         'reports/online_sale_labels.xml',
+        
     ],
     'assets': {
         'web.assets_common': [

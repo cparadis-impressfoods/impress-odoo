@@ -32,7 +32,7 @@
                     <field name="ref" optional="show" />
                     <field name="product_id" readonly="1" />
                     <field name="create_date" optional="show" />
-                    <field name="x_lab_state" />
+                    <field name="x_lab_state"/>
                 </tree>
             </field>
         </record>
@@ -63,10 +63,10 @@
                                         <field name="name" />
                                     </p>
                                     <field name="x_lab_state" invisible="true" />
-
+                                    <span t-if="record.x_lab_state.raw_value == 'to_send'" class="badge rounded-pill text-bg-warning">To send</span>
                                     <span t-if="record.x_lab_state.raw_value == 'sent'" class="badge rounded-pill text-bg-info">Sent to lab</span>
-                                    <span t-if="record.x_lab_state.raw_value == 'received_ok'" class="badge rounded-pill text-bg-success">Received and OK</span>
-                                    <span t-if="record.x_lab_state.raw_value == 'received_problem'" class="badge rounded-pill text-bg-danger">Received and follow-up needed</span>
+                                    <span t-if="record.x_lab_state.raw_value == 'received_ok'" class="badge rounded-pill text-bg-success">Results received and OK</span>
+                                    <span t-if="record.x_lab_state.raw_value == 'received_problem'" class="badge rounded-pill text-bg-danger">Results received and follow-up needed</span>
 
 
                                 </div>

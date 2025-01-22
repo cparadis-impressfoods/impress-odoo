@@ -2,7 +2,7 @@
 <odoo>
 
         <record id="impress_lot_lab_lot_lab_analysis" model="ir.ui.view">
-            <field name="name">impress.stock.lot.lab_analysis</field>
+            <field name="name">impress.lab.lot.lab_analysis</field>
             <field name="model">stock.lot</field>
             <field name="inherit_id" ref="stock.view_production_lot_form" />
             <field name="priority">16</field>
@@ -17,7 +17,7 @@
             </field>
         </record>
         <record id="impress_lot_lab_lot_tree_lab" model="ir.ui.view">
-            <field name="name">impress.stock.lot.tree.lab</field>
+            <field name="name">impress.lab.lot.tree.lab</field>
             <field name="model">stock.lot</field>
             <field name="priority">16</field>
             <field name="arch" type="xml">
@@ -38,7 +38,7 @@
         </record>
 
         <record id="impress_lot_lab_lot_kanban_lab" model="ir.ui.view">
-            <field name="name">impress.stock.lot.kanban.lab</field>
+            <field name="name">impress.lab.lot.kanban.lab</field>
             <field name="model">stock.lot</field>
             <field name="priority">16</field>
             <field name="arch" type="xml">
@@ -78,7 +78,7 @@
         </record>
 
         <record id="impress_lot_lab_lot_search_lab" model="ir.ui.view">
-            <field name="name">impress.stock.lot.search_lab</field>
+            <field name="name">impress.lab.lot.search_lab</field>
             <field name="model">stock.lot</field>
             <field name="arch" type="xml">
                 <search>

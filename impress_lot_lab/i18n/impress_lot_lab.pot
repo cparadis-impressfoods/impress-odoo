@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0+e-20240710\n"
+"Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-22 18:54+0000\n"
-"PO-Revision-Date: 2025-01-22 18:54+0000\n"
+"POT-Creation-Date: 2025-01-23 19:25+0000\n"
+"PO-Revision-Date: 2025-01-23 19:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,11 @@ msgstr ""
 #. module: impress_lot_lab
 #: model:ir.actions.act_window,name:impress_lot_lab.impress_lot_lab_lot_tree_lab_action
 msgid "Lab analysis"
+msgstr ""
+
+#. module: impress_lot_lab
+#: model_terms:ir.ui.view,arch_db:impress_lot_lab.impress_lot_lab_lot_search_lab
+msgid "Lot/Serial Number"
 msgstr ""
 
 #. module: impress_lot_lab
@@ -57,11 +62,22 @@ msgid "Results received and follow-up needed"
 msgstr ""
 
 #. module: impress_lot_lab
+#: model_terms:ir.ui.view,arch_db:impress_lot_lab.impress_lot_lab_lot_search_lab
+msgid "Sent"
+msgstr ""
+
+#. module: impress_lot_lab
 #: model_terms:ir.ui.view,arch_db:impress_lot_lab.impress_lot_lab_lot_kanban_lab
 msgid "Sent to lab"
 msgstr ""
 
 #. module: impress_lot_lab
 #: model_terms:ir.ui.view,arch_db:impress_lot_lab.impress_lot_lab_lot_kanban_lab
+#: model_terms:ir.ui.view,arch_db:impress_lot_lab.impress_lot_lab_lot_search_lab
 msgid "To send"
+msgstr ""
+
+#. module: impress_lot_lab
+#: model_terms:ir.ui.view,arch_db:impress_lot_lab.impress_lot_lab_lot_search_lab
+msgid "Waiting for results"
 msgstr ""

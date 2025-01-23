@@ -16,6 +16,7 @@
                 </xpath>
             </field>
         </record>
+        
         <record id="impress_lot_lab_lot_tree_lab" model="ir.ui.view">
             <field name="name">impress.lab.lot.tree.lab</field>
             <field name="model">stock.lot</field>
@@ -82,7 +83,15 @@
             <field name="model">stock.lot</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="create_date" />
+                    <field name="name" string="Lot/Serial Number" filter_domain="['|', ('name', 'ilike', self),('ref', 'ilike', self)]"/>
+                    <field name="product_id"/>
+                    <field name="lot_properties"/>
+                    <field name="create_date"/>
+                    <separator/>
+                    <filter string="To send" name="to_send" domain="[('x_lab_state', '=', 'to_send')]" />
+                    <filter string="Waiting for results" name="waiting" domain="[('x_lab_state', '=', 'sent')]" />
+                    <filter string="Sent" name="sent" domain="[('x_lab_state', 'in', ['sent', 'received_ok', 'received_problem'])]" />
+                    <separator/>
                     <filter string="Previous 7 days" name="previous_seven_days"
                         domain="[['create_date', '&gt;', (context_today() - datetime.timedelta(days = 7)).strftime('%Y-%m-%d')]]" />
                 </search>
@@ -93,9 +102,11 @@
             <field name="name">Lab analysis</field>
             <field name="res_model">stock.lot</field>
             <field name="views">
-                [[%(impress_lot_lab_lot_tree_lab)d,'tree'],[%(impress_lot_lab_lot_kanban_lab)d,'kanban']]</field>
-            <field name="view_mode">tree,kanban,form</field>
+                [%(impress_lot_lab_lot_kanban_lab)d,'kanban']],[[%(impress_lot_lab_lot_tree_lab)d,'tree']
+            </field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref="impress_lot_lab_lot_search_lab" />
+
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     No lots found.

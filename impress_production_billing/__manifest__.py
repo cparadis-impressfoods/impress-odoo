@@ -7,8 +7,9 @@
     'website': '',
     'category': 'Sales',
     'depends': ['base', 'web', 'mrp', 'purchase', 'sale_management'],
-    'data': [
-        'views/mrp_production_views.xml'
+    "data": [
+        "views/mrp_production_views.xml",
+        "views/sale_order_views.xml"
     ],
     'installable': True,
     'license': 'GPL-2',

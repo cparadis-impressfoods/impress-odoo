@@ -3,10 +3,10 @@
     <data>
         <record id='x_lab_state' model='ir.model.fields'>
             <field name="name">x_lab_state</field>
-            <field name="field_description">Laboratory_state</field>
+            <field name="field_description">Microbiological Analysis</field>
             <field name="model_id" model="ir.model" eval="obj().env.ref('stock.model_stock_lot').id"/>
             <field name="ttype">selection</field>
-            <field name="selection">[('not_required', 'Not Required'), ('sent', 'Sent'),  ('received_ok', 'Received and OK'), ('received_problem', 'Received and follow-up needed')]</field>
+            <field name="selection">[('not_required', 'Not Required'), ('to_send', 'To Send'), ('sent', 'Sent'),  ('received_ok', 'Results received and OK'), ('received_problem', 'Results received and follow-up needed')]</field>
         </record>
     </data>
 </odoo>

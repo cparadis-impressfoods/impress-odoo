@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Impress_lot_lab',
-    'version': '0.0.1',
+    'version': '0.1.2',
     'summary': """ Impress_lot_lab Summary """,
     'author': 'Cédric Paradis',
     'website': '',
@@ -9,7 +9,7 @@
     'depends': ['base', 'stock', 'quality_control'],
     'data': [
         'data/stock_lot.xml',
-        'views/impress_stock_customizations_lot_views.xml'
+        'views/impress_lot_lab_lot_views.xml'
     ],
 
     'installable': True,

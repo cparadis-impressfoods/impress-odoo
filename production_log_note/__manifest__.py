@@ -9,7 +9,8 @@
     'depends': ['base', 'web', 'mrp_workorder'],
     "data": [
         "views/mrp_production_views.xml"
-    ],'assets': {
+    ],
+    'assets': {
               'web.assets_backend': [
                   'production_log_note/static/src/**/*'
               ],

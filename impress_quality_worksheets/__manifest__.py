@@ -15,6 +15,7 @@
         'views/metal/MetalWorksheet_20250203.xml',
         'data/coding/CodingWorksheet_20250203.xml',
         'views/coding/CodingWorksheet_20250203.xml',
+
     ],
 
     'installable': True,

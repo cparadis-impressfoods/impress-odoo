@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id='HPPWorksheet_20241202_form_view' model='ir.ui.view'>
-        <field name="name">HPP.worksheet.20241202.form.view</field>
-        <field name="model" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20241202').model_id.model"/>
+    <record id='HPPWorksheet_20250203_form_view' model='ir.ui.view'>
+        <field name="name">HPP.worksheet.20250203.form.view</field>
+        <field name="model" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.model"/>
         <field name="priority">1</field>
         <field name="arch" type="xml">
             <form create="false" js_class="worksheet_validation">

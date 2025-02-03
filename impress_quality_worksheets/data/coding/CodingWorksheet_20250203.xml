@@ -2,23 +2,23 @@
 <odoo>
 
     <!-- Create a new Worksheet Template -->
-    <record id="ws_coding_20241204" model="worksheet.template">
-        <field name="name">Worksheet coding 2024-12-04</field>
+    <record id="ws_coding_20250203" model="worksheet.template">
+        <field name="name">Worksheet coding 2025-02-03</field>
         <field name="color">3</field>
         <field name="res_model">quality.check</field>
     </record>
 
     <!-- Add the required fields -->
     <!-- ws: x_coding_log_id - Many2One Compute -->
-    <record id='x_worksheet_20241204_coding_log_id' model='ir.model.fields'>
+    <record id='x_worksheet_20250203_coding_log_id' model='ir.model.fields'>
         <field name="name">x_coding_log_id</field>
         <field name="field_description">coding Log</field>
-        <field name="model_id" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_coding_20241204').model_id.id"/>
+        <field name="model_id" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_coding_20250203').model_id.id"/>
         <field name="relation" model="ir.model" eval="'coding.log'"/>
         <field name="ttype">many2one</field>
     </record>
 
-    <record id='x_worksheet_20241204_coding_log_id' model='ir.model.fields'>
+    <record id='x_worksheet_20250203_coding_log_id' model='ir.model.fields'>
         <field name="depends">x_quality_check_id</field>
         <field name="compute" eval="
 'for rec in self:\n
@@ -38,32 +38,32 @@
     </record>
 
     <!-- log: x_ws_xx_id - One2Many - x_coding_log_id -->
-    <record id='coding_log_x_worksheet_20241204_id' model='ir.model.fields'>
-        <field name="name">x_worksheet_20241204_id</field>
+    <record id='coding_log_x_worksheet_20250203_id' model='ir.model.fields'>
+        <field name="name">x_worksheet_20250203_id</field>
         <field name="field_description">Worksheet 2024-12-02</field>
         <field name="model_id" model="ir.model" eval="obj().env.ref('impress_quality_logs.model_coding_log').id"/>
-        <field name="relation" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_coding_20241204').model_id.model"/>
-        <field name="relation_field" model="ir.model.fields" eval="obj().env.ref('impress_quality_worksheets.x_worksheet_20241204_coding_log_id').name"/>
+        <field name="relation" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_coding_20250203').model_id.model"/>
+        <field name="relation_field" model="ir.model.fields" eval="obj().env.ref('impress_quality_worksheets.x_worksheet_20250203_coding_log_id').name"/>
         <field name="ttype">one2many</field>
         <field name="on_delete">cascade</field>
     </record>
    
     <!-- log_line: x_ws_xx_id - Many2One - x_coding_log_line_ids -->
-    <record id='coding_log_line_x_worksheet_20241204_id' model='ir.model.fields'>
-        <field name="name">x_worksheet_20241204_id</field>
-        <field name="field_description">x_worksheet_20241204_id</field>
+    <record id='coding_log_line_x_worksheet_20250203_id' model='ir.model.fields'>
+        <field name="name">x_worksheet_20250203_id</field>
+        <field name="field_description">x_worksheet_20250203_id</field>
         <field name="model_id" model="ir.model" eval="obj().env.ref('impress_quality_logs.model_coding_log_line').id"/>
-        <field name="relation" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_coding_20241204').model_id.model"/>
+        <field name="relation" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_coding_20250203').model_id.model"/>
         <field name="ttype">many2one</field>
     </record>
 
     <!--ws: x_coding_log_line_ids - One2Many -->
-    <record id='x_worksheet_20241204_coding_log_lines_id' model='ir.model.fields'>
+    <record id='x_worksheet_20250203_coding_log_lines_id' model='ir.model.fields'>
         <field name="name">x_coding_log_line_ids</field>
         <field name="field_description">coding Log lines</field>
-        <field name="model_id" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_coding_20241204').model_id.id"/>
+        <field name="model_id" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_coding_20250203').model_id.id"/>
         <field name="relation" model="ir.model" eval="'coding.log.line'"/>
-        <field name="relation_field" model="ir.model.fields" eval="obj().env.ref('impress_quality_worksheets.coding_log_line_x_worksheet_20241204_id').name"/>
+        <field name="relation_field" model="ir.model.fields" eval="obj().env.ref('impress_quality_worksheets.coding_log_line_x_worksheet_20250203_id').name"/>
         <field name="ttype">one2many</field>
         <field name="on_delete">cascade</field>
     </record>

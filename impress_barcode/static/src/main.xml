@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates xml:space="preserve">
-    <!--
+
     <t t-name="stock_barcode_main_inherit_add_origin" 
         t-inherit="stock_barcode.MainComponent"
         t-inherit-mode="extension" owl="1">
@@ -13,5 +13,5 @@
             </t>
         </xpath>
     </t>
-    -->
+
 </templates>

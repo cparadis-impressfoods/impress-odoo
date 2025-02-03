@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View metal.log View Tree -->
+    <record id="view_metal_log_tree" model="ir.ui.view">
+        <field name="name">view.metal.log.tree</field>
+        <field name="model">metal.log</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View metal.log form -->
+    <record id="view_metal_log_form" model="ir.ui.view">
+        <field name="name">view.metal.log.form</field>
+        <field name="model">metal.log</field>
+        <field name="arch" type="xml">
+            <form string="Metal Log">
+                <sheet>
+                    <field name='production_id' invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_view_linked_production" type="object" icon="fa-wrench" 
+                            groups="mrp.group_mrp_user" invisible="not production_id">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Manufacturing</span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" name="action_view_metal_lines" type="object" icon="fa-magnet" 
+                            groups="mrp.group_mrp_user" invisible="not log_line_ids">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Metal Lines</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+
+                    <field name='log_line_ids' nolabel="1" readonly='1'/>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- View metal.log search -->
+    <record id="view_metal_log_search" model="ir.ui.view">
+        <field name="name">view.metal.log.search</field>
+        <field name="model">metal.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action metal.log -->
+    <record id="action_metal_log" model="ir.actions.act_window">
+        <field name="name">Metal Log</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">metal.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Metal Log.
+            </p>
+        </field>
+    </record>
+
+</odoo>

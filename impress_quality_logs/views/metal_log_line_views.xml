@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View metal.log.line View Tree -->
+    <record id="view_metal_log_line_tree" model="ir.ui.view">
+        <field name="name">view.metal.log.line.tree</field>
+        <field name="model">metal.log.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence"/>
+                <field name="product_id"/>
+                <field name="product_lot_id"/>
+                <field name="production_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View metal.log.line form -->
+    <record id="view_metal_log_line_form" model="ir.ui.view">
+        <field name="name">view.metal.log.line.form</field>
+        <field name="model">metal.log.line</field>
+        <field name="arch" type="xml">
+            <form string="metal.log.line">
+                <sheet>
+                    <field name="metal_log_id" invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_view_log" type="object" icon="fa-magnet" 
+                            groups="mrp.group_mrp_user" invisible="not metal_log_id">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Metal Log</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="sequence"/>
+                        <h1>
+                            <field name="sequence" placeholder="0000"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="calibration"/>
+                                <field name="ejection"/>
+                                <field name="reject_value"/>    
+                                <field name='mean_weight'/> 
+                            </group>
+                            <group>
+                                <field name="ferrous"/>
+                                <field name="non_ferrous"/>
+                                <field name='stainless'/>
+                                <field name="torque"/>
+                            </group>
+                        </group>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- View metal.log.line search -->
+    <record id="view_metal_log_line_search" model="ir.ui.view">
+        <field name="name">view.metal.log.line.search</field>
+        <field name="model">metal.log.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Name" name="sequence" domain="[]" context="{'group_by':'sequence'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action metal.log.line -->
+    <record id="action_metal_log_line" model="ir.actions.act_window">
+        <field name="name">Metal Detector Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">metal.log.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new metal.log.line.
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>

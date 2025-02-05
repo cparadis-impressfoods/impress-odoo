@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Impress_quality_worksheets',
+    'name': 'Impress Quality Worksheets',
     'version': '17.0.0.1.0',
-    'summary': """ Impress_quality_worksheets Summary """,
+    'summary': """ Worksheets to use in conjunction with Impress Quality Logs """,
     'author': 'Cédric Paradis',
     'category': ' Hidden',
     'depends': ['base', 'impress_quality_logs', 'worksheet', 'quality_control_worksheet'],

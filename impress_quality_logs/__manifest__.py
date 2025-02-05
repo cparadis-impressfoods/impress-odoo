@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'impress_quality_logs',
+    'name': 'Impress Quality Logs',
     'version': '17.0.0.1.0',
-    'summary': """ Impress_quality_logs Summary """,
+    'summary': """ Implements many quality logs used by Impress Foods for quality control """,
     'author': 'Cédric Paradis',
     'website': '',
-    'category': 'Hidden',
+    'category': 'Manufacturing',
     'depends': ['base', 'web', 'stock', 'mrp', 'quality_control', 'quality_mrp', 'mrp_workorder', 'sign'],
     "data": [
         "security/ir.model.access.csv",
@@ -31,6 +31,7 @@
           },
 
     'installable': True,
+    'application': True,
     'auto_install': False,
     'license': 'GPL-2',
 }

@@ -51,15 +51,6 @@ class LOMALogLine(models.Model):
                 vals['sequence'] = self.env['ir.sequence'].next_by_code('loma_log_line') or _('New')
         return super().create(vals_list)
 
-    def action_view_loma_lines(self):
-        self.ensure_one()
-        action = {
-            'res_model': 'loma.log.line',
-            'type': 'ir.actions.act_window',
-            'view_mode': 'list,form',
-            'domain': [('loma_log_id', '=', self.id)],
-        }
-        return action
     
     def action_view_log(self):
         self.ensure_one()

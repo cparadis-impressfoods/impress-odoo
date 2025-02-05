@@ -3,14 +3,16 @@
 
     <record id='codingWorksheet_20250203_form_view' model='ir.ui.view'>
         <field name="name">coding.worksheet.20250203.form.view</field>
-        <field name="model" model="ir.model" eval="obj().env.ref('impress_quality_worksheets.ws_coding_20250203').model_id.model"/>
+        <field name="model" model="ir.model"
+            eval="obj().env.ref('impress_quality_worksheets.ws_coding_20250203').model_id.model" />
         <field name="priority">1</field>
         <field name="arch" type="xml">
             <form create="false" js_class="worksheet_validation">
                 <sheet>
-                    <group invisible="context.get('studio') or context.get('default_x_quality_check_id')">
+                    <group
+                        invisible="context.get('studio') or context.get('default_x_quality_check_id')">
                         <group>
-                            <field name="x_quality_check_id"/>
+                            <field name="x_quality_check_id" />
                         </group>
                     </group>
 
@@ -18,27 +20,31 @@
                         <form>
                             <group>
                                 <group>
-                                    <field name="case_code" required='1'/>
-                                    <field name="case_check" required='1'/>
-                                    <field name="unit_code" required='1'/>
-                                    <field name="unit_check" required='1'/>
-                                    <field name="start_date" required='1'/>
-                                    <field name="notes"/>
+                                    <field name="case_code" required='1' />
+                                    <field name="case_check" required='1' />
+                                    <field name="unit_code" required='1' />
+                                    <field name="unit_check" required='1' />
+                                    <field name="start_date" required='1' />
+                                    <field name="notes" />
                                 </group>
                                 <group>
-                                    <field name="subunit_check" required='1'/>
-                                    <field name="shelf_life_check" required='1'/>
-                                    <field name="keep_cold_check" required='1'/>
-                                    <field name="sleeve_check" required='1'/>
-                                    <field name="signature" widget="signature" options="{'size':[0,90]}" required='1'/>
-  
+                                    <field name="subunit_check" required='1' />
+                                    <field name="shelf_life_check" required='1' />
+                                    <field name="keep_cold_check" required='1' />
+                                    <field name="sleeve_check" required='1' />
+                                    <field name="signature" widget="signature"
+                                        options="{'size':[0,90]}" required='1' />
+
                                 </group>
                             </group>
                         </form>
                     </field>
 
-                    <div class="text-center"><strong>Pour l'utilisation exclusive de Impress Foods. Mis à jour le 03 Février 2025. Feuille de contrôle Codage </strong></div>
-                </sheet>   
+                    <div class="text-center">
+                        <strong>Pour l'utilisation exclusive de Impress Foods. Mis à jour le 03
+                            Février 2025. Feuille de contrôle Codage </strong>
+                    </div>
+                </sheet>
             </form>
         </field>
     </record>

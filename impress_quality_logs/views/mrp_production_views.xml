@@ -13,8 +13,6 @@
               <field name="metal_log_ids" invisible="1"/>
               <field name="coding_log_ids" invisible="1"/>
 
-
-
               <button class="oe_stat_button" name="action_view_hpp_log" type="object" icon="fa-superpowers" 
                   invisible="not hpp_log_ids" groups="mrp.group_mrp_user">
                   <div class="o_field_widget o_stat_info">
@@ -41,6 +39,16 @@
                   </div>
               </button>
             </xpath>
+
+            <xpath expr="//label[@name='bom_label']" position="before">
+                <field name="hpp_qty_cases" invisible='1'/>
+                <label for="hpp_qty_cases" string="HPP"/>
+                <div class="o_row" invisible="not hpp_log_ids">
+                    <span invisible="hpp_qty_cases != qty_producing" class="text-success">Quantity HPP ok</span>
+                    <span invisible="hpp_qty_cases == qty_producing" class="text-danger">Quantity HPP not ok</span>
+                </div>
+            </xpath>
+
         </field>
     </record>
 

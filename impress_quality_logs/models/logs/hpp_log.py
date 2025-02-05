@@ -22,7 +22,7 @@ class HppLog(models.Model):
     qty_quality = fields.Integer('Quantity Quality')
     
 
-    @api.depends('qty_total')
+    @api.depends('qty_total', 'qty_quality', 'qty_scrapped', 'qty_redone')
     def _compute_qty_produced(self):
         for log in self:
             log.qty_produced = log.qty_total - log.qty_redone - log.qty_scrapped - log.qty_quality

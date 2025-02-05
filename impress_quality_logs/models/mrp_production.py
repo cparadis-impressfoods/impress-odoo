@@ -15,6 +15,17 @@ class MrpProduction(models.Model):
     metal_log_ids = fields.One2many('metal.log', 'production_id', string='Metal Logs')
     coding_log_ids = fields.One2many('coding.log', 'production_id', string='Coding Logs')
 
+    hpp_qty_cases = fields.Float('HPP Quantity', compute='_compute_hpp_qty_cases', store=True)
+
+    @api.depends("hpp_log_ids", "hpp_log_ids.qty_cases")
+    def _compute_hpp_qty_cases(self):
+        for record in self:
+            if len(record.hpp_log_ids) != 0:
+                record.hpp_qty_cases = record.hpp_log_ids[0].qty_cases
+                _logger.warning(record.hpp_qty_cases == record.hpp_log_ids[0].qty_cases)
+            else:
+                record.hpp_qty_cases = 0
+
     def action_view_hpp_log(self):
         self.ensure_one()
         action = {

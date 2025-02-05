@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Impress_quality_worksheets',
-    'version': '0.1.0',
+    'version': '17.0.0.1.0',
     'summary': """ Impress_quality_worksheets Summary """,
     'author': 'Cédric Paradis',
     'category': ' Hidden',

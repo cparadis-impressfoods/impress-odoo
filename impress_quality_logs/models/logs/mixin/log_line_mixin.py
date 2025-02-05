@@ -38,7 +38,9 @@ class LogLineMixin(models.AbstractModel):
 
                 # The worksheet relational field(s) are not known to the model when it's created in the DB.
                 # We expect those relational field(s) to contain 'x_worksheet' in their name
-                # since they are A) Custom fields (and need to start with 'x_') and B) follow the 'x_' with 'worksheet' by convention.
+                # since they are:
+                #   A) Custom fields (and need to start with 'x_') 
+                #   B) follow the 'x_' with 'worksheet' by convention
                 
                 worksheet_fields = record._get_worksheet_fields()
                 worksheet_field = [f for f in worksheet_fields if record[f]]

@@ -35,8 +35,9 @@ class LogMixin(models.Model):
         }
         return action
 
-    def sign_log(self):
+    def action_sign_log(self):
         for rec in self:
-            rec.signature = rec.env.user.sign_initials
+            if not rec.signature:
+                rec.signature = rec.env.user.sign_initials
 
     # TODO: Refactor action_view_log_lines into mixin to reduce maintenance

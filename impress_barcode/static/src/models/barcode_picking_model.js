@@ -10,6 +10,10 @@ patch(BarcodePickingModel.prototype, {
         return this.cache.getRecord('stock.move', move_id)['product_uom_qty'];
     },
     
+    getOrigin() {
+        return this.record.origin;
+    },
+
     _getMoveData(id) {
         const smData = this.cache.getRecord('stock.move', id);
         smData.product_id = this.cache.getRecord('product.product', smData.product_id);

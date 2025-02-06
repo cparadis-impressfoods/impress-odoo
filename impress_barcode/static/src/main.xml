@@ -4,14 +4,18 @@
     <t t-name="stock_barcode_main_inherit_add_origin" 
         t-inherit="stock_barcode.MainComponent"
         t-inherit-mode="extension" owl="1">
+        
         <xpath expr="//span[@class='o_title navbar-text']" position="replace">
-            <t t-if="env.model.orm.read()">
-                <span class="o_title navbar-text" t-esc="env.model.name + ' ' + env.model.origin"/>
+
+            <t t-if="env.model.getOrigin()">
+                <span class="o_title navbar-text" t-esc="env.model.name + ' - ' + env.model.getOrigin()"/>
             </t>
             <t t-else="">
                 <span class="o_title navbar-text" t-esc="env.model.name"/>
             </t>
+
         </xpath>
+
     </t>
 
 </templates>

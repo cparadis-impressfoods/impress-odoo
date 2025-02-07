@@ -31,6 +31,18 @@ class MetalLogLine(models.Model):
     torque = fields.Integer('Torque')
     mean_weight = fields.Float('Mean Weight')
     
+    global_success = fields.Boolean('Global Success', compute="_compute_global_success")
+
+
+    @api.depends('calibration', 'ejection', 'reject_value', 'ferrous', 'non_ferrous', 'stainless')
+    def _compute_global_success(self):
+        for rec in self:
+            ferrous_check = rec.ferrous > rec.reject_value
+            non_ferrous_check = rec.non_ferrous > rec.reject_value
+            stainless_check = rec.stainless > rec.reject_value
+            calib_check = rec.calibration == 'ok'
+            ejection_check = rec.ejection == 'ok'
+            rec.global_success = all([ferrous_check, non_ferrous_check, stainless_check, calib_check, ejection_check])
 
     @api.depends('quality_check_id')
     def _compute_metal_log_id(self):

@@ -41,11 +41,13 @@
             </xpath>
 
             <xpath expr="//label[@name='bom_label']" position="before">
-                <field name="hpp_qty_cases" invisible='1'/>
-                <label for="hpp_qty_cases" string="HPP"/>
-                <div class="o_row" invisible="not hpp_log_ids">
-                    <span invisible="hpp_qty_cases != qty_producing" class="text-success">Quantity HPP ok</span>
-                    <span invisible="hpp_qty_cases == qty_producing" class="text-danger">Quantity HPP not ok</span>
+                <label for="hpp_qty_cases" string="HPP" invisible="not hpp_log_ids"/>
+
+                <div invisible="not hpp_log_ids" class="o_row">
+                    <field name="hpp_qty_cases" invisible='1'/>
+                    <span invisible="hpp_qty_cases != qty_producing" class="text-success">HPP ok</span>
+                    <span invisible="hpp_qty_cases == qty_producing" class="text-danger">HPP not ok</span>
+
                 </div>
             </xpath>
 

@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
-    qty_multiple = fields.Integer('Quantity per case')
+    qty_multiple = fields.Integer('Quantity per case', default=1)
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'

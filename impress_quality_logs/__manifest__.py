@@ -6,7 +6,8 @@
     'author': 'Cédric Paradis',
     'website': '',
     'category': 'Manufacturing',
-    'depends': ['base', 'web', 'stock', 'mrp', 'quality_control', 'quality_mrp', 'mrp_workorder', 'sign'],
+    'depends': ['base', 'web', 'stock', 'mrp', 'quality_control', 
+                'quality_mrp', 'mrp_workorder', 'sign', 'quality_mrp_workorder_worksheet'],
     "data": [
         "security/ir.model.access.csv",
         "data/ir_sequence.xml",
@@ -18,7 +19,6 @@
         "views/metal_log_views.xml",
         "views/metal_log_line_views.xml",
         "views/coding_log_views.xml",
-        "views/coding_log_line_views.xml",
         "views/product_product_views.xml",
         "views/mrp_production_views.xml",
         "views/menus.xml",

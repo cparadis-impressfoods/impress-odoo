@@ -58,6 +58,7 @@
                                 <field name="upper_limit" />
                                 <field name="is_seal_ok" />
                                 <field name="is_weight_ok"/>
+                                <field name="notes"/>
                             </group>
                             <group>
                                 <field name="measure_1"/>

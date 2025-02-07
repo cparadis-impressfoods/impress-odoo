@@ -44,6 +44,7 @@
                                 <field name="ejection"/>
                                 <field name="reject_value"/>    
                                 <field name='mean_weight'/> 
+                                <field name="notes"/>
                             </group>
                             <group>
                                 <field name="ferrous"/>

@@ -35,6 +35,7 @@
                                 <field name="case_check"/>
                                 <field name="unit_code"/>
                                 <field name="unit_check"/>
+                                <field name="notes"/>
                             </group>
                             <group>
                                 <field name="subunit_check"/>

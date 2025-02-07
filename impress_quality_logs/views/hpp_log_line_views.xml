@@ -45,6 +45,7 @@
                             <field name="barrel_2_qty"/>
                             <field name="barrel_3_qty"/>
                             <field name="barrel_4_qty"/>
+                            <field name="notes"/>
                         </group>
                         <group>
                             <field name="is_cleaning_cycle" />

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import logging
-
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
 
@@ -20,8 +19,6 @@ class StockPicking(models.Model):
         moves = self.move_ids
         products = self.move_ids.product_id
 
-        data['records']['origin'] = self.origin
-
 
         # Add all stock.move from picking to the cache
         data['records']['stock.move'] = (moves.read(moves._get_fields_stock_barcode(), load='None'))
@@ -33,5 +30,5 @@ class StockPicking(models.Model):
             [i for i in products.read(products._get_fields_stock_barcode(), load='None') 
                 if i['id'] not in [j['id'] for j in data['records']['product.product']]]
             )
-
+            
         return data

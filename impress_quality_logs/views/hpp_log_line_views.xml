@@ -27,7 +27,8 @@
                     <field name="is_locked" invisible="1"/>
                     <field name="create_date" invisible="1"/>
                     <button name="action_lock" type="object" string="Lock" class="btn-primary" invisible="is_locked or not create_date"/>
-                    <button name="action_unlock" type="object" string="Unlock" class="btn-secondary" invisible="not is_locked or not create_date"/>
+                    <button name="action_unlock" type="object" string="Unlock" class="btn-secondary" 
+                        invisible="not is_locked or not create_date" groups="quality.group_quality_manager"/>
                 </header>
                 <sheet>
                     <field name="hpp_log_id" invisible="1"/>

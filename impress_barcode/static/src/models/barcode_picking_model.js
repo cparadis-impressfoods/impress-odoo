@@ -10,7 +10,7 @@ patch(BarcodePickingModel.prototype, {
         return this.cache.getRecord('stock.move', move_id)['product_uom_qty'];
     },
     
-    getOrigin() {
+    get origin() {
         return this.record.origin;
     },
 
@@ -21,7 +21,7 @@ patch(BarcodePickingModel.prototype, {
 
     },
 
-    getUnreservedMoves() {
+    get unreservedMoves() {
         const move_ids = this.moveIds;
         const lines = this.pageLines;
         for (const line of lines) {

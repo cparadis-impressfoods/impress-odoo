@@ -7,8 +7,8 @@
         
         <xpath expr="//span[@class='o_title navbar-text']" position="replace">
 
-            <t t-if="env.model.getOrigin()">
-                <span class="o_title navbar-text" t-esc="env.model.name + ' - ' + env.model.getOrigin()"/>
+            <t t-if="env.model.origin">
+                <span class="o_title navbar-text" t-esc="env.model.name + ' - ' + env.model.origin"/>
             </t>
             <t t-else="">
                 <span class="o_title navbar-text" t-esc="env.model.name"/>

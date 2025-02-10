@@ -13,7 +13,7 @@ import PackageLineComponent from '@stock_barcode/components/package_line';
 patch(MainComponent.prototype, {
 
     get unreservedMoves() {
-        return this.env.model.getUnreservedMoves();
+        return this.env.model.unreservedMoves;
     },
 
 });

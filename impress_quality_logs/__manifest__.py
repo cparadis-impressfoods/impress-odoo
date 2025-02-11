@@ -22,7 +22,6 @@
         "views/product_product_views.xml",
         "views/mrp_production_views.xml",
         "views/menus.xml",
-        
     ],
     'assets': {
               #'web.assets_backend': [

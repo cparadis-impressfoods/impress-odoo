@@ -8,3 +8,4 @@ from . import hpp_log
 from . import loma_log
 from . import metal_log
 from . import coding_log
+from . import xray_log_line

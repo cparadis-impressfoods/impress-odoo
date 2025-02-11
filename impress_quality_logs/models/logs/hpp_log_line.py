@@ -23,7 +23,7 @@ class HPPLogLine(models.Model):
     ]
 
     cycle_number = fields.Integer('Cycle Number')
-    cycle_time = fields.Integer('Cycle Time')
+    cycle_time = fields.Selection(string='Cycle Time', selection=[('120sec','120 seconds'), ('300sec','300 seconds')])
     presssure_reached = fields.Integer('Pressure Reached')
     is_cleaning_cycle = fields.Boolean('Is cleaning cycle?')
 

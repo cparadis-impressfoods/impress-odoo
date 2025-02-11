@@ -36,6 +36,7 @@
                                     <field name="notes" />
                                 </group>
                                 <group>
+                                    <field name="cycle_time" required='1' widget="selection_badge" />
                                     <field name="is_cleaning_cycle" />
                                     <field name="start_date" required='1' />
                                     <field name="signature" widget="signature"

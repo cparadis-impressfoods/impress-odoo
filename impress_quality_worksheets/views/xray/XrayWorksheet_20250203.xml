@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='x_rayWorksheet_20250203_form_view' model='ir.ui.view'>
+        <field name="name">x_ray.worksheet.20250203.form.view</field>
+        <field name="model" model="ir.model"
+            eval="obj().env.ref('impress_quality_worksheets.ws_x_ray_20250203').model_id.model" />
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form create="false" js_class="worksheet_validation">
+                <sheet>
+                    <group
+                        invisible="context.get('studio') or context.get('default_x_quality_check_id')">
+                        <group>
+                            <field name="x_quality_check_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="x_average_threshold"/>
+                        </group>
+                    </group>
+                    <field name="x_x_ray_log_line_ids" nolabel="1">
+                        <form>
+                            <group>
+                                <group>
+                                    <field name="reject_value"/>
+                                    <field name="ejection"/>
+                                    <field name="stainless_detection_value"/>
+                                    <field name="ceramic_detection_value"/>
+                                    <field name="glass_detection_value"/>
+                                    <field name="last_check_for_product"/>
+                                    <field name="notes" />
+                                </group>
+                                <group>
+                                    <field name="total_qty"/>
+                                    <field name="reject_qty"/>
+                                    <field name="average"/>
+                                    <field name="start_date" required='1' />
+                                    <field name="signature" widget="signature"
+                                        options="{'size':[0,90]}" required='1' />
+                                </group>
+                            </group>
+                        </form>
+                    </field>
+                    <div class="text-center">
+                        <strong>Pour l'utilisation exclusive de Impress Foods. Mis à jour le 03
+                            Février 2025. Feuille de contrôle Rayon-X </strong>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

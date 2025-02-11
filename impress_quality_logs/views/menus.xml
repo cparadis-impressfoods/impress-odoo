@@ -92,7 +92,7 @@
         parent="logs_menu"
         sequence='14'        
         name="X-Ray" />
-<!--
+
     <menuitem
         parent="x_ray_menu"   
         id="x_ray_log_menu"
@@ -106,5 +106,5 @@
         action='action_x_ray_log_line'
         sequence='11'
         name="X-Ray lines"/>
--->
+
 </odoo>

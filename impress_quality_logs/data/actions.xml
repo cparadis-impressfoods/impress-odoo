@@ -23,7 +23,7 @@
                 record.action_sign_log()
         </field>
     </record>
-        <record id="action_sign_logs" model="ir.actions.server">
+    <record id="action_sign_logs" model="ir.actions.server">
         <field name="name">Sign logs</field>
         <field name="model_id" ref="model_metal_log"/>
         <field name="binding_model_id" ref="model_metal_log"/>
@@ -34,10 +34,21 @@
                 record.action_sign_log()
         </field>
     </record>
-        <record id="action_sign_logs" model="ir.actions.server">
+    <record id="action_sign_logs" model="ir.actions.server">
         <field name="name">Sign logs</field>
         <field name="model_id" ref="model_loma_log"/>
         <field name="binding_model_id" ref="model_loma_log"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">list</field>
+        <field name="code">
+            for record in records:
+                record.action_sign_log()
+        </field>
+    </record>
+    <record id="action_sign_logs" model="ir.actions.server">
+        <field name="name">Sign logs</field>
+        <field name="model_id" ref="model_x_ray_log"/>
+        <field name="binding_model_id" ref="model_x_ray_log"/>
         <field name="state">code</field>
         <field name="binding_view_types">list</field>
         <field name="code">

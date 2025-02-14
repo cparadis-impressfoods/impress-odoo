@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id='HPPWorksheet_20250203_form_view' model='ir.ui.view'>
-        <field name="name">HPP.worksheet.20250203.form.view</field>
+    <record id='x_rayWorksheet_20250203_form_view' model='ir.ui.view'>
+        <field name="name">x_ray.worksheet.20250203.form.view</field>
         <field name="model" model="ir.model"
-            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.model" />
+            eval="obj().env.ref('impress_quality_worksheets.ws_x_ray_20250203').model_id.model" />
         <field name="priority">1</field>
         <field name="arch" type="xml">
             <form create="false" js_class="worksheet_validation">
@@ -17,27 +17,25 @@
                     </group>
                     <group>
                         <group>
-                            <field name="x_qty_quality" />
-                            <field name="x_qty_scrapped" />
-                            <field name="x_qty_redone" />
+                            <field name="x_average_threshold"/>
                         </group>
                     </group>
-                    <!--<field
-                    name="x_hpp_log_id" invisible="1"/>-->
-                    <field name="x_hpp_log_line_ids" nolabel="1">
+                    <field name="x_x_ray_log_line_ids" nolabel="1">
                         <form>
                             <group>
                                 <group>
-                                    <field name="cycle_number" required="1" />
-                                    <field name="barrel_1_qty" required='not is_cleaning_cycle' />
-                                    <field name="barrel_2_qty" required='not is_cleaning_cycle' />
-                                    <field name="barrel_3_qty" required='not is_cleaning_cycle' />
-                                    <field name="barrel_4_qty" required='not is_cleaning_cycle' />
+                                    <field name="reject_value"/>
+                                    <field name="ejection"/>
+                                    <field name="stainless_detection_value"/>
+                                    <field name="ceramic_detection_value"/>
+                                    <field name="glass_detection_value"/>
+                                    <field name="last_check_for_product"/>
                                     <field name="notes" />
                                 </group>
                                 <group>
-                                    <field name="cycle_time" required='1' widget="selection_badge" />
-                                    <field name="is_cleaning_cycle" />
+                                    <field name="total_qty"/>
+                                    <field name="reject_qty"/>
+                                    <field name="average"/>
                                     <field name="start_date" required='1' />
                                     <field name="signature" widget="signature"
                                         options="{'size':[0,90]}" required='1' />
@@ -45,10 +43,9 @@
                             </group>
                         </form>
                     </field>
-
                     <div class="text-center">
                         <strong>Pour l'utilisation exclusive de Impress Foods. Mis à jour le 03
-                            Février 2025. Feuille de contrôle HPP </strong>
+                            Février 2025. Feuille de contrôle Rayon-X </strong>
                     </div>
                 </sheet>
             </form>

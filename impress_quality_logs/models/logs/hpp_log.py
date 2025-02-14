@@ -21,6 +21,8 @@ class HppLog(models.Model):
     qty_scrapped = fields.Integer('Quantity Scrapped')
     qty_quality = fields.Integer('Quantity Quality')
     
+    hpp_report = fields.Binary('HPP Report')
+
 
     @api.depends('qty_total', 'qty_quality', 'qty_scrapped', 'qty_redone')
     def _compute_qty_produced(self):

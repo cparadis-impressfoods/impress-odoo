@@ -15,6 +15,8 @@
         'views/metal/MetalWorksheet_20250203.xml',
         'data/coding/CodingWorksheet_20250203.xml',
         'views/coding/CodingWorksheet_20250203.xml',
+        'data/xray/XrayWorksheet_20250203.xml',
+        'views/xray/XrayWorksheet_20250203.xml',
 
     ],
 

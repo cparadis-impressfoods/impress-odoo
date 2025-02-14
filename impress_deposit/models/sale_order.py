@@ -26,7 +26,7 @@ class SaleOrder(models.Model):
         products_need_deposit = any(self.order_line.mapped(lambda x: x.product_id.requires_deposit))
         partner_need_deposit = self.partner_id.requires_deposit
         order_stage = self.state not in ['cancel', 'draft', 'sent']
-        return products_need_deposit * partner_need_deposit * order_stage
+        return all([products_need_deposit, partner_need_deposit, order_stage])
 
     def _handle_deposit(self):
         self.ensure_one()

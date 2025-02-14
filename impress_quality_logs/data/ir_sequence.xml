@@ -24,5 +24,13 @@
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
         </record>
+
+        <record id="x_ray_sequence" model="ir.sequence">
+            <field name="name">X-Ray Line</field>
+            <field name="code">x_ray_log_line</field>
+            <field name="padding">7</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
     </data>
 </odoo>

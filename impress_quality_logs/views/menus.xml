@@ -87,6 +87,24 @@
         sequence='11'
         name="LOMA lines"/>
     
+    <menuitem 
+        id="x_ray_menu"
+        parent="logs_menu"
+        sequence='14'        
+        name="X-Ray" />
 
+    <menuitem
+        parent="x_ray_menu"   
+        id="x_ray_log_menu"
+        action='action_x_ray_log'
+        sequence='10'
+        name="X-Ray logs"/>
+
+    <menuitem
+        parent="x_ray_menu"   
+        id="x_ray_log_line_menu"
+        action='action_x_ray_log_line'
+        sequence='11'
+        name="X-Ray lines"/>
 
 </odoo>

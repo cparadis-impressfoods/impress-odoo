@@ -11,7 +11,7 @@ class StockMoveLine(models.Model):
     _inherit = 'stock.move.line'
 
     requires_deposit = fields.Boolean(related='product_id.requires_deposit', depends=['product_id'])
-    container_qty = fields.Integer('Container Quantity', compute='_compute_container_qty')
+    container_qty = fields.Integer('Container Quantity', compute='_compute_container_qty', store=True)
 
 
 

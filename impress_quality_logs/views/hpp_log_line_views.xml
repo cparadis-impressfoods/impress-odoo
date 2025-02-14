@@ -55,6 +55,7 @@
                             <field name="notes" readonly='is_locked'/>
                         </group>
                         <group>
+                            <field name="cycle_time" readonly='is_locked' widget='radio'/>
                             <field name="is_cleaning_cycle" readonly='is_locked' />
                             <field name="start_date" readonly='is_locked'/>
                             <field name="signature" widget="signature" options="{'size':[0,90]}" readonly='is_locked'/>

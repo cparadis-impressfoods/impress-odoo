@@ -10,10 +10,10 @@ _logger = logging.getLogger(__name__)
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
-    billing_sale_order_id = fields.Many2one('sale.order', string='Billing Sale Order', compute="_compute_billing_sale_order_id")
+    billing_sale_order_id = fields.Many2one('sale.order', string='Billing Sale Order', compute="_compute_billing_sale_order_id", store=True)
     billing_sale_order_line_id = fields.Many2one('sale.order.line', string='Billing Sale Order Line', compute="_compute_billing_sale_order_line_id", store=True)
     billing_sale_order_ref = fields.Char(string='Billing Sale Order Reference', store=True)
-
+    billing_partner_id = fields.Many2one('res.partner', string='Billing Partner', related='billing_sale_order_id.partner_id', store=True)
 
     @api.depends('billing_sale_order_ref')
     def _compute_billing_sale_order_id(self):
@@ -113,3 +113,7 @@ class MrpProduction(models.Model):
         if bool(set(['product_qty','qty_produced', 'qty_producing']).intersection(vals)):
             self._recompute_billing_line_qty()
         return res
+
+    def get_portal_url(self):
+        self.ensure_one()
+        return '/my/manufacturings/{}'.format(self.id)

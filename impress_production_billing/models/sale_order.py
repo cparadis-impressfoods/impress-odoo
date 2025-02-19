@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+from collections import defaultdict
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
@@ -39,3 +40,16 @@ class SaleOrder(models.Model):
             })             # type: ignore
 
         return action
+
+    def portal_get_productions_grouped(self):
+        self.ensure_one()
+        productions = self.linked_production_ids
+        productions_grouped = defaultdict(lambda: [])
+        for production in productions:
+            productions_grouped[production.product_id].append(production)
+        
+        values = []
+        for product in productions_grouped:
+            values.append((product.id, product.display_name, len(productions_grouped[product])))
+        
+        return values

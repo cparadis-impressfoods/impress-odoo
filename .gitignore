@@ -1,5 +1,6 @@
 *.zip
 .vscode
+*.Identifier
 # sphinx build directories
 _build/
 

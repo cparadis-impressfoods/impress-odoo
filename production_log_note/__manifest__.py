@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'production_log_note',
-    'version': '0.1.1',
+    'version': '0.1.2',
     'summary': """ Backport of V18 feature where a note can be added to a production order""",
     'author': 'Cédric Paradis',
     'website': '',

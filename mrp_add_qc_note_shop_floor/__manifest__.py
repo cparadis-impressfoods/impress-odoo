@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Mrp_add_qc_note_shop_floor',
-    'version': '17.0.0.1.0',
+    'name': 'Add QC Note to shop floor',
+    'version': '17.0.0.0.1',
     'summary': """ Mrp_add_qc_note_shop_floor Summary """,
     'author': 'Cédric Paradis',
     'website': '',
@@ -11,10 +11,11 @@
         
     ],'assets': {
               'web.assets_backend': [
-                  'mrp_add_qc_note_shop_floor/static/src/**/*',
-                  'mrp_add_qc_note_shop_floor/static/src/mrp_display/dialog/mrp_quality_check_confirmation_dialog.xml',
+                  'mrp_add_qc_note_shop_floor/static/src/**/*.js',
+                  'mrp_add_qc_note_shop_floor/static/src/**/*.xml',
               ],
           },
+
     'installable': True,
     'license': 'GPL-2',
 }

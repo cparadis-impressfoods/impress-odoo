@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="mrp_add_qc_note_shop_floor.MrpQualityCheckConfirmationDialog" t-inherit="mrp_workorder.MrpQualityCheckConfirmationDialog"
+        t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_tablet_instruction_note')]" position="after">
+            <div class="o_quality_check_body d-flex w-25">
+                <TextField name="'additional_note'" record="props.record"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//div/Dialog/div[1]/div[2]" position="replace"/>
+
+    </t>
+
+</templates>

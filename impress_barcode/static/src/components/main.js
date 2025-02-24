@@ -13,7 +13,11 @@ import PackageLineComponent from '@stock_barcode/components/package_line';
 patch(MainComponent.prototype, {
 
     get unreservedMoves() {
-        return this.env.model.unreservedMoves;
+        if (this.env.model.name == 'Inventory Adjustment'){
+            return [];
+        } else {
+            return this.env.model.unreservedMoves;
+        }
     },
 
 });

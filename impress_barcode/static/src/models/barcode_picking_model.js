@@ -7,7 +7,12 @@ import BarcodePickingModel from "@stock_barcode/models/barcode_picking_model";
 patch(BarcodePickingModel.prototype, {
 
     getTotalDemand(move_id) {
-        return this.cache.getRecord('stock.move', move_id)['product_uom_qty'];
+        try {
+            return this.cache.getRecord('stock.move', move_id)['product_uom_qty'];
+
+        } catch (error) {
+            return 0;
+        }
     },
     
     get origin() {

@@ -5,7 +5,7 @@
         t-inherit="stock_barcode.LineQuantity"
         t-inherit-mode="extension" owl="1">
         <xpath expr="//div[1]" position="after">
-            <t t-if="!props.subline"> 
+            <t t-if="!props.subline and totalDemand != 0"> 
                 <i class="fa fa-fw fa-cubes text-muted"/>
                 <t t-if="qtyDemand == totalDemand">
                     <span style="color: green" t-if="qtyDemand" t-esc="' Total: ' + totalDemand"/>

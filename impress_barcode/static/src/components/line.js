@@ -16,7 +16,6 @@ patch(LineComponent.prototype, {
             const move_ids = this.line.lines.map((x) => x.move_id).filter((e, i, self) => i === self.indexOf(e));
             const quantities = move_ids.map((x) => this.env.model.cache.getRecord('stock.move', x)).map((y) => y.product_uom_qty)
             const total_quantity = quantities.reduce((acc, currentVal) => acc + currentVal, 0);
-            console.log(total_quantity);
             return total_quantity;
         } else {
             return this.env.model.getTotalDemand(this.line.move_id);

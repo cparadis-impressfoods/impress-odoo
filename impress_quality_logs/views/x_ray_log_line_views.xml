@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="sequence"/>
+                <field name="start_date" />
             </tree>
         </field>
     </record>

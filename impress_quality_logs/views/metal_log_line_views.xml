@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <tree decoration-success="global_success" decoration-danger="not global_success">
                 <field name="sequence"/>
+                <field name="start_date" />
                 <field name="product_id"/>
                 <field name="product_lot_id"/>
                 <field name="production_id"/>

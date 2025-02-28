@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="sequence"/>
+                <field name="start_date"/>
                 <field name="measure_1"/>
                 <field name="measure_2"/>
                 <field name="measure_3"/>

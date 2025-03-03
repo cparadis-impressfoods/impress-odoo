@@ -59,6 +59,8 @@
                                 <field name="non_ferrous" readonly='is_locked'/>
                                 <field name='stainless' readonly='is_locked'/>
                                 <field name="torque" readonly='is_locked'/>
+                                <field name="start_date" readonly='is_locked'/>
+
                             </group>
                         </group>
                     </div>

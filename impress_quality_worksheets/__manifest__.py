@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Impress Quality Worksheets',
-    'version': '17.0.0.1.0',
+    'version': '17.0.0.1.1',
     'summary': """ Worksheets to use in conjunction with Impress Quality Logs """,
     'author': 'Cédric Paradis',
     'category': ' Hidden',
@@ -13,10 +13,10 @@
         'views/HPP/HPPWorksheet_20250203.xml',
         'data/metal/MetalWorksheet_20250203.xml',
         'views/metal/MetalWorksheet_20250203.xml',
-        'data/coding/CodingWorksheet_20250203.xml',
-        'views/coding/CodingWorksheet_20250203.xml',
-        'data/xray/XrayWorksheet_20250203.xml',
-        'views/xray/XrayWorksheet_20250203.xml',
+        'data/coding/CodingWorksheet_20250303.xml',
+        'views/coding/CodingWorksheet_20250303.xml',
+        'data/xray/XrayWorksheet_20250303.xml',
+        'views/xray/XrayWorksheet_20250303.xml',
 
     ],
 

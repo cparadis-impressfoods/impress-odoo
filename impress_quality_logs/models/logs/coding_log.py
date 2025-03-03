@@ -12,7 +12,8 @@ class CodingLog(models.Model):
     _name = 'coding.log'
     _description = 'Coding Log'
 
-    #log_line_ids = fields.One2many(comodel_name='coding.log.line', inverse_name='coding_log_id')
+
+    shelf_life = fields.Integer('Shelf Life', related="product_id.expiration_time")
     case_code = fields.Char('Case Code')
     unit_code = fields.Char('Unit Code')
 
@@ -31,21 +32,16 @@ class CodingLog(models.Model):
     @api.depends('unit_check', 'sleeve_check', 'case_check', 'subunit_check', 'shelf_life_check', 'keep_cold_check')
     def _compute_global_success_check(self):
         for rec in self:
-            if (rec.unit_check == 'ok' and rec.sleeve_check == 'ok' 
-                    and rec.case_check == 'ok' and rec.subunit_check == 'ok'
-                    and rec.shelf_life_check == 'ok' and rec.keep_cold_check == 'ok'):
+            if rec._check_global_success():
                 rec.global_success_check = 'ok'
             else:
                 rec.global_success_check = 'not_ok'
 
-
-
-    # def action_view_coding_lines(self):
-    #     self.ensure_one()
-    #     action = {
-    #         'res_model': 'coding.log.line',
-    #         'type': 'ir.actions.act_window',
-    #         'view_mode': 'list,form',
-    #         'domain': [('coding_log_id', '=', self.id)],
-    #     }
-    #     return action
+    def _check_global_success(self):
+        self.ensure_one()
+        return (self.unit_check == 'ok' 
+                and self.sleeve_check == 'ok' 
+                and self.case_check == 'ok' 
+                and self.subunit_check == 'ok'
+                and self.shelf_life_check == 'ok' 
+                and self.keep_cold_check == 'ok')

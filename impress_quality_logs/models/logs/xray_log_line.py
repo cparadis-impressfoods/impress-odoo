@@ -27,7 +27,7 @@ class Xray_log_line(models.Model):
     ceramic_detection_value = fields.Integer('Ceramic Detection Value')
     glass_detection_value = fields.Integer('Glass Detection Value')
 
-    ejection = fields.Selection([('ok', 'Ok'), ('not_ok', 'Not Ok')], 'Calibration')
+    ejection = fields.Selection([('ok', 'Ok'), ('not_ok', 'Not Ok')], 'Ejection')
     last_check_for_product = fields.Boolean('Last check for product')
     
     total_qty = fields.Integer('Total Quantity')

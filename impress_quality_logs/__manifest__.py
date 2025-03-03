@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Impress Quality Logs',
-    'version': '17.0.0.1.0',
+    'version': '17.0.0.1.1',
     'summary': """ Implements many quality logs used by Impress Foods for quality control """,
     'author': 'Cédric Paradis',
     'website': '',

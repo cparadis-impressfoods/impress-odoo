@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e-20240710\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-03 19:32+0000\n"
-"PO-Revision-Date: 2025-03-03 14:38-0500\n"
+"POT-Creation-Date: 2025-03-04 17:01+0000\n"
+"PO-Revision-Date: 2025-03-04 12:04-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -607,6 +607,27 @@ msgid "Metal_log_line"
 msgstr "ligne_registre_métal"
 
 #. module: impress_quality_logs
+#: model:ir.model.fields,field_description:impress_quality_logs.field_hpp_log__monthly_signature
+#: model:ir.model.fields,field_description:impress_quality_logs.field_metal_log__monthly_signature
+#: model:ir.model.fields,field_description:impress_quality_logs.field_x_ray_log__monthly_signature
+msgid "Monthly Signature"
+msgstr "Signature mensuelle"
+
+#. module: impress_quality_logs
+#: model:ir.model.fields,field_description:impress_quality_logs.field_hpp_log__monthly_signature_date
+#: model:ir.model.fields,field_description:impress_quality_logs.field_metal_log__monthly_signature_date
+#: model:ir.model.fields,field_description:impress_quality_logs.field_x_ray_log__monthly_signature_date
+msgid "Monthly Signature Date"
+msgstr "Date de la vérification mensuelle"
+
+#. module: impress_quality_logs
+#: model_terms:ir.ui.view,arch_db:impress_quality_logs.view_hpp_log_form
+#: model_terms:ir.ui.view,arch_db:impress_quality_logs.view_metal_log_form
+#: model_terms:ir.ui.view,arch_db:impress_quality_logs.view_x_ray_log_form
+msgid "Monthly Verification"
+msgstr "Vérification mensuelle"
+
+#. module: impress_quality_logs
 #: model:ir.model.fields,field_description:impress_quality_logs.field_coding_log__name
 #: model:ir.model.fields,field_description:impress_quality_logs.field_hpp_log__name
 #: model:ir.model.fields,field_description:impress_quality_logs.field_log_mixin__name
@@ -848,7 +869,11 @@ msgid "Shelf Life Check"
 msgstr "Vérification durée de vie"
 
 #. module: impress_quality_logs
-#: model:ir.actions.server,name:impress_quality_logs.action_sign_logs
+#: model:ir.actions.server,name:impress_quality_logs.action_sign_logs_coding
+#: model:ir.actions.server,name:impress_quality_logs.action_sign_logs_hpp
+#: model:ir.actions.server,name:impress_quality_logs.action_sign_logs_loma
+#: model:ir.actions.server,name:impress_quality_logs.action_sign_logs_metal
+#: model:ir.actions.server,name:impress_quality_logs.action_sign_logs_x_ray
 msgid "Sign logs"
 msgstr "Signer les registres"
 
@@ -1000,6 +1025,23 @@ msgstr "Dévérouiller"
 #: model:ir.model.fields,field_description:impress_quality_logs.field_loma_log_line__upper_limit
 msgid "Upper Limit"
 msgstr "Limite supérieure"
+
+#. module: impress_quality_logs
+#: model:ir.model.fields,field_description:impress_quality_logs.field_coding_log__weekly_signature_date
+#: model:ir.model.fields,field_description:impress_quality_logs.field_hpp_log__weekly_signature_date
+#: model:ir.model.fields,field_description:impress_quality_logs.field_log_mixin__weekly_signature_date
+#: model:ir.model.fields,field_description:impress_quality_logs.field_loma_log__weekly_signature_date
+#: model:ir.model.fields,field_description:impress_quality_logs.field_metal_log__weekly_signature_date
+#: model:ir.model.fields,field_description:impress_quality_logs.field_x_ray_log__weekly_signature_date
+msgid "Weekly Signature Date"
+msgstr "Date de la vérification hebdomadaire"
+
+#. module: impress_quality_logs
+#: model_terms:ir.ui.view,arch_db:impress_quality_logs.view_hpp_log_form
+#: model_terms:ir.ui.view,arch_db:impress_quality_logs.view_metal_log_form
+#: model_terms:ir.ui.view,arch_db:impress_quality_logs.view_x_ray_log_form
+msgid "Weekly Verification"
+msgstr "Vérification hebdomadaire"
 
 #. module: impress_quality_logs
 #: model:ir.model.fields,field_description:impress_quality_logs.field_loma_log_line__is_weight_ok

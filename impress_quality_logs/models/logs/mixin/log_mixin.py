@@ -3,7 +3,7 @@ import logging
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
-
+from datetime import datetime
 _logger = logging.getLogger(__name__)
 
 
@@ -24,7 +24,8 @@ class LogMixin(models.Model):
                                         store=True, depends=['production_id', 'production_id.lot_producing_id'])
 
     date = fields.Datetime('Date', related='quality_check_id.control_date', store=True, depends=['quality_check_id', 'quality_check_id.control_date'])
-    
+    weekly_signature_date = fields.Datetime('Weekly Signature Date', compute='_compute_weekly_signature_date', store=True)
+
     def action_view_linked_production(self):
         self.ensure_one()
         action = {
@@ -34,6 +35,11 @@ class LogMixin(models.Model):
             'res_id': self.production_id.id,
         }
         return action
+
+    @api.depends("signature")
+    def _compute_weekly_signature_date(self):
+        for rec in self:
+            rec.weekly_signature_date = datetime.now()
 
     def action_sign_log(self):
         for rec in self:

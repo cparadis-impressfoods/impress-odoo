@@ -6,7 +6,7 @@
         <field name="name">view.metal.log.line.tree</field>
         <field name="model">metal.log.line</field>
         <field name="arch" type="xml">
-            <tree decoration-success="global_success" decoration-danger="not global_success">
+            <tree decoration-success="global_success" decoration-danger="not global_success" default_order='create_date desc'>
                 <field name="sequence"/>
                 <field name="start_date" />
                 <field name="product_id"/>

@@ -6,7 +6,7 @@
         <field name="name">view.loma.log.tree</field>
         <field name="model">loma.log</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree default_order='create_date desc'>
                 <field name="name"/>
                 <field name="date"/>
             </tree>

@@ -6,7 +6,7 @@
         <field name="name">view.hpp_log_line.tree</field>
         <field name="model">hpp.log.line</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree default_order='create_date desc'>
                 <field name="cycle_number"/>
                 <field name="total_qty"/>
                 <field name="start_date"/>

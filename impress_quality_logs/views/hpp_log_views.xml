@@ -6,7 +6,7 @@
         <field name="name">view.hpp_log.tree</field>
         <field name="model">hpp.log</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree default_order='create_date desc'>
                 <field name="date"/>
                 <field name="production_id"/>
                 <field name="product_id"/>

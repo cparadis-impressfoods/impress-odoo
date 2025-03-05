@@ -1,5 +1,6 @@
 /** @odoo-module **/
-
+import {EventBus} from "@odoo/owl";
+import {useBus} from "@web/core/utils/hooks";
 import MainComponent from "@stock_barcode/components/main";
 import { patch } from "@web/core/utils/patch";
 import MoveComponent from "./move";
@@ -9,17 +10,27 @@ import GroupedLineComponent from '@stock_barcode/components/grouped_line';
 import LineComponent from '@stock_barcode/components/line';
 import PackageLineComponent from '@stock_barcode/components/package_line';
 
+const bus = new EventBus();
 
 patch(MainComponent.prototype, {
 
     get unreservedMoves() {
-        if (this.env.model.name == 'Inventory Adjustment'){
+        if (this.env.model.name == 'Inventory Adjustment' || this.env.model.name == "Ajustement d'inventaire" ){
             return [];
         } else {
             return this.env.model.unreservedMoves;
         }
     },
 
+    async doReservation(){
+        await this.env.model.save();
+        await this.orm.call(this.resModel, 'action_assign', [[this.resId]]);
+        const action = await this.orm.call(this.resModel, 'action_open_picking_client_action', [[this.resId]]);
+        this.env.config.historyBack();
+        this.action.doAction(action, {});
+
+
+    }
 });
 
 MainComponent.components = {

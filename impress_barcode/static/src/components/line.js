@@ -8,11 +8,7 @@ patch(LineComponent.prototype, {
 
     get totalDemand() {
         if (this.line.ids) {
-        // We need to calculate the full quantity for grouped lines
-           
-        //    const move_ids = this.groupedLines[0].lines.map((x) => x.move_id);
-        //    const quantities = move_ids.map((x) => this.cache.getRecord('stock.move', x)).map((y) => y.product_uom_qty);
-        //    const total_quantity = quantities.reduce((acc, currentVal) => acc + currentVal, 0);
+            // We need to calculate the full quantity for grouped lines
             const move_ids = this.line.lines.map((x) => x.move_id).filter((e, i, self) => i === self.indexOf(e));
             const quantities = move_ids.map((x) => this.env.model.cache.getRecord('stock.move', x)).map((y) => y.product_uom_qty)
             const total_quantity = quantities.reduce((acc, currentVal) => acc + currentVal, 0);

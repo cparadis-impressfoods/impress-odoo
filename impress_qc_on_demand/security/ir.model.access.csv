@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_quality_check_on_demand_user,impress_qc_on_demand.quality.check.on.demand,model_quality_check_on_demand,base.group_user,1,1,1,1
-impress_qc_on_demand.access_quality_check_on_demand,access_quality_check_on_demand,impress_qc_on_demand.model_quality_check_on_demand,base.group_user,1,1,1,1

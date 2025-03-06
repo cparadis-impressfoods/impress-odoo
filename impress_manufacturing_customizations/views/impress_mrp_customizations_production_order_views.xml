@@ -12,9 +12,9 @@
                 </xpath>
                 <xpath expr="//t[@t-name='kanban-box']/div[1]/div[1]/span[1]" position="replace">
                     <span t-if="record.state.raw_value !='done'" class="float-end text-end">
-                        <t t-esc="record.product_qty.value" />
+                        <t t-esc="record.product_qty.value"/>
                         <small>
-                            <t t-esc="record.product_uom_id.value" />
+                            <span> </span><t t-esc="record.product_uom_id.value" />
                         </small>
                     </span>
                     <span t-if="record.state.raw_value=='done'" class="float-end text-end">
@@ -25,6 +25,18 @@
                 </xpath>
             </field>
         </record>
+        <record id="production_add_handle" model="ir.ui.view">
+            <field name="name">production.add_handle</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_kanban_view" />
+            <field name="priority">17</field>
+            <field name="arch" type="xml">
+                <xpath expr="//t[@t-name='kanban-box']/div[1]/div[1]/span[1]" position="after">
+                    <field name='sequence' widget="handle"/>
+                </xpath>
+            </field>
+        </record>
+        <!--
         <record id="production_gantt" model="ir.ui.view">
             <field name="name">production.gantt</field>
             <field name="model">mrp.production</field>
@@ -73,5 +85,6 @@
                 </gantt>
             </field>
         </record>
+        -->
     </data>
 </odoo>

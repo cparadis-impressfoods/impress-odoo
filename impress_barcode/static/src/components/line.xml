@@ -6,11 +6,12 @@
         t-inherit-mode="extension" owl="1">
         <xpath expr="//div[1]" position="after">
             <t t-if="!props.subline and totalDemand != 0"> 
-                <i class="fa fa-fw fa-cubes text-muted"/>
                 <t t-if="qtyDemand == totalDemand">
+                    <i class="fa fa-fw fa-cubes text-muted"/>
                     <span style="color: green" t-if="qtyDemand" t-esc="' Total: ' + totalDemand"/>
                 </t>
                 <t t-else="">
+                    <i class="fa fa-fw fa-cubes text-muted"/>
                     <span style="color: red" t-if="qtyDemand" t-esc="' Total: ' + totalDemand"/>
                 </t>
             </t>

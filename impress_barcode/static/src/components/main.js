@@ -28,6 +28,7 @@ patch(MainComponent.prototype, {
         const { route, params} = this.env.model.getActionRefresh(this.resId);
         const result = await this.rpc(route, params);
         await this.env.model.refreshCache(result.data.records);
+        this.env.model._createState();
         this.render();
     }
 });

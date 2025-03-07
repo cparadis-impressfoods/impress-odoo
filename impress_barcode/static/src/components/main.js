@@ -25,11 +25,10 @@ patch(MainComponent.prototype, {
     async doReservation(){
         await this.env.model.save();
         await this.orm.call(this.resModel, 'action_assign', [[this.resId]]);
-        const action = await this.orm.call(this.resModel, 'action_open_picking_client_action', [[this.resId]]);
-        this.env.config.historyBack();
-        this.action.doAction(action, {});
-
-
+        const { route, params} = this.env.model.getActionRefresh(this.resId);
+        const result = await this.rpc(route, params);
+        await this.env.model.refreshCache(result.data.records);
+        this.render();
     }
 });
 

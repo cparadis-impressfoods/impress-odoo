@@ -24,7 +24,8 @@ class Xray_log(models.Model):
     @api.depends('monthly_signature')
     def _compute_monthly_signature_date(self):
         for rec in self:
-            rec.monthly_signature_date = datetime.now()
+            if rec.monthly_signature:
+                rec.monthly_signature_date = datetime.now()
 
     def action_view_x_ray_lines(self):
         self.ensure_one()

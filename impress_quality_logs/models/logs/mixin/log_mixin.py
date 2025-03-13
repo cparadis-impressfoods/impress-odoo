@@ -39,7 +39,8 @@ class LogMixin(models.Model):
     @api.depends("signature")
     def _compute_weekly_signature_date(self):
         for rec in self:
-            rec.weekly_signature_date = datetime.now()
+            if rec.signature:
+                rec.weekly_signature_date = datetime.now()
 
     def action_sign_log(self):
         for rec in self:

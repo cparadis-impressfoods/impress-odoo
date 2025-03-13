@@ -28,10 +28,10 @@ class HppLog(models.Model):
     monthly_signature_date = fields.Datetime('Monthly Signature Date', compute='_compute_monthly_signature_date', store=True)
 
     @api.depends('monthly_signature')
-
     def _compute_monthly_signature_date(self):
         for rec in self:
-            rec.monthly_signature_date = datetime.now()
+            if rec.monthly_signature:
+                rec.monthly_signature_date = datetime.now()
 
     @api.depends('qty_total', 'qty_quality', 'qty_scrapped', 'qty_redone')
     def _compute_qty_produced(self):

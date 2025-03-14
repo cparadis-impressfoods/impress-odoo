@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+from ast import literal_eval
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
@@ -26,6 +27,21 @@ class LogMixin(models.Model):
     date = fields.Datetime('Date', related='quality_check_id.control_date', store=True, depends=['quality_check_id', 'quality_check_id.control_date'])
     weekly_signature_date = fields.Datetime('Weekly Signature Date', compute='_compute_weekly_signature_date', store=True)
 
+
+    @api.depends("signature")
+    def _compute_weekly_signature_date(self):
+        for rec in self:
+            if rec.signature:
+                rec.weekly_signature_date = datetime.now()
+
+
+    def action_sign_log(self):
+        for rec in self:
+            if not rec.signature:
+                rec.signature = rec.env.user.sign_initials
+
+    # TODO: Refactor action_view_log_lines into mixin to reduce maintenance    
+    
     def action_view_linked_production(self):
         self.ensure_one()
         action = {
@@ -35,16 +51,22 @@ class LogMixin(models.Model):
             'res_id': self.production_id.id,
         }
         return action
-
-    @api.depends("signature")
-    def _compute_weekly_signature_date(self):
-        for rec in self:
-            if rec.signature:
-                rec.weekly_signature_date = datetime.now()
-
-    def action_sign_log(self):
-        for rec in self:
-            if not rec.signature:
-                rec.signature = rec.env.user.sign_initials
-
-    # TODO: Refactor action_view_log_lines into mixin to reduce maintenance
+    
+    def action_quality_worksheet(self):
+        check = self.quality_check_id
+        action = check.worksheet_template_id.action_id.sudo().read()[0]
+        worksheet = self.env[check.worksheet_template_id.model_id.sudo().model].search([('x_quality_check_id', '=', check.id)])
+        context = literal_eval(action.get('context', '{}'))
+        action_name = check._get_check_action_name()
+        action.update({
+            'name': action_name,
+            'res_id': worksheet.id if worksheet else False,
+            'views': [(False, 'form')],
+            'target': 'new',
+            'context': {
+                **context,
+                'edit': False,
+                'default_x_quality_check_id': check.id,
+            },
+        })
+        return action

@@ -14,6 +14,7 @@ class MrpProduction(models.Model):
     loma_log_ids = fields.One2many('loma.log', 'production_id', string='LOMA Logs')
     metal_log_ids = fields.One2many('metal.log', 'production_id', string='Metal Logs')
     coding_log_ids = fields.One2many('coding.log', 'production_id', string='Coding Logs')
+    x_ray_log_ids = fields.One2many('x_ray.log', 'production_id', string='X-Ray Logs')
 
     hpp_qty_cases = fields.Float('HPP Quantity', compute='_compute_hpp_qty_cases', store=True)
 
@@ -108,8 +109,30 @@ class MrpProduction(models.Model):
 
         else:
             action.update({
-                'name': _("LOMA Logs for %s", self.name),
+                'name': _("Coding Logs for %s", self.name),
                 'domain': [('id', 'in', self.coding_log_ids.ids)],
+                'view_mode': 'tree,form',
+            })             # type: ignore
+
+        return action
+
+    def action_view_x_ray_log(self):
+        self.ensure_one()
+        action = {
+            'res_model': 'x_ray.log',
+            'type': 'ir.actions.act_window',
+        }
+
+        if len(self.coding_log_ids) == 1:
+            action.update({
+                'view_mode': 'form',
+                'res_id': self.x_ray_log_ids.id
+            })            # type: ignore
+
+        else:
+            action.update({
+                'name': _("X-Ray Logs for %s", self.name),
+                'domain': [('id', 'in', self.x_ray_log_ids.ids)],
                 'view_mode': 'tree,form',
             })             # type: ignore
 

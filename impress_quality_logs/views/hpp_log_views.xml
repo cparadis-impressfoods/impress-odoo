@@ -27,6 +27,7 @@
             <form string="Hpp_log">
                 <sheet>
                     <field name="production_id" invisible="1"/>
+                    <field name="quality_check_id" invisible="1"/>
                     <div class="oe_button_box" name="button_box">
                         <button class="oe_stat_button" name="action_view_linked_production" type="object" 
                             icon="fa-wrench" groups="mrp.group_mrp_user" invisible="not production_id">
@@ -38,6 +39,12 @@
                          icon="fa-superpowers" groups="mrp.group_mrp_user" invisible="not log_line_ids">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">HPP Lines</span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" name="action_quality_worksheet" type="object" icon="fa-pencil" 
+                            groups="mrp.group_mrp_user" invisible="not quality_check_id">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Worksheet</span>
                             </div>
                         </button>
                     </div>

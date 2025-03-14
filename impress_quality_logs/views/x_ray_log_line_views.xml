@@ -6,7 +6,7 @@
         <field name="name">view.x_ray.log.line.tree</field>
         <field name="model">x_ray.log.line</field>
         <field name="arch" type="xml">
-            <tree default_order='create_date desc'>
+            <tree default_order='id desc'>
                 <field name="sequence"/>
                 <field name="start_date" />
             </tree>

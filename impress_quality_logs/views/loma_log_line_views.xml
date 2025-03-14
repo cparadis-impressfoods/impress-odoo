@@ -6,7 +6,7 @@
         <field name="name">view.loma_log_line.tree</field>
         <field name="model">loma.log.line</field>
         <field name="arch" type="xml">
-            <tree default_order='create_date desc'>
+            <tree default_order='id desc'>
                 <field name="sequence"/>
                 <field name="start_date"/>
                 <field name="measure_1"/>

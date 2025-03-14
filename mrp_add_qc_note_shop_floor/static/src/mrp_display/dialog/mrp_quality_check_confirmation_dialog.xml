@@ -8,9 +8,11 @@
                 <TextField name="'additional_note'" record="props.record"/>
             </div>
             -->
-            <div class="o_note_field row mt-3">
-                <label class="col-2" for="additional_note">Additional Note:</label>
-                <TextField name="'additional_note'" record="props.record" rowCount='1'/>
+            <div class="o_note_field row no-gutters mt-3">
+                <label class="col-1" for="additional_note">Additional Note:</label>
+                <span class="o_field_widget o_field_text_are col-4 ">
+                    <TextField name="'additional_note'" record="props.record" rowCount='1' lineBreaks="false"/>
+                </span>
             </div>
         </xpath>
 

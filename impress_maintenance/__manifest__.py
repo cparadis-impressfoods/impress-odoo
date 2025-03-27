@@ -6,7 +6,7 @@
     'author': 'Cédric Paradis',
     'website': '',
     'category': 'Maintenance',
-    'depends': ['base','maintenance_worksheet', 'quality', 'hr_maintenance'],
+    'depends': ['base','maintenance_worksheet', 'quality', 'hr_maintenance', 'documents'],
     "data": [
         "data/team_tags.xml",
         "security/ir.model.access.csv",
@@ -17,7 +17,8 @@
         "views/maintenance_team_tag_views.xml",
         "views/maintenance_team_views.xml",
         "views/menus.xml",
-        "security/maintenance.xml"
+        "security/maintenance.xml",
+        'data/document_folder.xml',
     ],
     
     'application': True,

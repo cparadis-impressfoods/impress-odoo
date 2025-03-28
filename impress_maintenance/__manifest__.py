@@ -16,9 +16,12 @@
         "views/maintenance_request_views.xml",
         "views/maintenance_team_tag_views.xml",
         "views/maintenance_team_views.xml",
+        'views/quality/maintenance_request_quality_views.xml',
+        'views/quality/maintenance_equipment_quality_action.xml',
         "views/menus.xml",
         "security/maintenance.xml",
         'data/document_folder.xml',
+        
     ],
     
     'application': True,

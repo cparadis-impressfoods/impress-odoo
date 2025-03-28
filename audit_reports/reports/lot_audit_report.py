@@ -19,6 +19,9 @@ class LotAuditReport(models.TransientModel):
     lot_id = fields.Many2one('stock.lot', string='Lot', required=True)
     product_id = fields.Many2one('product.product', string='Product', related='lot_id.product_id')
 
+    show_full_traceability = fields.Boolean(string='Show Full Traceability', default=False)
+    show_client_list = fields.Boolean(string='Show Client List', default=False)
+    show_product_list = fields.Boolean(string='Show Product List', default=False)
 
 
     def get_total_produced(self):
@@ -65,13 +68,8 @@ class LotAuditReport(models.TransientModel):
                 data[product] = [lot, sum(grouped_by_lots[lot].mapped('quantity'))]
         return data
 
-    @api.model
-    def action_create_report(self, lots:StockLot):
-        for lot in lots:
-            #_logger.warning("Generating action for report")
-            report_generator = self.env['lot.audit.report'].create({'lot_id':lot.id})
-            #_logger.warning(report_generator.get_all_downstream_moves(report_generator.lot_id))
-            return self.env.ref("audit_reports.report_lot_audit").report_action(report_generator.id)
+    def action_create_report(self):
+        return self.env.ref("audit_reports.report_lot_audit").report_action(self.id)
 
     @api.model
     def _get_lines(self, lot_id):
@@ -192,22 +190,21 @@ class LotAuditReport(models.TransientModel):
                 return ""
 
     @api.model
-    def get_all_downstream_moves(self, lot_id:StockLot):
+    def get_all_downstream_moves(self, lot_id:StockLot, max_depth:int = 0):
         if not lot_id or len(lot_id) == 0:
             return {}
 
-
         lot_queue:list[StockLot] = [lot_id]
         audit:dict[StockLot, dict[str, StockMoveLine]] = {}
-
-        while len(lot_queue) > 0:
+        current_depth:int = 1
+        while len(lot_queue) > 0 and (current_depth <= max_depth or max_depth == 0):
             lot = lot_queue.pop(0)
             grouped_lines = self._get_lines(lot).grouped(self._get_sml_type)
             audit[lot] = grouped_lines
             if 'mo_out' in grouped_lines:
                 for line in grouped_lines['mo_out']:
                     lot_queue.append(line.move_id.raw_material_production_id.lot_producing_id)
-
+            current_depth += 1
         return audit
 
     @api.model

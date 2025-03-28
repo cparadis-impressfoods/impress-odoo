@@ -21,8 +21,13 @@
                         <!--<div class="oe_structure"/>-->
                         <!-- Set up general stuff -->
                         <t t-call="audit_reports.stylesheet"/>
-                        <t t-set="lots" t-value="o.get_all_downstream_moves(o.lot_id)"/>
-
+                        
+                        <t t-if="o.show_full_traceability">
+                            <t t-set="lots" t-value="o.get_all_downstream_moves(o.lot_id)"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="lots" t-value="o.get_all_downstream_moves(o.lot_id, 1)"/>
+                        </t>
 
                         <!-- Start actual report -->
                         <h2 class="mt-2">
@@ -39,14 +44,18 @@
                         <div style="page-break-before: always;"/>
 
                         <!-- Recall by client -->
-                        <h3 class="mt-2"><span>Recall by Client</span></h3>
-                        <t t-call="audit_reports.client_recall_table"/>
-                        
-                        <div style="page-break-before: always;"/>
+                        <t t-if="o.show_client_list">
+                            <h3 class="mt-2"><span>Recall by Client</span></h3>
+                            <t t-call="audit_reports.client_recall_table"/>
+                            <div style="page-break-before: always;"/>
+                        </t>
 
-                        <h3 class="mt-2"><span>Recall by Products</span></h3>
-                        <!-- Recall by lot -->
-                        <t t-call="audit_reports.product_recall_table"/>
+                        <t t-if="o.show_product_list">
+                            <h3 class="mt-2"><span>Recall by Products</span></h3>
+                            <!-- Recall by lot -->
+                            <t t-call="audit_reports.product_recall_table"/>
+                        </t>
+
                     </div>
                 </t>
             </t>
@@ -186,35 +195,35 @@
                 <t t-set="value" t-value="o.get_total_bought()"/>
                 <tr t-if="value != 0">
                     <th scope="row" class="text-center"><span>Purchased</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%value"/></td>
+                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
 
                 <t t-set="value" t-value="o.get_total_produced()"/>
                 <tr t-if="value != 0">
                     <th scope="row" class="text-center"><span>Produced</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%value"/></td>
+                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
 
                 <t t-set="value" t-value="o.get_total_used()"/>
                 <tr t-if="value != 0">
                     <th scope="row" class="text-center"><span>Used</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%value"/></td>
+                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
 
                  <t t-set="value" t-value="o.get_total_delivered()"/>
                 <tr t-if="value != 0">
                     <th scope="row" class="text-center"><span>Delivered</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%value"/></td>
+                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
                     <th scope="row" class="text-center"><span>Total</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%(total)"/></td>
+                    <td class="text-end"><span t-out="'%.2f'%(total)"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                 </tr>
             </tfoot>
         </table>

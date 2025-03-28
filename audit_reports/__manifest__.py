@@ -9,8 +9,9 @@
     'depends': ['base','stock', 'product_expiry', 'mrp', 'sale_stock', 'purchase_stock'],
     "data": [
         "security/ir.model.access.csv",
+        "wizards/wizard_make_traceability_report.xml",
         "views/stock_lot_views.xml",
-        "reports/lot_audit_report.xml"
+        "reports/lot_audit_report.xml",
     ],
     'assets': {
             'web.assets_backend': [

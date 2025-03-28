@@ -72,6 +72,9 @@
         <field name="model">hpp.log.line</field>
         <field name="arch" type="xml">
             <search>
+                <field name="cycle_number" string="Sequence"/>
+                <field name="product_lot_id" string="Sequence"/>
+                <field name="product_id" string="Product"/>
                 <filter string="Orphans" name="orphans" domain="[('hpp_log_id','=',False)]"/>
                 <filter string="Cleaning" name='cleaning' domain="[('is_cleaning_cycle','=',True)]"/>
                 <group expand="1" string="Group By">

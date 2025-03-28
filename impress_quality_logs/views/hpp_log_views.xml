@@ -89,6 +89,9 @@
         <field name="model">hpp.log</field>
         <field name="arch" type="xml">
             <search>
+                <field name="name" string="Name"/>
+                <field name="lot_id" string="Sequence"/>
+                <field name="product_id" string="Product"/>
                 <filter string="Orphans" name="orphans" domain="[('production_id','=',False)]"/>
                 <group expand="1" string="Group By">
                     <filter string="Date" name="create_date" domain="[]" context="{'group_by':'create_date'}"/>

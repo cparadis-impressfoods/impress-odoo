@@ -83,6 +83,9 @@
         <field name="model">coding.log</field>
         <field name="arch" type="xml">
             <search>
+                <field name="name" string="Name"/>
+                <field name="lot_id" string="Sequence"/>
+                <field name="product_id" string="Product"/>
                 <group expand="1" string="Group By">
                     <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}"/>
                 </group>

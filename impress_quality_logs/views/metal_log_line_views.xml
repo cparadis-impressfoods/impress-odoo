@@ -75,6 +75,9 @@
         <field name="model">metal.log.line</field>
         <field name="arch" type="xml">
             <search>
+                <field name="sequence" string="Sequence"/>
+                <field name="product_lot_id" string="Sequence"/>
+                <field name="product_id" string="Product"/>
                 <group expand="1" string="Group By">
                     <filter string="Name" name="sequence" domain="[]" context="{'group_by':'sequence'}"/>
                 </group>

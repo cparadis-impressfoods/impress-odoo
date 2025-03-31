@@ -31,51 +31,58 @@ class LotAuditReport(models.TransientModel):
             lambda line: self._get_sml_type(line) == "mo_in"
         )
 
-        returned_lines: StockMoveLine = lines.filtered(
-            lambda line: self._get_sml_type(line) == "unbuild"
-        )
-
-        quantity = sum(production_lines.mapped("quantity")) - sum(
-            returned_lines.mapped("quantity")
-        )
-
-        return quantity
+        return self.get_sml_qty(production_lines)
 
     def get_total_bought(self):
         lines: StockMoveLine = self._get_lines(self.lot_id)
         purchase_lines: StockMoveLine = lines.filtered(
             lambda line: self._get_sml_type(line) == "purchase"
         )
-        return sum(purchase_lines.mapped("quantity"))
+        quantity = self.get_sml_qty(purchase_lines)
+
+        return quantity
+
+    def get_total_returned(self):
+        lines: StockMoveLine = self._get_lines(self.lot_id)
+        returned_lines: StockMoveLine = lines.filtered(
+            lambda line: self._get_sml_type(line) == "receipt_return"
+        )
+
+        return self.get_sml_qty(returned_lines)
 
     def get_total_delivered(self):
         lines: StockMoveLine = self._get_lines(self.lot_id)
         delivery_lines: StockMoveLine = lines.filtered(
-            lambda line: self._get_sml_type(line) == "sale"
+            lambda line: self._get_sml_type(line) in ["sale", "delivery"]
         )
         returned_lines: StockMoveLine = lines.filtered(
-            lambda line: self._get_sml_type(line) == "return_in"
+            lambda line: self._get_sml_type(line) == "delivery_return"
         )
 
-        quantity = sum(delivery_lines.mapped("quantity")) - sum(
-            returned_lines.mapped("quantity")
-        )
-
-        return -1 * quantity
+        return self.get_sml_qty(delivery_lines) + self.get_sml_qty(returned_lines)
 
     def get_total_used(self):
         lines: StockMoveLine = self._get_lines(self.lot_id)
         used_lines: StockMoveLine = lines.filtered(
             lambda line: self._get_sml_type(line) == "mo_out"
         )
-        return -1 * sum(used_lines.mapped("quantity"))
 
-    def get_total_unbuild(self):
+        returned_lines: StockMoveLine = lines.filtered(
+            lambda line: self._get_sml_type(line) == "unbuild_in"
+        )
+
+        total = sum(used_lines.mapped("quantity")) - sum(
+            returned_lines.mapped("quantity")
+        )
+
+        return -1 * total
+
+    def get_total_unbuild_out(self):
         lines: StockMoveLine = self._get_lines(self.lot_id)
         unbuild_lines: StockMoveLine = lines.filtered(
-            lambda line: self._get_sml_type(line) == "unbuild"
+            lambda line: self._get_sml_type(line) == "unbuild_out"
         )
-        return -1 * sum(unbuild_lines.mapped("quantity"))
+        return self.get_sml_qty(unbuild_lines)
 
     def get_all_deliveries(self) -> StockMoveLine:
         audit = self.get_all_downstream_moves(self.lot_id)
@@ -86,21 +93,61 @@ class LotAuditReport(models.TransientModel):
                 delivery_lines += audit[lot]["delivery"]
         return delivery_lines
 
+    def get_all_delivery_returns(self) -> StockMoveLine:
+        audit = self.get_all_downstream_moves(self.lot_id)
+        delivery_lines: StockMoveLine = self.env["stock.move.line"]
+
+        for lot in audit:
+            if "delivery_return" in audit[lot]:
+                delivery_lines += audit[lot]["delivery_return"]
+        return delivery_lines
+
     def get_client_recalls(self):
-        deliveries = self.get_all_deliveries()
-        return deliveries.grouped(lambda line: line.move_id.picking_id.partner_id)
+        delivery_lines = self.get_all_deliveries()
+        return_lines = self.get_all_delivery_returns()
+
+        deliveries = {}
+
+        for line in delivery_lines:
+            if line.move_id.picking_id.partner_id not in deliveries:
+                deliveries[line.move_id.picking_id.partner_id] = {}
+            if line.lot_id not in deliveries[line.move_id.picking_id.partner_id]:
+                deliveries[line.move_id.picking_id.partner_id][line.lot_id] = 0
+
+            deliveries[line.move_id.picking_id.partner_id][
+                line.lot_id
+            ] -= self.get_sml_qty(
+                line
+            )  # We substract since we want the qy shipped
+
+        for line in return_lines:
+            if line.move_id.picking_id.partner_id in deliveries:
+                if line.lot_id in deliveries[line.move_id.picking_id.partner_id]:
+                    deliveries[line.move_id.picking_id.partner_id][
+                        line.lot_id
+                    ] -= self.get_sml_qty(line)
+
+        return deliveries
 
     def get_product_recalls(self):
         deliveries = self.get_all_deliveries()
-        deliveries_grouped = deliveries.grouped(lambda line: line.move_id.product_id)
+
         data = {}
 
-        for product in deliveries_grouped:
-            grouped_by_lots = deliveries_grouped[product].grouped(
-                lambda line: line.lot_id
-            )
-            for lot in grouped_by_lots:
-                data[product] = [lot, sum(grouped_by_lots[lot].mapped("quantity"))]
+        for delivery in deliveries:
+            if delivery.product_id not in data:
+                data[delivery.product_id] = {}
+            if delivery.lot_id not in data[delivery.product_id]:
+                data[delivery.product_id][delivery.lot_id] = 0
+
+            data[delivery.product_id][delivery.lot_id] += delivery.quantity
+
+        return_lines = self.get_all_delivery_returns()
+        for line in return_lines:
+            if line.product_id in data:
+                if line.lot_id in data[line.product_id]:
+                    data[line.product_id][line.lot_id] -= line.quantity
+
         return data
 
     def action_create_report(self):
@@ -135,7 +182,10 @@ class LotAuditReport(models.TransientModel):
         if sm.picking_id:
             match sm.picking_code:
                 case "outgoing":
-                    return "delivery"
+                    if sm.picking_id.return_id:
+                        return "receipt_return"
+                    else:
+                        return "delivery"
                 case "incoming":
                     if sm.picking_id.return_id:
                         return "delivery_return"
@@ -155,7 +205,10 @@ class LotAuditReport(models.TransientModel):
         elif sm.raw_material_production_id:
             return "mo_out"
         elif sm.unbuild_id:
-            return "unbuild"
+            if sm.unbuild_id.product_id != sm.product_id:
+                return "unbuild_in"
+            else:
+                return "unbuild_out"
         else:
             return "internal"
 
@@ -166,62 +219,70 @@ class LotAuditReport(models.TransientModel):
                 return "Used in Production"
             case "mo_in":
                 return "Produced"
-            case "delivery":
-                return "Delivery"
-            case "purchase":
-                return "Purchase"
-            case "sale":
-                return "Sale"
-            case "unbuild":
+            case "unbuild_out":
                 return "Unbuild"
-            case "delivery_return":
+            case "unbuild_in":
+                return "Return from Unbuild"
+            case "delivery_return" | "receipt_return":
                 return "Return"
             case _:
-                return value
+                return value.capitalize()
 
     @api.model
     def get_sml_qty(self, value: StockMoveLine) -> float:
-        type = self._get_sml_type(value)
-        out_types = ["mo_out", "sale", "delivery", "scrap", "unbuild"]
+        out_types = [
+            "mo_out",
+            "sale",
+            "delivery",
+            "receipt_return",
+            "scrap",
+            "unbuild_out",
+        ]
+        total = 0
+        for record in value:
+            type = self._get_sml_type(record)
 
-        if type in out_types:
-            return -1 * value.quantity  # type: ignore
-        else:
-            return value.quantity  # type: ignore
+            if type in out_types:
+                total -= record.quantity  # type: ignore
+            else:
+                total += record.quantity  # type: ignore
+        return total
+
+    @api.model
+    def _get_sml_name(self, value: StockMoveLine) -> str:
+        match self._get_sml_type(value):  # type: ignore
+            case "purchase":
+                return value.move_id.purchase_line_id.order_id.display_name  # type: ignore
+            case "sale":
+                return value.move_id.sale_line_id.order_id.display_name  # type: ignore
+            case "delivery" | "delivery_return" | "receipt_return":
+                return f"{value.move_id.picking_id.display_name}"  # type: ignore
+            case "mo_in":
+                return f"{value.move_id.production_id.display_name}"  # type: ignore
+            case "mo_out":
+                return f"{value.move_id.raw_material_production_id.display_name}"  # type: ignore
+            case "unbuild_in" | "unbuild_out":
+                return f"{value.move_id.unbuild_id.display_name}"  # type: ignore
+            case "scrap":
+                return value.move_id.scrap_id.display_name  # type: ignore
+            case _:
+                return f"{value.move_id.display_name}"  # type: ignore
 
     @api.model
     def get_name(self, value):
-
-        if isinstance(value, StockMoveLine):
-            match self._get_sml_type(value):  # type: ignore
-                case "purchase":
-                    return value.move_id.purchase_line_id.order_id.display_name  # type: ignore
-                case "sale":
-                    return value.move_id.sale_line_id.order_id.display_name  # type: ignore
-                case "scrap":
-                    return value.move_id.scrap_id.display_name  # type: ignore
-                case "delivery":
-                    return f"{value.move_id.picking_id.display_name}"  # type: ignore
-                case "mo_in":
-                    return f"{value.move_id.production_id.display_name}"  # type: ignore
-                case "mo_out":
-                    return f"{value.move_id.raw_material_production_id.display_name}"  # type: ignore
-                case "unbuild":
-                    return f"{value.move_id.unbuild_id.display_name}"  # type: ignore
-                case "delivery_return":
-                    return f"{value.move_id.picking_id.display_name}"  # type: ignore
-                case _:
-                    return f"{value.move_id.display_name} ({value.quantity} {value.product_uom_id.display_name})"  # type: ignore
-        elif isinstance(value, MrpProduction):
-            return f"{value.name} - {value.product_id.display_name} - {value.lot_producing_id.display_name}"  # type: ignore
-        elif isinstance(value, StockLot):
-            return f"{value.product_id.display_name} - {value.display_name}"  # type: ignore
-        elif isinstance(value, models.Model):
-            return value.display_name
-        elif isinstance(value, str):
-            return value
-        else:
-            return "NA"
+        match value:
+            case StockMoveLine():
+                return self._get_sml_name(value)  # type: ignore
+            case MrpProduction():
+                return f"{value.name} - {value.product_id.display_name} - {value.lot_producing_id.display_name}"  # type: ignore
+            case StockLot():
+                return f"{value.product_id.display_name} - {value.display_name}"  # type: ignore
+            case models.Model():
+                return value.display_name
+            case str():
+                return value
+            case _:
+                return "NA"
 
     @api.model
     def get_add_info(self, value: StockMoveLine) -> str:
@@ -236,10 +297,17 @@ class LotAuditReport(models.TransientModel):
                 return value.move_id.purchase_line_id.order_id.partner_id.display_name
             case "delivery":
                 return value.move_id.picking_id.partner_id.display_name
-            case "unbuild":
+            case "unbuild_in" | "unbuild_out":
                 return value.move_id.unbuild_id.mo_id.display_name
-            case "delivery_return":
+            case "delivery_return" | "receipt_return":
                 return value.move_id.picking_id.return_id.display_name
+            case "scrap":
+                if value.move_id.scrap_id.picking_id:
+                    return value.move_id.scrap_id.picking_id.display_name
+                elif value.move_id.scrap_id.production_id:
+                    return value.move_id.scrap_id.production_id.display_name
+                else:
+                    return value.move_id.scrap_id.origin  # type: ignore
             case _:
                 return ""
 

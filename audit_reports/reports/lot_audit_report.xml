@@ -68,7 +68,6 @@
             <t t-set="grand_total" t-value="0"/>
             <thead>
                 <tr>
-                    <th><span>Date</span></th>
                     <th><span>Product</span></th>
                     <th><span>Lot</span></th>
                     <th><span>Quantity</span></th>
@@ -77,22 +76,28 @@
             <tbody>
                 <t t-foreach="client_data" t-as="client">
                     <t t-set="total" t-value="0"/>
-                    <div class="pb-prevent">
+                    
+                    <t t-set="lots" t-value="client_data[client]"/>
+                    <t t-foreach="lots" t-as="lot">
+                        <t t-set="total" t-value="total + lots[lot]"/>
+                    </t>
+
+                    <div t-if="total &gt; 0" class="pb-prevent">
                         <tr class="bg-light"> 
                             <td colspan="4" class="text-center"><span t-out="client.display_name"/></td>
                         </tr>
-                        <t t-set="moves" t-value="client_data[client]"/>
-                        <t t-foreach="moves" t-as="move">
-                            <tr>
-                                <td class="text-center"><span t-out="move.date.date()"/></td>
-                                <td class="text-center"><span t-out="move.product_id.display_name"/></td>
-                                <td class="text-center"><span t-out="move.lot_id.display_name"/></td>
-                                <td class="text-end"><span t-out="'%.2f'%move.quantity"/></td>
-                                <t t-set="total" t-value="total+ move.quantity"/>
-                            </tr>
+                        <t t-set="lots" t-value="client_data[client]"/>
+                        <t t-foreach="lots" t-as="lot">
+                            <t t-if="lots[lot] != 0">
+                                <tr>
+                                    <td class="text-center"><span t-out="lot.product_id.display_name"/></td>
+                                    <td class="text-center"><span t-out="lot.display_name"/></td>
+                                    <td class="text-end"><span t-out="'%.2f'%lots[lot]"/></td>
+                                </tr>
+                            </t>
                         </t>
                         <tr>
-                            <td colspan="3" class="text-end"><span>Total</span></td>
+                            <td colspan="2" class="text-end"><span>Total</span></td>
                             <td class="text-end"><span t-out="'%.2f'%total"/></td>
                         </tr>
                         <t t-set="grand_total" t-value="grand_total + total"/>
@@ -101,7 +106,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" class="text-end"><span class="text-bold">Grand Total</span></td>
+                    <td colspan="2" class="text-end"><span class="text-bold">Grand Total</span></td>
                     <td class="text-end"><span class="text-bold" t-out="'%.2f'%grand_total"/></td>
                 </tr>
             </tfoot>
@@ -126,12 +131,14 @@
                         <tr class="bg-light"> 
                             <td colspan="2" class="text-center"><span t-out="product.display_name"/></td>
                         </tr>
-                        <t t-set="move" t-value="product_data[product]"/>
-                        <tr>
-                            <td class="text-center"><span t-out="move[0].display_name"/></td>
-                            <td class="text-end"><span t-out="'%.2f'%move[1]"/></td>
-                            <t t-set="total" t-value="total + move[1]"/>
-                        </tr>
+                        <t t-set="lots" t-value="product_data[product]"/>
+                        <t t-foreach="lots" t-as="lot">
+                            <tr>
+                                <td class="text-center"><span t-out="lot.display_name"/></td>
+                                <td class="text-end"><span t-out="'%.2f'%lots[lot]"/></td>
+                                <t t-set="total" t-value="total + lots[lot]"/>
+                            </tr> 
+                        </t>
                         <tr>
                             <td colspan="1" class="text-end"><span>Total</span></td>
                             <td class="text-end"><span t-out="'%.2f'%total"/></td>
@@ -175,7 +182,7 @@
                 </tr>
                 <tr>
                     <th scope="row" class="text-start"><span>Creation Date</span></th>
-                    <td><span t-out="o.lot_id.create_date.date()"/></td>
+                    <td class="align-middle"><span  t-out="o.lot_id.create_date.date()"/></td>
                 </tr>
             </tbody>
         </table>
@@ -195,34 +202,40 @@
                 <t t-set="value" t-value="o.get_total_bought()"/>
                 <tr t-if="value != 0">
                     <th scope="row" class="text-center"><span>Purchased</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
+                    <td class="text-end"><span class="text-success" t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
 
                 <t t-set="value" t-value="o.get_total_produced()"/>
                 <tr t-if="value != 0">
                     <th scope="row" class="text-center"><span>Produced</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
+                    <td class="text-end"><span class="text-success" t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
 
                 <t t-set="value" t-value="o.get_total_used()"/>
                 <tr t-if="value != 0">
                     <th scope="row" class="text-center"><span>Used</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
+                    <td class="text-end"><span class="text-danger" t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
 
                  <t t-set="value" t-value="o.get_total_delivered()"/>
                 <tr t-if="value != 0">
                     <th scope="row" class="text-center"><span>Delivered</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
+                    <td class="text-end"><span class="text-danger" t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
-                <t t-set="value" t-value="o.get_total_unbuild()"/>
+                <t t-set="value" t-value="o.get_total_unbuild_out()"/>
                 <tr t-if="value != 0">
                     <th scope="row" class="text-center"><span>Unbuilt</span></th>
-                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
+                    <td class="text-end" ><span class="text-danger" t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
+                    <t t-set="total" t-value="total + value"/>
+                </tr>
+                <t t-set="value" t-value="o.get_total_returned()"/>
+                <tr t-if="value != 0">
+                    <th scope="row" class="text-center"><span>Returned</span></th>
+                    <td class="text-end" ><span class="text-danger" t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
             </tbody>
@@ -236,42 +249,37 @@
     </template>
 
     <template id="traceability_table">
-        <table class="table table-bordered table-striped">
+        <!-- Go over each lot as a key -->
+        <table class="table table-bordered">
             <tbody>
-                <!-- Go over each lot as a key -->
                 <t t-foreach="lots" t-as="lot">
-                    <t t-set="total" t-value="0"/>
-                    <div class="pb-prevent">
-                        <tr class="bg-light">
-                            <td colspan="4" class="text-center"><span t-out="o.get_name(lot)"/></td>
+                    <div class="keep_page">
+                        <tr>
+                            <td colspan="5" class="text-center bg-light"><span t-out="o.get_name(lot)"/></td>
                         </tr>
-                        <tr colspan="4"><td>
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <!-- Go over each key in lots[lot] = {} -->
-                                    <t t-set="value" t-value="lots[lot]"/>
-                                    <t t-foreach="value" t-as="move_type">
-                                        <!-- Go over the content of each key in lots[lot][move_type] = []-->
-                                        <t t-set="moves" t-value="value[move_type]"/>
-                                        <t t-foreach="moves" t-as="move">
-                                            <t t-call="audit_reports.move_row">
-                                                <t t-set="current_move" t-value="move"/>
-                                                <t t-set="move_type" t-value="move_type"/>
-                                            </t>
-                                            <t t-set="total" t-value="total + o.get_sml_qty(move)"/>
-                                        </t>
+
+                        <t t-set="total" t-value="0"/>
+                        <!-- Go over each key in lots[lot] = {} -->
+                        <t t-set="value" t-value="lots[lot]"/>
+                            <t t-foreach="value" t-as="move_type">
+                                <!-- Go over the content of each key in lots[lot][move_type] = []-->
+                                <t t-set="moves" t-value="value[move_type]"/>
+                                <t t-foreach="moves" t-as="move">
+                                    <t t-call="audit_reports.move_row">
+                                        <t t-set="current_move" t-value="move"/>
+                                        <t t-set="move_type" t-value="move_type"/>
                                     </t>
-                                    <tr>
-                                        <td colspan='4' class="text-end">
-                                            <span>Total</span>
-                                        </td>
-                                        <td class="text-end">
-                                            <span t-out="'%.2f'%(total)"/><span> </span><span t-out="lot.product_id.uom_id.display_name"/>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td></tr>
+                                    <t t-set="total" t-value="total + o.get_sml_qty(move)"/>
+                                </t>
+                            </t>
+                        <tr>
+                            <td colspan='4' class="text-end">
+                                <span>Total</span>
+                            </td>
+                            <td class="text-end">
+                                <span t-out="'%.2f'%(total)"/><span> </span><span t-out="lot.product_id.uom_id.display_name"/>
+                            </td>
+                        </tr>
                     </div>
                 </t>
             </tbody>
@@ -446,6 +454,11 @@
             }
             .nested-tree .value {
                 color: #28a745;
+            }
+
+
+            .keep_page {
+                page-break-inside: avoid !important;
             }
 
             .pb-prevent {

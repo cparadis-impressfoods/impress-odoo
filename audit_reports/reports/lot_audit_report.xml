@@ -219,6 +219,12 @@
                     <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
                     <t t-set="total" t-value="total + value"/>
                 </tr>
+                <t t-set="value" t-value="o.get_total_unbuild()"/>
+                <tr t-if="value != 0">
+                    <th scope="row" class="text-center"><span>Unbuilt</span></th>
+                    <td class="text-end"><span t-out="'%.2f'%value"/><span t-out="' ' + o.lot_id.product_id.uom_id.display_name"/></td>
+                    <t t-set="total" t-value="total + value"/>
+                </tr>
             </tbody>
             <tfoot>
                 <tr>

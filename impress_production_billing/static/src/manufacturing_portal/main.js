@@ -18,11 +18,11 @@ const servicesRegistry = registry.category("services");
  * the services that we don't want instead of create a new module just to remove the services in assets.
  */
 export function removeServices() {
-    for (const service of servicesToRemove) {
-        if (servicesRegistry.contains(service)) {
-            servicesRegistry.remove(service);
-        }
+  for (const service of servicesToRemove) {
+    if (servicesRegistry.contains(service)) {
+      servicesRegistry.remove(service);
     }
+  }
 }
 
 removeServices();

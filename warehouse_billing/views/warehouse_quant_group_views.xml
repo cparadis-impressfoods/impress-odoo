@@ -21,18 +21,16 @@
                 <sheet>
                     <header>
                         <field name="invoicing_state" widget="statusbar"/>
-                    </header>   
+                    </header>
                     <field name="sale_order_id" invisible="1"/>
-                    <field name="invoice_ids" invisible="1"/>  
+                    <field name="invoice_ids" invisible="1"/>
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="action_linked_sale_order" type="object" 
-                            icon="fa-edit"  invisible="not sale_order_id">
+                        <button class="oe_stat_button" name="action_linked_sale_order" type="object" icon="fa-edit" invisible="not sale_order_id">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Sale Order</span>
                             </div>
                         </button>
-                        <button class="oe_stat_button" name="action_linked_invoices" type="object" 
-                            icon="fa-edit"  invisible="not invoice_ids">
+                        <button class="oe_stat_button" name="action_linked_invoices" type="object" icon="fa-edit" invisible="not invoice_ids">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Invoices</span>
                             </div>
@@ -68,7 +66,7 @@
                                 <field name="quantity"/>
                             </tree>
                         </field>
-                        
+
                     </group>
                 </sheet>
             </form>

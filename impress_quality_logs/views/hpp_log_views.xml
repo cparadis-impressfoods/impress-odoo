@@ -7,16 +7,15 @@
         <field name="model">hpp.log</field>
         <field name="arch" type="xml">
             <tree default_order='create_date desc'>
-                <field name="date"/>
-                <field name="production_id"/>
-                <field name="product_id"/>
-                <field name="lot_id"/>
-                <field name="qty_total"/>
-                <field name="qty_produced"/>
+                <field name="date" />
+                <field name="production_id" />
+                <field name="product_id" />
+                <field name="lot_id" />
+                <field name="qty_total" />
+                <field name="qty_produced" />
             </tree>
         </field>
     </record>
-
 
 
     <!-- View hpp_log form -->
@@ -26,22 +25,26 @@
         <field name="arch" type="xml">
             <form string="Hpp_log">
                 <sheet>
-                    <field name="production_id" invisible="1"/>
-                    <field name="quality_check_id" invisible="1"/>
+                    <field name="production_id" invisible="1" />
+                    <field name="quality_check_id" invisible="1" />
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="action_view_linked_production" type="object" 
-                            icon="fa-wrench" groups="mrp.group_mrp_user" invisible="not production_id">
+                        <button class="oe_stat_button" name="action_view_linked_production"
+                            type="object"
+                            icon="fa-wrench" groups="mrp.group_mrp_user"
+                            invisible="not production_id">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Manufacturing</span>
                             </div>
                         </button>
                         <button class="oe_stat_button" name="action_view_hpp_lines" type="object"
-                         icon="fa-superpowers" groups="mrp.group_mrp_user" invisible="not log_line_ids">
+                            icon="fa-superpowers" groups="mrp.group_mrp_user"
+                            invisible="not log_line_ids">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">HPP Lines</span>
                             </div>
                         </button>
-                        <button class="oe_stat_button" name="action_quality_worksheet" type="object" icon="fa-pencil" 
+                        <button class="oe_stat_button" name="action_quality_worksheet" type="object"
+                            icon="fa-pencil"
                             groups="mrp.group_mrp_user" invisible="not quality_check_id">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Worksheet</span>
@@ -50,32 +53,34 @@
                     </div>
                     <div class="oe_title">
                         <h1>
-                            <field name="name" placeholder="Name..."/>
+                            <field name="name" placeholder="Name..." />
                         </h1>
                     </div>
                     <group>
                         <group>
-                            <field name="qty_produced"/>
-                            <field name="qty_cases"/>
-                            <field name="qty_total"/>
+                            <field name="qty_produced" />
+                            <field name="qty_cases" />
+                            <field name="qty_total" />
                         </group>
                         <group>
-                            <field name="qty_quality" readonly="1"/>
-                            <field name="qty_redone" readonly="1"/>
-                            <field name="qty_scrapped" readonly="1"/>
-                            <field name="hpp_report"/>
+                            <field name="qty_quality" readonly="1" />
+                            <field name="qty_redone" readonly="1" />
+                            <field name="qty_scrapped" readonly="1" />
+                            <field name="hpp_report" />
 
                         </group>
                     </group>
-                    <field name="log_line_ids" readonly="1" nolabel='1'/>
+                    <field name="log_line_ids" readonly="1" nolabel='1' />
                     <group>
                         <group>
-                            <field name="signature" widget="signature" options="{'size':[0,90]}" string="Weekly Verification"/>
-                            <field name="weekly_signature_date"/>
+                            <field name="signature" widget="signature" options="{'size':[0,90]}"
+                                string="Weekly Verification" />
+                            <field name="weekly_signature_date" />
                         </group>
                         <group>
-                            <field name="monthly_signature" widget="signature" options="{'size':[0,90]}" string="Monthly Verification"/>
-                            <field name="monthly_signature_date"/>
+                            <field name="monthly_signature" widget="signature"
+                                options="{'size':[0,90]}" string="Monthly Verification" />
+                            <field name="monthly_signature_date" />
                         </group>
                     </group>
                 </sheet>
@@ -89,12 +94,13 @@
         <field name="model">hpp.log</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name" string="Name"/>
-                <field name="lot_id" string="Sequence"/>
-                <field name="product_id" string="Product"/>
-                <filter string="Orphans" name="orphans" domain="[('production_id','=',False)]"/>
+                <field name="name" string="Name" />
+                <field name="lot_id" string="Sequence" />
+                <field name="product_id" string="Product" />
+                <filter string="Orphans" name="orphans" domain="[('production_id','=',False)]" />
                 <group expand="1" string="Group By">
-                    <filter string="Date" name="create_date" domain="[]" context="{'group_by':'create_date'}"/>
+                    <filter string="Date" name="create_date" domain="[]"
+                        context="{'group_by':'create_date'}" />
                 </group>
             </search>
         </field>

@@ -7,7 +7,7 @@
         <field name="model">x_ray.log.line</field>
         <field name="arch" type="xml">
             <tree default_order='id desc'>
-                <field name="sequence"/>
+                <field name="sequence" />
                 <field name="start_date" />
             </tree>
         </field>
@@ -21,26 +21,26 @@
             <form string="X_ray Log Line">
                 <sheet>
                     <div class="oe_title">
-                        <label for="sequence"/>
+                        <label for="sequence" />
                         <h1>
-                            <field name="sequence" placeholder="Name..."/>
+                            <field name="sequence" placeholder="Name..." />
                         </h1>
                     </div>
-                    <field name="is_locked" invisible='1'/>
+                    <field name="is_locked" invisible='1' />
 
                     <group>
                         <group>
-                            <field name="reject_value" readonly='is_locked'/>
-                            <field name="stainless_detection_value" readonly='is_locked'/>
-                            <field name="ceramic_detection_value" readonly='is_locked'/>
-                            <field name="glass_detection_value" readonly='is_locked'/>
+                            <field name="reject_value" readonly='is_locked' />
+                            <field name="stainless_detection_value" readonly='is_locked' />
+                            <field name="ceramic_detection_value" readonly='is_locked' />
+                            <field name="glass_detection_value" readonly='is_locked' />
                         </group>
                         <group>
-                            <field name="start_date" readonly='is_locked'/>
-                            <field name="last_check_for_product" readonly='is_locked'/>
-                            <field name="total_qty" readonly='is_locked'/>
-                            <field name="reject_qty" readonly='is_locked'/>
-                            <field name="average" readonly='is_locked'/>
+                            <field name="start_date" readonly='is_locked' />
+                            <field name="last_check_for_product" readonly='is_locked' />
+                            <field name="total_qty" readonly='is_locked' />
+                            <field name="reject_qty" readonly='is_locked' />
+                            <field name="average" readonly='is_locked' />
                         </group>
                     </group>
                 </sheet>
@@ -54,11 +54,12 @@
         <field name="model">x_ray.log.line</field>
         <field name="arch" type="xml">
             <search>
-                <field name="sequence" string="Sequence"/>
-                <field name="product_lot_id" string="Sequence"/>
-                <field name="product_id" string="Product"/>
+                <field name="sequence" string="Sequence" />
+                <field name="product_lot_id" string="Sequence" />
+                <field name="product_id" string="Product" />
                 <group expand="1" string="Group By">
-                    <filter string="Sequence" name="sequence" domain="[]" context="{'group_by':'sequence'}"/>
+                    <filter string="Sequence" name="sequence" domain="[]"
+                        context="{'group_by':'sequence'}" />
                 </group>
             </search>
         </field>

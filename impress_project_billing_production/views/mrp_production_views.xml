@@ -8,14 +8,8 @@
             <field name="priority">16</field>
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='button_unbuild']" position="after">
-                    <button name="%(action_create_task)d"
-                        type='action'
-                        string='Bill to client'
-                        invisible='x_related_task or not x_related_project' />
-                    <button name="%(action_update_task)d"
-                        type='action'
-                        string='Confirm quantity to bill'
-                        invisible='not x_related_task or not x_related_project or state != "done"' />
+                    <button name="%(action_create_task)d" type='action' string='Bill to client' invisible='x_related_task or not x_related_project' />
+                    <button name="%(action_update_task)d" type='action' string='Confirm quantity to bill' invisible='not x_related_task or not x_related_project or state != "done"' />
                 </xpath>
                 <xpath expr="//div[@name='bom_div']" position="after">
                     <field name="x_related_project" />

@@ -7,16 +7,18 @@
         <field name="model">wizard.make.traceability.report</field>
         <field name="arch" type="xml">
             <form string="Wizard Make Traceability Report">
-                <group><group>
-                    <field name="show_full_traceability"/>
-                    <field name="show_client_list"/>
-                    <field name="show_product_list"/>
-                </group></group>
+                <group>
+                    <group>
+                        <field name="show_full_traceability" />
+                        <field name="show_client_list" />
+                        <field name="show_product_list" />
+                    </group>
+                </group>
 
 
                 <footer>
-                    <button name="add" type="object" string="Add" class="oe_highlight"/>
-                    <button special="cancel" string="Cancel"/>
+                    <button name="add" type="object" string="Add" class="oe_highlight" />
+                    <button special="cancel" string="Cancel" />
                 </footer>
             </form>
         </field>
@@ -28,7 +30,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">wizard.make.traceability.report</field>
         <field name="view_mode">form</field>
-        <field name="binding_model_id" ref="stock.model_stock_lot"/>
+        <field name="binding_model_id" ref="stock.model_stock_lot" />
         <field name="target">new</field>
     </record>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
+
     <!-- View maintenance.request form -->
     <record id="view_maintenance_request_form" model="ir.ui.view">
         <field name="name">view.maintenance.request.form</field>
@@ -10,10 +10,8 @@
             <xpath expr="//notebook/page[1]" position="replace">
                 <page string="Notes">
                     <group>
-                        <field name="description" placeholder="Maintenance Description" 
-                            groups="impress_maintenance.group_maintenance_administrator"/>
-                        <field name="description" placeholder="Maintenance Description" readonly="1" 
-                            groups="!impress_maintenance.group_maintenance_administrator"/>
+                        <field name="description" placeholder="Maintenance Description" groups="impress_maintenance.group_maintenance_administrator"/>
+                        <field name="description" placeholder="Maintenance Description" readonly="1" groups="!impress_maintenance.group_maintenance_administrator"/>
 
                         <field name="notes" placeholder="Maintenance Notes"/>
                     </group>
@@ -32,7 +30,7 @@
         <field name="arch" type="xml">
             <xpath expr="//calendar" position="attributes">
                 <attribute name="color">technician_id</attribute>
-            
+
             </xpath>
             <xpath expr="//field[@name='user_id']" position="replace">
                 <field name="technician_id" filters="1"/>
@@ -41,7 +39,7 @@
         </field>
 
     </record>
-    
+
     <record id="view_maintenance_request_search" model="ir.ui.view">
         <field name="name">view.maintenance.request.search</field>
         <field name="model">maintenance.request</field>

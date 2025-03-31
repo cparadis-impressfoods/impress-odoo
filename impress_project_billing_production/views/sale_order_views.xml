@@ -8,8 +8,7 @@
             <field name="priority">16</field>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='state']" position="before">
-                    <button string="Create project" name="%(action_create_project)d" type="action"
-                        invisible="project_id" />
+                    <button string="Create project" name="%(action_create_project)d" type="action" invisible="project_id" />
                 </xpath>
                 <xpath expr="//button[@name='action_view_project_ids']" position="attributes">
                     <attribute name="invisible">not project_id</attribute>

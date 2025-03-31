@@ -1,12 +1,12 @@
-.kanban-ribbon { 
-    font-size: 15px; 
-    font-weight: bold; 
-    height: 17px; 
-    width: 150px; 
-    color: white !important; 
-    background: #79e379; 
-    padding-left: 10px; 
-    padding-right: 10px; 
-    border-radius: 10px; 
-    display: inline-flex;
+.kanban-ribbon {
+  font-size: 15px;
+  font-weight: bold;
+  height: 17px;
+  width: 150px;
+  color: white !important;
+  background: #79e379;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  display: inline-flex;
 }

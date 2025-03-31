@@ -24,7 +24,8 @@
                             <group>
                                 <label for="rate" string="Rate"/>
                                 <div class="o_row g-0 d-flex">
-                                    <field name="rate"/><field name="currency_id"/>
+                                    <field name="rate"/>
+                                    <field name="currency_id"/>
                                 </div>
                                 <field name="bill_seperately"/>
                                 <field name="flat_fee"/>
@@ -33,7 +34,7 @@
                                 <field name="billing_day_month" invisible="billing_cycle != 'monthly' or bill_last_day_month"/>
                                 <field name="billing_day_week" invisible="billing_cycle != 'weekly'"/>
                                 <field name="grace_period"/>
-                                
+
                             </group>
                         </group>
                         <group>
@@ -46,7 +47,7 @@
                 </form>
             </field>
         </record>
-        
+
         <!-- Tree View -->
         <record id="view_warehouse_billing_config_tree" model="ir.ui.view">
             <field name="name">warehouse.billing.config.tree</field>
@@ -63,7 +64,7 @@
                 </tree>
             </field>
         </record>
-        
+
         <!-- Search View -->
         <record id="view_warehouse_billing_config_search" model="ir.ui.view">
             <field name="name">warehouse.billing.config.search</field>
@@ -84,7 +85,7 @@
                 </search>
             </field>
         </record>
-        
+
         <!-- Action -->
         <record id="action_warehouse_billing_config" model="ir.actions.act_window">
             <field name="name">Billing Configurations</field>

@@ -1,23 +1,21 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from odoo import models, fields
 
 _logger = logging.getLogger(__name__)
 
 
 class DocumentsDocument(models.Model):
-    _inherit = 'documents.document'
+    _inherit = "documents.document"
 
-    archived = fields.Boolean('Archived', default=False)
-
+    archived = fields.Boolean("Archived", default=False)
 
     def is_archived(self):
         return self.archived
 
     def action_soft_archive(self):
-        if not self.archived: 
+        if not self.archived:
             self.archived = True
         if self.attachment_id:
             matching_attachment = self._get_matching_attachment()
@@ -33,7 +31,12 @@ class DocumentsDocument(models.Model):
                 matching_attachment.active = True
 
     def _get_matching_attachment(self):
-        records = self.env['product.document'].search([('ir_attachment_id', '=', self.attachment_id.id),('active', 'in', [True, False])])
+        records = self.env["product.document"].search(
+            [
+                ("ir_attachment_id", "=", self.attachment_id.id),
+                ("active", "in", [True, False]),
+            ]
+        )
         if records:
             return records[0]
         else:

@@ -14,13 +14,11 @@
                     </group>
                     <group>
                         <group name="product" string="Product">
-                             <field name="x_product_state" string="Product state (no bad smells, expected color and texture, etc)"
-                                widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
+                            <field name="x_product_state" string="Product state (no bad smells, expected color and texture, etc)" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
                             <field name="x_pallet_used" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
                         </group>
                         <group name="truck" string="Transport">
-                            <field name="x_truck_state" string="Truck state (Clean, no traces of pests, no bad smells, etc.)"
-                                 widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
+                            <field name="x_truck_state" string="Truck state (Clean, no traces of pests, no bad smells, etc.)" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
                             <field name="x_signature" widget="signature" options="{&quot;size&quot;:[0,90]}" field_id="x_signature_0"/>
 
                         </group>
@@ -66,12 +64,14 @@
                             </tbody>
                         </table>
                     </div>
-                    
-                    <div class="text-center"><strong>Pour l'utilisation exclusive de Impress Foods. Mis à jour le 14 janvier 2025. Feuille de contrôle Expédition </strong></div>
-                </sheet>   
+
+                    <div class="text-center">
+                        <strong>Pour l'utilisation exclusive de Impress Foods. Mis à jour le 14 janvier 2025. Feuille de contrôle Expédition </strong>
+                    </div>
+                </sheet>
             </form>
         </field>
     </record>
-    
+
 
 </odoo>

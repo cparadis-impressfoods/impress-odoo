@@ -18,19 +18,20 @@
             <field name="context">{'search_default_done': 1}</field>
         </record>
 
-    <record id="impress_quality_quality_check_tree" model="ir.ui.view">
-        <field name="name">impress.quality.quality.check.tree</field>
-        <field name="model">quality.check</field>
-        <field name="inherit_id" ref="quality_control.quality_check_view_tree"/>
-        <field name="priority">16</field>
-        <field name="arch" type="xml">
-            <xpath expr="//tree[1]" position="attributes">
-                <attribute name="default_order">control_date desc</attribute>
-                <attribute name="decoration-success">x_signature</attribute>
-            </xpath>
-            <xpath expr="//tree[1]" position="inside">
-                <field name="x_signature" widget="signature" optional="show"/>
-            </xpath>
-        </field>
-    </record>
-</data></odoo>
+        <record id="impress_quality_quality_check_tree" model="ir.ui.view">
+            <field name="name">impress.quality.quality.check.tree</field>
+            <field name="model">quality.check</field>
+            <field name="inherit_id" ref="quality_control.quality_check_view_tree"/>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <xpath expr="//tree[1]" position="attributes">
+                    <attribute name="default_order">control_date desc</attribute>
+                    <attribute name="decoration-success">x_signature</attribute>
+                </xpath>
+                <xpath expr="//tree[1]" position="inside">
+                    <field name="x_signature" widget="signature" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Warehouse Space Billing',
-    'version': '17.0.0.0.1',
-    'category': 'Inventory/Billing',
-    'summary': 'Bill clients based on warehouse space usage',
-    'description': """
+    "name": "Warehouse Space Billing",
+    "version": "17.0.0.0.1",
+    "category": "Inventory/Billing",
+    "summary": "Bill clients based on warehouse space usage",
+    "description": """
         This module allows billing customers based on the warehouse space
         utilized by their products on a daily basis.
         Features:
@@ -12,14 +12,14 @@
         - Configure billing rates
         - Generate monthly invoices automatically
     """,
-    'author': 'Cédric Paradis',
-    'depends': [
-        'base',
-        'stock',
-        'product',
-        'account',
-        'uom',
-        'sale_management',
+    "author": "Cédric Paradis",
+    "depends": [
+        "base",
+        "stock",
+        "product",
+        "account",
+        "uom",
+        "sale_management",
     ],
     "data": [
         "data/ir_sequence.xml",
@@ -32,10 +32,10 @@
         "views/warehouse_quant_group_views.xml",
         "wizards/wizard_create_quant_history.xml",
         "views/menus.xml",
-        'data/billing_config_actions.xml',
+        "data/billing_config_actions.xml",
     ],
-    'installable': True,
-    'application': True,
-    'auto_install': False,
-    'license': 'GPL-2',
+    "installable": True,
+    "application": True,
+    "auto_install": False,
+    "license": "GPL-2",
 }

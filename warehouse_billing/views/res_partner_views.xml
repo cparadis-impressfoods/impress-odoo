@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
+
     <!-- View res.partner form -->
     <record id="view_res_view_buttons" model="ir.ui.view">
         <field name="name">partner.view.buttons</field>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    
+
     <record id="ws_ph_meter_calibration_20250320_form_view" model="ir.ui.view">
         <field name="name">ws.ph_calibration.20250320</field>
         <field name="model" model="ir.model" eval="obj().env.ref('impress_maintenance_worksheets.ws_ph_meter_calibration_20250320').model_id.model"/>
@@ -42,8 +42,12 @@
                     <group>
                         <field name="x_comments" placeholder="Add details about your intervention..."/>
                     </group>
-                    <div class="text-center"><strong>Pour l'utilisation exclusive de Impress Foods.</strong><strong> Mis à jour le 20 Mars 2025.</strong><strong> Feuille de contrôle Calibration pH-mètre </strong></div>
-                </sheet>   
+                    <div class="text-center">
+                        <strong>Pour l'utilisation exclusive de Impress Foods.</strong>
+                        <strong> Mis à jour le 20 Mars 2025.</strong>
+                        <strong> Feuille de contrôle Calibration pH-mètre </strong>
+                    </div>
+                </sheet>
             </form>
         </field>
     </record>

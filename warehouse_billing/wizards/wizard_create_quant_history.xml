@@ -21,7 +21,8 @@
                         <field name="date_to"/>
                         <label for="quantity" string="Quantity"/>
                         <div class="o_row g-0 d-flex">
-                            <field name="quantity"/><field name="uom_id" readonly="1"/>
+                            <field name="quantity"/>
+                            <field name="uom_id" readonly="1"/>
                         </div>
                     </group>
                 </group>

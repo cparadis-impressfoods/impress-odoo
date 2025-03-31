@@ -8,28 +8,48 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <td><span>État du produit: </span><span t-field="worksheet.x_product_state"/></td>
-                                <td><span>État du camion: </span><span t-field="worksheet.x_truck_state"/></td>
-
-                            </tr>
-                            <tr>
-                                <td><span>Vérification date d'expiration: </span><span t-field="worksheet.x_expiration_check"/></td>
-                                <td><span>État des palettes: </span><span t-field="worksheet.x_pallet_state"/></td>
-
-                            </tr>
-                            <tr>
-                                <td><span>Absence d'allergènes:            </span>
-                                    <t t-if="worksheet.x_product_allergen"><span>Oui</span></t>
-                                    <t t-else="not worksheet.x_product_allergen"><span>Non</span></t>
+                                <td>
+                                    <span>État du produit: </span>
+                                    <span t-field="worksheet.x_product_state"/>
                                 </td>
-                                <td><span>Identité du chauffeur: </span><span t-field="worksheet.x_driver_id"/></td>
+                                <td>
+                                    <span>État du camion: </span>
+                                    <span t-field="worksheet.x_truck_state"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>Vérification date d'expiration: </span>
+                                    <span t-field="worksheet.x_expiration_check"/>
+                                </td>
+                                <td>
+                                    <span>État des palettes: </span>
+                                    <span t-field="worksheet.x_pallet_state"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>Absence d'allergènes:            </span>
+                                    <t t-if="worksheet.x_product_allergen">
+                                        <span>Oui</span>
+                                    </t>
+                                    <t t-else="not worksheet.x_product_allergen">
+                                        <span>Non</span>
+                                    </t>
+                                </td>
+                                <td>
+                                    <span>Identité du chauffeur: </span>
+                                    <span t-field="worksheet.x_driver_id"/>
+                                </td>
                             </tr>
 
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="row"> 
+            <div class="row">
                 <span t-field="worksheet.x_comments"/>
             </div>
 
@@ -39,10 +59,10 @@
                 </div>
 
                 <div class="col-sm-6">
-                <img t-att-src="image_data_uri(worksheet.x_truck_picture)" style="width:100px;height:auto;"/>
+                    <img t-att-src="image_data_uri(worksheet.x_truck_picture)" style="width:100px;height:auto;"/>
                 </div>
             </div>
-            
+
 
 
             <div class="row">

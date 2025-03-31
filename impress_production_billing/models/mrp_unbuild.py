@@ -8,8 +8,7 @@ _logger = logging.getLogger(__name__)
 
 
 class MrpUnbuild(models.Model):
-    _inherit = 'mrp.unbuild'
-
+    _inherit = "mrp.unbuild"
 
     def action_unbuild(self):
         res = super().action_unbuild()

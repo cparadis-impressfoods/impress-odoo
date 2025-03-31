@@ -4,8 +4,10 @@ import { registry } from "@web/core/registry";
 import { listView } from "@web/views/list/list_view";
 
 const MoveListView = {
-    ...listView,
-    searchMenuTypes: [],
+  ...listView,
+  searchMenuTypes: [],
 };
 
-registry.category("views").add('manufacturing_portal_move_list_view', MoveListView);
+registry
+  .category("views")
+  .add("manufacturing_portal_move_list_view", MoveListView);

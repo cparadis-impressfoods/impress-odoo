@@ -17,18 +17,19 @@
                     </group>
                     <div>
                         <p>
-                            <span style="font-weight: bold;">Frequency: </span><span>At the start of every finished product format</span>
+                            <span style="font-weight: bold;">Frequency: </span>
+                            <span>At the start of every finished product format</span>
                         </p>
                     </div>
 
                     <group>
                         <group>
-                            <field name="x_shelf_life" readonly='1'/>
-                            <field name="x_case_code"  required='1'/>
-                            <field name="x_case_check" required='1'/>
-                            <field name="x_unit_code"  required='1'/>
-                            <field name="x_unit_check" required='1'/>
-                            <field name="x_start_date" required='1'/>
+                            <field name="x_shelf_life" readonly='1' />
+                            <field name="x_case_code" required='1' />
+                            <field name="x_case_check" required='1' />
+                            <field name="x_unit_code" required='1' />
+                            <field name="x_unit_check" required='1' />
+                            <field name="x_start_date" required='1' />
                             <field name="x_notes" />
                         </group>
                         <group>
@@ -37,7 +38,7 @@
                             <field name="x_keep_cold_check" required='1' />
                             <field name="x_sleeve_check" required='1' />
                             <field name="x_signature" widget="signature"
-                                options="{'size':[0,90]}" required='1' string="Initials"/>
+                                options="{'size':[0,90]}" required='1' string="Initials" />
 
                         </group>
                     </group>

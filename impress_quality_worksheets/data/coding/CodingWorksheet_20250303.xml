@@ -185,7 +185,8 @@
         <field name="ttype">many2one</field>
     </record>
     -->
-    <!--ws: x_coding_log_line_ids - One2Many -->
+    <!--ws:
+    x_coding_log_line_ids - One2Many -->
     <!--
     <record id='x_worksheet_20250303_coding_log_lines_id' model='ir.model.fields'>
         <field name="name">x_coding_log_line_ids</field>

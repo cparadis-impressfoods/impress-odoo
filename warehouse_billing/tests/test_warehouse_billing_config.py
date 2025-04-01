@@ -4,7 +4,7 @@ from math import ceil
 from odoo.tests import TransactionCase, tagged
 
 
-@tagged("standard", "warehouse_billing")
+@tagged("standard", "impress")
 class TestWarehouseBillingConfig(TransactionCase):
 
     def setUp(self):

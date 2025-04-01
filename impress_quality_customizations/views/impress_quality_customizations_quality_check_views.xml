@@ -33,5 +33,22 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="impress_quality_quality_check_form" model="ir.ui.view">
+            <field name="name">impress.quality.quality.check.form</field>
+            <field name="model">quality.check</field>
+            <field name="inherit_id" ref="quality_control.quality_check_view_form"/>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_view_production" type="object" class="oe_button" icon="fa-wrench" invisible="not production_id">
+                        <span class="o_stat_text">Production</span>
+                    </button>
+                    <button name="action_view_picking" type="object" class="oe_button" icon="fa-boxes" invisible="not picking_id">
+                        <span class="o_stat_text">Transfer</span>
+                    </button>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>

@@ -1,61 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-  <odoo>
-      
-    <!-- View maintenance.request form -->
-    <record id="view_maintenance_request_form" model="ir.ui.view">
-        <field name="name">view.maintenance.request.form</field>
-        <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//notebook/page[1]" position="after">
-                <page string="Parts">
-                  <field name='scrap_ids' widget='one2many_list' context="{'default_origin': name}" readonly="done">
-                    <tree>
-                      <field name='product_id'/>
-                      <field name='scrap_qty'/>
-                      <field name='product_uom_id' />
-                      <field name='state'/>
-                      <field name="lot_id"/>
-                    </tree>
-                    <form>
-                        <group><group>
-                          <field name="tracking" invisible='1'/>
-                          <field name="company_id"  invisible="1"/>
-                          <field name="product_id" required="1"/>
-                          <field name="scrap_qty" required="1"/>
-                          <field name="lot_id" invisible="tracking=='none'"/>
-                        </group></group>
-                    </form>
-                  </field>
-                </page>
-            </xpath>
-            <xpath expr="//sheet" position="inside">
-              <div class="oe_button_box" name="button_box">
-                  <button class="oe_stat_button" name="action_see_move_scrap" type="object" icon="oi-arrows-v" invisible="scrap_count == 0">
-                    <div class="o_field_widget o_stat_info">
-                        <span class="o_stat_value"><field name="scrap_count"/></span>
-                        <span class="o_stat_text">Scraps</span>
-                    </div>
-                  </button>
-              </div>
-            </xpath>
-            <xpath expr="//header/button[1]" position="before">
-              <field name="all_scraps_done" invisible="1"/>
-              <button name="action_consume_parts" string="Consume Parts" type="object" 
-                    class="oe_highlight" invisible="scrap_count == 0 or all_scraps_done"/>
-            </xpath>
-        </field>
-    </record>
+<odoo>
 
-    <record id="action_open_maintenance_requests" model="ir.actions.act_window">
-        <field name="name">Maintenance Requests</field>
-        <field name="res_model">maintenance.request</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="maintenance.hr_equipment_request_view_kanban"/>
-        <field name="context">{
+  <!-- View maintenance.request form -->
+  <record id="view_maintenance_request_form" model="ir.ui.view">
+    <field name="name">view.maintenance.request.form</field>
+    <field name="model">maintenance.request</field>
+    <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//notebook/page[1]" position="after">
+        <page string="Parts">
+          <field name='scrap_ids' widget='one2many_list' context="{'default_origin': name}" readonly="done">
+            <tree>
+              <field name='product_id'/>
+              <field name='scrap_qty'/>
+              <field name='product_uom_id' />
+              <field name='state'/>
+              <field name="lot_id"/>
+            </tree>
+            <form>
+              <group>
+                <group>
+                  <field name="tracking" invisible='1'/>
+                  <field name="company_id" invisible="1"/>
+                  <field name="product_id" required="1"/>
+                  <field name="scrap_qty" required="1"/>
+                  <field name="lot_id" invisible="tracking=='none'"/>
+                </group>
+              </group>
+            </form>
+          </field>
+        </page>
+      </xpath>
+      <xpath expr="//sheet" position="inside">
+        <div class="oe_button_box" name="button_box">
+          <button class="oe_stat_button" name="action_see_move_scrap" type="object" icon="oi-arrows-v" invisible="scrap_count == 0">
+            <div class="o_field_widget o_stat_info">
+              <span class="o_stat_value">
+                <field name="scrap_count"/>
+              </span>
+              <span class="o_stat_text">Scraps</span>
+            </div>
+          </button>
+        </div>
+      </xpath>
+      <xpath expr="//header/button[1]" position="before">
+        <field name="all_scraps_done" invisible="1"/>
+        <button name="action_consume_parts" string="Consume Parts" type="object" class="oe_highlight" invisible="scrap_count == 0 or all_scraps_done"/>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="action_open_maintenance_requests" model="ir.actions.act_window">
+    <field name="name">Maintenance Requests</field>
+    <field name="res_model">maintenance.request</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="maintenance.hr_equipment_request_view_kanban"/>
+    <field name="context">{
             'search_default_active': True,
             'default_user_id': uid
         }</field>
 
-    </record>
-  </odoo>
+  </record>
+</odoo>

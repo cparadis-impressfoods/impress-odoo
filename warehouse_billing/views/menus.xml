@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Menu Item -->
+    <menuitem id="menu_warehouse_billing_root" name="Warehouse Billing" sequence="10"/>
+
+    <menuitem id="menu_warehouse_billing_config" name="Billing Configurations" parent="menu_warehouse_billing_root" action="action_warehouse_billing_config" sequence="10"/>
+
+    <menuitem id="menu_warehouse_quant_group" name="Quant Group" parent="menu_warehouse_billing_root" action="action_warehouse_quant_group" sequence="30"/>
+
+    <menuitem id="menu_warehouse_quant_history" name="Quant History" parent="menu_warehouse_billing_root" action="action_quant_history" sequence="40"/>
+
+    <menuitem id="menu_warehouse_quant_history_create" name="Create Quant History" parent="menu_warehouse_billing_root" action="action_wizard_create_quant_history" sequence="50"/>
+</odoo>

@@ -8,7 +8,9 @@
         <field name="priority">16</field>
         <field name="arch" type="xml">
             <xpath expr="//label[@for='bom_id']" position="before">
-                <field name="billing_sale_order_ref" readonly="state in ['done', 'cancel']" invisible="not product_id or (state in ['done', 'cancel'] and not billing_sale_order_ref)" decoration-success="billing_sale_order_line_id"/>
+                <field name="billing_sale_order_ref" readonly="state in ['done', 'cancel']"
+                    invisible="not product_id or (state in ['done', 'cancel'] and not billing_sale_order_ref)"
+                    decoration-success="billing_sale_order_line_id" />
 
             </xpath>
             <xpath expr="//page[@name='miscellaneous']" position="before">

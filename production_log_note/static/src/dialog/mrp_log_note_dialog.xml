@@ -11,7 +11,8 @@
                 </t>
                 <TextField name="'log_note'" record="props.record" readonly="true"/>
                 <t t-set-slot="footer">
-                    <t t-if="false"/> <!-- Hide footer buttons -->
+                    <t t-if="false"/>
+                    <!-- Hide footer buttons -->
                 </t>
             </Dialog>
         </div>

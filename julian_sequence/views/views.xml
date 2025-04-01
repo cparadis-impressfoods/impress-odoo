@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
+    <!--
     <record model="ir.ui.view" id="./addons/julian_sequence.list">
       <field name="name">./addons/julian_sequence list</field>
       <field name="model">./addons/julian_sequence../addons/julian_sequence</field>
@@ -16,7 +16,7 @@
 -->
 
     <!-- actions opening views on models -->
-<!--
+    <!--
     <record model="ir.actions.act_window" id="./addons/julian_sequence.action_window">
       <field name="name">./addons/julian_sequence window</field>
       <field name="res_model">./addons/julian_sequence../addons/julian_sequence</field>
@@ -25,7 +25,7 @@
 -->
 
     <!-- server action to the one above -->
-<!--
+    <!--
     <record model="ir.actions.server" id="./addons/julian_sequence.action_server">
       <field name="name">./addons/julian_sequence server</field>
       <field name="model_id" ref="model_./addons/julian_sequence_./addons/julian_sequence"/>
@@ -41,19 +41,23 @@
 -->
 
     <!-- Top menu item -->
-<!--
+    <!--
     <menuitem name="./addons/julian_sequence" id="./addons/julian_sequence.menu_root"/>
 -->
     <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="./addons/julian_sequence.menu_1" parent="./addons/julian_sequence.menu_root"/>
-    <menuitem name="Menu 2" id="./addons/julian_sequence.menu_2" parent="./addons/julian_sequence.menu_root"/>
+    <!--
+    <menuitem name="Menu 1" id="./addons/julian_sequence.menu_1"
+    parent="./addons/julian_sequence.menu_root"/>
+    <menuitem name="Menu 2" id="./addons/julian_sequence.menu_2"
+    parent="./addons/julian_sequence.menu_root"/>
 -->
     <!-- actions -->
-<!--
-    <menuitem name="List" id="./addons/julian_sequence.menu_1_list" parent="./addons/julian_sequence.menu_1"
+    <!--
+    <menuitem name="List" id="./addons/julian_sequence.menu_1_list"
+    parent="./addons/julian_sequence.menu_1"
               action="./addons/julian_sequence.action_window"/>
-    <menuitem name="Server to list" id="./addons/julian_sequence" parent="./addons/julian_sequence.menu_2"
+    <menuitem name="Server to list" id="./addons/julian_sequence"
+    parent="./addons/julian_sequence.menu_2"
               action="./addons/julian_sequence.action_server"/>
 -->
   </data>

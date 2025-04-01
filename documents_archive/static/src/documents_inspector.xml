@@ -21,7 +21,7 @@
                     </button>
                 </t>
                 <t t-if="records.some(record => record.data.active)">
-                    <!-- groups does not work here -->
+                        <!-- groups does not work here -->
                     <button t-if="currentFolder.id and !records.every(rec => ['empty', 'url'].includes(rec._values.type))" class="o_inspector_button o_inspector_share btn" title="Share this selection" groups="documents.group_documents_user" t-on-click.stop.prevent="onShare" data-hotkey="m">
                         <i class="fa fa-fw fa-share-alt"/>
                     </button>

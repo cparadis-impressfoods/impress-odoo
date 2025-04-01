@@ -7,13 +7,13 @@
         <field name="model">coding.log.line</field>
         <field name="arch" type="xml">
             <tree default_order='create_date desc'>
-                <field name="sequence"/>
-                <field name="date"/>
-                <field name="case_code"/>
-                <field name="unit_code"/>
-                <field name="global_success_check" widget="badge" 
+                <field name="sequence" />
+                <field name="date" />
+                <field name="case_code" />
+                <field name="unit_code" />
+                <field name="global_success_check" widget="badge"
                     decoration-success="global_success_check == 'ok'"
-                    decoration-danger="global_success_check == 'not_ok'"/>
+                    decoration-danger="global_success_check == 'not_ok'" />
             </tree>
         </field>
     </record>
@@ -26,31 +26,31 @@
             <form string="Coding_log_line">
                 <sheet>
                     <div class="oe_title">
-                        <label for="sequence"/>
+                        <label for="sequence" />
                         <h1>
-                            <field name="sequence" placeholder="Name..."/>
+                            <field name="sequence" placeholder="Name..." />
                         </h1>
                         <group>
                             <group>
-                                <field name="case_code"/>
-                                <field name="case_check"/>
-                                <field name="unit_code"/>
-                                <field name="unit_check"/>
-                                <field name="notes"/>
+                                <field name="case_code" />
+                                <field name="case_check" />
+                                <field name="unit_code" />
+                                <field name="unit_check" />
+                                <field name="notes" />
                             </group>
                             <group>
-                                <field name="subunit_check"/>
-                                <field name="shelf_life_check"/>
-                                <field name="keep_cold_check"/>
-                                <field name="sleeve_check"/>  
+                                <field name="subunit_check" />
+                                <field name="shelf_life_check" />
+                                <field name="keep_cold_check" />
+                                <field name="sleeve_check" />
                             </group>
                         </group>
                         <group>
                             <group>
-                                <field name="signature" widget="signature" options="{'size':[0,90]}"/>
+                                <field name="signature" widget="signature" options="{'size':[0,90]}" />
                             </group>
                             <group>
-                                <field name="date"/>
+                                <field name="date" />
                             </group>
                         </group>
                     </div>
@@ -66,7 +66,8 @@
         <field name="arch" type="xml">
             <search>
                 <group expand="1" string="Group By">
-                    <filter string="Sequence" name="sequence" domain="[]" context="{'group_by':'sequence'}"/>
+                    <filter string="Sequence" name="sequence" domain="[]"
+                        context="{'group_by':'sequence'}" />
                 </group>
             </search>
         </field>

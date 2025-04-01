@@ -4,26 +4,26 @@
         <field name="name">sale.order.view.gantt</field>
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
-            <gantt 
-                date_start="date_order" 
-                date_stop="date_order" 
-                default_scale="week" 
-                scales="week,month,year" 
-                string="Sales Orders" 
-                display_unavailability="false" 
-                precision="{'day':'hour:half','week':'day:half'}" 
-                total_row="false" 
-                decoration-danger="state == 'cancel'" 
+            <gantt
+                date_start="date_order"
+                date_stop="date_order"
+                default_scale="week"
+                scales="week,month,year"
+                string="Sales Orders"
+                display_unavailability="false"
+                precision="{'day':'hour:half','week':'day:half'}"
+                total_row="false"
+                decoration-danger="state == 'cancel'"
                 color="id"
             >
-                <field name="state"/>
-                <field name="partner_id"/>
-                <field name="invoice_status"/>
+                <field name="state" />
+                <field name="partner_id" />
+                <field name="invoice_status" />
                 <templates>
                     <div t-name="gantt-popover">
                         <div t-if="partner_id">
                             <strong>Customer — </strong>
-                            <t t-esc="partner_id[1]"/>
+                            <t t-esc="partner_id[1]" />
                         </div>
                         <div>
                             <strong>

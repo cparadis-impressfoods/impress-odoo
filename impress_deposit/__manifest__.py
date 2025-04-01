@@ -1,26 +1,23 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Impress Deposit',
-    'version': '17.0.1.1',
-    'summary': """ Module to allow the management of deposits for containers """,
-    'author': 'Cédric Paradis',
-    'website': '',
-    'category': 'Stock',
-    'depends': ['base', 'web', 'sale_management', 'stock'],
-    
+    "name": "Impress Deposit",
+    "version": "17.0.1.1",
+    "summary": """ Module to allow the management of deposits for containers """,
+    "author": "Cédric Paradis",
+    "website": "",
+    "category": "Stock",
+    "depends": ["base", "web", "sale_management", "stock"],
     "data": [
         "views/product_product_views.xml",
         "views/res_config_settings_views.xml",
         "views/res_partner_views.xml",
-        "views/stock_picking_views.xml"
+        "views/stock_picking_views.xml",
     ],
-    
-    'assets': {
-              #'web.assets_backend': [
-              #    'impress_deposit/static/src/**/*'
-              #],
-          },
-
-    'installable': True,
-    'license': 'GPL-2',
+    "assets": {
+        #'web.assets_backend': [
+        #    'impress_deposit/static/src/**/*'
+        # ],
+    },
+    "installable": True,
+    "license": "GPL-2",
 }

@@ -14,18 +14,14 @@
                     </group>
                     <group>
                         <group name="product" string="Product">
-                            <field name="x_product_state" string="Product state (no bad smells, expected color and texture, respects specs etc)"
-                                widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
+                            <field name="x_product_state" string="Product state (no bad smells, expected color and texture, respects specs etc)" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
                             <field name="x_product_allergen" string="No allergen markings on product or documents"/>
                             <field name="x_signature" widget="signature" options="{&quot;size&quot;:[0,90]}" field_id="x_signature_0"/>
                         </group>
                         <group name="truck" string="Transport">
-                            <field name="x_pallet_state" string="Pallet state (No greases, oils, wood or metal chips, dusts, etc.)"
-                                widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
-                            <field name="x_truck_state" string="Truck state (Clean, no traces of pests, no bad smells, etc.)"
-                                 widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
-                            <field name="x_driver_id" string="Driver's documents match receipt documents"
-                                widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
+                            <field name="x_pallet_state" string="Pallet state (No greases, oils, wood or metal chips, dusts, etc.)" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
+                            <field name="x_truck_state" string="Truck state (Clean, no traces of pests, no bad smells, etc.)" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
+                            <field name="x_driver_id" string="Driver's documents match receipt documents" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
                             <field name="x_truck_picture" widget="image" options="{&quot;size&quot;:[0,90]}" field_id="x_truck_picture_0"/>
                         </group>
                     </group>
@@ -70,12 +66,16 @@
                             </tbody>
                         </table>
                     </div>
-                    
-                    <div class="text-center"><strong>Pour l'utilisation exclusive de Impress Foods.</strong><strong> Mis à jour le 14 janvier 2025.</strong><strong> Feuille de contrôle Réception </strong></div>
-                </sheet>   
+
+                    <div class="text-center">
+                        <strong>Pour l'utilisation exclusive de Impress Foods.</strong>
+                        <strong> Mis à jour le 14 janvier 2025.</strong>
+                        <strong> Feuille de contrôle Réception </strong>
+                    </div>
+                </sheet>
             </form>
         </field>
     </record>
-    
+
 
 </odoo>

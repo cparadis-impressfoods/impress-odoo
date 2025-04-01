@@ -7,15 +7,14 @@
         <field name="color">3</field>
         <field name="res_model">quality.check</field>
     </record>
-    
+
 
     <!-- Add the required fields -->
-    
+
     <record id='delivery_20250114_x_pallet_used' model='ir.model.fields'>
         <field name="name">x_pallet_used</field>
         <field name="field_description">Type of pallet used</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_stock_worksheets.ws_delivery_20250114').model_id" />
+        <field name="model_id" model="ir.model" eval="obj().env.ref('impress_stock_worksheets.ws_delivery_20250114').model_id" />
         <field name="ttype">selection</field>
         <field name="selection">[('chep', 'CHEP'), ('white', 'Blanche'), ('n/a', 'Non applicable')]</field>
         <field name="translate">True</field>
@@ -24,18 +23,16 @@
     <record id='delivery_20250114_x_truck_state' model='ir.model.fields'>
         <field name="name">x_truck_state</field>
         <field name="field_description">Truck state and cleanliness</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_stock_worksheets.ws_delivery_20250114').model_id" />
+        <field name="model_id" model="ir.model" eval="obj().env.ref('impress_stock_worksheets.ws_delivery_20250114').model_id" />
         <field name="ttype">selection</field>
         <field name="selection">[('true', 'Conforme'), ('false', 'Non Conforme')]</field>
         <field name="translate">True</field>
     </record>
-    
+
     <record id='delivery_20250114_x_product_state' model='ir.model.fields'>
         <field name="name">x_product_state</field>
         <field name="field_description">Product state and cleanliness</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_stock_worksheets.ws_delivery_20250114').model_id" />
+        <field name="model_id" model="ir.model" eval="obj().env.ref('impress_stock_worksheets.ws_delivery_20250114').model_id" />
         <field name="ttype">selection</field>
         <field name="selection">[('true', 'Conforme'), ('false', 'Non Conforme')]</field>
         <field name="translate">True</field>
@@ -44,8 +41,7 @@
     <record id='delivery_20250114_x_driver_id' model='ir.model.fields'>
         <field name="name">x_driver_id</field>
         <field name="field_description">Driver ID'd</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_stock_worksheets.ws_delivery_20250114').model_id" />
+        <field name="model_id" model="ir.model" eval="obj().env.ref('impress_stock_worksheets.ws_delivery_20250114').model_id" />
         <field name="ttype">selection</field>
         <field name="selection">[('true', 'Conforme'), ('false', 'Non Conforme'), ('n/a', 'Non applicable')]</field>
     </record>

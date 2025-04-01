@@ -189,7 +189,7 @@ patch(DateTimePicker.prototype, {
       this.state.timeValues[props.focusedDateIndex] =
         timeValues[props.focusedDateIndex];
     }
-    console.log(this.state.timeValues);
+    // Debugging: console.log(this.state.timeValues);
     this.shouldAdjustFocusDate = !props.range;
     this.adjustFocus(this.values, props.focusedDateIndex);
     this.handle12HourSystem();

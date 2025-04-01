@@ -180,7 +180,7 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
         i = 0
         grouped_configs = {}
         for config in configs:
-            if config.bill_seperately:
+            if config.bill_separately:
                 grouped_configs[i] = config
                 i += 1
             else:

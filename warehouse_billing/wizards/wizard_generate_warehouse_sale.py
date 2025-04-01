@@ -128,8 +128,7 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
             for config, group in quant_history.items()
             if not group.sale_order_id
         }
-        _logger.warning(quant_history)
-        return
+
         if quant_history == {}:
             return
 

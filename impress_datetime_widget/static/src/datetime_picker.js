@@ -175,11 +175,13 @@ patch(DateTimePicker.prototype, {
         `DateTimePicker error: given "maxDate" comes before "minDate".`
       );
     }
-
+    const currentTime = DateTime.local();
+    console.log(currentTime);
+    console.log(this.values)
     const timeValues = this.values.map((val) => [
-      (val || DateTime.local()).hour,
-      val.minute || DateTime.local().minute,
-      val.second || DateTime.local().second,
+      (val || currentTime).hour,
+      (val || currentTime).minute || 0,
+      (val || currentTime).second || 0,
     ]);
 
     if (props.range) {

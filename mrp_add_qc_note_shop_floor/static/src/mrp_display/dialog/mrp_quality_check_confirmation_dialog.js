@@ -9,3 +9,15 @@ patch(MrpQualityCheckConfirmationDialog, {
     TextField,
   },
 });
+
+patch(MrpQualityCheckConfirmationDialog.prototype, {
+  async saveAndClose() {
+    console.log(this.recordData.additional_note);
+    await this.props.record.save();
+    this.props.close();
+  },
+});
+
+
+
+

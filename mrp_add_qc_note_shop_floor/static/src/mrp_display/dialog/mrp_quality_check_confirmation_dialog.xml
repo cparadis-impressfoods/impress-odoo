@@ -16,7 +16,9 @@
         </xpath>
 
         <xpath expr="//div/Dialog/div[1]/div[2]" position="replace"/>
-
+        <xpath expr="//Dialog/t[4]/div/div[2]/button[2]" position="after">
+            <button t-on-click="saveAndClose" class="btn btn-secondary">Save and Close</button>
+        </xpath>
     </t>
 
 </templates>

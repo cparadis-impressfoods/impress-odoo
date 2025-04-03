@@ -47,10 +47,6 @@ class QuantHistoryGroup(models.Model):
     @api.depends("quant_history_ids", "quant_history_ids.invoiced", "sale_order_id")
     def _compute_invoicing_state(self):
         for record in self:
-            if not record.sale_order_id:
-                record.invoicing_state = "not_invoiced"
-                record.quant_history_ids.write({"invoiced": False})
-
             if record.quant_history_ids:
                 if all(history.invoiced for history in record.quant_history_ids):
                     record.invoicing_state = "invoiced"
@@ -69,7 +65,9 @@ class QuantHistoryGroup(models.Model):
                 and record.sale_order_line_id.invoice_status == "invoiced"
             ):
                 record.invoiced = True
-                record.quant_history_ids.write({"invoiced": True})
+                for line in record.quant_history_ids:
+                    if not line.invoice_id:
+                        line.write({"invoice_id": self.invoice_ids[0].id})
             else:
                 record.invoiced = False
 

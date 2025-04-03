@@ -24,7 +24,21 @@ class QuantHistory(models.Model):
     lot_id = fields.Many2one("stock.lot", string="Lot")
     group_id = fields.Many2one("warehouse.quant.group", string="Quant History Group")
     quant_id = fields.Integer(string="Quant ID")
-    invoiced = fields.Boolean(string="Invoiced", default=False)
+
+    invoice_id = fields.Many2one("account.move", string="Invoice")
+    invoiced = fields.Boolean(
+        string="Invoiced",
+        compute="_compute_invoiced",
+    )
+
+    @api.depends("invoice_id")
+    def _compute_invoiced(self):
+        for record in self:
+            _logger.info(record.invoice_id)
+            if record.invoice_id:
+                record.invoiced = True
+            else:
+                record.invoiced = False
 
     def get_pallet_qty(self) -> int:
         if not self.product_id.qty_per_pallet:

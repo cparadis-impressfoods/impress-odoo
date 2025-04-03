@@ -1,2 +1,2 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_maintenance_team_tag_manager,maintenance_team_tag_manager,model_maintenance_team_tag,,1,1,1,1
+access_maintenance_team_tag_manager,maintenance_team_tag_manager,model_maintenance_team_tag,impress_maintenance.group_maintenance_administrator,1,1,1,1

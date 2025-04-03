@@ -14,14 +14,6 @@
                 <button name="action_get_requests" type="object" class="oe_stat_button" context="{'search_default_active': True, 'default_company_id': company_id, 'default_maintenance_team_id': maintenance_team_id, 'search_default_preventive': True}" icon="fa-wrench">
                     <field string="Preventive" name="maintenance_open_count_preventive" widget="statinfo"/>
                 </button>
-                <button groups="documents.group_documents_user" name="action_see_documents" type="object" class="oe_stat_button" icon="fa-file-text-o">
-                    <div class="o_field_widget o_stat_info">
-                        <span class="o_stat_value">
-                            <field name="document_count"/>
-                        </span>
-                        <span class="o_stat_text">Documents</span>
-                    </div>
-                </button>
             </xpath>
         </field>
     </record>

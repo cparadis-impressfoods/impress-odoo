@@ -3,6 +3,7 @@
     <!-- Menu Item -->
     <menuitem id="menu_warehouse_billing_root" 
         name="Warehouse Billing" 
+        web_icon="warehouse_billing,static/description/icon.png"
         sequence="10"/>
 
     <menuitem id="menu_warehouse_billing_config" 

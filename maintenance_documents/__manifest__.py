@@ -12,7 +12,8 @@
         "maintenance_worksheet",
     ],
     "data": [
-        "views/maintenance_equipment_views.xml"
+        "views/maintenance_equipment_views.xml",
+        "data/document_folder.xml",
     ],
     "installable": True,
     "auto_install": False,

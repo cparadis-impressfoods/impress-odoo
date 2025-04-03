@@ -33,9 +33,9 @@ class MaintenanceEquipment(models.Model):
             "views": [(False, "kanban")],
             "view_mode": "kanban",
             "context": {
-                # "default_equipment_id": self.id,
-                # 'default_res_model': 'maintenance.equipment',
-                # 'default_res_id': self.id,
+                "default_equipment_id": self.id,
+                "default_res_model": "maintenance.equipment",
+                "default_res_id": self.id,
                 "searchpanel_default_folder_id": self.env.ref(
                     "maintenance_documents.documents_maintenance_folder"
                 ).id,

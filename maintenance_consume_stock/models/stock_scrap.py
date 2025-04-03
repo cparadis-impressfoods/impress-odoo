@@ -15,8 +15,12 @@ class StockScrap(models.Model):
         string="Maintenance Request",
         ondelete="cascade",
     )
+
     maintenance_equipement_id = fields.Many2one(
-        related="maintenance_request_id.equipment_id", string="Equipment", store=True
+        related="maintenance_request_id.equipment_id",
+        string="Equipment",
+        store=True,
+        depends=["maintenance_request_id", "maintenance_request_id.equipment_id"],
     )
 
     def unlink(self):

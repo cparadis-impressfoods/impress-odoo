@@ -15,6 +15,7 @@
     ],
     "data": [
         "data/team_tags.xml",
+        "security/maintenance.xml",
         "security/ir.model.access.csv",
         "views/maintenance_equipment_action.xml",
         "views/maintenance_equipment_category_views.xml",
@@ -25,7 +26,6 @@
         "views/quality/maintenance_request_quality_views.xml",
         "views/quality/maintenance_equipment_quality_action.xml",
         "views/menus.xml",
-        "security/maintenance.xml",
     ],
     "application": True,
     "installable": True,

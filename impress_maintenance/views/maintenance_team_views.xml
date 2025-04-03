@@ -13,4 +13,9 @@
         </field>
     </record>
 
+    <record id="maintenance.maintenance_dashboard_action" model="ir.actions.act_window">
+        <field name="domain" eval="[('team_tag_ids', 'not in', [ref('impress_maintenance.team_tag_quality')])]"/>
+    </record>
+
+
 </odoo>

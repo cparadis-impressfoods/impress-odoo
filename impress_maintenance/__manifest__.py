@@ -17,7 +17,6 @@
         "data/team_tags.xml",
         "security/maintenance.xml",
         "security/ir.model.access.csv",
-        "views/maintenance_equipment_action.xml",
         "views/maintenance_equipment_category_views.xml",
         "views/maintenance_equipment_views.xml",
         "views/maintenance_request_views.xml",

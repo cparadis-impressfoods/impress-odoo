@@ -6,12 +6,14 @@
     <field name="name">view.maintenance.request.form</field>
     <field name="model">maintenance.request</field>
     <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+    <field name="priority">91</field>
     <field name="arch" type="xml">
       <xpath expr="//notebook/page[1]" position="after">
         <page string="Parts">
           <field name='scrap_ids' widget='one2many_list'
-                context="{'default_origin': name, 'default_scrap_location_id': %(maintenance_consume_stock.maintenance_location)d}" >
+                context="{'default_origin': name, 'default_maintenance_request_id': id,'default_scrap_location_id': %(maintenance_consume_stock.maintenance_location)d}" >
             <tree>
+              <field name="name"/>
               <field name='product_id'/>
               <field name='scrap_qty'/>
               <field name='product_uom_id' />
@@ -34,9 +36,8 @@
           </field>
         </page>
       </xpath>
-      <xpath expr="//sheet" position="inside">
-        <div class="oe_button_box" name="button_box">
-          <button class="oe_stat_button" name="action_see_move_scrap" type="object" icon="oi-arrows-v" invisible="scrap_count == 0">
+      <xpath expr="//div[@name='button_box']" position="inside">
+          <button class="oe_stat_button" name="action_view_scrap_move" type="object" icon="oi-arrows-v" invisible="scrap_count == 0">
             <div class="o_field_widget o_stat_info">
               <span class="o_stat_value">
                 <field name="scrap_count"/>
@@ -44,7 +45,6 @@
               <span class="o_stat_text">Scraps</span>
             </div>
           </button>
-        </div>
       </xpath>
       <xpath expr="//header/button[1]" position="before">
         <field name="all_scraps_done" invisible="1"/>
@@ -53,16 +53,4 @@
     </field>
   </record>
 
-  <record id="action_open_maintenance_requests" model="ir.actions.act_window">
-    <field name="name">Maintenance Requests</field>
-    <field name="res_model">maintenance.request</field>
-    <field name="view_mode">tree,form</field>
-    <field name="view_id" ref="maintenance.hr_equipment_request_view_kanban"/>
-    <field name="context">{
-            'search_default_active': True,
-            'default_user_id': uid,
-            'default_scrap_location_id': self.env.ref('maintenance_consume_stock.maintenance_location').id,
-        }</field>
-
-  </record>
 </odoo>

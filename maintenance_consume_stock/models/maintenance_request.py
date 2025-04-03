@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
@@ -53,9 +53,23 @@ class MaintenanceRequest(models.Model):
         for record in self:
             record._consume_parts()
 
-    def action_see_move_scrap(self):
+    def action_view_scrap_move(self):
         self.ensure_one()
-        action = self.env["ir.actions.actions"]._for_xml_id("stock.action_stock_scrap")
-        action["domain"] = [("maintenance_request_id", "=", self.id)]
-        action["context"] = dict(self._context, default_origin=self.name)
+        if len(self.scrap_ids) == 1:
+            action = {
+                "name": _("Scrap Moves"),
+                "type": "ir.actions.act_window",
+                "view_mode": "form",
+                "res_model": "stock.scrap",
+                "res_id": self.scrap_ids[0].id,
+            }
+        else:
+            action = {
+                "name": _("Scrap Moves"),
+                "type": "ir.actions.act_window",
+                "view_mode": "tree,form",
+                "res_model": "stock.scrap",
+                "domain": [("id", "in", [scrap.id for scrap in self.scrap_ids])],
+            }
+
         return action

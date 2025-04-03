@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
@@ -26,12 +26,15 @@ class StockScrap(models.Model):
             )
         super(StockScrap, self).unlink()
 
-    def action_see_maintenance_id(self):
+    def action_view_maintenance_request(self):
         self.ensure_one()
 
-        action = self.env["ir.actions.actions"]._for_xml_id(
-            "maintenance_consume_stock.action_open_maintenance_requests"
-        )
-        action["domain"] = [("scrap_ids", "ilike", self.id)]
-        action["context"] = dict(self._context, default_origin=self.name)
+        action = {
+            "name": _("Maintenance Request"),
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "res_model": "maintenance.request",
+            "res_id": self.maintenance_request_id.id,
+        }
+
         return action

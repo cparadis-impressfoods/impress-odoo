@@ -9,9 +9,9 @@
     <field name="arch" type="xml">
       <xpath expr="//div[@name='button_box']" position="inside">
         <field name="maintenance_request_id" invisible="1"/>
-        <button class="oe_stat_button" name="action_see_maintenance_id" type="object" invisible="not maintenance_request_id" icon="fa-wrench">
+        <button class="oe_stat_button" name="action_view_maintenance_request" type="object" invisible="not maintenance_request_id" icon="fa-wrench">
           <div class="o_stat_info">
-            <span class="o_stat_text">Maintenance Requests</span>
+            <span class="o_stat_text">Maintenance Request</span>
           </div>
         </button>
       </xpath>

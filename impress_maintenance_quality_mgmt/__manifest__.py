@@ -11,7 +11,7 @@
     "category": "Maintenance",
     "depends": [
         "base",
-        "maintenance",
+        "maintenance_worksheet",
         "base_maintenance",
         "quality",
     ],

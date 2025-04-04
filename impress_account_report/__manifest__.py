@@ -3,11 +3,11 @@
 {
     "name": "impress account report customizations",
     "version": "0.1.0",
-    "depends": ["account_accountant"],
+    "depends": ["account_accountant", "account_reports"],
     "author": "Cédric Paradis",
     "category": "Accounting",
     "description": """
-    Module to customize the accounting reports 
+    Module to customize the accounting reports
     """,
     # data files always loaded at installation
     "assets": {

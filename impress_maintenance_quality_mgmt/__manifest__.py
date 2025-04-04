@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Impress_maintenance",
+    "name": "impress_maintenance_quality_mgmt",
     "version": "17.0.0.0.1",
     "summary": """ Impress_maintenance Summary """,
     "author": "Cédric Paradis",

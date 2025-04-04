@@ -20,7 +20,7 @@
         <field name="res_model">maintenance.team</field>
         <field name="view_mode">kanban,form</field>
         <field name="view_id" ref="maintenance.maintenance_team_kanban"/>
-        <field name="domain" eval="[('team_tag_ids', 'in', [ref('impress_maintenance.team_tag_quality')])]"/>
+        <field name="domain" eval="[('team_tag_ids', 'in', [ref('impress_maintenance_quality_mgmt.team_tag_quality')])]"/>
     </record>
 
     <record id="action_quality_maintenance_request_cal" model="ir.actions.act_window">
@@ -28,7 +28,7 @@
         <field name="res_model">maintenance.request</field>
         <field name="view_mode">calendar,kanban,tree,form,pivot,graph,activity</field>
         <field name="view_id" ref="maintenance.hr_equipment_view_calendar"/>
-        <field name="domain" eval="[('maintenance_team_id.team_tag_ids', 'in', [ref('impress_maintenance.team_tag_quality')])]" />
+        <field name="domain" eval="[('maintenance_team_id.team_tag_ids', 'in', [ref('impress_maintenance_quality_mgmt.team_tag_quality')])]" />
         <field name="context">{
             'search_default_active': True,
             'search_default_todo': True,

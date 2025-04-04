@@ -15,8 +15,7 @@ const bus = new EventBus();
 patch(MainComponent.prototype, {
   get unreservedMoves() {
     if (
-      this.env.model.name == "Inventory Adjustment" ||
-      this.env.model.name == "Ajustement d'inventaire"
+      this.env.model.lineModel != "stock.move.line"
     ) {
       return [];
     } else {

@@ -1,6 +1,6 @@
 {
-    "name": "impress_stock_customizations",
-    "version": "0.1.1",
+    "name": "Impress Stock Customizations",
+    "version": "17.0.0.0.1.1",
     "depends": ["base", "stock"],
     "author": "Cédric Paradis",
     "category": "Inventory",
@@ -14,5 +14,4 @@
         "reports/impress_stock_customizations_labels.xml",
         "reports/online_sale_labels.xml",
     ],
-    "assets": {"web.assets_common": ["impress_stock_customizations/static/src/css/*"]},
 }

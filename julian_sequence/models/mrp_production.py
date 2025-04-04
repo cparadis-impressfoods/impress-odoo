@@ -11,6 +11,6 @@ class MrpProduction(models.Model):
     _inherit = "mrp.production"
 
     def _prepare_stock_lot_values(self):
-        self = self.with_context(julian_product_id=self.product_id.id)
+        self = self.with_context(julian_product_id=self.product_id.id)  # type: ignore
         res = super(MrpProduction, self)._prepare_stock_lot_values()
         return res

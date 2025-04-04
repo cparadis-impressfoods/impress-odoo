@@ -87,8 +87,6 @@ class MaintenanceRequest(models.Model):
             case "corrective":
                 domain.append(("check_corrective", "=", True))
 
-        domain.insert(0, "&")
-
         domain.append(("control_point_type", "=", "maintenance"))
         domain.insert(0, "&")
 

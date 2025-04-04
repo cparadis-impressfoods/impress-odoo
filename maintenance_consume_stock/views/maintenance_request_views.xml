@@ -6,7 +6,7 @@
     <field name="name">view.maintenance.request.form</field>
     <field name="model">maintenance.request</field>
     <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
-    <field name="priority">91</field>
+    <field name="priority">1000</field>
     <field name="arch" type="xml">
       <xpath expr="//notebook/page[1]" position="after">
         <page string="Parts">

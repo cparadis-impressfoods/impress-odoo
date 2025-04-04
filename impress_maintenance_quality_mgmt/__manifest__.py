@@ -11,7 +11,6 @@
         "maintenance_worksheet",
         "quality",
         "hr_maintenance",
-        "documents",
     ],
     "data": [
         "data/team_tags.xml",

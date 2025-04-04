@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Maintenance_quality",
+    "name": "Maintenance - Quality",
     "version": "17.0.0.0.1",
-    "summary": """ Maintenance_quality Summary """,
+    "summary": """ Bridge module between Maintenance and Quality Control """,
+    "description": """ Allows the creation of quality control points and alerts for maintenance requests""",
     "author": "Cédric Paradis",
     "website": "",
     "category": "Hidden",

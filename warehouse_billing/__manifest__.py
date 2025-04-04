@@ -13,6 +13,7 @@
         - Generate monthly invoices automatically
     """,
     "author": "Cédric Paradis",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "depends": [
         "base",
         "stock",

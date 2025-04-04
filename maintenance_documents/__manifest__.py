@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Maintenance Documents",
+    "name": "Maintenance - Documents",
     "version": "17.0.1.0.0",
     "summary": """ Bridge module between Maintenance and Documents """,
     "description": """ Allows documents to be assigned to maintenance equipments """,

@@ -41,42 +41,7 @@
             </xpath>
         </field>
     </record>
-    <!--
-    <record id="production_gantt" model="ir.ui.view">
-        <field name="name">production.gantt</field>
-        <field name="model">mrp.production</field>
-        <field name="priority">14</field>
-        <field name="arch" type="xml">
-            <gantt date_start="date_start" date_stop="date_finished" default_group_by="x_studio_field_l2DBU" total_row="false" default_scale="day" string="Gantt" display_unavailability="true" precision="{'day':'hour:quarter','week':'day:half','month':'day:full'}" decoration-danger="state == 'cancel'" decoration-success="state == 'done'" decoration-warning="state == 'cancel'" decoration-info="state == 'draft'" color="product_id">
-                <field name="product_id" />
-                <field name="state" />
-                <field name="x_studio_po_origine" />
-                <templates>
-                    <div t-name="gantt-popover" class="container-fluid">
-                        <div class="row g-0">
-                            <div class="col">
-                                <ul class="ps-1 mb-0 list-unstyled">
-                                    <li>
-                                        <strong>Start Date: </strong>
-                                        <t t-esc="date_start.toFormat('F')" />
-                                    </li>
-                                    <li>
-                                        <strong>Stop Date: </strong>
-                                        <t t-esc="date_finished.toFormat('F')" />
-                                    </li>
-                                    <li>
-                                        <strong>Product: </strong>
-                                        <t t-esc="product_id[1]" />
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </templates>
-            </gantt>
-        </field>
-    </record>
-    -->
+    
     <record id="mrp_production_view_search_inherit" model="ir.ui.view">
         <field name="name">mrp.production.view.search.inherit</field>
         <field name="model">mrp.production</field>

@@ -2,7 +2,7 @@
 {
     "name": "impress_project_production_billing",
     "version": "0.1.0",
-    "summary": "Impress Foods to bill MOs through projects",
+    "summary": "Impress Foods to bill MOs through projects DEPRECATED",
     "description": """
         Impress Foods customization to allow billing of MOs through projects
     """,

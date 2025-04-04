@@ -35,7 +35,7 @@
         "views/menus.xml",
     ],
     "assets": {
-        #'web.assets_backend': [
+        # 'web.assets_backend': [
         #    'impress_quality_logs/static/src/**/*'
         # ],
     },

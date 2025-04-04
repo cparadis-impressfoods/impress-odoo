@@ -48,6 +48,8 @@
                     <th class="text-end">Scheduled Date</th>
                     <th class="text-end">Produced</th>
                     <th class="text-end">Planned</th>
+                    <th class="text-end">Lot</th>
+                    <th class="text-end">Expiration Date</th>
                     <th t-if="groupby != 'state'" class="text-end">State</th>
                 </tr>
             </thead>
@@ -93,6 +95,12 @@
                             </td>
                             <td class="text-end">
                                 <span t-field="mo.product_qty" />
+                            </td>
+                            <td t-if="groupby != 'state'" class="text-end">
+                                <span t-field="mo.lot_producing_id.display_name" />
+                            </td>
+                            <td t-if="groupby != 'state'" class="text-end">
+                                <span t-field="mo.lot_producing_id.expiration_date" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
                             </td>
                             <td t-if="groupby != 'state'" class="text-end">
                                 <span t-field="mo.state" />

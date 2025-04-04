@@ -7,7 +7,7 @@ import { _t } from "@web/core/l10n/translation";
 
 patch(MrpDisplayRecord.prototype, {
   editLogNote() {
-    const title = _t("Log Note");
+    const title = _t("Production Note");
     const reload = () => this.env.reload();
     const params = { body: "", record: this.props.production, reload, title };
     this.dialog.add(MrpLogNoteDialog, params);

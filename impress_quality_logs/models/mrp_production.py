@@ -40,8 +40,8 @@ class MrpProduction(models.Model):
 
         if len(self.hpp_log_ids) == 1:
             action.update(
-                {"view_mode": "form", "res_id": self.hpp_log_ids.id}
-            )  # type: ignore
+                {"view_mode": "form", "res_id": self.hpp_log_ids.id}  # type: ignore
+            )
 
         else:
             action.update(
@@ -49,8 +49,8 @@ class MrpProduction(models.Model):
                     "name": _("HPP Logs for %s", self.name),
                     "domain": [("id", "in", self.hpp_log_ids.ids)],
                     "view_mode": "tree,form",
-                }
-            )  # type: ignore
+                }  # type: ignore
+            )
 
         return action
 
@@ -63,8 +63,8 @@ class MrpProduction(models.Model):
 
         if len(self.metal_log_ids) == 1:
             action.update(
-                {"view_mode": "form", "res_id": self.metal_log_ids.id}
-            )  # type: ignore
+                {"view_mode": "form", "res_id": self.metal_log_ids.id}  # type: ignore
+            )
 
         else:
             action.update(
@@ -72,8 +72,8 @@ class MrpProduction(models.Model):
                     "name": _("Metal Logs for %s", self.name),
                     "domain": [("id", "in", self.metal_log_ids.ids)],
                     "view_mode": "tree,form",
-                }
-            )  # type: ignore
+                }  # type: ignore
+            )
 
         return action
 
@@ -86,8 +86,8 @@ class MrpProduction(models.Model):
 
         if len(self.loma_log_ids) == 1:
             action.update(
-                {"view_mode": "form", "res_id": self.loma_log_ids.id}
-            )  # type: ignore
+                {"view_mode": "form", "res_id": self.loma_log_ids.id}  # type: ignore
+            )
 
         else:
             action.update(
@@ -95,8 +95,8 @@ class MrpProduction(models.Model):
                     "name": _("LOMA Logs for %s", self.name),
                     "domain": [("id", "in", self.loma_log_ids.ids)],
                     "view_mode": "tree,form",
-                }
-            )  # type: ignore
+                }  # type: ignore
+            )
 
         return action
 
@@ -109,8 +109,8 @@ class MrpProduction(models.Model):
 
         if len(self.coding_log_ids) == 1:
             action.update(
-                {"view_mode": "form", "res_id": self.coding_log_ids.id}
-            )  # type: ignore
+                {"view_mode": "form", "res_id": self.coding_log_ids.id}  # type: ignore
+            )
 
         else:
             action.update(
@@ -118,8 +118,8 @@ class MrpProduction(models.Model):
                     "name": _("Coding Logs for %s", self.name),
                     "domain": [("id", "in", self.coding_log_ids.ids)],
                     "view_mode": "tree,form",
-                }
-            )  # type: ignore
+                }  # type: ignore
+            )
 
         return action
 
@@ -132,8 +132,8 @@ class MrpProduction(models.Model):
 
         if len(self.coding_log_ids) == 1:
             action.update(
-                {"view_mode": "form", "res_id": self.x_ray_log_ids.id}
-            )  # type: ignore
+                {"view_mode": "form", "res_id": self.x_ray_log_ids.id}  # type: ignore
+            )
 
         else:
             action.update(
@@ -141,7 +141,7 @@ class MrpProduction(models.Model):
                     "name": _("X-Ray Logs for %s", self.name),
                     "domain": [("id", "in", self.x_ray_log_ids.ids)],
                     "view_mode": "tree,form",
-                }
-            )  # type: ignore
+                }  # type: ignore
+            )
 
         return action

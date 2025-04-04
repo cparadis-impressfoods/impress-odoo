@@ -10,7 +10,8 @@
     "depends": [
         "base",
         "documents",
-        "maintenance_worksheet",
+        "maintenance",
+        "base_maintenance",
     ],
     "data": [
         "views/maintenance_equipment_views.xml",

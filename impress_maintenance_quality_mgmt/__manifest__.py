@@ -11,9 +11,9 @@
     "category": "Maintenance",
     "depends": [
         "base",
-        "maintenance_worksheet",
+        "maintenance",
+        "base_maintenance",
         "quality",
-        "hr_maintenance",
     ],
     "data": [
         "data/team_tags.xml",

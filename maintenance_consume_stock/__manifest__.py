@@ -6,7 +6,7 @@
     "author": "Cédric Paradis",
     "website": "",
     "category": "Hidden",
-    "depends": ["base", "maintenance_worksheet", "stock"],
+    "depends": ["base", "maintenance", "base_maintenance", "stock"],
     "data": [
         "data/locations.xml",
         "views/maintenance_request_views.xml",

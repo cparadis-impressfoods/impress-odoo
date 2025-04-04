@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "impress_maintenance_quality_mgmt",
-    "version": "17.0.0.0.1",
-    "summary": """ Impress_maintenance Summary """,
+    "name": "Impress Maintenance Quality Management",
+    "version": "17.0.1.0.0",
+    "summary": """ Impress Foods quality management for maintenance """,
+    "description": """
+    Adds functionalities to segregate maintenance by departement (Maintenance vs Quality Control)
+    """,
     "author": "Cédric Paradis",
     "website": "",
     "category": "Maintenance",

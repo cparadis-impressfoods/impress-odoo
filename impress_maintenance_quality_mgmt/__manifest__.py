@@ -12,6 +12,7 @@
     "depends": [
         "base",
         "maintenance_worksheet",
+        "hr_maintenance",
         "base_maintenance",
         "quality",
     ],

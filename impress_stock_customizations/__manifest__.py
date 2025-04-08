@@ -1,6 +1,6 @@
 {
     "name": "Impress Stock Customizations",
-    "version": "17.0.0.0.1.1",
+    "version": "17.0.0.1.1",
     "depends": ["base", "stock"],
     "author": "Cédric Paradis",
     "category": "Inventory",

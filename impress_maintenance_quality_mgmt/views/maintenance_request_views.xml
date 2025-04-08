@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook/page[1]" position="replace">
-                <page string="Notes">
+                <page string="Notes" name="description_page">
                     <group>
                         <field name="description" placeholder="Maintenance Description" groups="impress_maintenance_quality_mgmt.group_maintenance_administrator"/>
                         <field name="description" placeholder="Maintenance Description" readonly="1" groups="!impress_maintenance_quality_mgmt.group_maintenance_administrator"/>
@@ -17,8 +17,8 @@
                     </group>
                 </page>
             </xpath>
-            <xpath expr="//field[@name='employee_id']" position="after">
-                <field name="technician_id" widget="many2one_avatar_employee"/>
+            <xpath expr="//field[@name='maintenance_team_id']" position="after">
+                <field name="assigned_employee"/>
             </xpath>
         </field>
     </record>
@@ -29,11 +29,10 @@
         <field name="inherit_id" ref="maintenance.hr_equipment_view_calendar"/>
         <field name="arch" type="xml">
             <xpath expr="//calendar" position="attributes">
-                <attribute name="color">technician_id</attribute>
-
+                <attribute name="color">assigned_employee</attribute>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="replace">
-                <field name="technician_id" filters="1"/>
+                <field name="assigned_employee" filters="1"/>
                 <field name="maintenance_type" filters="1"/>
             </xpath>
         </field>
@@ -52,7 +51,7 @@
                 <separator/>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="replace">
-                <field name="technician_id" filters="1"/>
+                <field name="assigned_employee" filters="1"/>
                 <field name="maintenance_type" filters="1"/>
             </xpath>
         </field>

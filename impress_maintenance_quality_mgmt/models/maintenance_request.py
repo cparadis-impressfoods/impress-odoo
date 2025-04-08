@@ -10,16 +10,18 @@ class MaintenanceRequest(models.Model):
     _inherit = "maintenance.request"
 
     notes = fields.Text(string="Notes")
-    technician_id = fields.Many2one("hr.employee", string="Assigned Employee")
+    assigned_employee = fields.Many2one(
+        comodel_name="hr.employee",
+        string="Assigned Employee",
+    )
 
     def create(self, vals_list):
-        for vals in vals_list:
-            self._move_weekend(vals)
+        # self._move_weekend(vals_list)
         return super(MaintenanceRequest, self).create(vals_list)
 
     @api.model
     def _move_weekend(self, vals):
-        if vals.get("schedule_date"):
+        if "schedule_date" in vals and vals["schedule_date"]:
             full_date: datetime = vals.get("schedule_date")
             date = full_date.date().timetuple()
             match date.tm_wday:

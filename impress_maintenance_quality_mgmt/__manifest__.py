@@ -11,8 +11,6 @@
     "category": "Maintenance",
     "depends": [
         "base",
-        "maintenance_worksheet",
-        "hr_maintenance",
         "base_maintenance",
         "quality",
     ],
@@ -21,8 +19,6 @@
         "security/maintenance.xml",
         "security/ir.model.access.csv",
         "views/maintenance_equipment_category_views.xml",
-        "views/maintenance_equipment_views.xml",
-        "views/maintenance_request_views.xml",
         "views/maintenance_team_tag_views.xml",
         "views/maintenance_team_views.xml",
         "views/quality/maintenance_request_quality_views.xml",

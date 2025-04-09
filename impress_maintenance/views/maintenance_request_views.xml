@@ -28,6 +28,7 @@
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_calendar"/>
         <field name="arch" type="xml">
+
             <xpath expr="//calendar" position="attributes">
                 <attribute name="color">assigned_employee</attribute>
             </xpath>
@@ -36,8 +37,22 @@
                 <field name="maintenance_type" filters="1"/>
             </xpath>
         </field>
+    </record>
+    
+    <record id="view_maintenance_request_calendar" model="ir.ui.view">
+        <field name="name">view.maintenance.request.calendar</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_calendar"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_id']" position="replace">
+                <field name="assigned_employee" filters="1"/>
+                <field name="maintenance_type" filters="1"/>
+            </xpath>
+        </field>
 
     </record>
+
 
     <record id="view_maintenance_request_search" model="ir.ui.view">
         <field name="name">view.maintenance.request.search</field>

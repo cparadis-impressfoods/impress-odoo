@@ -17,6 +17,12 @@ class MaintenanceEquipment(models.Model):
         string="Current Corrective", compute="_compute_maintenance_count_corrective"
     )
 
+    technician_user_id = fields.Many2one(
+        "res.users",
+        string="Responsible",
+        domain="[('groups_id', 'in', [ref('hr_maintenance.group_maintenance_manager')])]",
+    )
+
     @api.depends("maintenance_count")
     def _compute_maintenance_count_preventive(self):
         for record in self:

@@ -6,13 +6,12 @@
     "author": "Cédric Paradis",
     "website": "",
     "category": "Hidden",
-    "depends": ["base", "hr_maintenance"],
+    "depends": ["base", "hr_maintenance", "base_maintenance"],
     "data": [
         "views/maintenance_equipment_views.xml",
-        "views/maintenance_request_views.xml"
+        "views/maintenance_request_views.xml",
     ],
-    "application": True,
     "installable": True,
     "auto_install": False,
-    "license": "GPL2",
+    "license": "GPL-2",
 }

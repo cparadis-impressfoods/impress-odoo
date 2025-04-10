@@ -8,13 +8,14 @@
     "category": "Sales",
     "depends": ["base", "web", "mrp", "purchase", "sale_management", "portal"],
     "data": [
-        "views/mrp_production_views.xml",
-        "views/sale_order_views.xml",
-        "views/portal/portal_production.xml",
-        "views/portal/portal_mrp_production_views.xml",
-        "views/portal/portal_sale_order_views.xml",
-        "security/ir.model.access.csv",
         "security/impress_production_billing_security.xml",
+        "security/ir.model.access.csv",
+        "views/mrp_production_views.xml",
+        "views/portal/portal_mrp_production_views.xml",
+        "views/portal/portal_production.xml",
+        "views/portal/portal_sale_order_views.xml",
+        "views/product_template_views.xml",
+        "views/sale_order_views.xml"
     ],
     "assets": {
         "web.assets_frontend": [

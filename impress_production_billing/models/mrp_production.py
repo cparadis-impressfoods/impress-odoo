@@ -152,6 +152,10 @@ class MrpProduction(models.Model):
 
     def _get_matching_service_product(self):
         self.ensure_one()
+
+        if self.product_id.billing_product_id:
+            return self.product_id.billing_product_id
+
         reference_to_match = "S" + self.product_id.default_code[1:]
         matching_product = self.env["product.product"].search(
             [("default_code", "=", reference_to_match)]

@@ -8,8 +8,11 @@
     "category": "Hidden",
     "depends": ["base", "hr_maintenance", "base_maintenance"],
     "data": [
+        "views/hr_employee_views.xml",
         "views/maintenance_equipment_views.xml",
         "views/maintenance_request_views.xml",
+        "views/maintenance_stage_views.xml",
+        "views/menus.xml",
     ],
     "installable": True,
     "auto_install": False,

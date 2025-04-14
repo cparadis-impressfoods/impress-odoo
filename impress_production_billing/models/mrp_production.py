@@ -168,6 +168,7 @@ class MrpProduction(models.Model):
         res = super()._action_cancel()
         if self.billing_sale_order_id:
             self.billing_sale_order_id = None
+            self.billing_sale_order_ref = False
         return res
 
     def write(self, vals):

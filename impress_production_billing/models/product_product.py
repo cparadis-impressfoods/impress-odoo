@@ -16,6 +16,24 @@ class Product(models.Model):
         domain=[("type", "=", "service")],
     )
 
+    def get_production_billing_product(self):
+        self.ensure_one()
+        if self.billing_product_id:
+            return self.billing_product_id
+
+        reference_to_match = "S" + self.default_code[1:]
+        matching_product = self.env["product.product"].search(
+            [("default_code", "=", reference_to_match)]
+        )
+        if matching_product:
+            return matching_product
+        else:
+            raise ValidationError(
+                "No matching service product found. Expected product with reference {}".format(
+                    reference_to_match
+                )
+            )
+
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"

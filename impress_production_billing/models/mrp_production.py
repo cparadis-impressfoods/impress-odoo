@@ -84,15 +84,17 @@ class MrpProduction(models.Model):
                         )
                     }
 
-                    if rec._get_matching_service_product() in sale_order_line_dict:
+                    billing_product = self.product_id.get_production_billing_product()
+
+                    if billing_product in sale_order_line_dict:
                         rec.billing_sale_order_line_id = sale_order_line_dict[
-                            rec._get_matching_service_product()
+                            billing_product
                         ]
                         rec._recompute_billing_line_qty()
                     else:
                         raise ValidationError(
                             "No Sale Order Line found in SO. Expected line with product {}".format(
-                                rec._get_matching_service_product().display_name
+                                billing_product.display_name
                             )
                         )
 
@@ -105,7 +107,7 @@ class MrpProduction(models.Model):
         new_order_line = self.env["sale.order.line"].create(
             {
                 "order_id": self.billing_sale_order_id.id,
-                "product_id": self._get_matching_service_product().id,
+                "product_id": self.product_id.get_production_billing_product().id,
                 "product_uom_qty": self.product_uom_qty,
             }
         )
@@ -151,25 +153,6 @@ class MrpProduction(models.Model):
                 shared_order_line_production.mapped("product_uom_qty")
             )
             self.billing_sale_order_line_id.product_uom_qty = total_qty_to_deliver
-
-    def _get_matching_service_product(self):
-        self.ensure_one()
-
-        if self.product_id.billing_product_id:
-            return self.product_id.billing_product_id
-
-        reference_to_match = "S" + self.product_id.default_code[1:]
-        matching_product = self.env["product.product"].search(
-            [("default_code", "=", reference_to_match)]
-        )
-        if matching_product:
-            return matching_product
-        else:
-            raise ValidationError(
-                "No matching service product found. Expected product with reference {}".format(
-                    reference_to_match
-                )
-            )
 
     def button_mark_done(self):
         res = super().button_mark_done()

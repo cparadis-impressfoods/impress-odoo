@@ -19,9 +19,33 @@
                         <group>
                             <field name='billing_sale_order_id' readonly="1" />
                             <field name='billing_sale_order_line_id' readonly="1" />
+                            <field name='invoice_status' groups="impress_production_billing.production_billing_manager"/>
                         </group>
                     </group>
                 </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="mrp_production_kanban_view" model="ir.ui.view">
+        <field name="name">mrp.production.view.kanban.inherit</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="billing_sale_order_ref"/>
+                <field name="invoice_status"/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_kanban_bottom_left')]/span/t" position="after">
+                <t t-if="record.billing_sale_order_ref.value">
+                    <span> - </span> 
+                    <t t-if="record.invoice_status.raw_value == '1'">
+                        <span class="text-success"><t t-esc="record.billing_sale_order_ref.value"/> <i class="fa fa-check"></i> </span>
+                    </t>
+
+                    <t t-else="">
+                        <span><t t-esc="record.billing_sale_order_ref.value"/></span>
+                    </t> 
+                </t>
             </xpath>
         </field>
     </record>

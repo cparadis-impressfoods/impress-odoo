@@ -3,6 +3,7 @@ from collections import OrderedDict
 from operator import itemgetter
 
 from odoo import conf, http, _
+from odoo.exceptions import AccessError, MissingError
 from odoo.addons.portal.controllers import portal
 from odoo.http import request
 from odoo.addons.portal.controllers.portal import pager as portal_pager
@@ -37,7 +38,7 @@ class CustomerPortal(portal.CustomerPortal):
         SaleOrder = request.env["sale.order"]
 
         # If no SO is specified, get all SOs for the user
-        if so == None:
+        if so is None:
             so_domain = [("partner_id", "=", commercial_partner.id)]
             so_ids = [so.id for so in SaleOrder.search(so_domain)]
         else:
@@ -46,7 +47,7 @@ class CustomerPortal(portal.CustomerPortal):
 
         domain = [("billing_sale_order_id", "in", so_ids)]
 
-        if product != None:
+        if product is not None:
             product_domain = [("product_id", "=", int(product))]
             domain += product_domain
 

@@ -32,6 +32,8 @@ class MrpProduction(models.Model):
         store=True,
     )
 
+    invoice_status = fields.Boolean(string="Invoice Status")
+
     @api.depends("billing_sale_order_ref")
     def _compute_billing_sale_order_id(self):
         for rec in self:

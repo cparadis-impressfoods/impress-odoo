@@ -35,7 +35,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - container: ghcr.io/cparadis-impressfoods/odoo-ci/py3.10-odoo17.0:latest
+          - container: ghcr.io/impress-foods/odoo-ci/py3.10-odoo17.0:latest
             include: "maintenance_consume_stock"
             exlude: "all"
             name: test with maintenance_consume_stock

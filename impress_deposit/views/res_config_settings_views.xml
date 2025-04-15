@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
   <!-- View res.config.settings form -->
@@ -8,11 +8,17 @@
     <field name="inherit_id" ref="base.res_config_settings_view_form" />
     <field name="arch" type="xml">
       <xpath expr="//form" position="inside">
-        <app data-string="deposit_config" string="Deposit Settings" name="deposit_settings">
+        <app
+                    data-string="deposit_config"
+                    string="Deposit Settings"
+                    name="deposit_settings"
+                >
           <block title="Deposit Settings" name="deposit_settings">
-            <setting string="Deposit Product"
-              help="Select the product for deposits"
-              id="deposit_product">
+            <setting
+                            string="Deposit Product"
+                            help="Select the product for deposits"
+                            id="deposit_product"
+                        >
               <field name="deposit_product" />
             </setting>
           </block>

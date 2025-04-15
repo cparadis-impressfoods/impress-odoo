@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-
-from odoo import models, fields, api
 import logging
 from datetime import datetime
+
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -23,7 +22,7 @@ class IrSequence(models.Model):
             if seq.implementation == "julian":
                 pass
             else:
-                super(IrSequence, self)._get_number_next_actual()
+                super()._get_number_next_actual()
 
     def _next_do(self):
         if self.implementation == "julian" and self.env.context.get(
@@ -58,4 +57,4 @@ class IrSequence(models.Model):
                         unique_serial = True
                 return serial_to_try
 
-        return super(IrSequence, self)._next_do()
+        return super()._next_do()

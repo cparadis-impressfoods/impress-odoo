@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
         <record id="view_warehouse_billing_config_form" model="ir.ui.view">
@@ -9,38 +9,51 @@
                     <sheet>
                         <div class="oe_title">
                             <h1>
-                                <field name="name" placeholder="Name"/>
+                                <field name="name" placeholder="Name" />
                             </h1>
                         </div>
                         <group>
                             <group>
-                                <field name="partner_id"/>
-                                <field name="warehouse_id"/>
-                                <field name="billing_product_id"/>
-                                <field name="measurement_type"/>
-                                <field name="base_qty"/>
-                                <field name="filter_domain" widget="domain" options="{'model': 'warehouse.quant.history', 'in_dialog': False, 'foldable': True}"/>
+                                <field name="partner_id" />
+                                <field name="warehouse_id" />
+                                <field name="billing_product_id" />
+                                <field name="measurement_type" />
+                                <field name="base_qty" />
+                                <field
+                                    name="filter_domain"
+                                    widget="domain"
+                                    options="{'model': 'warehouse.quant.history', 'in_dialog': False, 'foldable': True}"
+                                />
                             </group>
                             <group>
-                                <label for="rate" string="Rate"/>
+                                <label for="rate" string="Rate" />
                                 <div class="o_row g-0 d-flex">
-                                    <field name="rate"/>
-                                    <field name="currency_id"/>
+                                    <field name="rate" />
+                                    <field name="currency_id" />
                                 </div>
-                                <field name="bill_seperately"/>
-                                <field name="flat_fee"/>
-                                <field name="billing_cycle"/>
-                                <field name="bill_last_day_month" invisible="billing_cycle != 'monthly'"/>
-                                <field name="billing_day_month" invisible="billing_cycle != 'monthly' or bill_last_day_month"/>
-                                <field name="billing_day_week" invisible="billing_cycle != 'weekly'"/>
-                                <field name="grace_period"/>
+                                <field name="bill_seperately" />
+                                <field name="flat_fee" />
+                                <field name="billing_cycle" />
+                                <field
+                                    name="bill_last_day_month"
+                                    invisible="billing_cycle != 'monthly'"
+                                />
+                                <field
+                                    name="billing_day_month"
+                                    invisible="billing_cycle != 'monthly' or bill_last_day_month"
+                                />
+                                <field
+                                    name="billing_day_week"
+                                    invisible="billing_cycle != 'weekly'"
+                                />
+                                <field name="grace_period" />
 
                             </group>
                         </group>
                         <group>
                             <group>
-                                <field name="last_invoice_date"/>
-                                <field name="next_planned_invoice_date" readonly="1"/>
+                                <field name="last_invoice_date" />
+                                <field name="next_planned_invoice_date" readonly="1" />
                             </group>
                         </group>
                     </sheet>
@@ -54,13 +67,13 @@
             <field name="model">warehouse.billing.config</field>
             <field name="arch" type="xml">
                 <tree string="Warehouse Billing Configurations">
-                    <field name="name"/>
-                    <field name="partner_id"/>
-                    <field name="warehouse_id"/>
-                    <field name="measurement_type"/>
-                    <field name="rate"/>
-                    <field name="flat_fee"/>
-                    <field name="billing_cycle"/>
+                    <field name="name" />
+                    <field name="partner_id" />
+                    <field name="warehouse_id" />
+                    <field name="measurement_type" />
+                    <field name="rate" />
+                    <field name="flat_fee" />
+                    <field name="billing_cycle" />
                 </tree>
             </field>
         </record>
@@ -71,16 +84,40 @@
             <field name="model">warehouse.billing.config</field>
             <field name="arch" type="xml">
                 <search string="Search Warehouse Billing Configurations">
-                    <field name="name"/>
-                    <field name="partner_id"/>
-                    <field name="warehouse_id"/>
-                    <filter string="Active" name="active" domain="[('active', '=', True)]"/>
-                    <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+                    <field name="name" />
+                    <field name="partner_id" />
+                    <field name="warehouse_id" />
+                    <filter
+                        string="Active"
+                        name="active"
+                        domain="[('active', '=', True)]"
+                    />
+                    <filter
+                        string="Inactive"
+                        name="inactive"
+                        domain="[('active', '=', False)]"
+                    />
                     <group expand="0" string="Group By">
-                        <filter string="Customer" name="customer" context="{'group_by': 'partner_id'}"/>
-                        <filter string="Warehouse" name="warehouse" context="{'group_by': 'warehouse_id'}"/>
-                        <filter string="Measurement Type" name="measurement_type" context="{'group_by': 'measurement_type'}"/>
-                        <filter string="Billing Cycle" name="billing_cycle" context="{'group_by': 'billing_cycle'}"/>
+                        <filter
+                            string="Customer"
+                            name="customer"
+                            context="{'group_by': 'partner_id'}"
+                        />
+                        <filter
+                            string="Warehouse"
+                            name="warehouse"
+                            context="{'group_by': 'warehouse_id'}"
+                        />
+                        <filter
+                            string="Measurement Type"
+                            name="measurement_type"
+                            context="{'group_by': 'measurement_type'}"
+                        />
+                        <filter
+                            string="Billing Cycle"
+                            name="billing_cycle"
+                            context="{'group_by': 'billing_cycle'}"
+                        />
                     </group>
                 </search>
             </field>

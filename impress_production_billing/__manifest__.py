@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "impress_production_billing",
     "version": "0.1.2",
@@ -15,7 +14,7 @@
         "views/portal/portal_production.xml",
         "views/portal/portal_sale_order_views.xml",
         "views/product_template_views.xml",
-        "views/sale_order_views.xml"
+        "views/sale_order_views.xml",
     ],
     "assets": {
         "web.assets_frontend": [

@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
-
 from odoo.tests import TransactionCase, tagged
 
 
 @tagged("standard", "impress")
 class TestProductProduct(TransactionCase):
     def setUp(self):
-        super(TestProductProduct, self).setUp()
+        super().setUp()
 
         self.product_model = self.env["product.product"]
 

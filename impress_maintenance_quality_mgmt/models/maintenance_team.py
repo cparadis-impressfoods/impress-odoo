@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
 import logging
 from random import randint
 
-
-from odoo import models, fields
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 

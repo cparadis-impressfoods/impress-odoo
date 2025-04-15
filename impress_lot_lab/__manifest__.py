@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Impress_lot_lab",
     "version": "0.1.2",

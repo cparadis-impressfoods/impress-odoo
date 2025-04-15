@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "impress_barcode",
     "summary": "Customizations to barcode app",

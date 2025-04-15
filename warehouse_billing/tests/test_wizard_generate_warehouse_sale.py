@@ -1,15 +1,12 @@
-# -*- coding: utf-8 -*-
 from datetime import datetime
-
 
 from odoo.tests import TransactionCase, tagged
 
 
 @tagged("standard", "impress")
 class TestGenerateWarehouseSaleOrder(TransactionCase):
-
     def setUp(self):
-        super(TestGenerateWarehouseSaleOrder, self).setUp()
+        super().setUp()
         self.current_date = datetime.strptime("2025-03-31", "%Y-%m-%d")
         self.wizard = self.env["wizard.generate.warehouse.sale.order"]
 
@@ -55,7 +52,6 @@ class TestGenerateWarehouseSaleOrder(TransactionCase):
         self.assertTrue(is_end_of_month, f"{test_date}")
 
     def test_end_of_month_31_day_month_30(self):
-
         test_date = datetime.strptime("2025-03-30", "%Y-%m-%d")
         is_end_of_month = self.wizard.end_of_month(test_date)
         self.assertFalse(is_end_of_month, f"{test_date}")
@@ -66,7 +62,6 @@ class TestGenerateWarehouseSaleOrder(TransactionCase):
         self.assertTrue(is_end_of_month, f"{test_date}")
 
     def test_end_of_month_30_day_month_29(self):
-
         test_date = datetime.strptime("2025-04-29", "%Y-%m-%d")
         is_end_of_month = self.wizard.end_of_month(test_date)
         self.assertFalse(is_end_of_month, f"{test_date}")

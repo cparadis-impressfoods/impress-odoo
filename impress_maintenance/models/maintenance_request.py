@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
 import logging
 from datetime import datetime, timedelta
 
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -23,7 +21,7 @@ class MaintenanceRequest(models.Model):
 
     def create(self, vals_list):
         # self._move_weekend(vals_list)
-        return super(MaintenanceRequest, self).create(vals_list)
+        return super().create(vals_list)
 
     @api.model
     def _move_weekend(self, vals):

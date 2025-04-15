@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Impress Quality Worksheets",
     "version": "17.0.0.1.1",

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Impress Deposit",
     "version": "17.0.1.1",

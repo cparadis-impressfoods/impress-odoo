@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -181,4 +180,4 @@ class MrpProduction(models.Model):
 
     def get_portal_url(self):
         self.ensure_one()
-        return "/my/manufacturings/{}".format(self.id)
+        return f"/my/manufacturings/{self.id}"

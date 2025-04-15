@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
 from datetime import datetime
 
+from odoo.exceptions import ValidationError
 from odoo.tests import TransactionCase, tagged
-from odoo.exceptions import UserError, ValidationError
 
 
 @tagged("standard", "impress")
 class TestMrpProduction(TransactionCase):
-
     def setUp(self):
-        super(TestMrpProduction, self).setUp()
+        super().setUp()
 
         self.product_model = self.env["product.product"]
         self.mo_model = self.env["mrp.production"]

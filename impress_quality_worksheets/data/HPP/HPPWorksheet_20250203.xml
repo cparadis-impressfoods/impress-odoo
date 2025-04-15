@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <!-- Create a new Worksheet Template -->
@@ -14,15 +14,19 @@
     <record id='x_worksheet_20250203_hpp_log_id' model='ir.model.fields'>
         <field name="name">x_hpp_log_id</field>
         <field name="field_description">HPP Log</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id" />
+        <field
+            name="model_id"
+            model="ir.model"
+            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id"
+        />
         <field name="relation" model="ir.model" eval="'hpp.log'" />
         <field name="ttype">many2one</field>
     </record>
 
     <record id='x_worksheet_20250203_hpp_log_id' model='ir.model.fields'>
         <field name="depends">x_quality_check_id</field>
-        <field name="compute"
+        <field
+            name="compute"
             eval="
 'for rec in self:\n
     if not rec.x_hpp_log_id:\n
@@ -36,7 +40,8 @@
             })\n
         else: \n
             rec[\'x_hpp_log_id\'] = existing_log[0]
-            '">
+            '"
+        >
         </field>
     </record>
 
@@ -44,12 +49,21 @@
     <record id='hpp_log_x_worksheet_20250203_id' model='ir.model.fields'>
         <field name="name">x_worksheet_20250203_id</field>
         <field name="field_description">Worksheet 2024-12-02</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_quality_logs.model_hpp_log').id" />
-        <field name="relation" model="ir.model"
-            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.model" />
-        <field name="relation_field" model="ir.model.fields"
-            eval="obj().env.ref('impress_quality_worksheets.x_worksheet_20250203_hpp_log_id').name" />
+        <field
+            name="model_id"
+            model="ir.model"
+            eval="obj().env.ref('impress_quality_logs.model_hpp_log').id"
+        />
+        <field
+            name="relation"
+            model="ir.model"
+            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.model"
+        />
+        <field
+            name="relation_field"
+            model="ir.model.fields"
+            eval="obj().env.ref('impress_quality_worksheets.x_worksheet_20250203_hpp_log_id').name"
+        />
         <field name="ttype">one2many</field>
         <field name="on_delete">cascade</field>
     </record>
@@ -58,10 +72,16 @@
     <record id='hpp_log_line_x_worksheet_20250203_id' model='ir.model.fields'>
         <field name="name">x_worksheet_20250203_id</field>
         <field name="field_description">x_worksheet_20250203_id</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_quality_logs.model_hpp_log_line').id" />
-        <field name="relation" model="ir.model"
-            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.model" />
+        <field
+            name="model_id"
+            model="ir.model"
+            eval="obj().env.ref('impress_quality_logs.model_hpp_log_line').id"
+        />
+        <field
+            name="relation"
+            model="ir.model"
+            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.model"
+        />
         <field name="ttype">many2one</field>
     </record>
 
@@ -70,11 +90,17 @@
     <record id='x_worksheet_20250203_hpp_log_lines_id' model='ir.model.fields'>
         <field name="name">x_hpp_log_line_ids</field>
         <field name="field_description">HPP Log lines</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id" />
+        <field
+            name="model_id"
+            model="ir.model"
+            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id"
+        />
         <field name="relation" model="ir.model" eval="'hpp.log.line'" />
-        <field name="relation_field" model="ir.model.fields"
-            eval="obj().env.ref('impress_quality_worksheets.hpp_log_line_x_worksheet_20250203_id').name" />
+        <field
+            name="relation_field"
+            model="ir.model.fields"
+            eval="obj().env.ref('impress_quality_worksheets.hpp_log_line_x_worksheet_20250203_id').name"
+        />
         <field name="ttype">one2many</field>
         <field name="on_delete">cascade</field>
     </record>
@@ -84,24 +110,33 @@
     <record id='x_worksheet_20250203_qty_quality' model='ir.model.fields'>
         <field name="name">x_qty_quality</field>
         <field name="field_description">Quantity used for quality</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id" />
+        <field
+            name="model_id"
+            model="ir.model"
+            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id"
+        />
         <field name="related">x_hpp_log_id.qty_quality</field>
         <field name="ttype">integer</field>
     </record>
     <record id='x_worksheet_20250203_qty_scrapped' model='ir.model.fields'>
         <field name="name">x_qty_scrapped</field>
         <field name="field_description">Quantity scrapped</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id" />
+        <field
+            name="model_id"
+            model="ir.model"
+            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id"
+        />
         <field name="related">x_hpp_log_id.qty_scrapped</field>
         <field name="ttype">integer</field>
     </record>
     <record id='x_worksheet_20250203_qty_redone' model='ir.model.fields'>
         <field name="name">x_qty_redone</field>
         <field name="field_description">Quantity redone</field>
-        <field name="model_id" model="ir.model"
-            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id" />
+        <field
+            name="model_id"
+            model="ir.model"
+            eval="obj().env.ref('impress_quality_worksheets.ws_hpp_20250203').model_id.id"
+        />
         <field name="related">x_hpp_log_id.qty_redone</field>
         <field name="ttype">integer</field>
     </record>

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "impress_billback",
     "version": "0.1.0",

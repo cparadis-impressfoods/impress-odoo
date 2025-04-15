@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api, _
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
@@ -28,7 +27,7 @@ class StockScrap(models.Model):
             raise UserError(
                 "Cannot unlink a scrap move that is done and assigned to a maintenance request"
             )
-        super(StockScrap, self).unlink()
+        super().unlink()
 
     def action_view_maintenance_request(self):
         self.ensure_one()

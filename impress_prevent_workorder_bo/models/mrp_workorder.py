@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import logging
 
 from odoo import models
@@ -44,9 +43,7 @@ class MrpWorkorder(models.Model):
                             lambda wo: wo.operation_id == self.operation_id
                         ).state
                         not in ("cancel", "done")
-                    )[
-                        :1
-                    ]
+                    )[:1]
                 else:
                     index = list(self.production_id.workorder_ids).index(self)
                     backorder = (
@@ -55,9 +52,7 @@ class MrpWorkorder(models.Model):
                     ).filtered(
                         lambda p: index < len(p.workorder_ids)
                         and p.workorder_ids[index].state not in ("cancel", "done")
-                    )[
-                        :1
-                    ]
+                    )[:1]
 
         self.move_raw_ids.picked = True
         self.production_id.move_byproduct_ids.filtered(

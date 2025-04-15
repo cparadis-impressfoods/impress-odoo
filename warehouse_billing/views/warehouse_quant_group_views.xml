@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <!-- View warehouse_quant_group View Tree -->
@@ -7,7 +7,7 @@
         <field name="model">warehouse.quant.group</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
+                <field name="name" />
             </tree>
         </field>
     </record>
@@ -20,50 +20,67 @@
             <form string="warehouse_quant_group">
                 <sheet>
                     <header>
-                        <field name="invoicing_state" widget="statusbar"/>
+                        <field name="invoicing_state" widget="statusbar" />
                     </header>
-                    <field name="sale_order_id" invisible="1"/>
-                    <field name="invoice_ids" invisible="1"/>
+                    <field name="sale_order_id" invisible="1" />
+                    <field name="invoice_ids" invisible="1" />
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="action_linked_sale_order" type="object" icon="fa-edit" invisible="not sale_order_id">
+                        <button
+                            class="oe_stat_button"
+                            name="action_linked_sale_order"
+                            type="object"
+                            icon="fa-edit"
+                            invisible="not sale_order_id"
+                        >
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Sale Order</span>
                             </div>
                         </button>
-                        <button class="oe_stat_button" name="action_linked_invoices" type="object" icon="fa-edit" invisible="not invoice_ids">
+                        <button
+                            class="oe_stat_button"
+                            name="action_linked_invoices"
+                            type="object"
+                            icon="fa-edit"
+                            invisible="not invoice_ids"
+                        >
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Invoices</span>
                             </div>
                         </button>
                     </div>
                     <div class="oe_title">
-                        <label for="name"/>
+                        <label for="name" />
                         <h1>
-                            <field name="name" placeholder="Name..." readonly="1"/>
+                            <field name="name" placeholder="Name..." readonly="1" />
                         </h1>
                     </div>
                     <group>
                         <group>
-                            <field name="partner_id" readonly="1"/>
-                            <field name="config_id" readonly="1"/>
-                            <field name="invoiced" readonly="1"/>
+                            <field name="partner_id" readonly="1" />
+                            <field name="config_id" readonly="1" />
+                            <field name="invoiced" readonly="1" />
                         </group>
                         <group>
-                            <field name="date_from" readonly="1"/>
-                            <field name="date_to" readonly="1"/>
-                            <field name="sale_order_id" readonly="1"/>
-                            <field name="sale_order_line_id" readonly="1"/>
+                            <field name="date_from" readonly="1" />
+                            <field name="date_to" readonly="1" />
+                            <field name="sale_order_id" readonly="1" />
+                            <field name="sale_order_line_id" readonly="1" />
 
                         </group>
                     </group>
                     <group>
-                        <field name="quant_history_ids" readonly="1" nolabel="1" colspan="2">
+                        <field
+                            name="quant_history_ids"
+                            readonly="1"
+                            nolabel="1"
+                            colspan="2"
+                        >
                             <tree decoration-success="invoiced">
-                                <field name="invoiced" column_invisible="1"/>
-                                <field name="date"/>
-                                <field name="product_id"/>
-                                <field name="location_id"/>
-                                <field name="quantity"/>
+                                <field name="invoiced" column_invisible="1" />
+                                <field name="date" />
+                                <field name="product_id" />
+                                <field name="location_id" />
+                                <field name="quantity" />
                             </tree>
                         </field>
 
@@ -80,7 +97,12 @@
         <field name="arch" type="xml">
             <search>
                 <group expand="1" string="Group By">
-                    <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}" />
+                    <filter
+                        string="Name"
+                        name="name"
+                        domain="[]"
+                        context="{'group_by':'name'}"
+                    />
                 </group>
             </search>
         </field>

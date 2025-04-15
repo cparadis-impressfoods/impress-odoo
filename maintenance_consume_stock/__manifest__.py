@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "maintenance_consume_stock",
     "version": "17.0.0.0.2",

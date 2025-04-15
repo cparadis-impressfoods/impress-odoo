@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Add QC Note to shop floor",
     "version": "17.0.0.1.0",

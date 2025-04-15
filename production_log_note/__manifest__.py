@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "production_log_note",
     "version": "0.1.2",

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <!-- View mrp.production form -->
@@ -14,38 +14,63 @@
                 <field name="coding_log_ids" invisible="1" />
                 <field name="x_ray_log_ids" invisible="1" />
 
-                <button class="oe_stat_button" name="action_view_hpp_log" type="object"
+                <button
+                    class="oe_stat_button"
+                    name="action_view_hpp_log"
+                    type="object"
                     icon="fa-superpowers"
-                    invisible="not hpp_log_ids" groups="mrp.group_mrp_user">
+                    invisible="not hpp_log_ids"
+                    groups="mrp.group_mrp_user"
+                >
                     <div class="o_field_widget o_stat_info">
                         <span class="o_stat_text">HPP</span>
                     </div>
                 </button>
-                <button class="oe_stat_button" name="action_view_loma_log" type="object"
+                <button
+                    class="oe_stat_button"
+                    name="action_view_loma_log"
+                    type="object"
                     icon="fa-balance-scale"
-                    invisible="not loma_log_ids" groups="mrp.group_mrp_user">
+                    invisible="not loma_log_ids"
+                    groups="mrp.group_mrp_user"
+                >
                     <div class="o_field_widget o_stat_info">
                         <span class="o_stat_text">LOMA</span>
                     </div>
                 </button>
-                <button class="oe_stat_button" name="action_view_metal_log" type="object"
+                <button
+                    class="oe_stat_button"
+                    name="action_view_metal_log"
+                    type="object"
                     icon="fa-magnet"
-                    invisible="not metal_log_ids" groups="mrp.group_mrp_user">
+                    invisible="not metal_log_ids"
+                    groups="mrp.group_mrp_user"
+                >
                     <div class="o_field_widget o_stat_info">
                         <span class="o_stat_text">Metal</span>
                     </div>
                 </button>
 
-                <button class="oe_stat_button" name="action_view_coding_log" type="object"
+                <button
+                    class="oe_stat_button"
+                    name="action_view_coding_log"
+                    type="object"
                     icon="fa-calendar-check-o"
-                    invisible="not coding_log_ids" groups="mrp.group_mrp_user">
+                    invisible="not coding_log_ids"
+                    groups="mrp.group_mrp_user"
+                >
                     <div class="o_field_widget o_stat_info">
                         <span class="o_stat_text">Coding</span>
                     </div>
                 </button>
-                <button class="oe_stat_button" name="action_view_x_ray_log" type="object"
+                <button
+                    class="oe_stat_button"
+                    name="action_view_x_ray_log"
+                    type="object"
                     icon="fa-times"
-                    invisible="not x_ray_log_ids" groups="mrp.group_mrp_user">
+                    invisible="not x_ray_log_ids"
+                    groups="mrp.group_mrp_user"
+                >
                     <div class="o_field_widget o_stat_info">
                         <span class="o_stat_text">X-Ray</span>
                     </div>
@@ -57,8 +82,14 @@
 
                 <div invisible="not hpp_log_ids" class="o_row">
                     <field name="hpp_qty_cases" invisible='1' />
-                    <span invisible="hpp_qty_cases != qty_producing" class="text-success">HPP ok</span>
-                    <span invisible="hpp_qty_cases == qty_producing" class="text-danger">HPP not ok</span>
+                    <span
+                        invisible="hpp_qty_cases != qty_producing"
+                        class="text-success"
+                    >HPP ok</span>
+                    <span
+                        invisible="hpp_qty_cases == qty_producing"
+                        class="text-danger"
+                    >HPP not ok</span>
 
                 </div>
             </xpath>

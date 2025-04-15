@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 {
     "name": "impress account report customizations",
     "version": "0.1.0",

@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
 
-    <t t-name="mrp_subcontracting.BomOverviewComponentsBlock" t-inherit="mrp.BomOverviewComponentsBlock" t-inherit-mode="extension">
+    <t
+        t-name="mrp_subcontracting.BomOverviewComponentsBlock"
+        t-inherit="mrp.BomOverviewComponentsBlock"
+        t-inherit-mode="extension"
+    >
         <xpath expr="//t[@name='byproducts']" position="after">
             <t t-if="data.subcontracting">
                 <BomOverviewSpecialLine
@@ -9,7 +13,7 @@
                     showOptions="props.showOptions"
                     data="props.data"
                     precision="props.precision"
-                    />
+                />
             </t>
         </xpath>
     </t>

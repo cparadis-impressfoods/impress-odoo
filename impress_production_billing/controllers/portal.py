@@ -1,22 +1,21 @@
-import werkzeug
+import logging
 from collections import OrderedDict
 from operator import itemgetter
 
-from odoo import conf, http, _
+import werkzeug
+
+from odoo import _, conf, http
 from odoo.exceptions import AccessError, MissingError
-from odoo.addons.portal.controllers import portal
 from odoo.http import request
-from odoo.addons.portal.controllers.portal import pager as portal_pager
 from odoo.tools import groupby as groupbyelem
 
-
-import logging
+from odoo.addons.portal.controllers import portal
+from odoo.addons.portal.controllers.portal import pager as portal_pager
 
 _logger = logging.getLogger(__name__)
 
 
 class CustomerPortal(portal.CustomerPortal):
-
     @http.route(
         ["/my/manufacturings", "/my/manufacturings/page/<int:page>"],
         type="http",
@@ -133,7 +132,6 @@ class CustomerPortal(portal.CustomerPortal):
         return searchbar_filters
 
     def _get_searchbar_groupby(self):
-
         searchbar_groupby = {
             "none": {"input": "none", "label": _("None")},
             "product": {"input": "product", "label": _("Product")},

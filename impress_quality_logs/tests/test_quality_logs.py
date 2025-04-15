@@ -1,5 +1,4 @@
 from odoo.tests import common
-from odoo.exceptions import UserError, ValidationError
 
 
 class TestQualityLogs(common.TransactionCase):

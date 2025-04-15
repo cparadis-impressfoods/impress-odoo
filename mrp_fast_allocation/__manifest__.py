@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "MRP Fast Allocation",
     "version": "0.0.1",

@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 {
     "name": "impress_cleaning",
     "version": "0.1.0",

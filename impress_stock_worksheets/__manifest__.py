@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "impress_stock_worksheets",
     # Non semantic version to allow to tag the most recent document date

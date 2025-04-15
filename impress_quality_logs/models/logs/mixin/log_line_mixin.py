@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 import logging
-from odoo import models, fields, api, _
+
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
@@ -55,7 +55,6 @@ class LogLineMixin(models.AbstractModel):
     def _get_active_worksheet_field(self):
         for record in self:
             if not record.active_worksheet_field:
-
                 # The worksheet relational field(s) are not known to the model when it's created in the DB.
                 # We expect those relational field(s) to contain 'x_worksheet' in their name
                 # since they are:

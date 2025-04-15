@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 import logging
+
 from odoo.tests import TransactionCase, tagged
 
 _logger = logging.getLogger(__name__)
@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 @tagged("standard", "impress")
 class TestMaintenanceRequest(TransactionCase):
     def setUp(self):
-        super(TestMaintenanceRequest, self).setUp()
+        super().setUp()
 
         equipment_model = self.env["maintenance.equipment"]
         qcp_model = self.env["quality.point"]
@@ -93,7 +93,6 @@ class TestMaintenanceRequest(TransactionCase):
 
     # Simple quality check creation tests
     def test_create_quality_check_on_maintenance_equipment_equipment(self):
-
         request = self.env["maintenance.request"].create(
             {
                 "name": "Test Request",
@@ -164,7 +163,6 @@ class TestMaintenanceRequest(TransactionCase):
         self.assertEqual(request.quality_check_todo_count, 1)
 
     def test_quality_check_fail_count(self):
-
         request = self.env["maintenance.request"].create(
             {
                 "name": "Test Request",
@@ -175,7 +173,6 @@ class TestMaintenanceRequest(TransactionCase):
         self.assertEqual(request.quality_check_fail_count, 1)
 
     def test_quality_check_pass_count(self):
-
         request = self.env["maintenance.request"].create(
             {
                 "name": "Test Request",

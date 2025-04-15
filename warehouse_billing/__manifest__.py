@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Warehouse Space Billing",
     "version": "17.0.0.0.1",

@@ -1,18 +1,11 @@
-<table
-  role="presentation"
-  width="100%"
-  cellspacing="0"
-  cellpadding="0"
-  border="0"
->
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
   <tbody>
     <tr>
       <td
         align="center"
         style="
           padding: 20px 0;
-          font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial,
-            sans-serif;
+          font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
           background-color: #f0f4f8;
           color: #2d3748;
           line-height: 1.6;
@@ -40,9 +33,7 @@
           </div>
 
           <div style="padding: 30px">
-            <h2 style="color: #2d3748">
-              Hi <t t-esc="object.partner_id.name">,</t>
-            </h2>
+            <h2 style="color: #2d3748">Hi <t t-esc="object.partner_id.name">,</t></h2>
 
             <div
               style="
@@ -79,8 +70,8 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
-                        
+
+
                         <div style="text-align: right; margin-top: 20px;">
                             <p>Subtotal: <t t-esc="object.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: object.currency_id}"></t></p>
                             <p>Tax: <t t-esc="object.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: object.currency_id}"></t></p>
@@ -88,8 +79,8 @@
                         </div>
                         -->
               <div>
-                Thank you for your purchase order. We have received your order
-                and will process.
+                Thank you for your purchase order. We have received your order and will
+                process.
               </div>
               <div
                 style="
@@ -117,10 +108,7 @@
                 </p>
                 <p>
                   <strong>Estimated Shipping Date:</strong>
-                  <t
-                    t-esc="object.expected_date"
-                    t-options='{"widget": "date"}'
-                  ></t>
+                  <t t-esc="object.expected_date" t-options='{"widget": "date"}'></t>
                 </p>
                 <t t-if="object.carrier_id.name">
                   <p>
@@ -157,12 +145,10 @@
                 font-size: 0.9em;
               "
             >
-              If you need to reference this purchase order in any
-              correspondence, please quote this Sales Order [<t
-                t-out="object.name"
-              />] number for clarity.<br />
-              If you have any questions or require further assistance, feel free
-              to reach out.
+              If you need to reference this purchase order in any correspondence, please
+              quote this Sales Order [<t t-out="object.name" />] number for clarity.<br />
+              If you have any questions or require further assistance, feel free to
+              reach out.
             </p>
           </div>
         </div>

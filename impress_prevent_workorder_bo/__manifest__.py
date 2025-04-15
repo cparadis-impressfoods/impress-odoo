@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Impress_prevent_workorder_bo",
     "version": "0.1.0",

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "impress_project_production_billing",
     "version": "0.1.0",

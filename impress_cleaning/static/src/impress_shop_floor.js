@@ -1,1 +1,1 @@
-import {patch} from '@web/core/utils/patch'
+import {patch} from "@web/core/utils/patch";

@@ -1,7 +1,7 @@
 /** @odoo-module **/
-import { startWebClient } from "@web/start";
-import { ManufacturingPortalWebClient } from "./manufacturing_portal";
-import { registry } from "@web/core/registry";
+import {startWebClient} from "@web/start";
+import {ManufacturingPortalWebClient} from "./manufacturing_portal";
+import {registry} from "@web/core/registry";
 
 const servicesToRemove = ["menu"];
 
@@ -18,11 +18,11 @@ const servicesRegistry = registry.category("services");
  * the services that we don't want instead of create a new module just to remove the services in assets.
  */
 export function removeServices() {
-  for (const service of servicesToRemove) {
-    if (servicesRegistry.contains(service)) {
-      servicesRegistry.remove(service);
+    for (const service of servicesToRemove) {
+        if (servicesRegistry.contains(service)) {
+            servicesRegistry.remove(service);
+        }
     }
-  }
 }
 
 removeServices();

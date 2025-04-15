@@ -9,11 +9,7 @@
     "author": "Cédric Paradis",
     "website": "",
     "category": "Maintenance",
-    "depends": [
-        "base",
-        "base_maintenance",
-        "quality",
-    ],
+    "depends": ["base", "base_maintenance", "quality", "maintenance_worksheet"],
     "data": [
         "data/team_tags.xml",
         "security/maintenance.xml",

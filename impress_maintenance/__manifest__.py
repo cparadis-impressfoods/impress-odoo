@@ -8,6 +8,7 @@
     "category": "Hidden",
     "depends": ["base", "hr_maintenance", "base_maintenance"],
     "data": [
+        "security/maintenance.xml",
         "views/hr_employee_views.xml",
         "views/maintenance_equipment_views.xml",
         "views/maintenance_request_views.xml",

@@ -10,8 +10,8 @@
             <xpath expr="//notebook/page[1]" position="replace">
                 <page string="Notes" name="description_page">
                     <group>
-                        <field name="description" placeholder="Maintenance Description" />
-                        <field name="description" placeholder="Maintenance Description" readonly="1" />
+                        <field name="description" placeholder="Maintenance Description"  groups="impress_maintenance.group_maintenance_administrator"/>
+                        <field name="description" placeholder="Maintenance Description" readonly="1" groups="!impress_maintenance.group_maintenance_administrator"/>
 
                         <field name="notes" placeholder="Maintenance Notes"/>
                     </group>

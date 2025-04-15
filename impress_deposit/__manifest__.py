@@ -13,7 +13,7 @@
         "views/stock_picking_views.xml",
     ],
     "assets": {
-        #'web.assets_backend': [
+        # 'web.assets_backend': [
         #    'impress_deposit/static/src/**/*'
         # ],
     },

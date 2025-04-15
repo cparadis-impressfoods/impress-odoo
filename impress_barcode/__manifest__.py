@@ -9,7 +9,7 @@
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     "category": "Hidden",
-    "version": "0.1.2",
+    "version": "17.0.0.1.2",
     "license": "GPL-2",
     # any module necessary for this one to work correctly
     "depends": ["base", "stock", "sale_management", "stock_barcode"],

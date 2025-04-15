@@ -1,6 +1,6 @@
 {
     "name": "impress_production_billing",
-    "version": "0.1.2",
+    "version": "17.0.0.1.2",
     "summary": """ Module to allow billing of MOs directly through SOs """,
     "author": "Cédric Paradis",
     "website": "",

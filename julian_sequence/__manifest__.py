@@ -15,7 +15,7 @@ This sequence type overrides any other behavior from ir.sequence (size, padding,
     "website": "",
     "license": "GPL-2",
     "category": "Hidden",
-    "version": "0.1.0",
+    "version": "17.0.0.1.0",
     # any module necessary for this one to work correctly
     "depends": ["base", "mrp", "stock"],
     "installable": True,

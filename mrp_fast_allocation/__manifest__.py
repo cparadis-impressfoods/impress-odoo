@@ -1,6 +1,6 @@
 {
     "name": "MRP Fast Allocation",
-    "version": "0.0.1",
+    "version": "17.0.0.0.1",
     "summary": """ Adds an action to assign all moves in the allocation report for a production order """,
     "author": "Cédric Paradis",
     "website": "",

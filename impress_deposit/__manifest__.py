@@ -1,6 +1,6 @@
 {
     "name": "Impress Deposit",
-    "version": "17.0.1.1",
+    "version": "17.0.0.1.1",
     "summary": """ Module to allow the management of deposits for containers """,
     "author": "Cédric Paradis",
     "website": "",

@@ -9,12 +9,11 @@
         "base",
         "web",
         "stock",
-        "mrp",
-        "quality_control",
         "quality_mrp",
         "mrp_workorder",
         "sign",
         "quality_mrp_workorder_worksheet",
+        "product_expiry",
     ],
     "data": [
         "security/ir.model.access.csv",

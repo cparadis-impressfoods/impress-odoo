@@ -11,7 +11,7 @@
                 <field
                     name="invoice_partner_id"
                     string="Invoice Partner"
-                    domain="['|', ('invoice_partner_id', '=', id), ('&amp;', ('invoice_partner_id', '=', False), ('type', '=', 'invoice'))]"
+                    domain="['|', ('invoice_partner_id', '=', id), '&amp;', ('invoice_partner_id', '=', False), ('type', '=', 'invoice')]"
                 />
             </xpath>
         </field>

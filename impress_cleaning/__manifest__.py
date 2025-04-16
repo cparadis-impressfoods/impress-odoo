@@ -1,7 +1,6 @@
-# -*- encoding: utf-8 -*-
 {
     "name": "impress_cleaning",
-    "version": "0.1.0",
+    "version": "17.0.0.1.0",
     "description": "Impress cleaning",
     "summary": "Module to handle cleanings for Impress Foods",
     "author": "Cédric Paradis",

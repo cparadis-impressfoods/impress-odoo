@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 import logging
+
 from odoo.tests import TransactionCase, tagged
 
 _logger = logging.getLogger(__name__)
@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 @tagged("standard", "impress")
 class TestWorkCenter(TransactionCase):
     def setUp(self):
-        super(TestWorkCenter, self).setUp()
+        super().setUp()
         self.workcenter_model = self.env["mrp.workcenter"]
         self.qcp_model = self.env["quality.point"]
 

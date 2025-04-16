@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api, _
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -14,6 +13,12 @@ class MaintenanceEquipment(models.Model):
     )
     maintenance_open_count_corrective = fields.Integer(
         string="Current Corrective", compute="_compute_maintenance_count_corrective"
+    )
+
+    technician_user_id = fields.Many2one(
+        "res.users",
+        string="Responsible",
+        domain="[('groups_id', 'in', [ref('hr_maintenance.group_maintenance_manager')])]",
     )
 
     @api.depends("maintenance_count")

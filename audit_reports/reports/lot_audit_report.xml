@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
 
@@ -24,10 +24,16 @@
                         <t t-call="audit_reports.stylesheet" />
 
                         <t t-if="o.show_full_traceability">
-                            <t t-set="lots" t-value="o.get_all_downstream_moves(o.lot_id)" />
+                            <t
+                                t-set="lots"
+                                t-value="o.get_all_downstream_moves(o.lot_id)"
+                            />
                         </t>
                         <t t-else="">
-                            <t t-set="lots" t-value="o.get_all_downstream_moves(o.lot_id, 1)" />
+                            <t
+                                t-set="lots"
+                                t-value="o.get_all_downstream_moves(o.lot_id, 1)"
+                            />
                         </t>
 
                         <!-- Start actual report -->
@@ -367,7 +373,10 @@
                                     <t t-set="current_move" t-value="move" />
                                     <t t-set="move_type" t-value="move_type" />
                                 </t>
-                                <t t-set="total" t-value="total + o.get_sml_qty(move)" />
+                                <t
+                                    t-set="total"
+                                    t-value="total + o.get_sml_qty(move)"
+                                />
                             </t>
                         </t>
                         <tr>
@@ -437,13 +446,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <t t-set="movement_types"
-                                t-value="['receptions', 'inventory_adjustments_in', 'unbuild_in', 'mo_in', 'returns_in', 'mo_out', 'inventory_adjustments_out', 'unbuild_out', 'deliveries', 'scrap']" />
+                            <t
+                                t-set="movement_types"
+                                t-value="['receptions', 'inventory_adjustments_in', 'unbuild_in', 'mo_in', 'returns_in', 'mo_out', 'inventory_adjustments_out', 'unbuild_out', 'deliveries', 'scrap']"
+                            />
                             <t t-foreach="movement_types" t-as="move_type">
-                                <t t-set="move_lines" t-value="lots_data.get(move_type, [])" />
+                                <t
+                                    t-set="move_lines"
+                                    t-value="lots_data.get(move_type, [])"
+                                />
                                 <tr t-if="move_lines">
                                     <td>
-                                        <t t-esc="move_type.replace('_', ' ').title()" />
+                                        <t
+                                            t-esc="move_type.replace('_', ' ').title()"
+                                        />
                                     </td>
                                     <td>
                                         <t t-foreach="move_lines" t-as="move_line">
@@ -487,7 +503,8 @@
                             <t t-foreach="value" t-as="key">
                                 <ul>
                                     <span t-if="depth &lt;= 1" class="key"><t
-                                            t-esc="o.get_name(key)" />:</span>
+                                            t-esc="o.get_name(key)"
+                                        />:</span>
                                     <t t-set="depth" t-value="depth + 1" />
                                     <t t-call="audit_reports.render_nested_dict">
                                         <t t-set="dict_data" t-value="value[key]" />
@@ -501,7 +518,9 @@
                                     <li t-if="len(list_item) != 0">
                                         <t t-if="o.is_mapping(list_item)">
                                             <t t-set="depth" t-value="depth + 1" />
-                                            <t t-call="audit_reports.render_nested_dict">
+                                            <t
+                                                t-call="audit_reports.render_nested_dict"
+                                            >
                                                 <t t-set="data" t-value="list_item" />
                                             </t>
                                         </t>
@@ -528,13 +547,19 @@
         </ul>
     </template>
 
-    <template id="audit_layout" name="audit layout" inherit_id="web.internal_layout" primary="True">
+    <template
+        id="audit_layout"
+        name="audit layout"
+        inherit_id="web.internal_layout"
+        primary="True"
+    >
         <xpath expr="//div[1]" position="replace">
             <div class="header">
                 <div class="row">
                     <div class="col-3">
                         <span
-                            t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')" />
+                            t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"
+                        />
                     </div>
                     <div class="col-2 offset-2 text-center">
                         <span>Impress Foods</span>
@@ -557,42 +582,41 @@
 
     <template id="stylesheet">
         <style type="text/css">
-            .nested-tree {
-            font-family: Arial, sans-serif;
-            margin: 20px 0;
-            line-height: 1.6;
-            }
-            .nested-tree ul {
-            list-style-type: none;
-            padding-left: 20px;
-            border-left: 1px solid #ccc;
-            }
-            .nested-tree > ul {
-            border-left: none;
-            }
-            .nested-tree li {
-            margin: 5px 0;
-            position: relative;
-            }
-            .nested-tree .key {
-            font-weight: bold;
-            color: #007bff;
-            margin-right: 5px;
-            }
-            .nested-tree .value {
-            color: #28a745;
-            }
+.nested-tree {
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+    line-height: 1.6;
+}
+.nested-tree ul {
+    list-style-type: none;
+    padding-left: 20px;
+    border-left: 1px solid #ccc;
+}
+.nested-tree > ul {
+    border-left: none;
+}
+.nested-tree li {
+    margin: 5px 0;
+    position: relative;
+}
+.nested-tree .key {
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 5px;
+}
+.nested-tree .value {
+    color: #28a745;
+}
 
+.keep_page {
+    page-break-inside: avoid !important;
+}
 
-            .keep_page {
-            page-break-inside: avoid !important;
-            }
-
-            .pb-prevent {
-            page-break-inside: avoid !important;
-            page-break-after: avoid !important;
-            page-break-before: avoid !important;
-            }
+.pb-prevent {
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+}
         </style>
     </template>
 </odoo>

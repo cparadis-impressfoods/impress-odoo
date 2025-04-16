@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <!-- View hpp_log_line View Tree -->
@@ -26,18 +26,33 @@
                 <header>
                     <field name="is_locked" invisible="1" />
                     <field name="create_date" invisible="1" />
-                    <button name="action_lock" type="object" string="Lock" class="btn-primary"
-                        invisible="is_locked or not create_date" />
-                    <button name="action_unlock" type="object" string="Unlock" class="btn-secondary"
+                    <button
+                        name="action_lock"
+                        type="object"
+                        string="Lock"
+                        class="btn-primary"
+                        invisible="is_locked or not create_date"
+                    />
+                    <button
+                        name="action_unlock"
+                        type="object"
+                        string="Unlock"
+                        class="btn-secondary"
                         invisible="not is_locked or not create_date"
-                        groups="quality.group_quality_manager" />
+                        groups="quality.group_quality_manager"
+                    />
                 </header>
                 <sheet>
                     <field name="hpp_log_id" invisible="1" />
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="action_view_log" type="object"
+                        <button
+                            class="oe_stat_button"
+                            name="action_view_log"
+                            type="object"
                             icon="fa-superpowers"
-                            groups="mrp.group_mrp_user" invisible="not hpp_log_id">
+                            groups="mrp.group_mrp_user"
+                            invisible="not hpp_log_id"
+                        >
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">HPP Log</span>
                             </div>
@@ -46,7 +61,11 @@
                     <div class="oe_title">
                         <label for="cycle_number" />
                         <h1>
-                            <field name="cycle_number" placeholder="000000" readonly='is_locked' />
+                            <field
+                                name="cycle_number"
+                                placeholder="000000"
+                                readonly='is_locked'
+                            />
                         </h1>
                     </div>
                     <group>
@@ -58,11 +77,19 @@
                             <field name="notes" readonly='is_locked' />
                         </group>
                         <group>
-                            <field name="cycle_time" readonly='is_locked' widget='radio' />
+                            <field
+                                name="cycle_time"
+                                readonly='is_locked'
+                                widget='radio'
+                            />
                             <field name="is_cleaning_cycle" readonly='is_locked' />
                             <field name="start_date" readonly='is_locked' />
-                            <field name="signature" widget="signature" options="{'size':[0,90]}"
-                                readonly='is_locked' />
+                            <field
+                                name="signature"
+                                widget="signature"
+                                options="{'size':[0,90]}"
+                                readonly='is_locked'
+                            />
                         </group>
                     </group>
                 </sheet>
@@ -79,13 +106,29 @@
                 <field name="cycle_number" string="Sequence" />
                 <field name="product_lot_id" string="Sequence" />
                 <field name="product_id" string="Product" />
-                <filter string="Orphans" name="orphans" domain="[('hpp_log_id','=',False)]" />
-                <filter string="Cleaning" name='cleaning' domain="[('is_cleaning_cycle','=',True)]" />
+                <filter
+                    string="Orphans"
+                    name="orphans"
+                    domain="[('hpp_log_id','=',False)]"
+                />
+                <filter
+                    string="Cleaning"
+                    name='cleaning'
+                    domain="[('is_cleaning_cycle','=',True)]"
+                />
                 <group expand="1" string="Group By">
-                    <filter string="Production" name="production" domain="[]"
-                        context="{'group_by':'production_id'}" />
-                    <filter string="Date" name="production_date" domain="[]"
-                        context="{'group_by':'start_date'}" />
+                    <filter
+                        string="Production"
+                        name="production"
+                        domain="[]"
+                        context="{'group_by':'production_id'}"
+                    />
+                    <filter
+                        string="Date"
+                        name="production_date"
+                        domain="[]"
+                        context="{'group_by':'start_date'}"
+                    />
                 </group>
             </search>
         </field>

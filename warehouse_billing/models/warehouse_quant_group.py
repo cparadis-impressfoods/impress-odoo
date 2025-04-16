@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 import logging
-from odoo import models, fields, api, _
+
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
@@ -78,7 +78,7 @@ class QuantHistoryGroup(models.Model):
                 vals["name"] = (
                     self.env["ir.sequence"].next_by_code("warehouse.usage.group") or "/"
                 )
-        return super(QuantHistoryGroup, self).create(vals_list)
+        return super().create(vals_list)
 
     def get_usage(self) -> float:
         self.ensure_one()
@@ -152,7 +152,6 @@ class QuantHistoryGroup(models.Model):
 
     @api.model
     def group_quant_history(self, config, today):
-
         domain = []
         domain += config.get_filter_domain()
         dates = config.get_billing_dates(today)

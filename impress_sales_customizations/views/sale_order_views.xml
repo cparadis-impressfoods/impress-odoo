@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="sale_order_view_gantt" model="ir.ui.view">
         <field name="name">sale.order.view.gantt</field>
@@ -27,14 +27,21 @@
                         </div>
                         <div>
                             <strong>
-                                <span class="text-success" t-if="state =='sale'">Sale</span>
+                                <span
+                                    class="text-success"
+                                    t-if="state =='sale'"
+                                >Sale</span>
                             </strong>
                         </div>
                         <div>
                             <strong>
                                 <span t-if="invoice_status=='invoiced'">Invoiced</span>
-                                <span t-if="invoice_status=='no'">Nothing to invoice</span>
-                                <span t-if="invoice_status=='to invoice'">To invoice</span>
+                                <span
+                                    t-if="invoice_status=='no'"
+                                >Nothing to invoice</span>
+                                <span
+                                    t-if="invoice_status=='to invoice'"
+                                >To invoice</span>
                             </strong>
                         </div>
                     </div>
@@ -46,12 +53,16 @@
     <record id="sale.action_orders" model="ir.actions.act_window">
         <field name="name">Sales Orders</field>
         <field name="res_model">sale.order</field>
-        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity,gantt</field>
+        <field
+            name="view_mode"
+        >tree,kanban,form,calendar,pivot,graph,activity,gantt</field>
     </record>
 
     <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
         <field name="name">Quotations</field>
         <field name="res_model">sale.order</field>
-        <field name="view_mode">gantt,tree,kanban,form,calendar,pivot,graph,activity</field>
+        <field
+            name="view_mode"
+        >gantt,tree,kanban,form,calendar,pivot,graph,activity</field>
     </record>
 </odoo>

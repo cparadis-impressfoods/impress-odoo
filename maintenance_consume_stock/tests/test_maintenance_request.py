@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo.tests import TransactionCase, tagged
 from odoo.exceptions import UserError
+from odoo.tests import TransactionCase, tagged
 
 _logger_ = logging.getLogger(__name__)
 
@@ -10,7 +9,7 @@ _logger_ = logging.getLogger(__name__)
 @tagged("standard", "impress")
 class TestMaintenanceRequest(TransactionCase):
     def setUp(self):
-        super(TestMaintenanceRequest, self).setUp()
+        super().setUp()
         self.request_model = self.env["maintenance.request"]
 
         self.product = self.env["product.product"].create(

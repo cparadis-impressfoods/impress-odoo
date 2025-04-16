@@ -1,18 +1,18 @@
-# -*- coding: utf-8 -*-
 import ast
-import typing
 import logging
-from datetime import datetime, date, time
-from dateutil.relativedelta import relativedelta, MO, TU, WE, TH, FR, SA, SU
+import typing
+from datetime import date, datetime, time
 
-from odoo import models, fields, api, _
+from dateutil.relativedelta import FR, MO, SA, SU, TH, TU, WE, relativedelta
+
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
-from odoo.addons.base.models.res_partner import Partner
-from odoo.addons.sale_management.models.sale_order_line import SaleOrderLine
-from odoo.addons.sale_management.models.sale_order import SaleOrder
-from odoo.addons.warehouse_billing.models.warehouse_quant_group import QuantHistoryGroup
-from odoo.addons.base.models.res_currency import Currency
 
+from odoo.addons.base.models.res_currency import Currency
+from odoo.addons.base.models.res_partner import Partner
+from odoo.addons.sale_management.models.sale_order import SaleOrder
+from odoo.addons.sale_management.models.sale_order_line import SaleOrderLine
+from odoo.addons.warehouse_billing.models.warehouse_quant_group import QuantHistoryGroup
 
 _logger = logging.getLogger(__name__)
 
@@ -187,7 +187,6 @@ class WarehouseBillingConfig(models.Model):
 
         # Generate a Quant History Group for each config
         for config in configs:
-
             start_date: date = config.last_invoice_date + relativedelta(days=1)
             end_date: date = min(config.next_planned_invoice_date, current_date)
             dates: tuple[date, date] = (start_date, end_date)
@@ -324,7 +323,6 @@ class WarehouseBillingConfig(models.Model):
             configs[0].last_invoice_date, time(hour=23, minute=0)
         )
         if len(sale_order_lines_vals) > 0 and not sale_order_id:
-
             sale_order_id: SaleOrder = self.env["sale.order"].create(
                 {
                     "partner_id": partner_id.id,

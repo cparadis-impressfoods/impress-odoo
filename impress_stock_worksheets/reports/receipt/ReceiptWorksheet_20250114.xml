@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <template id="ws_receipt_20250114_report">
@@ -10,22 +10,22 @@
                             <tr>
                                 <td>
                                     <span>État du produit: </span>
-                                    <span t-field="worksheet.x_product_state"/>
+                                    <span t-field="worksheet.x_product_state" />
                                 </td>
                                 <td>
                                     <span>État du camion: </span>
-                                    <span t-field="worksheet.x_truck_state"/>
+                                    <span t-field="worksheet.x_truck_state" />
                                 </td>
 
                             </tr>
                             <tr>
                                 <td>
                                     <span>Vérification date d'expiration: </span>
-                                    <span t-field="worksheet.x_expiration_check"/>
+                                    <span t-field="worksheet.x_expiration_check" />
                                 </td>
                                 <td>
                                     <span>État des palettes: </span>
-                                    <span t-field="worksheet.x_pallet_state"/>
+                                    <span t-field="worksheet.x_pallet_state" />
                                 </td>
 
                             </tr>
@@ -41,7 +41,7 @@
                                 </td>
                                 <td>
                                     <span>Identité du chauffeur: </span>
-                                    <span t-field="worksheet.x_driver_id"/>
+                                    <span t-field="worksheet.x_driver_id" />
                                 </td>
                             </tr>
 
@@ -50,16 +50,22 @@
                 </div>
             </div>
             <div class="row">
-                <span t-field="worksheet.x_comments"/>
+                <span t-field="worksheet.x_comments" />
             </div>
 
             <div class="row w-75">
                 <div class="col-sm-6">
-                    <img t-att-src="image_data_uri(worksheet.x_signature)" style="width:300px;height:auto;"/>
+                    <img
+                        t-att-src="image_data_uri(worksheet.x_signature)"
+                        style="width:300px;height:auto;"
+                    />
                 </div>
 
                 <div class="col-sm-6">
-                    <img t-att-src="image_data_uri(worksheet.x_truck_picture)" style="width:100px;height:auto;"/>
+                    <img
+                        t-att-src="image_data_uri(worksheet.x_truck_picture)"
+                        style="width:100px;height:auto;"
+                    />
                 </div>
             </div>
 
@@ -107,7 +113,8 @@
             </div>
             <div class="row">
                 <div class="text-center">
-                    <strong>Pour l'utilisation exclusive de Impress Foods. Mis à jour le 04 Décembre 2024. Feuille de contrôle Expédition </strong>
+                    <strong
+                    >Pour l'utilisation exclusive de Impress Foods. Mis à jour le 04 Décembre 2024. Feuille de contrôle Expédition </strong>
                 </div>
             </div>
         </div>
@@ -115,6 +122,9 @@
 
 
     <record id="ws_receipt_20250114" model="worksheet.template">
-        <field name="report_view_id" ref="impress_stock_worksheets.ws_receipt_20250114_report" />
+        <field
+            name="report_view_id"
+            ref="impress_stock_worksheets.ws_receipt_20250114_report"
+        />
     </record>
 </odoo>

@@ -1,21 +1,21 @@
-import werkzeug
+import logging
 from collections import OrderedDict
 from operator import itemgetter
 
-from odoo import conf, http, _
-from odoo.addons.portal.controllers import portal
+import werkzeug
+
+from odoo import _, conf, http
+from odoo.exceptions import AccessError, MissingError
 from odoo.http import request
-from odoo.addons.portal.controllers.portal import pager as portal_pager
 from odoo.tools import groupby as groupbyelem
 
-
-import logging
+from odoo.addons.portal.controllers import portal
+from odoo.addons.portal.controllers.portal import pager as portal_pager
 
 _logger = logging.getLogger(__name__)
 
 
 class CustomerPortal(portal.CustomerPortal):
-
     @http.route(
         ["/my/manufacturings", "/my/manufacturings/page/<int:page>"],
         type="http",
@@ -37,7 +37,7 @@ class CustomerPortal(portal.CustomerPortal):
         SaleOrder = request.env["sale.order"]
 
         # If no SO is specified, get all SOs for the user
-        if so == None:
+        if so is None:
             so_domain = [("partner_id", "=", commercial_partner.id)]
             so_ids = [so.id for so in SaleOrder.search(so_domain)]
         else:
@@ -46,7 +46,7 @@ class CustomerPortal(portal.CustomerPortal):
 
         domain = [("billing_sale_order_id", "in", so_ids)]
 
-        if product != None:
+        if product is not None:
             product_domain = [("product_id", "=", int(product))]
             domain += product_domain
 
@@ -132,7 +132,6 @@ class CustomerPortal(portal.CustomerPortal):
         return searchbar_filters
 
     def _get_searchbar_groupby(self):
-
         searchbar_groupby = {
             "none": {"input": "none", "label": _("None")},
             "product": {"input": "product", "label": _("Product")},

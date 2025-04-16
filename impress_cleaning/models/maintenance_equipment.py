@@ -1,5 +1,6 @@
-from odoo import models, fields
+from odoo import models
+
 
 class MaintenanceEquipment(models.Model):
     _name = "maintenance.equipment"
-    _inherit = ['maintenance.equipment', 'cleaning.mixin']
+    _inherit = ["maintenance.equipment", "cleaning.mixin"]

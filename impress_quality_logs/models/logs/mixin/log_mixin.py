@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 import logging
 from ast import literal_eval
-
-from odoo import models, fields, api
 from datetime import datetime
+
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 

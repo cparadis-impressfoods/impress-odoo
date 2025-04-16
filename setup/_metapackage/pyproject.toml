@@ -1,0 +1,43 @@
+[project]
+name = "odoo-addons-impress-odoo"
+version = "17.0.20250415.0"
+dependencies = [
+    "odoo-addon-audit_reports>=17.0dev,<17.1dev",
+    "odoo-addon-documents_archive>=17.0dev,<17.1dev",
+    "odoo-addon-impress_account_report>=17.0dev,<17.1dev",
+    "odoo-addon-impress_accounting>=17.0dev,<17.1dev",
+    "odoo-addon-impress_barcode>=17.0dev,<17.1dev",
+    "odoo-addon-impress_billback>=17.0dev,<17.1dev",
+    "odoo-addon-impress_check_customizations>=17.0dev,<17.1dev",
+    "odoo-addon-impress_cleaning>=17.0dev,<17.1dev",
+    "odoo-addon-impress_datetime_widget>=17.0dev,<17.1dev",
+    "odoo-addon-impress_deposit>=17.0dev,<17.1dev",
+    "odoo-addon-impress_expiration_lot>=17.0dev,<17.1dev",
+    "odoo-addon-impress_lot_lab>=17.0dev,<17.1dev",
+    "odoo-addon-impress_maintenance>=17.0dev,<17.1dev",
+    "odoo-addon-impress_maintenance_quality_mgmt>=17.0dev,<17.1dev",
+    "odoo-addon-impress_maintenance_worksheets>=17.0dev,<17.1dev",
+    "odoo-addon-impress_manufacturing_customizations>=17.0dev,<17.1dev",
+    "odoo-addon-impress_prevent_workorder_bo>=17.0dev,<17.1dev",
+    "odoo-addon-impress_production_billing>=17.0dev,<17.1dev",
+    "odoo-addon-impress_project_billing_production>=17.0dev,<17.1dev",
+    "odoo-addon-impress_quality_customizations>=17.0dev,<17.1dev",
+    "odoo-addon-impress_quality_logs>=17.0dev,<17.1dev",
+    "odoo-addon-impress_quality_worksheets>=17.0dev,<17.1dev",
+    "odoo-addon-impress_sales_customizations>=17.0dev,<17.1dev",
+    "odoo-addon-impress_stock_customizations>=17.0dev,<17.1dev",
+    "odoo-addon-impress_stock_worksheets>=17.0dev,<17.1dev",
+    "odoo-addon-julian_sequence>=17.0dev,<17.1dev",
+    "odoo-addon-maintenance_consume_stock>=17.0dev,<17.1dev",
+    "odoo-addon-maintenance_documents>=17.0dev,<17.1dev",
+    "odoo-addon-maintenance_quality>=17.0dev,<17.1dev",
+    "odoo-addon-mrp_add_qc_note_shop_floor>=17.0dev,<17.1dev",
+    "odoo-addon-mrp_fast_allocation>=17.0dev,<17.1dev",
+    "odoo-addon-production_log_note>=17.0dev,<17.1dev",
+    "odoo-addon-warehouse_billing>=17.0dev,<17.1dev",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 17.0",
+]

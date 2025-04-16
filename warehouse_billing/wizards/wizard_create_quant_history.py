@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 import logging
 from datetime import timedelta
 from typing import Any
-from odoo import models, fields, api, _
+
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)

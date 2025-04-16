@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -31,6 +30,8 @@ class MrpProduction(models.Model):
         related="billing_sale_order_id.partner_id",
         store=True,
     )
+
+    invoice_status = fields.Boolean(string="Invoice Status")
 
     @api.depends("billing_sale_order_ref")
     def _compute_billing_sale_order_id(self):
@@ -82,15 +83,17 @@ class MrpProduction(models.Model):
                         )
                     }
 
-                    if rec._get_matching_service_product() in sale_order_line_dict:
+                    billing_product = self.product_id.get_production_billing_product()
+
+                    if billing_product in sale_order_line_dict:
                         rec.billing_sale_order_line_id = sale_order_line_dict[
-                            rec._get_matching_service_product()
+                            billing_product
                         ]
                         rec._recompute_billing_line_qty()
                     else:
                         raise ValidationError(
                             "No Sale Order Line found in SO. Expected line with product {}".format(
-                                rec._get_matching_service_product().display_name
+                                billing_product.display_name
                             )
                         )
 
@@ -103,7 +106,7 @@ class MrpProduction(models.Model):
         new_order_line = self.env["sale.order.line"].create(
             {
                 "order_id": self.billing_sale_order_id.id,
-                "product_id": self._get_matching_service_product().id,
+                "product_id": self.product_id.get_production_billing_product().id,
                 "product_uom_qty": self.product_uom_qty,
             }
         )
@@ -150,21 +153,6 @@ class MrpProduction(models.Model):
             )
             self.billing_sale_order_line_id.product_uom_qty = total_qty_to_deliver
 
-    def _get_matching_service_product(self):
-        self.ensure_one()
-        reference_to_match = "S" + self.product_id.default_code[1:]
-        matching_product = self.env["product.product"].search(
-            [("default_code", "=", reference_to_match)]
-        )
-        if matching_product:
-            return matching_product
-        else:
-            raise ValidationError(
-                "No matching service product found. Expected product with reference {}".format(
-                    reference_to_match
-                )
-            )
-
     def button_mark_done(self):
         res = super().button_mark_done()
         self.update_billing_sale_order_line_on_done()
@@ -179,6 +167,7 @@ class MrpProduction(models.Model):
         res = super()._action_cancel()
         if self.billing_sale_order_id:
             self.billing_sale_order_id = None
+            self.billing_sale_order_ref = False
         return res
 
     def write(self, vals):
@@ -191,4 +180,4 @@ class MrpProduction(models.Model):
 
     def get_portal_url(self):
         self.ensure_one()
-        return "/my/manufacturings/{}".format(self.id)
+        return f"/my/manufacturings/{self.id}"

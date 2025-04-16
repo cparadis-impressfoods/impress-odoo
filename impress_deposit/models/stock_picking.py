@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -18,7 +17,6 @@ class StockPicking(models.Model):
         for record in self:
             total = 0
             if record.partner_id.requires_deposit:
-
                 for line in record.move_line_ids:
                     total += line.container_qty
 

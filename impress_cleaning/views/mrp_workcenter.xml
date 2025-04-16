@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
 
@@ -10,14 +10,17 @@
             <field name="arch" type="xml">
                 <xpath
                     expr="//notebook/page[@name='maintenance']//field[@name='technician_user_id']"
-                    position="after">
+                    position="after"
+                >
                         <field name="cleaning_team_id" />
                         <field name="cleaning_user_id" />
-                        <label for="cleaning_time"/>
+                        <label for="cleaning_time" />
                         <div>
-                        <field name="cleaning_time"
+                        <field
+                            name="cleaning_time"
                             widget="float_time"
-                            class="oe_inline"/> <span class="ml8">hours</span>
+                            class="oe_inline"
+                        /> <span class="ml8">hours</span>
                         </div>
                 </xpath>
             </field>

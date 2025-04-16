@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Impress Check Customizations",
     "version": "17.0.0.1.0",

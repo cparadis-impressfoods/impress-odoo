@@ -1,20 +1,20 @@
-# -*- coding: utf-8 -*-
 {
     "name": "impress_production_billing",
-    "version": "0.1.2",
+    "version": "17.0.0.1.2",
     "summary": """ Module to allow billing of MOs directly through SOs """,
     "author": "Cédric Paradis",
     "website": "",
     "category": "Sales",
     "depends": ["base", "web", "mrp", "purchase", "sale_management", "portal"],
     "data": [
-        "views/mrp_production_views.xml",
-        "views/sale_order_views.xml",
-        "views/portal/portal_production.xml",
-        "views/portal/portal_mrp_production_views.xml",
-        "views/portal/portal_sale_order_views.xml",
-        "security/ir.model.access.csv",
         "security/impress_production_billing_security.xml",
+        "security/ir.model.access.csv",
+        "views/mrp_production_views.xml",
+        "views/portal/portal_mrp_production_views.xml",
+        "views/portal/portal_production.xml",
+        "views/portal/portal_sale_order_views.xml",
+        "views/product_template_views.xml",
+        "views/sale_order_views.xml",
     ],
     "assets": {
         "web.assets_frontend": [

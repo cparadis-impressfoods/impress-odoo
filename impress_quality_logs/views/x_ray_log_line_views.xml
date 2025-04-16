@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <!-- View x_ray.log.line View Tree -->
@@ -31,8 +31,14 @@
                     <group>
                         <group>
                             <field name="reject_value" readonly='is_locked' />
-                            <field name="stainless_detection_value" readonly='is_locked' />
-                            <field name="ceramic_detection_value" readonly='is_locked' />
+                            <field
+                                name="stainless_detection_value"
+                                readonly='is_locked'
+                            />
+                            <field
+                                name="ceramic_detection_value"
+                                readonly='is_locked'
+                            />
                             <field name="glass_detection_value" readonly='is_locked' />
                         </group>
                         <group>
@@ -58,8 +64,12 @@
                 <field name="product_lot_id" string="Sequence" />
                 <field name="product_id" string="Product" />
                 <group expand="1" string="Group By">
-                    <filter string="Sequence" name="sequence" domain="[]"
-                        context="{'group_by':'sequence'}" />
+                    <filter
+                        string="Sequence"
+                        name="sequence"
+                        domain="[]"
+                        context="{'group_by':'sequence'}"
+                    />
                 </group>
             </search>
         </field>

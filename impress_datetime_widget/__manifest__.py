@@ -1,6 +1,6 @@
 {
     "name": "impress_datetime_widget",
-    "version": "0.1.0",
+    "version": "17.0.0.1.0",
     "depends": ["base", "web"],
     "author": "Cédric Paradis",
     "category": "Technical",

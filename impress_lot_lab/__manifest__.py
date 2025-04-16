@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Impress_lot_lab",
-    "version": "0.1.2",
+    "version": "17.0.0.1.2",
     "summary": """ Impress_lot_lab Summary """,
     "author": "Cédric Paradis",
     "website": "",

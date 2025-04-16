@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Impress Deposit",
-    "version": "17.0.1.1",
+    "version": "17.0.0.1.1",
     "summary": """ Module to allow the management of deposits for containers """,
     "author": "Cédric Paradis",
     "website": "",
@@ -14,7 +13,7 @@
         "views/stock_picking_views.xml",
     ],
     "assets": {
-        #'web.assets_backend': [
+        # 'web.assets_backend': [
         #    'impress_deposit/static/src/**/*'
         # ],
     },

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Impress_accounting",
     "version": "17.0.0.0.1",

@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
 from datetime import datetime
 from math import ceil
+
 from odoo.tests import TransactionCase, tagged
 
 
 @tagged("standard", "impress")
 class TestWarehouseBillingConfig(TransactionCase):
-
     def setUp(self):
-        super(TestWarehouseBillingConfig, self).setUp()
+        super().setUp()
         self.billing_config = self.env["warehouse.billing.config"]
         self.date = datetime.strptime("2025-03-31", "%Y-%m-%d").date()
 

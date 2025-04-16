@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from odoo import _, api, fields, models
 
-from odoo.addons.quality.models.quality import QualityPoint, QualityCheck
+from odoo.addons.quality.models.quality import QualityCheck
 
 _logger = logging.getLogger(__name__)
 
@@ -121,7 +119,7 @@ class MaintenanceRequest(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        res = super(MaintenanceRequest, self).create(vals_list)
+        res = super().create(vals_list)
         res._create_quality_checks()
         return res
 

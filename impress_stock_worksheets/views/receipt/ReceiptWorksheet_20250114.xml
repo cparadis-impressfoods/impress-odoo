@@ -1,32 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id='ws_receipt_20250114_form_view' model='ir.ui.view'>
         <field name="name">ws.receipt.20250114.form.view</field>
-        <field name="model" model="ir.model" eval="obj().env.ref('impress_stock_worksheets.ws_receipt_20250114').model_id.model"/>
+        <field
+            name="model"
+            model="ir.model"
+            eval="obj().env.ref('impress_stock_worksheets.ws_receipt_20250114').model_id.model"
+        />
         <field name="priority">1</field>
         <field name="arch" type="xml">
             <form create="false" js_class="worksheet_validation">
                 <sheet>
-                    <group invisible="context.get('studio') or context.get('default_x_quality_check_id')">
+                    <group
+                        invisible="context.get('studio') or context.get('default_x_quality_check_id')"
+                    >
                         <group>
-                            <field name="x_quality_check_id"/>
+                            <field name="x_quality_check_id" />
                         </group>
                     </group>
                     <group>
                         <group name="product" string="Product">
-                            <field name="x_product_state" string="Product state (no bad smells, expected color and texture, respects specs etc)" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
-                            <field name="x_product_allergen" string="No allergen markings on product or documents"/>
-                            <field name="x_signature" widget="signature" options="{&quot;size&quot;:[0,90]}" field_id="x_signature_0"/>
+                            <field
+                                name="x_product_state"
+                                string="Product state (no bad smells, expected color and texture, respects specs etc)"
+                                widget="selection_badge"
+                                options="{&quot;size&quot;:&quot;sm&quot;}"
+                            />
+                            <field
+                                name="x_product_allergen"
+                                string="No allergen markings on product or documents"
+                            />
+                            <field
+                                name="x_signature"
+                                widget="signature"
+                                options="{&quot;size&quot;:[0,90]}"
+                                field_id="x_signature_0"
+                            />
                         </group>
                         <group name="truck" string="Transport">
-                            <field name="x_pallet_state" string="Pallet state (No greases, oils, wood or metal chips, dusts, etc.)" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
-                            <field name="x_truck_state" string="Truck state (Clean, no traces of pests, no bad smells, etc.)" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
-                            <field name="x_driver_id" string="Driver's documents match receipt documents" widget="selection_badge" options="{&quot;size&quot;:&quot;sm&quot;}"/>
-                            <field name="x_truck_picture" widget="image" options="{&quot;size&quot;:[0,90]}" field_id="x_truck_picture_0"/>
+                            <field
+                                name="x_pallet_state"
+                                string="Pallet state (No greases, oils, wood or metal chips, dusts, etc.)"
+                                widget="selection_badge"
+                                options="{&quot;size&quot;:&quot;sm&quot;}"
+                            />
+                            <field
+                                name="x_truck_state"
+                                string="Truck state (Clean, no traces of pests, no bad smells, etc.)"
+                                widget="selection_badge"
+                                options="{&quot;size&quot;:&quot;sm&quot;}"
+                            />
+                            <field
+                                name="x_driver_id"
+                                string="Driver's documents match receipt documents"
+                                widget="selection_badge"
+                                options="{&quot;size&quot;:&quot;sm&quot;}"
+                            />
+                            <field
+                                name="x_truck_picture"
+                                widget="image"
+                                options="{&quot;size&quot;:[0,90]}"
+                                field_id="x_truck_picture_0"
+                            />
                         </group>
                     </group>
                     <group>
-                        <field name="x_comments" string="Comments"/>
+                        <field name="x_comments" string="Comments" />
                     </group>
                     <div class="table-responsive" name="temperature charts">
                         <table class="table table-sm">

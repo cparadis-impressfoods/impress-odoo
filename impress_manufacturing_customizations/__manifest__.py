@@ -1,6 +1,6 @@
 {
     "name": "impress_manufacturing_customizations",
-    "version": "0.1.1",
+    "version": "17.0.0.1.1",
     "depends": ["base", "mrp"],
     "author": "Cédric Paradis",
     "category": "Manufacturing",

@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 import logging
-
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
-from math import floor
 from datetime import datetime
+from math import floor
+
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 

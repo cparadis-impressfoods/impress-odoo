@@ -1,13 +1,12 @@
-# -*- coding: utf-8 -*-
 import logging
-from datetime import datetime, date, timedelta
+from datetime import date, datetime, timedelta
 
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+
 from odoo.addons.warehouse_billing.models.warehouse_billing_config import (
     WarehouseBillingConfig,
 )
-
 
 _logger = logging.getLogger(__name__)
 
@@ -51,7 +50,6 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
 
     @api.model
     def generate_sale_order_line_values(self, config, group, today):
-
         if not config.billing_product_id:
             raise UserError(_("No billing product defined for %s.") % config.name)
 
@@ -59,7 +57,6 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
         if len(group) != 0:
             sale_order_line_vals = group.generate_sale_order_line_values()
         else:
-
             if config.measurement_type == "cubic":
                 uom = "m³"
             elif config.measurement_type == "square":
@@ -151,7 +148,6 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
 
         # Generate sale order line for each group
         for config, group in quant_history.items():
-
             sale_order_line_vals = self.generate_sale_order_line_values(
                 config, group, today
             )
@@ -208,7 +204,6 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
         configs = self.get_configs_to_bill(date)
 
         while len(configs) != 0:
-
             sale_orders = self.env["sale.order"]
             grouped_configs = self.group_configs(configs)
             _logger.warning(grouped_configs)

@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 import logging
+
 from odoo.tests import TransactionCase, tagged
 
 _logger = logging.getLogger(__name__)
@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 @tagged("standard", "impress")
 class TestMaintenanceEquipmentCategory(TransactionCase):
     def setUp(self):
-        super(TestMaintenanceEquipmentCategory, self).setUp()
+        super().setUp()
         self.category_model = self.env["maintenance.equipment.category"]
         self.qcp_model = self.env["quality.point"]
 

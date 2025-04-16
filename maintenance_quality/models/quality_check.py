@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -25,7 +24,7 @@ class QualityCheck(models.Model):
 
     def do_alert(self):
         self.ensure_one()
-        res = super(QualityCheck, self).do_alert()
+        res = super().do_alert()
         alert = self.env["quality.alert"].browse(res["res_id"])
         alert.write({"maintenance_request_id": self.maintenance_request_id})
         return res

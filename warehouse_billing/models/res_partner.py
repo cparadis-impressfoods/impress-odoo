@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from odoo import _, models
 
 _logger = logging.getLogger(__name__)
 
@@ -22,9 +20,7 @@ class ResPartner(models.Model):
         )
 
         if len(configs) == 1:
-            action.update(
-                {"view_mode": "form", "res_id": configs[0].id}
-            )  # type: ignore
+            action.update({"view_mode": "form", "res_id": configs[0].id})  # type: ignore
 
         else:
             action.update(

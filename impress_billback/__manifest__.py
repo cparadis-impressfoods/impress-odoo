@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 {
     "name": "impress_billback",
-    "version": "0.1.0",
+    "version": "17.0.0.1.0",
     "summary": """ Impress_billback Summary """,
     "author": "Cédric Paradis",
     "website": "",

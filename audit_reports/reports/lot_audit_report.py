@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
-from typing import Mapping, Iterable
 import logging
+from collections.abc import Iterable, Mapping
 
-from odoo import models, fields, api
+from odoo import api, fields, models
+
+from odoo.addons.mrp.models.mrp_production import MrpProduction
 from odoo.addons.stock.models.stock_lot import StockLot
 from odoo.addons.stock.models.stock_move_line import StockMoveLine
-from odoo.addons.mrp.models.mrp_production import MrpProduction
 
 _logger = logging.getLogger(__name__)
 
@@ -116,9 +116,7 @@ class LotAuditReport(models.TransientModel):
 
             deliveries[line.move_id.picking_id.partner_id][
                 line.lot_id
-            ] -= self.get_sml_qty(
-                line
-            )  # We substract since we want the qy shipped
+            ] -= self.get_sml_qty(line)  # We substract since we want the qy shipped
 
         for line in return_lines:
             if line.move_id.picking_id.partner_id in deliveries:

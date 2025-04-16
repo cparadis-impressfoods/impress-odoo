@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
@@ -29,7 +28,7 @@ class MaintenanceRequest(models.Model):
                     raise UserError(
                         "Cannot delete a maintenance request with done scrap moves"
                     )
-        return super(MaintenanceRequest, self).unlink()
+        return super().unlink()
 
     @api.depends("scrap_ids")
     def _compute_scrap_count(self):

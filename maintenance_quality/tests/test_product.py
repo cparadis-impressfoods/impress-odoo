@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 import logging
+
 from odoo.tests import TransactionCase, tagged
 
 _logger = logging.getLogger(__name__)
@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 @tagged("standard", "impress")
 class TestProductProduct(TransactionCase):
     def setUp(self):
-        super(TestProductProduct, self).setUp()
+        super().setUp()
 
         product_model = self.env["product.product"]
         quality_point_model = self.env["quality.point"]

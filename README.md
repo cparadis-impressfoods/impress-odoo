@@ -48,6 +48,7 @@ addon | version | maintainers | summary
 [julian_sequence](julian_sequence/) | 17.0.0.1.0 |  | Allows the creation of sequences based on the YYDDD format
 [maintenance_consume_stock](maintenance_consume_stock/) | 17.0.0.0.2 |  | Module to allow stock usage in maintenance requests
 [maintenance_documents](maintenance_documents/) | 17.0.1.0.0 |  | Bridge module between Maintenance and Documents
+[maintenance_product](maintenance_product/) | 17.0.1.0.0 |  | Allows to link products to maintenance equipments
 [maintenance_quality](maintenance_quality/) | 17.0.0.0.1 |  | Bridge module between Maintenance and Quality Control
 [mrp_add_qc_note_shop_floor](mrp_add_qc_note_shop_floor/) | 17.0.0.1.0 |  | Mrp_add_qc_note_shop_floor Summary
 [mrp_fast_allocation](mrp_fast_allocation/) | 17.0.0.0.1 |  | Adds an action to assign all moves in the allocation report for a production order

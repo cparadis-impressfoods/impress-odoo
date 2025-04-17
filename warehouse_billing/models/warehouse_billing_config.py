@@ -4,7 +4,6 @@ import typing
 from datetime import date, datetime, time
 
 from dateutil.relativedelta import FR, MO, SA, SU, TH, TU, WE, relativedelta
-from models.warehouse_quant_group import QuantHistoryGroup
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
@@ -13,6 +12,10 @@ from odoo.addons.base.models.res_currency import Currency
 from odoo.addons.base.models.res_partner import Partner
 from odoo.addons.sale_management.models.sale_order import SaleOrder
 from odoo.addons.sale_management.models.sale_order_line import SaleOrderLine
+
+from .warehouse_quant_group import (
+    QuantHistoryGroup,
+)
 
 _logger = logging.getLogger(__name__)
 

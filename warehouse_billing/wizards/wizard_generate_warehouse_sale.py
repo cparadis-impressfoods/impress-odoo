@@ -1,12 +1,12 @@
 import logging
 from datetime import date, datetime, timedelta
 
-from models.warehouse_billing_config import (
-    WarehouseBillingConfig,
-)
-
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+
+from ..models.warehouse_billing_config import (
+    WarehouseBillingConfig,
+)
 
 _logger = logging.getLogger(__name__)
 

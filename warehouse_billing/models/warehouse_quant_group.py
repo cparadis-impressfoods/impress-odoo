@@ -31,9 +31,7 @@ class QuantHistoryGroup(models.Model):
         store=True,
     )
 
-    sale_order_id = fields.Many2one(
-        "sale.order", srelated="sale_order_line_id.order_id"
-    )
+    sale_order_id = fields.Many2one("sale.order", related="sale_order_line_id.order_id")
     sale_order_line_id = fields.Many2one(
         "sale.order.line",
     )

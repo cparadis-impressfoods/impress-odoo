@@ -11,10 +11,10 @@ class LogMixin(models.Model):
     _name = "log.mixin"
     _description = "log.mixin"
 
-    name = fields.Char("Name")
-    signature = fields.Binary("Signature")
+    name = fields.Char()
+    signature = fields.Binary()
 
-    quality_check_id = fields.Many2one("quality.check", "Quality Check")
+    quality_check_id = fields.Many2one("quality.check")
     production_id = fields.Many2one(
         "mrp.production",
         "Production Order",
@@ -45,7 +45,7 @@ class LogMixin(models.Model):
         depends=["quality_check_id", "quality_check_id.control_date"],
     )
     weekly_signature_date = fields.Datetime(
-        "Weekly Signature Date", compute="_compute_weekly_signature_date", store=True
+        compute="_compute_weekly_signature_date", store=True
     )
 
     @api.depends("signature")

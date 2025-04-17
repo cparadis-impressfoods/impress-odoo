@@ -3,7 +3,7 @@
     "version": "17.0.0.1.2",
     "summary": """ Module to allow billing of MOs directly through SOs """,
     "author": "Cédric Paradis",
-    "website": "",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Sales",
     "depends": ["base", "web", "mrp", "purchase", "sale_management", "portal"],
     "data": [

@@ -3,7 +3,7 @@
     "version": "17.0.0.1.0",
     "summary": """ Module to allow a "soft" archive feature for documents. """,
     "author": "Cédric Paradis",
-    "website": "",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Hidden",
     "depends": ["base", "documents", "stock"],
     "data": ["views/documents_document_views.xml"],

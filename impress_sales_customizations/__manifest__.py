@@ -3,8 +3,9 @@
     "version": "17.0.0.1.0",
     "depends": ["base", "sale_management"],
     "author": "Cédric Paradis",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Sales",
-    "description": """"
+    "summary": """"
     Customizations for the sales module
     """,
     "license": "GPL-2",

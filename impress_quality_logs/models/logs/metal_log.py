@@ -14,9 +14,9 @@ class MetalLog(models.Model):
     log_line_ids = fields.One2many(
         comodel_name="metal.log.line", inverse_name="metal_log_id"
     )
-    monthly_signature = fields.Binary("Monthly Signature")
+    monthly_signature = fields.Binary()
     monthly_signature_date = fields.Datetime(
-        "Monthly Signature Date", compute="_compute_monthly_signature_date", store=True
+        compute="_compute_monthly_signature_date", store=True
     )
 
     @api.depends("monthly_signature")

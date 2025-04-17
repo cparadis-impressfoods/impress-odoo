@@ -29,9 +29,11 @@ class MrpProductionWorkcenterLine(models.Model):
                 "default_maintenance_type": "cleaning",
                 "default_schedule_date": datetime.today(),
                 "default_name": "Cleaning - " + self.workcenter_id.name,
-                "default_duration": 0.5
-                if self.workcenter_id.cleaning_time == 0
-                else self.workcenter_id.cleaning_time,
+                "default_duration": (
+                    0.5
+                    if self.workcenter_id.cleaning_time == 0
+                    else self.workcenter_id.cleaning_time
+                ),
                 "default_maintenance_for": "workcenter",
                 "default_workcenter_id": self.workcenter_id.id,
                 "default_maintenance_team_id": self.workcenter_id.cleaning_team_id.id,

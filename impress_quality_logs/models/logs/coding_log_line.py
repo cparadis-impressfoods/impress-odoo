@@ -15,29 +15,20 @@ class CodingLogLine(models.Model):
         comodel_name="coding.log", compute="_compute_coding_log_id", store=True
     )
 
-    sequence = fields.Char("Sequence", default=lambda self: _("New"), copy=False)
+    sequence = fields.Char(default=lambda self: _("New"), copy=False)
 
-    case_code = fields.Char("Case Code")
-    unit_code = fields.Char("Unit Code")
+    case_code = fields.Char()
+    unit_code = fields.Char()
 
-    unit_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")], "Unit Check")
-    sleeve_check = fields.Selection(
-        [("ok", "Ok"), ("not_ok", "Not Ok")], "Sleeve Check"
-    )
-    case_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")], "Case Check")
-    subunit_check = fields.Selection(
-        [("ok", "Ok"), ("not_ok", "Not Ok")], "Subunit Check"
-    )
-    shelf_life_check = fields.Selection(
-        [("ok", "Ok"), ("not_ok", "Not Ok")], "Shelf Life Check"
-    )
-    keep_cold_check = fields.Selection(
-        [("ok", "Ok"), ("not_ok", "Not Ok")], "Keep Cold Check"
-    )
+    unit_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    sleeve_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    case_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    subunit_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    shelf_life_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    keep_cold_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
 
     global_success_check = fields.Selection(
         [("ok", "Ok"), ("not_ok", "Not Ok")],
-        "Global Success Check",
         store=True,
         compute="_compute_global_success_check",
     )

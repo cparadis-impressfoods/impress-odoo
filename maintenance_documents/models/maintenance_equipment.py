@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class MaintenanceEquipment(models.Model):
     _inherit = "maintenance.equipment"
 
-    document_count = fields.Integer("Document Count", compute="_compute_document_count")
+    document_count = fields.Integer(compute="_compute_document_count")
 
     def _compute_document_count(self):
         Document = self.env["documents.document"]

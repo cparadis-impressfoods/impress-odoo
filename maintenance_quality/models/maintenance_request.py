@@ -76,7 +76,7 @@ class MaintenanceRequest(models.Model):
                 ("workcenter_ids", "in", [self.equipment_id.workcenter_id.id])
             )
 
-        for i in range(len(domain) - 1):
+        for _i in range(len(domain) - 1):
             domain.insert(0, "|")
 
         match self.maintenance_type:

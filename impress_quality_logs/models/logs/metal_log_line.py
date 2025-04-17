@@ -23,19 +23,19 @@ class MetalLogLine(models.Model):
         comodel_name="metal.log", compute="_compute_metal_log_id", store=True
     )
 
-    sequence = fields.Char("Sequence", default=lambda self: _("New"), copy=False)
+    sequence = fields.Char(default=lambda self: _("New"), copy=False)
 
-    calibration = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")], "Calibration")
-    ejection = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")], "Ejection")
+    calibration = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    ejection = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
 
-    reject_value = fields.Float("Reject Value")
-    ferrous = fields.Integer("Ferrous")
-    non_ferrous = fields.Integer("Non Ferrous")
-    stainless = fields.Integer("Stainless")
-    torque = fields.Integer("Torque")
-    mean_weight = fields.Float("Mean Weight")
+    reject_value = fields.Float()
+    ferrous = fields.Integer()
+    non_ferrous = fields.Integer()
+    stainless = fields.Integer()
+    torque = fields.Integer()
+    mean_weight = fields.Float()
 
-    global_success = fields.Boolean("Global Success", compute="_compute_global_success")
+    global_success = fields.Boolean(compute="_compute_global_success")
 
     @api.depends(
         "calibration", "ejection", "reject_value", "ferrous", "non_ferrous", "stainless"

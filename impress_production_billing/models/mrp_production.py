@@ -1,6 +1,6 @@
 import logging
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
@@ -26,12 +26,11 @@ class MrpProduction(models.Model):
     )
     billing_partner_id = fields.Many2one(
         "res.partner",
-        string="Billing Partner",
         related="billing_sale_order_id.partner_id",
         store=True,
     )
 
-    invoice_status = fields.Boolean(string="Invoice Status")
+    invoice_status = fields.Boolean()
 
     @api.depends("billing_sale_order_ref")
     def _compute_billing_sale_order_id(self):
@@ -43,8 +42,10 @@ class MrpProduction(models.Model):
 
                 if not value:
                     raise ValidationError(
-                        "No Sale Order found with reference {}".format(
-                            rec.billing_sale_order_ref
+                        _(
+                            "No Sale Order found with reference {}".format(
+                                rec.billing_sale_order_ref
+                            )
                         )
                     )
                 else:
@@ -80,6 +81,7 @@ class MrpProduction(models.Model):
                         for (product, sale_order_line) in zip(
                             rec.billing_sale_order_id.order_line.mapped("product_id"),
                             rec.billing_sale_order_id.order_line,
+                            strict=False,
                         )
                     }
 
@@ -92,8 +94,10 @@ class MrpProduction(models.Model):
                         rec._recompute_billing_line_qty()
                     else:
                         raise ValidationError(
-                            "No Sale Order Line found in SO. Expected line with product {}".format(
-                                billing_product.display_name
+                            _(
+                                "No Sale Order Line found in SO. Expected line with product {}".format(
+                                    billing_product.display_name
+                                )
                             )
                         )
 

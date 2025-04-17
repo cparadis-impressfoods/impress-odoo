@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class DocumentsDocument(models.Model):
     _inherit = "documents.document"
 
-    archived = fields.Boolean("Archived", default=False)
+    archived = fields.Boolean(default=False)
 
     def is_archived(self):
         return self.archived

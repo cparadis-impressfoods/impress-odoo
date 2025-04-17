@@ -10,12 +10,8 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     billback_partner_id = fields.Many2one("res.partner", string="Billback Partner")
-    billback_invoice_id = fields.Many2one(
-        "account.move", string="Billback Invoice", readonly=True, copy=False
-    )
-    billback_bill_id = fields.Many2one(
-        "account.move", string="Billback Bill", readonly=True, copy=False
-    )
+    billback_invoice_id = fields.Many2one("account.move", readonly=True, copy=False)
+    billback_bill_id = fields.Many2one("account.move", readonly=True, copy=False)
 
     def action_billback(self):
         if not self.billback_partner_id:

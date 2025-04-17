@@ -19,24 +19,24 @@ class Xray_log_line(models.Model):
         ),
     ]
 
-    sequence = fields.Char("Sequence", default=lambda self: _("New"), copy=False)
+    sequence = fields.Char(default=lambda self: _("New"), copy=False)
 
     x_ray_log_id = fields.Many2one(
-        "x_ray.log", "X-Ray log", compute="_compute_x_ray_log_id", store=True
+        "x_ray.log", compute="_compute_x_ray_log_id", store=True
     )
 
-    reject_value = fields.Integer("Reject Value")
+    reject_value = fields.Integer()
 
-    stainless_detection_value = fields.Integer("Stainless Detection Value")
-    ceramic_detection_value = fields.Integer("Ceramic Detection Value")
-    glass_detection_value = fields.Integer("Glass Detection Value")
+    stainless_detection_value = fields.Integer()
+    ceramic_detection_value = fields.Integer()
+    glass_detection_value = fields.Integer()
 
-    ejection = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")], "Ejection")
-    last_check_for_product = fields.Boolean("Last check for product")
+    ejection = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    last_check_for_product = fields.Boolean()
 
     total_qty = fields.Integer("Total Quantity")
     reject_qty = fields.Integer("Reject Quantity")
-    average = fields.Integer("Average")
+    average = fields.Integer()
 
     @api.depends("quality_check_id")
     def _compute_x_ray_log_id(self):

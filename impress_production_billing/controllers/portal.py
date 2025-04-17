@@ -88,8 +88,8 @@ class CustomerPortal(portal.CustomerPortal):
             manufacturing = self._document_check_access(
                 "mrp.production", manufacturing_id
             )
-        except (AccessError, MissingError):
-            raise werkzeug.exceptions.NotFound
+        except (AccessError, MissingError) as err:
+            raise werkzeug.exceptions.NotFound from err
 
         session_info = request.env["ir.http"].session_info()
         user_context = dict(request.env.context) if request.session.uid else {}

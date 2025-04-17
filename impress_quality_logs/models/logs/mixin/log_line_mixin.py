@@ -10,9 +10,9 @@ class LogLineMixin(models.AbstractModel):
     _name = "log_line.mixin"
     _description = "Log Line mixin"
 
-    start_date = fields.Datetime("Start Date")
-    notes = fields.Text("Notes")
-    signature = fields.Binary("Signature")
+    start_date = fields.Datetime()
+    notes = fields.Text()
+    signature = fields.Binary()
 
     production_id = fields.Many2one(
         "mrp.production",
@@ -38,7 +38,7 @@ class LogLineMixin(models.AbstractModel):
 
     quality_check_id = fields.Many2one("quality.check", "Quality Check")
     active_worksheet_field = fields.Char(
-        "Active Worksheet Field", compute="_get_active_worksheet_field", store=True
+        compute="_compute_active_worksheet_field", store=True
     )
     is_locked = fields.Boolean("Locked")
 
@@ -52,7 +52,7 @@ class LogLineMixin(models.AbstractModel):
         return worksheet_fields
 
     @api.depends(lambda self: ["quality_check_id"] + self._get_worksheet_fields())
-    def _get_active_worksheet_field(self):
+    def _compute_active_worksheet_field(self):
         for record in self:
             if not record.active_worksheet_field:
                 # The worksheet relational field(s) are not known to the model when it's created in the DB.

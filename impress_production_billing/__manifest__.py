@@ -14,7 +14,7 @@
         "views/portal/portal_mrp_production_views.xml",
         "views/portal/portal_production.xml",
         "views/portal/portal_sale_order_views.xml",
-        "views/sale_order_views.xml"
+        "views/sale_order_views.xml",
     ],
     "assets": {
         "web.assets_frontend": [

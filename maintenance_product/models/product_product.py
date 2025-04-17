@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 import logging
 
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -23,11 +21,11 @@ class ProductTemplate(models.Model):
         comodel_name="maintenance.equipment",
         string="Maintenance Equipments",
         compute="_compute_maintenance_equipment_ids",
-        inverse="_set_maintenance_equipment_ids",
+        inverse="_inverse_maintenance_equipment_ids",
     )
 
     def _compute_maintenance_equipment_ids(self):
         self._compute_template_field_from_variant_field("maintenance_equipment_ids")
 
-    def _set_maintenance_equipment_ids(self):
+    def _inverse_maintenance_equipment_ids(self):
         self._set_product_variant_field("maintenance_equipment_ids")

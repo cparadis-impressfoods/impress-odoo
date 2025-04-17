@@ -1,12 +1,12 @@
 import logging
 from datetime import date, datetime, timedelta
 
-from odoo import _, api, fields, models
-from odoo.exceptions import UserError
-
-from odoo.addons.warehouse_billing.models.warehouse_billing_config import (
+from models.warehouse_billing_config import (
     WarehouseBillingConfig,
 )
+
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -17,7 +17,7 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
 
     name = fields.Char(string="Reference", readonly=True, copy=False)
     partner_id = fields.Many2one("res.partner", string="Customer")
-    run_date = fields.Date(string="Run Date", default=fields.Date.context_today)
+    run_date = fields.Date(default=fields.Date.context_today)
 
     @api.model
     def end_of_month(self, dt: date) -> bool:
@@ -176,7 +176,7 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
         i = 0
         grouped_configs = {}
         for config in configs:
-            if config.bill_separately:
+            if config.bill_seperately:
                 grouped_configs[i] = config
                 i += 1
             else:

@@ -9,7 +9,7 @@ class WizardGenerate_quant_history(models.TransientModel):
     _name = "wizard.generate_quant_history"
     _description = _("WizardGenerate_quant_history")
 
-    name = fields.Char(_("Name"))
+    name = fields.Char()
 
     @api.model
     def generate_quant_history(self):

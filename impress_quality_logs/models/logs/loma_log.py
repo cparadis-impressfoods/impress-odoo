@@ -14,9 +14,9 @@ class LomaLog(models.Model):
         comodel_name="loma.log.line", inverse_name="loma_log_id"
     )
 
-    lower_limit = fields.Float("Lower Limit")
-    upper_limit = fields.Float("Upper Limit")
-    nominal_weight = fields.Float("Nominal Weight")
+    lower_limit = fields.Float()
+    upper_limit = fields.Float()
+    nominal_weight = fields.Float()
 
     def action_view_loma_lines(self):
         self.ensure_one()

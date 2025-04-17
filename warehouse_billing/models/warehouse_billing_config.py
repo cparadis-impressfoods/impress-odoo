@@ -4,6 +4,7 @@ import typing
 from datetime import date, datetime, time
 
 from dateutil.relativedelta import FR, MO, SA, SU, TH, TU, WE, relativedelta
+from models.warehouse_quant_group import QuantHistoryGroup
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
@@ -12,7 +13,6 @@ from odoo.addons.base.models.res_currency import Currency
 from odoo.addons.base.models.res_partner import Partner
 from odoo.addons.sale_management.models.sale_order import SaleOrder
 from odoo.addons.sale_management.models.sale_order_line import SaleOrderLine
-from odoo.addons.warehouse_billing.models.warehouse_quant_group import QuantHistoryGroup
 
 _logger = logging.getLogger(__name__)
 
@@ -23,11 +23,11 @@ class WarehouseBillingConfig(models.Model):
     _name = "warehouse.billing.config"
     _description = "Warehouse Billing Configuration"
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(required=True)
     active = fields.Boolean(default=True)
 
     partner_id = fields.Many2one("res.partner", string="Customer", required=True)
-    warehouse_id = fields.Many2one("stock.warehouse", string="Warehouse", required=True)
+    warehouse_id = fields.Many2one("stock.warehouse", required=True)
     billing_product_id = fields.Many2one(
         "product.product",
         string="Service Product",
@@ -42,7 +42,6 @@ class WarehouseBillingConfig(models.Model):
 
     billing_cycle = fields.Selection(
         [("monthly", "Monthly"), ("weekly", "Weekly"), ("daily", "Daily")],
-        string="Billing Cycle",
         default="monthly",
         required=True,
     )
@@ -66,32 +65,27 @@ class WarehouseBillingConfig(models.Model):
             ("square", "Square Meters"),
             ("pallet", "Pallet Spaces"),
         ],
-        string="Measurement Type",
         default="pallet",
         required=True,
     )
 
     currency_id = fields.Many2one(
         "res.currency",
-        string="Currency",
         required=True,
         default=lambda self: self.env.company.currency_id,
     )
     filter_domain = fields.Char(
         string="Domain", help="Domain to filter the warehouse space usage records"
     )
-    grace_period = fields.Integer(string="Grace Period", default=0)
+    grace_period = fields.Integer(default=0)
 
-    last_invoice_date = fields.Date(
-        string="Last Invoice Date", default=fields.Date.context_today
-    )
+    last_invoice_date = fields.Date(default=fields.Date.context_today)
     next_planned_invoice_date = fields.Date(
-        string="Next Planned Invoice Date",
         store=True,
         compute="_compute_next_planned_invoice_date",
     )
 
-    bill_seperately = fields.Boolean(string="Bill Separately", default=False)
+    bill_seperately = fields.Boolean(default=False)
 
     @api.depends(
         "last_invoice_date",

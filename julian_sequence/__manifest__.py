@@ -1,7 +1,6 @@
 {
     "name": "Julian Sequence for MRP",
-    "summary": "Allows the creation of sequences based on the YYDDD format",
-    "description": """
+    "summary": """
 Julian Sequence for MRP
 =====================
 
@@ -12,7 +11,7 @@ This sequence type overrides any other behavior from ir.sequence (size, padding,
 
 """,
     "author": "Cédric Paradis",
-    "website": "",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "license": "GPL-2",
     "category": "Hidden",
     "version": "17.0.0.1.0",

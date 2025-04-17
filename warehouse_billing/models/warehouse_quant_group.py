@@ -10,10 +10,10 @@ class QuantHistoryGroup(models.Model):
     _name = "warehouse.quant.group"
     _description = "Quant History Group"
 
-    name = fields.Char("Name")
+    name = fields.Char()
     partner_id = fields.Many2one("res.partner", "Customer")
-    date_from = fields.Date("Date From")
-    date_to = fields.Date("Date To")
+    date_from = fields.Date()
+    date_to = fields.Date()
     config_id = fields.Many2one(
         "warehouse.billing.config", string="Billing Configuration"
     )
@@ -27,19 +27,18 @@ class QuantHistoryGroup(models.Model):
             ("partially_invoiced", "Partially Invoiced"),
             ("invoiced", "Invoiced"),
         ],
-        string="Invoicing State",
         compute="_compute_invoicing_state",
         store=True,
     )
 
     sale_order_id = fields.Many2one(
-        "sale.order", string="Sale Order", related="sale_order_line_id.order_id"
+        "sale.order", srelated="sale_order_line_id.order_id"
     )
-    sale_order_line_id = fields.Many2one("sale.order.line", string="Sale Order Line")
+    sale_order_line_id = fields.Many2one(
+        "sale.order.line",
+    )
 
-    invoiced = fields.Boolean(
-        string="Invoiced", default=False, compute="_compute_invoiced", store=True
-    )
+    invoiced = fields.Boolean(default=False, compute="_compute_invoiced", store=True)
     invoice_ids = fields.Many2many(
         "account.move", string="Invoice Reference", related="sale_order_id.invoice_ids"
     )

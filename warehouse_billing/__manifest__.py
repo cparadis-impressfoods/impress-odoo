@@ -2,8 +2,7 @@
     "name": "Warehouse Space Billing",
     "version": "17.0.0.0.1",
     "category": "Inventory/Billing",
-    "summary": "Bill clients based on warehouse space usage",
-    "description": """
+    "summary": """
         This module allows billing customers based on the warehouse space
         utilized by their products on a daily basis.
         Features:

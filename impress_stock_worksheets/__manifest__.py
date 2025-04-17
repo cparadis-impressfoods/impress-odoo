@@ -4,6 +4,7 @@
     "version": "17.0.25.01.14",
     "summary": """ Impress_stock_worksheets Summary """,
     "author": "Cédric Paradis",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Hidden",
     "depends": ["base", "stock", "worksheet", "quality_control_worksheet"],
     "data": [

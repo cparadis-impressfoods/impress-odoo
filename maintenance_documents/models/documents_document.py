@@ -11,7 +11,6 @@ class DocumentsDocument(models.Model):
 
     equipment_id = fields.Many2one(
         "maintenance.equipment",
-        string="Equipment",
         compute="_compute_equipment_id",
         search="_search_equipment_id",
     )

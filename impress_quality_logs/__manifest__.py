@@ -3,7 +3,7 @@
     "version": "17.0.0.1.2",
     "summary": """ Implements many quality logs used by Impress Foods for quality control """,
     "author": "Cédric Paradis",
-    "website": "",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Manufacturing",
     "depends": [
         "base",

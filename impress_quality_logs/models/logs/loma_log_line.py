@@ -19,35 +19,32 @@ class LOMALogLine(models.Model):
         ),
     ]
 
-    sequence = fields.Char("Sequence", default=lambda self: _("New"), copy=False)
+    sequence = fields.Char(default=lambda self: _("New"), copy=False)
     loma_log_id = fields.Many2one(
         comodel_name="loma.log", compute="_compute_loma_log_id", store=True
     )
 
     lower_limit = fields.Float(
-        "Lower Limit",
         related="loma_log_id.lower_limit",
         store=True,
         depends=["loma_log_id.lower_limit"],
     )
     upper_limit = fields.Float(
-        "Upper Limit",
         related="loma_log_id.upper_limit",
         store=True,
         depends=["loma_log_id.upper_limit"],
     )
     nominal_weight = fields.Float(
-        "Nominal Weight",
         related="loma_log_id.nominal_weight",
         store=True,
         depends=["loma_log_id.nominal_weight"],
     )
 
-    measure_1 = fields.Float("Measure 1")
-    measure_2 = fields.Float("Measure 2")
-    measure_3 = fields.Float("Measure 3")
-    measure_4 = fields.Float("Measure 4")
-    measure_5 = fields.Float("Measure 5")
+    measure_1 = fields.Float()
+    measure_2 = fields.Float()
+    measure_3 = fields.Float()
+    measure_4 = fields.Float()
+    measure_5 = fields.Float()
 
     is_seal_ok = fields.Boolean("Seal Ok")
     is_weight_ok = fields.Boolean("Weight Ok")

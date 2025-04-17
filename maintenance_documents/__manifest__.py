@@ -2,9 +2,8 @@
     "name": "Maintenance - Documents",
     "version": "17.0.1.0.0",
     "summary": """ Bridge module between Maintenance and Documents """,
-    "description": """ Allows documents to be assigned to maintenance equipments """,
     "author": "Cédric Paradis",
-    "website": "",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Hidden",
     "depends": [
         "base",

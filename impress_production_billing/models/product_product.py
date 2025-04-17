@@ -1,6 +1,6 @@
 import logging
 
-from odoo import fields, models
+from odoo import _, fields, models
 from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
@@ -28,8 +28,10 @@ class Product(models.Model):
             return matching_product
         else:
             raise ValidationError(
-                "No matching service product found. Expected product with reference {}".format(
-                    reference_to_match
+                _(
+                    "No matching service product found. Expected product with reference {}".format(
+                        reference_to_match
+                    )
                 )
             )
 
@@ -42,11 +44,11 @@ class ProductTemplate(models.Model):
         string="Billing Product",
         domain=[("type", "=", "service")],
         compute="_compute_billing_product",
-        inverse="_set_billing_product",
+        inverse="_inverse_billing_product",
     )
 
     def _compute_billing_product(self):
         self._compute_template_field_from_variant_field("billing_product_id")
 
-    def _set_billing_product(self):
+    def _inverse_billing_product(self):
         self._set_product_variant_field("billing_product_id")

@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class QualityCheck(models.Model):
     _inherit = "quality.check"
 
-    signature = fields.Binary("Signature")
+    signature = fields.Binary()
 
     def action_view_production(self):
         self.ensure_one()

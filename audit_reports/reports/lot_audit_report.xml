@@ -23,10 +23,16 @@
                         <t t-call="audit_reports.stylesheet" />
 
                         <t t-if="o.show_full_traceability">
-                            <t t-set="lots" t-value="o.get_all_downstream_moves(o.lot_id)" />
+                            <t
+                                t-set="lots"
+                                t-value="o.get_all_downstream_moves(o.lot_id)"
+                            />
                         </t>
                         <t t-else="">
-                            <t t-set="lots" t-value="o.get_all_downstream_moves(o.lot_id, 1)" />
+                            <t
+                                t-set="lots"
+                                t-value="o.get_all_downstream_moves(o.lot_id, 1)"
+                            />
                         </t>
 
                         <!-- Start actual report -->
@@ -366,7 +372,10 @@
                                     <t t-set="current_move" t-value="move" />
                                     <t t-set="move_type" t-value="move_type" />
                                 </t>
-                                <t t-set="total" t-value="total + o.get_sml_qty(move)" />
+                                <t
+                                    t-set="total"
+                                    t-value="total + o.get_sml_qty(move)"
+                                />
                             </t>
                         </t>
                         <tr>
@@ -434,12 +443,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <t t-set="movement_types" t-value="['receptions', 'inventory_adjustments_in', 'unbuild_in', 'mo_in', 'returns_in', 'mo_out', 'inventory_adjustments_out', 'unbuild_out', 'deliveries', 'scrap']" />
+                            <t
+                                t-set="movement_types"
+                                t-value="['receptions', 'inventory_adjustments_in', 'unbuild_in', 'mo_in', 'returns_in', 'mo_out', 'inventory_adjustments_out', 'unbuild_out', 'deliveries', 'scrap']"
+                            />
                             <t t-foreach="movement_types" t-as="move_type">
-                                <t t-set="move_lines" t-value="lots_data.get(move_type, [])" />
+                                <t
+                                    t-set="move_lines"
+                                    t-value="lots_data.get(move_type, [])"
+                                />
                                 <tr t-if="move_lines">
                                     <td>
-                                        <t t-esc="move_type.replace('_', ' ').title()" />
+                                        <t
+                                            t-esc="move_type.replace('_', ' ').title()"
+                                        />
                                     </td>
                                     <td>
                                         <t t-foreach="move_lines" t-as="move_line">
@@ -499,7 +516,9 @@
                                     <li t-if="len(list_item) != 0">
                                         <t t-if="o.is_mapping(list_item)">
                                             <t t-set="depth" t-value="depth + 1" />
-                                            <t t-call="audit_reports.render_nested_dict">
+                                            <t
+                                                t-call="audit_reports.render_nested_dict"
+                                            >
                                                 <t t-set="data" t-value="list_item" />
                                             </t>
                                         </t>
@@ -526,12 +545,20 @@
         </ul>
     </template>
 
-    <template id="audit_layout" name="audit layout" inherit_id="web.internal_layout" primary="True" priority="100">
+    <template
+        id="audit_layout"
+        name="audit layout"
+        inherit_id="web.internal_layout"
+        primary="True"
+        priority="100"
+    >
         <xpath expr="//div[1]" position="replace">
             <div class="header">
                 <div class="row">
                     <div class="col-3">
-                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')" />
+                        <span
+                            t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"
+                        />
                     </div>
                     <div class="col-2 offset-2 text-center">
                         <span>Impress Foods</span>

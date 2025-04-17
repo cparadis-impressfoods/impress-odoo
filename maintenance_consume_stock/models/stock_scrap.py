@@ -26,7 +26,8 @@ class StockScrap(models.Model):
         if self.maintenance_request_id and self.state == "done":
             raise UserError(
                 _(
-                    "Cannot unlink a scrap move that is done and assigned to a maintenance request"
+                    "Cannot unlink a scrap move that is done and "
+                    "assigned to a maintenance request"
                 )
             )
         return super().unlink()

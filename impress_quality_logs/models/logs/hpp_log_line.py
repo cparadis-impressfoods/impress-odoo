@@ -17,7 +17,8 @@ class HPPLogLine(models.Model):
         comodel_name="hpp.log", compute="_compute_hpp_log_id", store=True
     )
 
-    # Makes sure that a cycle number is unique for a production. Allows reuse of the same cycle number for different productions.
+    # Makes sure that a cycle number is unique for a production.
+    # Allows reuse of the same cycle number for different productions.
     _sql_constraints = [
         (
             "unique_cycle_number",

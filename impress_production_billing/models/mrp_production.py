@@ -43,9 +43,8 @@ class MrpProduction(models.Model):
                 if not value:
                     raise ValidationError(
                         _(
-                            "No Sale Order found with reference {}".format(
-                                rec.billing_sale_order_ref
-                            )
+                            "No Sale Order found with"
+                            f"reference {rec.billing_sale_order_ref}"
                         )
                     )
                 else:
@@ -95,9 +94,8 @@ class MrpProduction(models.Model):
                     else:
                         raise ValidationError(
                             _(
-                                "No Sale Order Line found in SO. Expected line with product {}".format(
-                                    billing_product.display_name
-                                )
+                                "No Sale Order Line found in SO. Expected "
+                                f"line with product {billing_product.display_name}"
                             )
                         )
 
@@ -138,7 +136,8 @@ class MrpProduction(models.Model):
                 self.billing_sale_order_line_id.unlink()
 
     def _recompute_billing_line_qty(self):
-        # Optional feature, used to compute the total qty to deliver based on the MOs linked to the SOL.
+        # Optional feature, used to compute the total qty to deliver
+        # based on the MOs linked to the SOL.
         if self.billing_sale_order_line_id and self.env.context.get(
             "compute_mo_billing_qty"
         ):

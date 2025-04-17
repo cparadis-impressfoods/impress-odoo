@@ -5,7 +5,8 @@
     "author": "Cédric Paradis",
     "category": "Technical",
     "summary": """
-    Module to restore the default DateTime picker widget behavior from Odoo V15 where the default time selected
+    Module to restore the default DateTime picker widget behavior from Odoo V15
+    where the default time selected
     when a widget is opened is the current time without any rounding.
     """,
     "license": "GPL-2",

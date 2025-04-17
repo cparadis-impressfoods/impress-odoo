@@ -135,7 +135,8 @@ class TestWarehouseBillingConfig(TransactionCase):
         self.assertEqual(
             sale_order.amount_total,
             total_amount,
-            f"Expected total amount to be {total_amount}, got {sale_order.amount_total}",
+            f"Expected total amount to be {total_amount},"
+            f" got {sale_order.amount_total}",
         )
         self.assertEqual(
             sale_order.partner_id,
@@ -219,5 +220,6 @@ class TestWarehouseBillingConfig(TransactionCase):
             self.assertEqual(
                 order_line.price_subtotal,
                 total_amount,
-                f"Expected total amount to be {total_amount}, got {order_line.price_subtotal}",
+                f"Expected total amount to be {total_amount}, "
+                f"got {order_line.price_subtotal}",
             )

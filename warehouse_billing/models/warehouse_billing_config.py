@@ -160,7 +160,7 @@ class WarehouseBillingConfig(models.Model):
     # When called with a recordset, a single SO will be created for the whole recordset
     # With each config in the recordset resulting in a sale order line
     @api.model
-    def bill_config(self, configs) -> SaleOrder:
+    def bill_config(self, configs) -> SaleOrder:  # noqa C901
         current_date: date = typing.cast(
             date, self.env.context.get("warehouse_billing_date")
         )
@@ -211,24 +211,30 @@ class WarehouseBillingConfig(models.Model):
 
             # Handle existig group
             if existing_group:
-                # If we have multiple matching group, we don't know which one to use. We will just skip this config
+                # If we have multiple matching group, we don't know which one to use.
+                # We will just skip this config
                 if len(existing_group) != 1:
                     _logger.warning(
-                        f"Multiple quant groups found for {config.partner_id.name} from {dates[0]} to {dates[1]}. Skipping"
+                        f"Multiple quant groups found for {config.partner_id.name}"
+                        f" from {dates[0]} to {dates[1]}. Skipping"
                     )
                     continue
 
-                # We check if the group is currently linked to an SO. If so, we will use that SO for the whole recordset
+                # We check if the group is currently linked to an SO. If so,
+                # we will use that SO for the whole recordset
                 if existing_group.sale_order_id:
-                    # If we don't currently have an SO selected, we'll use the one from the existing group
+                    # If we don't currently have an SO selected,
+                    # we'll use the one from the existing group
                     if not sale_order_id:
                         sale_order_id = existing_group.sale_order_id
-                    # If we already have an SO selected, but there is a conflict with the existing group, throw an error.
+                    # If we already have an SO selected, but there is a conflict
+                    # with the existing group, throw an error.
                     # We don't know which one to use
                     elif sale_order_id != existing_group.sale_order_id:
                         raise UserError(_("All configs must have the same sale order."))
 
-                # We check if the group is currently linked to an SO line. If so, we will use that SO line for this config
+                # We check if the group is currently linked to an SO line.
+                # If so, we will use that SO line for this config
                 if existing_group.sale_order_line_id:
                     sale_order_lines[config.id] = existing_group.sale_order_line_id
                     _logger.warning(f"Existing quant group found: {existing_group}")
@@ -240,7 +246,8 @@ class WarehouseBillingConfig(models.Model):
                 + [("group_id", "=", False)]
             )
 
-            # Get all quant_history records for the given date and respecting the config's domain
+            # Get all quant_history records for the given date and
+            # respecting the config's domain
             quant_history = self.env["warehouse.quant.history"].search(
                 quant_history_domain
             )
@@ -250,7 +257,8 @@ class WarehouseBillingConfig(models.Model):
 
             if not quant_history and config.base_qty == 0 and config.flat_fee == 0:
                 _logger.warning(
-                    f"No records found for {config.name} from {dates[0]} to {dates[1]}. Skipping"
+                    f"No records found for {config.name}"
+                    f" from {dates[0]} to {dates[1]}. Skipping"
                 )
                 continue
 
@@ -286,7 +294,8 @@ class WarehouseBillingConfig(models.Model):
 
             if total_amount <= 0:
                 _logger.warning(
-                    f"Total is less than or equal to 0 for {config.name} from {dates[0]} to {dates[1]}. Skipping"
+                    f"Total is less than or equal to 0 for {config.name}"
+                    f" from {dates[0]} to {dates[1]}. Skipping"
                 )
                 if sale_order_lines[config.id]:
                     sale_order_lines[config.id].unlink()

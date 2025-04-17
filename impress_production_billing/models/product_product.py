@@ -29,9 +29,8 @@ class Product(models.Model):
         else:
             raise ValidationError(
                 _(
-                    "No matching service product found. Expected product with reference {}".format(
-                        reference_to_match
-                    )
+                    "No matching service product found."
+                    f"Expected product with reference {reference_to_match}"
                 )
             )
 

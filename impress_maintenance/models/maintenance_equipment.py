@@ -18,7 +18,9 @@ class MaintenanceEquipment(models.Model):
     technician_user_id = fields.Many2one(
         "res.users",
         string="Responsible",
-        domain="[('groups_id', 'in', [ref('hr_maintenance.group_maintenance_manager')])]",
+        domain=(
+            "[('groups_id', 'in',[ref('hr_maintenance.group_maintenance_manager')])]"
+        ),
     )
 
     @api.depends("maintenance_count")

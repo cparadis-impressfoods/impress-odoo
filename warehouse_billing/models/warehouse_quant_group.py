@@ -182,11 +182,13 @@ class QuantHistoryGroup(models.Model):
         elif existing_group and len(existing_group) > 1:
             raise ValidationError(
                 _(
-                    "Multiple quant groups found for the same dates and configuration. Please delete the duplicates and try again."
+                    "Multiple quant groups found for the same dates and configuration."
+                    " Please delete the duplicates and try again."
                 )
             )
 
-        # If no records are found, return an empty recordset and do not create an empty quant_group
+        # If no records are found, return an empty recordset
+        # and do not create an empty quant_group
         if not records:
             return self.env["warehouse.quant.group"]
         else:

@@ -268,7 +268,10 @@ class LotAuditReport(models.TransientModel):
             case StockMoveLine():
                 return self._get_sml_name(value)  # type: ignore
             case MrpProduction():
-                return f"{value.name} - {value.product_id.display_name} - {value.lot_producing_id.display_name}"  # type: ignore
+                return (
+                    f"{value.name} - {value.product_id.display_name}"
+                    f"- {value.lot_producing_id.display_name}"
+                )  # type: ignore
             case StockLot():
                 return f"{value.product_id.display_name} - {value.display_name}"  # type: ignore
             case models.Model():
@@ -330,7 +333,6 @@ class LotAuditReport(models.TransientModel):
         if not lot_id or len(lot_id) == 0:
             return {}
 
-        # _logger.warning(f"Building audit tree for lot {lot_id.product_id.name}-{lot_id.name}")
         sml = self.env["stock.move.line"]
 
         audit = {

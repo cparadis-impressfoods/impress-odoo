@@ -27,8 +27,10 @@ class ProductProduct(models.Model):
         return res
 
     def _count_quality_points(self):
-        """Compute the count of all related quality points, which means quality points that have either
-        the product in common, a product category parent of this product's category or no product/category
+        """Compute the count of all related quality points,
+        which means quality points that have either
+        the product in common, a product category parent
+        of this product's category or no product/category
         set at all.
         """
 
@@ -68,7 +70,7 @@ class ProductProduct(models.Model):
                         AND NOT EXISTS (SELECT 1 FROM product_category_quality_point_rel rel WHERE rel.quality_point_id = quality_point.id AND control_point_type='stock')
                     )
                 )
-            """
+            """  # noqa: E501,UP031
             % (where_clause,),
             where_clause_args + [self.ids, parent_category_ids],
         )

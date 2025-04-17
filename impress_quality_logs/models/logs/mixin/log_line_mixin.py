@@ -43,7 +43,8 @@ class LogLineMixin(models.AbstractModel):
     is_locked = fields.Boolean("Locked")
 
     def _get_worksheet_fields(self):
-        # The current model name needs to be fetched dynamically, since it could be any model inheriting this mixin
+        # The current model name needs to be fetched dynamically,
+        # since it could be any model inheriting this mixin
         current_model = self.env[self._name]
         # Get all fields matching our criteria and then get the fields which are set
         worksheet_fields = [
@@ -55,8 +56,10 @@ class LogLineMixin(models.AbstractModel):
     def _compute_active_worksheet_field(self):
         for record in self:
             if not record.active_worksheet_field:
-                # The worksheet relational field(s) are not known to the model when it's created in the DB.
-                # We expect those relational field(s) to contain 'x_worksheet' in their name
+                # The worksheet relational field(s) are not known
+                # to the model when it's created in the DB.
+                # We expect those relational field(s) to
+                # contain 'x_worksheet' in their name
                 # since they are:
                 #   A) Custom fields (and need to start with 'x_')
                 #   B) follow the 'x_' with 'worksheet' by convention
@@ -65,13 +68,18 @@ class LogLineMixin(models.AbstractModel):
                 worksheet_field = [f for f in worksheet_fields if record[f]]
 
                 if worksheet_field:
-                    # Since the worksheet fields are set from the worksheet containing the new record at creation, we can assume
-                    # that only one worksheet field is set. We can when take the first (and only) one in the list
+                    # Since the worksheet fields are set from the worksheet
+                    # containing the new record at creation, we can assume
+                    # that only one worksheet field is set. We can when take
+                    # the first (and only) one in the list
                     record.active_worksheet_field = worksheet_field[0]
 
-    # Hooking into the quality_wizard_id context to be able to set the current quality.check id when creating a new log line.
-    # This is used as a work around to the fact that the first log line is created before the worksheet is linked to the quality check.
-    # We then always get the quality check id from the wizard context when creating a new log line.
+    # Hooking into the quality_wizard_id context to be able to set
+    # the current quality.check id when creating a new log line.
+    # This is used as a work around to the fact that the first log line is
+    # created before the worksheet is linked to the quality check.
+    # We then always get the quality check id from the wizard
+    # context when creating a new log line.
     @api.model_create_multi
     def create(self, vals_list):
         if "quality_wizard_id" in self.env.context:

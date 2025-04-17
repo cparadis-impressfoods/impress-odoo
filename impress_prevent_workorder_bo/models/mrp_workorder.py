@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 class MrpWorkorder(models.Model):
     _inherit = "mrp.workorder"
 
-    def record_production(self):
+    def record_production(self):  # noqa C901
         if not self:
             return True
         self.pre_record_production()

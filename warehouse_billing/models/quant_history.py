@@ -50,7 +50,9 @@ class QuantHistory(models.Model):
         raise ValidationError(_("Not Implemented"))
 
     @api.model
-    def create_from_quant(self, quants, day=datetime.today()):
+    def create_from_quant(self, quants, day: datetime | None = None):
+        if day is None:
+            day = datetime.today()
         vals = []
 
         for quant in quants:

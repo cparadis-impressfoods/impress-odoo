@@ -13,6 +13,7 @@ class TestMrpProduction(TransactionCase):
         self.mo_model = self.env["mrp.production"]
         self.so_model = self.env["sale.order"]
         self.so_line_model = self.env["sale.order.line"]
+        self.bom_model = self.env["mrp.bom"]
 
         self.partner = self.env["res.partner"].create({"name": "test partner"})
 
@@ -24,6 +25,13 @@ class TestMrpProduction(TransactionCase):
             {
                 "name": "Test Product",
                 "type": "product",
+            }
+        )
+
+        self.bom = self.bom_model.create(
+            {
+                "product_id": self.product.id,
+                "product_tmpl_id": self.product.product_tmpl_id.id,
                 "billing_product_id": self.billing_product.id,
             }
         )

@@ -23,7 +23,6 @@
         <field name="priority">16</field>
         <field name="arch" type="xml">
             <tree
-                string="Lots"
                 multi_edit="1"
                 edit="true"
                 decoration-info="x_lab_state == 'sent'"

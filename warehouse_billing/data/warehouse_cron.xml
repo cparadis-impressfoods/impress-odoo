@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<odoo>
-    <data noupdate="1">
+<odoo noupdate="1">
         <!-- Daily cron job to calculate warehouse space usage -->
         <record id="ir_cron_generate_quant_history" model="ir.cron">
             <field name="name">Generate Quant History</field>
@@ -26,5 +25,4 @@
             <field name="doall" eval="False" />
             <field name="active" eval="True" />
         </record>
-    </data>
 </odoo>

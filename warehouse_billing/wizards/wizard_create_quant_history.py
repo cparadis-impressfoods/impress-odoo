@@ -19,7 +19,7 @@ class WizardCreate_quant_history(models.TransientModel):
     uom_id = fields.Many2one("uom.uom")
     quantity = fields.Float()
     lot_id = fields.Many2one(
-        "stock.lot", domain=[("product_id" "=", lambda self: self.product_id)]
+        "stock.lot", domain=[("product_id=", lambda self: self.product_id)]
     )
     warehouse_id = fields.Many2one("stock.warehouse")
     location_id = fields.Many2one("stock.location", domain=[("usage", "=", "internal")])

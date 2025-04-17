@@ -4,7 +4,7 @@
         <field name="name">view_maintenance_request_tree_ph_calibration</field>
         <field name="model">maintenance.request</field>
         <field name="arch" type="xml">
-            <tree string="pH-metre calibrations">
+            <tree>
                 <field name="name" />
                 <field name="schedule_date" />
                 <field name="user_id" />
@@ -15,7 +15,6 @@
 
     <record id="action_maintenance_quality_dashboard" model="ir.actions.act_window">
         <field name="name">Quality Dashboard</field>
-        <field name="type">ir.actions.act_window</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">maintenance.team</field>
         <field name="view_mode">kanban,form</field>

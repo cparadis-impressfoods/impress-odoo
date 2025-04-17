@@ -4,7 +4,7 @@
         <field name="name">production.add_qty_producing</field>
         <field name="model">mrp.production</field>
         <field name="inherit_id" ref="mrp.mrp_production_kanban_view" />
-        <field name="priority">16</field>
+        <field name="priority">100</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='activity_state']" position="after">
                 <field name='qty_producing' />

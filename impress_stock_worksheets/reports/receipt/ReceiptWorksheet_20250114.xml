@@ -120,11 +120,4 @@
         </div>
     </template>
 
-
-    <record id="ws_receipt_20250114" model="worksheet.template">
-        <field
-            name="report_view_id"
-            ref="impress_stock_worksheets.ws_receipt_20250114_report"
-        />
-    </record>
 </odoo>

@@ -22,6 +22,8 @@ jobs:
         with:
           path: ~/.cache/pre-commit
           key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
+        env:
+          PY: ${{ env.PY }}
       - name: Install pre-commit
         run: pip install pre-commit
       - name: Run pre-commit

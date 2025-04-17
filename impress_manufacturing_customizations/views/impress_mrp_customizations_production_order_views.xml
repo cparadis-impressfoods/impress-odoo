@@ -10,7 +10,10 @@
                 <field name='qty_producing' />
             </xpath>
 
-            <xpath expr="//t[@t-name='kanban-box']/div[1]/div[1]/span[1]" position="replace">
+            <xpath
+                expr="//t[@t-name='kanban-box']/div[1]/div[1]/span[1]"
+                position="replace"
+            >
                 <span t-if="record.state.raw_value !='done'" class="float-end text-end">
                     <t t-esc="record.product_qty.value" />
                     <small>
@@ -34,7 +37,10 @@
         <field name="inherit_id" ref="mrp.mrp_production_kanban_view" />
         <field name="priority">101</field>
         <field name="arch" type="xml">
-            <xpath expr="//t[@t-name='kanban-box']/div[1]/div[1]/span[2]" position="after">
+            <xpath
+                expr="//t[@t-name='kanban-box']/div[1]/div[1]/span[2]"
+                position="after"
+            >
                 <div class="float-end text-end">
                     <field name='sequence' widget="handle" />
                 </div>

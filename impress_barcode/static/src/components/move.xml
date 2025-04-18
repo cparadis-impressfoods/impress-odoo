@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
 
 
-<t t-name="impress_barcode.MoveTitle">
+    <t t-name="impress_barcode.MoveTitle">
         <t t-if="props.move.product_id.default_code or props.move.product_id.code">
             <div class="o_barcode_line_title">
                 <i class="fa fa-fw fa-tags" />
@@ -44,12 +44,12 @@
     </t>
 
     <t t-name="impress_barcode.MoveComponent" owl="1">
-            <div class="o_barcode_line list-group-item d-flex flex-row flex-nowrap">
-                <div class="o_barcode_line_details flex-grow-1 flex-column flex-nowrap">
-                    <t t-call="impress_barcode.MoveTitle" />
-                    <t t-call="impress_barcode.MoveQuantity" />
-                </div>
+        <div class="o_barcode_line list-group-item d-flex flex-row flex-nowrap">
+            <div class="o_barcode_line_details flex-grow-1 flex-column flex-nowrap">
+                <t t-call="impress_barcode.MoveTitle" />
+                <t t-call="impress_barcode.MoveQuantity" />
             </div>
+        </div>
     </t>
 
 </templates>

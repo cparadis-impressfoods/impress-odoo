@@ -48,8 +48,7 @@
                             </div>
                         </button>
                         <!--
-                        <button class="oe_stat_button" name="action_view_coding_lines" type="object"
-                         icon="fa-calendar-check-o" groups="mrp.group_mrp_user" invisible="not log_line_ids">
+                        <button class="oe_stat_button" name="action_view_coding_lines" type="object" icon="fa-calendar-check-o" groups="mrp.group_mrp_user" invisible="not log_line_ids">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_text">Coding Lines</span>
                             </div>

@@ -12,14 +12,14 @@ class WizardCreate_quant_history(models.TransientModel):
     _name = "wizard.create_quant_history"
     _description = _("WizardCreate_quant_history")
 
-    name = fields.Char(_("Name"))
+    name = fields.Char()
 
     product_id = fields.Many2one("product.product", domain=[("type", "=", "product")])
     tracking = fields.Selection(related="product_id.tracking")
     uom_id = fields.Many2one("uom.uom")
     quantity = fields.Float()
     lot_id = fields.Many2one(
-        "stock.lot", domain=[("product_id" "=", lambda self: self.product_id)]
+        "stock.lot", domain=[("product_id=", lambda self: self.product_id)]
     )
     warehouse_id = fields.Many2one("stock.warehouse")
     location_id = fields.Many2one("stock.location", domain=[("usage", "=", "internal")])
@@ -33,7 +33,7 @@ class WizardCreate_quant_history(models.TransientModel):
 
     def create_quant_history(self):
         if not self.product_id or not self.location_id or not self.warehouse_id:
-            raise UserError("Missing fields!")
+            raise UserError(_("Missing fields!"))
 
         quant_history = self.env["warehouse.quant.history"]
         current_date = self.date_from

@@ -1,9 +1,10 @@
 {
     "name": "production_log_note",
     "version": "17.0.0.1.2",
-    "summary": """ Backport of V18 feature where a note can be added to a production order""",
+    "summary": """ Backport of V18 feature where a note can be
+    added to a production order""",
     "author": "Cédric Paradis",
-    "website": "",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Hidden",
     "depends": ["base", "web", "mrp_workorder"],
     "data": ["views/mrp_production_views.xml"],

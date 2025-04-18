@@ -15,11 +15,11 @@ class Xray_log(models.Model):
         comodel_name="x_ray.log.line", inverse_name="x_ray_log_id"
     )
 
-    average_threshold = fields.Integer("Average Threshold")
+    average_threshold = fields.Integer()
 
-    monthly_signature = fields.Binary("Monthly Signature")
+    monthly_signature = fields.Binary()
     monthly_signature_date = fields.Datetime(
-        "Monthly Signature Date", compute="_compute_monthly_signature_date", store=True
+        compute="_compute_monthly_signature_date", store=True
     )
 
     @api.depends("monthly_signature")

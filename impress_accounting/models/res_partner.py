@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    invoice_partner_id = fields.Many2one("res.partner", string="Invoice Partner")
+    invoice_partner_id = fields.Many2one("res.partner")
 
     def get_invoicing_partner(self):
         if self.invoice_partner_id:

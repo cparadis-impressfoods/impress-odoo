@@ -12,7 +12,6 @@ class IrSequence(models.Model):
 
     implementation = fields.Selection(
         selection_add=[("julian", "Julian")],
-        string="Implementation",
         default="standard",
         ondelete={"julian": "set default"},
     )
@@ -22,7 +21,7 @@ class IrSequence(models.Model):
             if seq.implementation == "julian":
                 pass
             else:
-                super()._get_number_next_actual()
+                return super()._get_number_next_actual()
 
     def _next_do(self):
         if self.implementation == "julian" and self.env.context.get(
@@ -39,7 +38,8 @@ class IrSequence(models.Model):
             ):
                 return base_serial
             else:
-                # If standard YYDDD serial exists for that product, append -N where N is the next available number starting from 1.
+                # If standard YYDDD serial exists for that product, append -N
+                # where N is the next available number starting from 1.
                 unique_serial = False
                 appended_number = 1
                 serial_to_try = base_serial + "-" + str(appended_number)

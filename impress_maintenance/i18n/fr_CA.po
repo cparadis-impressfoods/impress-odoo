@@ -29,9 +29,16 @@ msgid "Assigned Employee"
 msgstr "Employé assigné"
 
 #. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_hr_employee__color
+#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_request__state_color
 #: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_stage__color
 msgid "Color"
+msgstr "Couleur"
+
+#. module: impress_maintenance
+#: model:ir.model.fields,field_description:impress_maintenance.field_hr_employee__color
+#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_request__employee_color
+#, fuzzy
+msgid "Color Index"
 msgstr "Couleur"
 
 #. module: impress_maintenance
@@ -56,20 +63,23 @@ msgid "Employee"
 msgstr "Employé"
 
 #. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_request__employee_color
-msgid "Employee Color"
-msgstr "Couleur de l'employé"
-
-#. module: impress_maintenance
 #: model_terms:ir.actions.act_window,help:impress_maintenance.hr_equipment_request_action_cal_employee
 #: model_terms:ir.actions.act_window,help:impress_maintenance.hr_equipment_request_action_cal_state
-msgid "Follow the process of the request and communicate with the collaborator."
-msgstr "Suivre le processus de la requête et communiquer avec le collaborateur."
+msgid ""
+"Follow the process of the request and communicate with the collaborator."
+msgstr ""
+"Suivre le processus de la requête et communiquer avec le collaborateur."
 
 #. module: impress_maintenance
 #: model:res.groups,name:impress_maintenance.make_invisible
 msgid "Invisible"
 msgstr "Invisible"
+
+#. module: impress_maintenance
+#: model:res.groups,name:impress_maintenance.group_maintenance_administrator
+#, fuzzy
+msgid "Maintenance / Administrator"
+msgstr "Description de la maintenance"
 
 #. module: impress_maintenance
 #: model:ir.ui.menu,name:impress_maintenance.menu_m_request_calendar_employee
@@ -130,6 +140,12 @@ msgid "Responsible"
 msgstr "Responsable"
 
 #. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_request__state_color
-msgid "State Color"
-msgstr "Couleur de l'état"
+#: model:res.groups,comment:impress_maintenance.group_maintenance_administrator
+msgid "The user will be able to manage equipment."
+msgstr ""
+
+#~ msgid "Employee Color"
+#~ msgstr "Couleur de l'employé"
+
+#~ msgid "State Color"
+#~ msgstr "Couleur de l'état"

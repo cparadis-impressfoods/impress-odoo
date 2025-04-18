@@ -17,7 +17,8 @@ class HPPLogLine(models.Model):
         comodel_name="hpp.log", compute="_compute_hpp_log_id", store=True
     )
 
-    # Makes sure that a cycle number is unique for a production. Allows reuse of the same cycle number for different productions.
+    # Makes sure that a cycle number is unique for a production.
+    # Allows reuse of the same cycle number for different productions.
     _sql_constraints = [
         (
             "unique_cycle_number",
@@ -26,12 +27,11 @@ class HPPLogLine(models.Model):
         ),
     ]
 
-    cycle_number = fields.Integer("Cycle Number")
+    cycle_number = fields.Integer()
     cycle_time = fields.Selection(
-        string="Cycle Time",
         selection=[("120sec", "120 seconds"), ("300sec", "300 seconds")],
     )
-    presssure_reached = fields.Integer("Pressure Reached")
+    presssure_reached = fields.Integer()
     is_cleaning_cycle = fields.Boolean("Is cleaning cycle?")
 
     barrel_1_qty = fields.Integer("Barrel 1 Quantity")
@@ -39,7 +39,9 @@ class HPPLogLine(models.Model):
     barrel_3_qty = fields.Integer("Barrel 3 Quantity")
     barrel_4_qty = fields.Integer("Barrel 4 Quantity")
 
-    total_qty = fields.Integer("Total Quantity", compute="_set_total_qty", store=True)
+    total_qty = fields.Integer(
+        "Total Quantity", compute="_compute_total_qty", store=True
+    )
 
     @api.depends(
         "barrel_1_qty",
@@ -48,7 +50,7 @@ class HPPLogLine(models.Model):
         "barrel_4_qty",
         "is_cleaning_cycle",
     )
-    def _set_total_qty(self):
+    def _compute_total_qty(self):
         self.ensure_one()
         self._cleaning_cycle_check()
         self.total_qty = (

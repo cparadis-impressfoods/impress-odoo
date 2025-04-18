@@ -14,19 +14,15 @@ class MaintenanceRequest(models.Model):
         inverse_name="maintenance_request_id",
         string="Scraps",
     )
-    scrap_count = fields.Integer(
-        compute="_compute_scrap_count", string="Scrap Count", store=True
-    )
-    all_scraps_done = fields.Boolean(
-        compute="_compute_all_scraps_done", string="All Scraps Done", store=True
-    )
+    scrap_count = fields.Integer(compute="_compute_scrap_count", store=True)
+    all_scraps_done = fields.Boolean(compute="_compute_all_scraps_done", store=True)
 
     def unlink(self):
         for record in self:
             if record.scrap_ids:
                 if any([state == "done" for state in record.scrap_ids.mapped("state")]):
                     raise UserError(
-                        "Cannot delete a maintenance request with done scrap moves"
+                        _("Cannot delete a maintenance request with done scrap moves")
                     )
         return super().unlink()
 

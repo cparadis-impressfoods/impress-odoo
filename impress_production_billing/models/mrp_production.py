@@ -1,6 +1,6 @@
 import logging
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
@@ -26,12 +26,11 @@ class MrpProduction(models.Model):
     )
     billing_partner_id = fields.Many2one(
         "res.partner",
-        string="Billing Partner",
         related="billing_sale_order_id.partner_id",
         store=True,
     )
 
-    invoice_status = fields.Boolean(string="Invoice Status")
+    invoice_status = fields.Boolean()
 
     @api.depends("billing_sale_order_ref")
     def _compute_billing_sale_order_id(self):
@@ -43,8 +42,9 @@ class MrpProduction(models.Model):
 
                 if not value:
                     raise ValidationError(
-                        "No Sale Order found with reference {}".format(
-                            rec.billing_sale_order_ref
+                        _(
+                            "No Sale Order found with"
+                            f"reference {rec.billing_sale_order_ref}"
                         )
                     )
                 else:
@@ -80,10 +80,11 @@ class MrpProduction(models.Model):
                         for (product, sale_order_line) in zip(
                             rec.billing_sale_order_id.order_line.mapped("product_id"),
                             rec.billing_sale_order_id.order_line,
+                            strict=False,
                         )
                     }
 
-                    billing_product = self.product_id.get_production_billing_product()
+                    billing_product = self.bom_id.get_production_billing_product()
 
                     if billing_product in sale_order_line_dict:
                         rec.billing_sale_order_line_id = sale_order_line_dict[
@@ -92,8 +93,9 @@ class MrpProduction(models.Model):
                         rec._recompute_billing_line_qty()
                     else:
                         raise ValidationError(
-                            "No Sale Order Line found in SO. Expected line with product {}".format(
-                                billing_product.display_name
+                            _(
+                                "No Sale Order Line found in SO. Expected "
+                                f"line with product {billing_product.display_name}"
                             )
                         )
 
@@ -106,7 +108,7 @@ class MrpProduction(models.Model):
         new_order_line = self.env["sale.order.line"].create(
             {
                 "order_id": self.billing_sale_order_id.id,
-                "product_id": self.product_id.get_production_billing_product().id,
+                "product_id": self.bom_id.get_production_billing_product().id,
                 "product_uom_qty": self.product_uom_qty,
             }
         )
@@ -134,7 +136,8 @@ class MrpProduction(models.Model):
                 self.billing_sale_order_line_id.unlink()
 
     def _recompute_billing_line_qty(self):
-        # Optional feature, used to compute the total qty to deliver based on the MOs linked to the SOL.
+        # Optional feature, used to compute the total qty to deliver
+        # based on the MOs linked to the SOL.
         if self.billing_sale_order_line_id and self.env.context.get(
             "compute_mo_billing_qty"
         ):

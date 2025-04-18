@@ -13,22 +13,21 @@ class QuantHistory(models.Model):
     _description = "Quant History"
     _rec_name = "product_id"
 
-    product_id = fields.Many2one("product.product", string="Product")
-    date = fields.Date(string="Date")
-    quantity = fields.Float(string="Quantity")
-    location_id = fields.Many2one("stock.location", string="Location")
+    product_id = fields.Many2one(
+        "product.product",
+    )
+    date = fields.Date()
+    quantity = fields.Float()
+    location_id = fields.Many2one("stock.location")
     warehouse_id = fields.Many2one(
         "stock.warehouse", related="location_id.warehouse_id"
     )
-    lot_id = fields.Many2one("stock.lot", string="Lot")
+    lot_id = fields.Many2one("stock.lot")
     group_id = fields.Many2one("warehouse.quant.group", string="Quant History Group")
-    quant_id = fields.Integer(string="Quant ID")
+    quant_id = fields.Integer()
 
-    invoice_id = fields.Many2one("account.move", string="Invoice")
-    invoiced = fields.Boolean(
-        string="Invoiced",
-        compute="_compute_invoiced",
-    )
+    invoice_id = fields.Many2one("account.move")
+    invoiced = fields.Boolean(compute="_compute_invoiced")
 
     @api.depends("invoice_id")
     def _compute_invoiced(self):
@@ -49,10 +48,11 @@ class QuantHistory(models.Model):
 
     def get_area(self) -> float:
         raise ValidationError(_("Not Implemented"))
-        return 0.0
 
     @api.model
-    def create_from_quant(self, quants, day=datetime.today()):
+    def create_from_quant(self, quants, day: datetime | None = None):
+        if day is None:
+            day = datetime.today()
         vals = []
 
         for quant in quants:

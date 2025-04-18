@@ -10,31 +10,22 @@ class CodingLog(models.Model):
     _name = "coding.log"
     _description = "Coding Log"
 
-    shelf_life = fields.Integer("Shelf Life", related="product_id.expiration_time")
-    case_code = fields.Char("Case Code")
-    unit_code = fields.Char("Unit Code")
+    shelf_life = fields.Integer(related="product_id.expiration_time")
+    case_code = fields.Char()
+    unit_code = fields.Char()
 
-    notes = fields.Char("Notes")
-    start_date = fields.Datetime("Start Date")
+    notes = fields.Char()
+    start_date = fields.Datetime()
 
-    unit_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")], "Unit Check")
-    sleeve_check = fields.Selection(
-        [("ok", "Ok"), ("not_ok", "Not Ok")], "Sleeve Check"
-    )
-    case_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")], "Case Check")
-    subunit_check = fields.Selection(
-        [("ok", "Ok"), ("not_ok", "Not Ok")], "Subunit Check"
-    )
-    shelf_life_check = fields.Selection(
-        [("ok", "Ok"), ("not_ok", "Not Ok")], "Shelf Life Check"
-    )
-    keep_cold_check = fields.Selection(
-        [("ok", "Ok"), ("not_ok", "Not Ok")], "Keep Cold Check"
-    )
+    unit_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    sleeve_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    case_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    subunit_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    shelf_life_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
+    keep_cold_check = fields.Selection([("ok", "Ok"), ("not_ok", "Not Ok")])
 
     global_success_check = fields.Selection(
         [("ok", "Ok"), ("not_ok", "Not Ok")],
-        "Global Success Check",
         store=True,
         compute="_compute_global_success_check",
     )

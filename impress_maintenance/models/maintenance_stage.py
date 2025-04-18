@@ -8,4 +8,4 @@ _logger = logging.getLogger(__name__)
 class MaintenanceStage(models.Model):
     _inherit = "maintenance.stage"
 
-    color = fields.Integer(string="Color", default="1")
+    color = fields.Integer(default="1")

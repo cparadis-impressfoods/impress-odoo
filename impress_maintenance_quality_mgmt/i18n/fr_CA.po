@@ -17,259 +17,217 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.5\n"
 
-#. module: impress_maintenance
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_equipment_form
-msgid "<span class=\"o_stat_text\">Documents</span>"
-msgstr "<span class=\"o_stat_text\">Documents</span>"
-
-#. module: impress_maintenance
-#: model_terms:ir.actions.act_window,help:impress_maintenance.action_quality_maintenance_request_cal
+#. module: impress_maintenance_quality_mgmt
+#: model_terms:ir.actions.act_window,help:impress_maintenance_quality_mgmt.action_quality_maintenance_request_cal
 msgid "Add a new maintenance request"
 msgstr "Créer une nouvelle demande de maintenance"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_team_tag__color
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_team_tag__color
 msgid "Color Index"
 msgstr "Index de couleur"
 
-#. module: impress_maintenance
-#: model:ir.ui.menu,name:impress_maintenance.menu_impress_maintenance_configuration
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.menu_impress_maintenance_quality_mgmt_configuration
 msgid "Configuration"
 msgstr "Configuration"
 
-#. module: impress_maintenance
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_equipment_form
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_request_search
-msgid "Corrective"
-msgstr "Corrective"
-
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_team_tag__create_uid
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_team_tag__create_uid
 msgid "Created by"
 msgstr "Créé par"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_team_tag__create_date
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_team_tag__create_date
 msgid "Created on"
 msgstr "Créé le"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_equipment__maintenance_open_count_corrective
-msgid "Current Corrective"
-msgstr "Corrective Actuel"
-
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_equipment__maintenance_open_count_preventive
-msgid "Current Preventive"
-msgstr "Préventive Actuel"
-
-#. module: impress_maintenance
-#: model:ir.ui.menu,name:impress_maintenance.menu_impress_maintenance_dashboard
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.menu_impress_maintenance_quality_mgmt_dashboard
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_equipment_category__default_team_id
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_equipment_category__default_team_id
 msgid "Default Team"
 msgstr "Équipe par défaut"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_team_tag__display_name
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_team_tag__display_name
 msgid "Display Name"
 msgstr "Nom d'affichage"
 
-#. module: impress_maintenance
-#: model:ir.model,name:impress_maintenance.model_documents_document
-msgid "Document"
-msgstr "Document"
-
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_equipment__document_count
-msgid "Document Count"
-msgstr "Nombre de Documents"
-
-#. module: impress_maintenance
-#. odoo-python
-#: code:addons/impress_maintenance/models/maintenance_equipment.py:0
-#, python-format
-msgid "Documents"
-msgstr "Documents"
-
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_documents_document__equipment_id
-#: model:ir.ui.menu,name:impress_maintenance.menu_equipment_form
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.menu_equipment_form
 msgid "Equipment"
 msgstr "Équipements"
 
-#. module: impress_maintenance
-#: model:ir.ui.menu,name:impress_maintenance.menu_impress_maintenance_cat
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.menu_impress_maintenance_quality_mgmt_cat
 msgid "Equipment Categories"
 msgstr "Catégories d'équipements"
 
-#. module: impress_maintenance
-#: model_terms:ir.actions.act_window,help:impress_maintenance.action_quality_maintenance_request_cal
-msgid "Follow the process of the request and communicate with the collaborator."
+#. module: impress_maintenance_quality_mgmt
+#: model_terms:ir.actions.act_window,help:impress_maintenance_quality_mgmt.action_quality_maintenance_request_cal
+msgid ""
+"Follow the process of the request and communicate with the collaborator."
 msgstr "Suivre le processus de la requête et communiquer avec le collaborateur"
 
-#. module: impress_maintenance
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_team_tag_search
+#. module: impress_maintenance_quality_mgmt
+#: model_terms:ir.ui.view,arch_db:impress_maintenance_quality_mgmt.view_maintenance_team_tag_search
 msgid "Group By"
 msgstr "Regrouper par"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_team_tag__id
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_team_tag__id
 msgid "ID"
 msgstr "ID"
 
-#. module: impress_maintenance
-#. odoo-python
-#: code:addons/impress_maintenance/models/documents_document.py:0
-#, python-format
-msgid "Invalid equipment search"
-msgstr "Recherche d'équipements invalide"
-
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_team_tag__write_uid
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_team_tag__write_uid
 msgid "Last Updated by"
 msgstr "Dernière mise à jour par"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_team_tag__write_date
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_team_tag__write_date
 msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
-#. module: impress_maintenance
-#: model:documents.folder,name:impress_maintenance.documents_maintenance_folder
-msgid "Maintenance"
-msgstr "Maintenance"
-
-#. module: impress_maintenance
-#: model:res.groups,name:impress_maintenance.group_maintenance_administrator
-msgid "Maintenance / Administrator"
-msgstr "Maintenance / Administrateur"
-
-#. module: impress_maintenance
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_request_form
-msgid "Maintenance Description"
-msgstr "Description de la maintenance"
-
-#. module: impress_maintenance
-#: model:ir.actions.act_window,name:impress_maintenance.action_maintenance_quality_equipment
-#: model:ir.model,name:impress_maintenance.model_maintenance_equipment
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.actions.act_window,name:impress_maintenance_quality_mgmt.action_maintenance_quality_equipment
 msgid "Maintenance Equipment"
 msgstr "Équipement de Maintenance"
 
-#. module: impress_maintenance
-#: model:ir.model,name:impress_maintenance.model_maintenance_equipment_category
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model,name:impress_maintenance_quality_mgmt.model_maintenance_equipment_category
 msgid "Maintenance Equipment Category"
 msgstr "Catégorie d'équipement de maintenance"
 
-#. module: impress_maintenance
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_request_form
-msgid "Maintenance Notes"
-msgstr "Notes de maintenance"
-
-#. module: impress_maintenance
-#: model:ir.model,name:impress_maintenance.model_maintenance_request
-msgid "Maintenance Request"
-msgstr "Requête de maintenance"
-
-#. module: impress_maintenance
-#: model:ir.actions.act_window,name:impress_maintenance.action_quality_maintenance_request_cal
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.actions.act_window,name:impress_maintenance_quality_mgmt.action_quality_maintenance_request_cal
 msgid "Maintenance Requests"
 msgstr "Requêtes de maintenance"
 
-#. module: impress_maintenance
-#: model:ir.ui.menu,name:impress_maintenance.menu_impress_maintenance_stage_configuration
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.menu_impress_maintenance_quality_mgmt_stage_configuration
 msgid "Maintenance Stages"
 msgstr "Étapes de maintenance"
 
-#. module: impress_maintenance
-#: model:ir.actions.act_window,name:impress_maintenance.action_maintenance_team_tag
-#: model:ir.model,name:impress_maintenance.model_maintenance_team_tag
-#: model:ir.ui.menu,name:impress_maintenance.maintenance_team_tag_menu
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.actions.act_window,name:impress_maintenance_quality_mgmt.action_maintenance_team_tag
+#: model:ir.model,name:impress_maintenance_quality_mgmt.model_maintenance_team_tag
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.maintenance_team_tag_menu
 msgid "Maintenance Team Tag"
 msgstr "Étiquette d'équipe de maintenance"
 
-#. module: impress_maintenance
-#: model:ir.model,name:impress_maintenance.model_maintenance_team
-#: model:ir.ui.menu,name:impress_maintenance.menu_impress_maintenance_teams
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model,name:impress_maintenance_quality_mgmt.model_maintenance_team
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.menu_impress_maintenance_quality_mgmt_teams
 msgid "Maintenance Teams"
 msgstr "Équipes de maintenance"
 
-#. module: impress_maintenance
-#: model:ir.ui.menu,name:impress_maintenance.menu_impress_maintenance_quality_root
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.menu_impress_maintenance_quality_mgmt_quality_root
 msgid "Maintenance/Quality"
 msgstr "Maintenance/Qualité"
 
-#. module: impress_maintenance
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_team_tag_search
+#. module: impress_maintenance_quality_mgmt
+#: model_terms:ir.ui.view,arch_db:impress_maintenance_quality_mgmt.view_maintenance_team_tag_search
 msgid "Name"
 msgstr "Nom"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_request__notes
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_request_form
-msgid "Notes"
-msgstr "Notes"
-
-#. module: impress_maintenance
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_equipment_form
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_request_search
-msgid "Preventive"
-msgstr "Préventive"
-
-#. module: impress_maintenance
-#: model:ir.actions.act_window,name:impress_maintenance.action_maintenance_quality_dashboard
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.actions.act_window,name:impress_maintenance_quality_mgmt.action_maintenance_quality_dashboard
 msgid "Quality Dashboard"
 msgstr "Tableau de bord Qualité"
 
-#. module: impress_maintenance
-#: model:ir.ui.menu,name:impress_maintenance.menu_impress_maintenance_quality_calendar
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.menu_impress_maintenance_quality_mgmt_quality_calendar
 msgid "Request Calendar"
 msgstr "Calendrier des requêtes"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_team_tag__name
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_team_tag__name
 msgid "Tag Name"
 msgstr "Nom de l'étiquette"
 
-#. module: impress_maintenance
-#: model:ir.model.constraint,message:impress_maintenance.constraint_maintenance_team_tag_tag_name_unique
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.constraint,message:impress_maintenance_quality_mgmt.constraint_maintenance_team_tag_tag_name_unique
 msgid "Tag name must be unique!"
 msgstr "Le nom de l'étiquette doit être unique"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_team__team_tag_ids
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.model.fields,field_description:impress_maintenance_quality_mgmt.field_maintenance_team__team_tag_ids
 msgid "Team Tag"
 msgstr "Étiquette d'Équipe"
 
-#. module: impress_maintenance
-#: model:ir.model.fields,field_description:impress_maintenance.field_maintenance_request__technician_id
-msgid "Technician"
-msgstr "Technicien"
-
-#. module: impress_maintenance
-#: model:res.groups,comment:impress_maintenance.group_maintenance_administrator
-msgid "The user will be able to manage equipment."
-msgstr "L'utilisateur sera en mesure de gérer les équipements"
-
-#. module: impress_maintenance
-#: model_terms:ir.actions.act_window,help:impress_maintenance.action_maintenance_quality_equipment
+#. module: impress_maintenance_quality_mgmt
+#: model_terms:ir.actions.act_window,help:impress_maintenance_quality_mgmt.action_maintenance_quality_equipment
 msgid "There is no examples click here to add new Maintenance Equipment."
 msgstr "There is no examples click here to add new Maintenance Equipment."
 
-#. module: impress_maintenance
-#: model_terms:ir.actions.act_window,help:impress_maintenance.action_maintenance_team_tag
+#. module: impress_maintenance_quality_mgmt
+#: model_terms:ir.actions.act_window,help:impress_maintenance_quality_mgmt.action_maintenance_team_tag
 msgid "There is no examples click here to add new Maintenance Team Tag."
 msgstr "There is no examples click here to add new Maintenance Team Tag."
 
-#. module: impress_maintenance
-#: model:ir.ui.menu,name:impress_maintenance.menu_maintenance_configuration_worksheet_templates
+#. module: impress_maintenance_quality_mgmt
+#: model:ir.ui.menu,name:impress_maintenance_quality_mgmt.menu_maintenance_configuration_worksheet_templates
 msgid "Worksheet Templates"
 msgstr "Modèle de feuille de travail"
 
-#. module: impress_maintenance
-#: model_terms:ir.ui.view,arch_db:impress_maintenance.view_maintenance_request_tree_ph_calibration
-msgid "pH-metre calibrations"
-msgstr "Calibration des ph-mètres"
+#~ msgid "<span class=\"o_stat_text\">Documents</span>"
+#~ msgstr "<span class=\"o_stat_text\">Documents</span>"
+
+#~ msgid "Corrective"
+#~ msgstr "Corrective"
+
+#~ msgid "Current Corrective"
+#~ msgstr "Corrective Actuel"
+
+#~ msgid "Current Preventive"
+#~ msgstr "Préventive Actuel"
+
+#~ msgid "Document"
+#~ msgstr "Document"
+
+#~ msgid "Document Count"
+#~ msgstr "Nombre de Documents"
+
+#, python-format
+#~ msgid "Documents"
+#~ msgstr "Documents"
+
+#, python-format
+#~ msgid "Invalid equipment search"
+#~ msgstr "Recherche d'équipements invalide"
+
+#~ msgid "Maintenance"
+#~ msgstr "Maintenance"
+
+#~ msgid "Maintenance / Administrator"
+#~ msgstr "Maintenance / Administrateur"
+
+#~ msgid "Maintenance Description"
+#~ msgstr "Description de la maintenance"
+
+#~ msgid "Maintenance Notes"
+#~ msgstr "Notes de maintenance"
+
+#~ msgid "Maintenance Request"
+#~ msgstr "Requête de maintenance"
+
+#~ msgid "Notes"
+#~ msgstr "Notes"
+
+#~ msgid "Preventive"
+#~ msgstr "Préventive"
+
+#~ msgid "Technician"
+#~ msgstr "Technicien"
+
+#~ msgid "The user will be able to manage equipment."
+#~ msgstr "L'utilisateur sera en mesure de gérer les équipements"
+
+#~ msgid "pH-metre calibrations"
+#~ msgstr "Calibration des ph-mètres"

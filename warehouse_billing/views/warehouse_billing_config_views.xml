@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <data>
         <record id="view_warehouse_billing_config_form" model="ir.ui.view">
             <field name="name">warehouse.billing.config.form</field>
             <field name="model">warehouse.billing.config</field>
@@ -20,10 +19,10 @@
                                 <field name="measurement_type" />
                                 <field name="base_qty" />
                                 <field
-                                    name="filter_domain"
-                                    widget="domain"
-                                    options="{'model': 'warehouse.quant.history', 'in_dialog': False, 'foldable': True}"
-                                />
+                                name="filter_domain"
+                                widget="domain"
+                                options="{'model': 'warehouse.quant.history', 'in_dialog': False, 'foldable': True}"
+                            />
                             </group>
                             <group>
                                 <label for="rate" string="Rate" />
@@ -35,17 +34,17 @@
                                 <field name="flat_fee" />
                                 <field name="billing_cycle" />
                                 <field
-                                    name="bill_last_day_month"
-                                    invisible="billing_cycle != 'monthly'"
-                                />
+                                name="bill_last_day_month"
+                                invisible="billing_cycle != 'monthly'"
+                            />
                                 <field
-                                    name="billing_day_month"
-                                    invisible="billing_cycle != 'monthly' or bill_last_day_month"
-                                />
+                                name="billing_day_month"
+                                invisible="billing_cycle != 'monthly' or bill_last_day_month"
+                            />
                                 <field
-                                    name="billing_day_week"
-                                    invisible="billing_cycle != 'weekly'"
-                                />
+                                name="billing_day_week"
+                                invisible="billing_cycle != 'weekly'"
+                            />
                                 <field name="grace_period" />
 
                             </group>
@@ -66,7 +65,7 @@
             <field name="name">warehouse.billing.config.tree</field>
             <field name="model">warehouse.billing.config</field>
             <field name="arch" type="xml">
-                <tree string="Warehouse Billing Configurations">
+                <tree>
                     <field name="name" />
                     <field name="partner_id" />
                     <field name="warehouse_id" />
@@ -88,36 +87,36 @@
                     <field name="partner_id" />
                     <field name="warehouse_id" />
                     <filter
-                        string="Active"
-                        name="active"
-                        domain="[('active', '=', True)]"
-                    />
+                    string="Active"
+                    name="active"
+                    domain="[('active', '=', True)]"
+                />
                     <filter
-                        string="Inactive"
-                        name="inactive"
-                        domain="[('active', '=', False)]"
-                    />
+                    string="Inactive"
+                    name="inactive"
+                    domain="[('active', '=', False)]"
+                />
                     <group expand="0" string="Group By">
                         <filter
-                            string="Customer"
-                            name="customer"
-                            context="{'group_by': 'partner_id'}"
-                        />
+                        string="Customer"
+                        name="customer"
+                        context="{'group_by': 'partner_id'}"
+                    />
                         <filter
-                            string="Warehouse"
-                            name="warehouse"
-                            context="{'group_by': 'warehouse_id'}"
-                        />
+                        string="Warehouse"
+                        name="warehouse"
+                        context="{'group_by': 'warehouse_id'}"
+                    />
                         <filter
-                            string="Measurement Type"
-                            name="measurement_type"
-                            context="{'group_by': 'measurement_type'}"
-                        />
+                        string="Measurement Type"
+                        name="measurement_type"
+                        context="{'group_by': 'measurement_type'}"
+                    />
                         <filter
-                            string="Billing Cycle"
-                            name="billing_cycle"
-                            context="{'group_by': 'billing_cycle'}"
-                        />
+                        string="Billing Cycle"
+                        name="billing_cycle"
+                        context="{'group_by': 'billing_cycle'}"
+                    />
                     </group>
                 </search>
             </field>
@@ -135,5 +134,5 @@
                 </p>
             </field>
         </record>
-    </data>
+
 </odoo>

@@ -3,7 +3,7 @@
     "version": "17.0.0.0.1",
     "summary": """ Audit_reports Summary """,
     "author": "Cédric Paradis",
-    "website": "",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Hidden",
     "depends": [
         "base",

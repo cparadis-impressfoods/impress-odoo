@@ -1,19 +1,14 @@
 {
     "name": "impress_barcode",
-    "summary": "Customizations to barcode app",
-    "description": """
+    "summary": """
         Customizations to barcode app
     """,
     "author": "Cédric Paradis",
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Hidden",
     "version": "17.0.0.1.2",
     "license": "GPL-2",
-    # any module necessary for this one to work correctly
     "depends": ["base", "stock", "sale_management", "stock_barcode"],
-    # always loaded
     "data": [
         "views/stock_picking_views.xml",
     ],

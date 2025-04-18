@@ -77,6 +77,7 @@
   <record id="documents_document_res_partner_view_inherit_archive" model="ir.ui.view">
     <field name="name">documents.document.res.partner.view.inherit.archive</field>
     <field name="model">res.partner</field>
+    <field name="priority">100</field>
     <field name="inherit_id" ref="documents.documents_document_res_partner_view" />
     <field name="arch" type="xml">
       <xpath expr="//button[@name='action_see_documents']" position="replace">

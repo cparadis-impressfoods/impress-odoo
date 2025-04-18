@@ -4,7 +4,7 @@ from datetime import date, datetime, timedelta
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
-from odoo.addons.warehouse_billing.models.warehouse_billing_config import (
+from ..models.warehouse_billing_config import (
     WarehouseBillingConfig,
 )
 
@@ -17,7 +17,7 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
 
     name = fields.Char(string="Reference", readonly=True, copy=False)
     partner_id = fields.Many2one("res.partner", string="Customer")
-    run_date = fields.Date(string="Run Date", default=fields.Date.context_today)
+    run_date = fields.Date(default=fields.Date.context_today)
 
     @api.model
     def end_of_month(self, dt: date) -> bool:
@@ -42,7 +42,8 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
     def get_configs_to_bill(self, check_date: date):
         config = self.env["warehouse.billing.config"]
 
-        # Search for all configs where their next planned invoice date is today or in the past
+        # Search for all configs where their next planned
+        #  invoice date is today or in the past
         config_list = config.search(
             [("active", "=", True), ("next_planned_invoice_date", "<=", check_date)]
         )
@@ -53,7 +54,8 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
         if not config.billing_product_id:
             raise UserError(_("No billing product defined for %s.") % config.name)
 
-        # If we have an empty group, we should create a sale order with only the flat fee and base_qtys
+        # If we have an empty group, we should create a sale order
+        #  with only the flat fee and base_qtys
         if len(group) != 0:
             sale_order_line_vals = group.generate_sale_order_line_values()
         else:
@@ -176,7 +178,7 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
         i = 0
         grouped_configs = {}
         for config in configs:
-            if config.bill_separately:
+            if config.bill_seperately:
                 grouped_configs[i] = config
                 i += 1
             else:
@@ -196,8 +198,11 @@ class GenerateWarehouseSaleOrder(models.TransientModel):
         return grouped_configs
 
     @api.model
-    def generate_sale_orders(self, date=datetime.today().date()):
+    def generate_sale_orders(self, current_date: date | None = None):
         """Cron job to automatically generate sale orders"""
+        if current_date is None:
+            current_date = datetime.today().date()
+
         config_model = self.env["warehouse.billing.config"]
 
         # Get all active billing configurations due for invoicing

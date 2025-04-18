@@ -9,12 +9,10 @@ class WizardMakeTraceabilityReport(models.TransientModel):
     _name = "wizard.make.traceability.report"
     _description = _("WizardMakeTraceabilityReport")
 
-    name = fields.Char(_("Name"))
-    show_full_traceability = fields.Boolean(
-        string="Show Full Traceability", default=False
-    )
-    show_client_list = fields.Boolean(string="Show Client List", default=False)
-    show_product_list = fields.Boolean(string="Show Product List", default=False)
+    name = fields.Char()
+    show_full_traceability = fields.Boolean(default=False)
+    show_client_list = fields.Boolean(default=False)
+    show_product_list = fields.Boolean(default=False)
 
     def add(self):
         report = self.env["lot.audit.report"].create(

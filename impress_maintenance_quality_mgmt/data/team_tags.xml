@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<odoo>
+<odoo noupdate="1">
 
-    <data noupdate="1">
+
         <record id="team_tag_quality" model="maintenance.team.tag">
             <field name="name">Quality</field>
             <field name="color">1</field>
@@ -14,7 +14,7 @@
             <field name="name">Maintenance</field>
             <field name="color">3</field>
         </record>
-    </data>
+
 
 
 </odoo>

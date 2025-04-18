@@ -19,9 +19,11 @@ msgstr ""
 
 #. module: impress_quality_worksheets
 #: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.codingWorksheet_20250303_form_view
+#, fuzzy
 msgid ""
-"<span style=\"font-weight: bold;\">Frequency: </span><span>At the start of "
-"every finished product format</span>"
+"<span style=\"font-weight: bold;\">Frequency: </span>\n"
+"                            <span>At the start of every finished product "
+"format</span>"
 msgstr ""
 "<span style=\"font-weight: bold;\">Fréquence: </span><span>Au début de "
 "chaque format de produit fini</span>"
@@ -89,6 +91,18 @@ msgid "At the start of the day."
 msgstr "Au début de la journée."
 
 #. module: impress_quality_worksheets
+#: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.MetalWorksheet_20250203_form_view
+msgid "Au début de l'embouteillage"
+msgstr ""
+
+#. module: impress_quality_worksheets
+#: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.MetalWorksheet_20250203_form_view
+msgid ""
+"Aux 2 heures si aucun changement lors\n"
+"                            d'une production en continue"
+msgstr ""
+
+#. module: impress_quality_worksheets
 #: model:ir.model.fields,field_description:impress_quality_worksheets.x_worksheet_20250303_average_threshold
 msgid "Average Threshold"
 msgstr "Seuil moyen"
@@ -97,6 +111,21 @@ msgstr "Seuil moyen"
 #: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.x_rayWorksheet_20250303_form_view
 msgid "Average at least average threshold"
 msgstr "La moyenne est d'au moins le seuil moyen"
+
+#. module: impress_quality_worksheets
+#: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.MetalWorksheet_20250203_form_view
+msgid ""
+"Calibration : Comparer le poids d'une bouteille avec la balance de table\n"
+"                            et la Loma, si l'écart est de 2g et +, faire une "
+"calibration. <br/>\n"
+"                            Remplissage : Comparer le poids moyen des "
+"bouteilles vs le poids visé.\n"
+"                            Si l'écart est de + / - 3g, ajuster "
+"l'embouteilleuse. <br/> Lors de la\n"
+"                            dernière vérification, vérifier qu'aucune "
+"bouteille ne reste dans les\n"
+"                            bacs de rejet. <br/>"
+msgstr ""
 
 #. module: impress_quality_worksheets
 #: model:ir.model.fields,field_description:impress_quality_worksheets.x_worksheet_20250303_case_check
@@ -115,12 +144,26 @@ msgstr "Seuil de détection de la céramique (2.381mm)"
 
 #. module: impress_quality_worksheets
 #: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.x_rayWorksheet_20250303_form_view
+#, fuzzy
 msgid ""
-"During the last check (end of production), check that no cup is left in the "
-"reject bin."
+"During the last check (end of production), check that no cup is left\n"
+"                                in the reject bin."
 msgstr ""
 "Lors de la dernière vérification (fin de la production), vérifier qu'aucun "
 "cup n'est présent dans le réceptacle des rejets."
+
+#. module: impress_quality_worksheets
+#: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.MetalWorksheet_20250203_form_view
+msgid ""
+"Détecteur métal : Si l'éjection de l'un des témoins de métal est\n"
+"                            Non-Conforme, appeler le contrôle de la qualité, "
+"remplir un registre\n"
+"                            d'écart, réajuster l'appareil et repasser tous "
+"les produits depuis la\n"
+"                            dernière vérification conforme. S'il y a un "
+"rejet de métal durant la\n"
+"                            production, aviser le contrôle de la qualité."
+msgstr ""
 
 #. module: impress_quality_worksheets
 #: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.x_rayWorksheet_20250303_form_view
@@ -136,6 +179,11 @@ msgstr "Tout les 2 heures si aucun changement de produit."
 #: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.x_rayWorksheet_20250303_form_view
 msgid "Every product change (format, recipe, lot)."
 msgstr "À tout changement de produit (format, recette, lot)."
+
+#. module: impress_quality_worksheets
+#: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.MetalWorksheet_20250203_form_view
+msgid "Fréquence :"
+msgstr ""
 
 #. module: impress_quality_worksheets
 #: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.x_rayWorksheet_20250303_form_view
@@ -154,7 +202,10 @@ msgstr "Lignes de registre HPP"
 
 #. module: impress_quality_worksheets
 #: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.x_rayWorksheet_20250303_form_view
-msgid "If there is a metal reject during production, inform quality control."
+#, fuzzy
+msgid ""
+"If there is a metal reject during production, inform quality\n"
+"                                control."
 msgstr ""
 "Si un reject dû à la présence de métal a lieu pendant la production, aviser "
 "le contrôle qualité."
@@ -241,6 +292,11 @@ msgid "Subunit Check"
 msgstr "Vérification sous-emballage"
 
 #. module: impress_quality_worksheets
+#: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.MetalWorksheet_20250203_form_view
+msgid "Une fois l'embouteillage terminé"
+msgstr ""
+
+#. module: impress_quality_worksheets
 #: model:ir.model.fields,field_description:impress_quality_worksheets.x_worksheet_20250303_unit_check
 msgid "Unit Check"
 msgstr "Vérification unité"
@@ -315,3 +371,12 @@ msgstr "x_worksheet_20250203_id"
 #: model:ir.model.fields,field_description:impress_quality_worksheets.x_ray_log_line_x_worksheet_20250303_id
 msgid "x_worksheet_20250303_id"
 msgstr "x_worksheet_20250303_id"
+
+#. module: impress_quality_worksheets
+#: model_terms:ir.ui.view,arch_db:impress_quality_worksheets.MetalWorksheet_20250203_form_view
+msgid ""
+"À chaque changement de produit\n"
+"                            (changement de format, de recette, de lot, "
+"d'étiquette US/CAD ou lors de\n"
+"                            réglage de l'appareil)"
+msgstr ""

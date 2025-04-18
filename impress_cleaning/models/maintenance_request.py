@@ -7,6 +7,5 @@ class MaintenanceRequest(models.Model):
 
     maintenance_type = fields.Selection(
         selection_add=[("cleaning", "Cleaning")],
-        string="Maintenance Type",
         default="corrective",
     )

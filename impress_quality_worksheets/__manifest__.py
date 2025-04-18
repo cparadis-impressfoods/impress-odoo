@@ -3,6 +3,7 @@
     "version": "17.0.0.1.1",
     "summary": """ Worksheets to use in conjunction with Impress Quality Logs """,
     "author": "Cédric Paradis",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": " Hidden",
     "depends": [
         "base",

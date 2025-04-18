@@ -51,19 +51,9 @@
         name="Coding"
     />
     <!--
-    <menuitem
-        parent="coding_menu"
-        id="coding_log_menu"
-        action='action_coding_log'
-        sequence='10'
-        name="Coding Logs"/>
+    <menuitem parent="coding_menu" id="coding_log_menu" action='action_coding_log' sequence='10' name="Coding Logs"/>
 
-    <menuitem
-        parent="coding_menu"
-        id="coding_log_line_menu"
-        action='action_coding_log_line'
-        sequence='11'
-        name="Coding Lines"/>
+    <menuitem parent="coding_menu" id="coding_log_line_menu" action='action_coding_log_line' sequence='11' name="Coding Lines"/>
 -->
     <menuitem id="loma_menu" parent="logs_menu" sequence='13' name="LOMA" />
 

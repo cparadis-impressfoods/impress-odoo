@@ -14,16 +14,12 @@ class LotAuditReport(models.TransientModel):
     _name = "lot.audit.report"
     _description = "Lot Audit Report"
 
-    lot_id = fields.Many2one("stock.lot", string="Lot", required=True)
-    product_id = fields.Many2one(
-        "product.product", string="Product", related="lot_id.product_id"
-    )
+    lot_id = fields.Many2one("stock.lot", required=True)
+    product_id = fields.Many2one("product.product", related="lot_id.product_id")
 
-    show_full_traceability = fields.Boolean(
-        string="Show Full Traceability", default=False
-    )
-    show_client_list = fields.Boolean(string="Show Client List", default=False)
-    show_product_list = fields.Boolean(string="Show Product List", default=False)
+    show_full_traceability = fields.Boolean(default=False)
+    show_client_list = fields.Boolean(default=False)
+    show_product_list = fields.Boolean(default=False)
 
     def get_total_produced(self):
         lines: StockMoveLine = self._get_lines(self.lot_id)
@@ -238,9 +234,9 @@ class LotAuditReport(models.TransientModel):
         ]
         total = 0
         for record in value:
-            type = self._get_sml_type(record)
+            sml_type = self._get_sml_type(record)
 
-            if type in out_types:
+            if sml_type in out_types:
                 total -= record.quantity  # type: ignore
             else:
                 total += record.quantity  # type: ignore
@@ -272,7 +268,10 @@ class LotAuditReport(models.TransientModel):
             case StockMoveLine():
                 return self._get_sml_name(value)  # type: ignore
             case MrpProduction():
-                return f"{value.name} - {value.product_id.display_name} - {value.lot_producing_id.display_name}"  # type: ignore
+                return (
+                    f"{value.name} - {value.product_id.display_name}"
+                    f"- {value.lot_producing_id.display_name}"
+                )  # type: ignore
             case StockLot():
                 return f"{value.product_id.display_name} - {value.display_name}"  # type: ignore
             case models.Model():
@@ -334,7 +333,6 @@ class LotAuditReport(models.TransientModel):
         if not lot_id or len(lot_id) == 0:
             return {}
 
-        # _logger.warning(f"Building audit tree for lot {lot_id.product_id.name}-{lot_id.name}")
         sml = self.env["stock.move.line"]
 
         audit = {

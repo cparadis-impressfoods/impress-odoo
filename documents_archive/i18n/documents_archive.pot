@@ -4,10 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0+e-20240710\n"
+"Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-11 19:14+0000\n"
-"PO-Revision-Date: 2024-12-11 19:14+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,7 +26,6 @@ msgstr ""
 #. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Archive"
 msgstr ""
@@ -46,14 +43,8 @@ msgid "Contact"
 msgstr ""
 
 #. module: documents_archive
-#: model_terms:ir.actions.act_window,help:documents_archive.see_partner_documents
-msgid "Create new document"
-msgstr ""
-
-#. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Delete"
 msgstr ""
@@ -67,7 +58,6 @@ msgstr ""
 #. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Download"
 msgstr ""
@@ -75,7 +65,6 @@ msgstr ""
 #. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Lock"
 msgstr ""
@@ -83,7 +72,6 @@ msgstr ""
 #. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Move to trash"
 msgstr ""
@@ -91,7 +79,6 @@ msgstr ""
 #. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Open chatter"
 msgstr ""
@@ -99,7 +86,6 @@ msgstr ""
 #. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Replace"
 msgstr ""
@@ -107,7 +93,6 @@ msgstr ""
 #. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Restore"
 msgstr ""
@@ -115,7 +100,6 @@ msgstr ""
 #. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Share this selection"
 msgstr ""
@@ -124,8 +108,6 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Split"
 msgstr ""
@@ -133,7 +115,6 @@ msgstr ""
 #. module: documents_archive
 #. odoo-javascript
 #: code:addons/documents_archive/static/src/documents_inspector.xml:0
-#: code:addons/impress-odoo/documents_archive/static/src/documents_inspector.xml:0
 #, python-format
 msgid "Unarchive"
 msgstr ""

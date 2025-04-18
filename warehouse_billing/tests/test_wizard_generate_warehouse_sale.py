@@ -236,5 +236,6 @@ class TestGenerateWarehouseSaleOrder(TransactionCase):
         self.assertEqual(
             len(configs),
             len(configs_to_bill),
-            f"{len(configs_to_bill)} configs should be returned. {[config.name for config in configs]}",
+            f"{len(configs_to_bill)} configs should be returned. "
+            f"{[config.name for config in configs]}",
         )

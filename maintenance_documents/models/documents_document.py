@@ -11,7 +11,6 @@ class DocumentsDocument(models.Model):
 
     equipment_id = fields.Many2one(
         "maintenance.equipment",
-        string="Equipment",
         compute="_compute_equipment_id",
         search="_search_equipment_id",
     )
@@ -28,7 +27,8 @@ class DocumentsDocument(models.Model):
 
     @api.model
     def _search_equipment_id(self, operator, value):
-        # TODO: Figure out documents_project.documents_document _search_project_id() to reimplement
+        # TODO: Figure out documents_project.documents_document
+        # _search_project_id() to reimplement
         if operator in ("=", "!=") and isinstance(
             value, bool
         ):  # needs to be the first condition as True and False are instances of int

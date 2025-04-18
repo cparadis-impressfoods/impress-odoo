@@ -62,7 +62,8 @@ msgstr "Facturer la dernière journée du mois"
 
 #. module: warehouse_billing
 #: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_billing_config__bill_seperately
-msgid "Bill Separately"
+#, fuzzy
+msgid "Bill Seperately"
 msgstr "Facturer séparément"
 
 #. module: warehouse_billing
@@ -276,6 +277,12 @@ msgid "Inactive"
 msgstr "Inactif"
 
 #. module: warehouse_billing
+#: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_history__invoice_id
+#, fuzzy
+msgid "Invoice"
+msgstr "Facturé"
+
+#. module: warehouse_billing
 #: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_group__invoice_ids
 msgid "Invoice Reference"
 msgstr "Référence de la facture"
@@ -336,6 +343,13 @@ msgid "Measurement Type"
 msgstr "Type de mesure"
 
 #. module: warehouse_billing
+#. odoo-python
+#: code:addons/warehouse_billing/wizards/wizard_create_quant_history.py:0
+#, python-format
+msgid "Missing fields!"
+msgstr ""
+
+#. module: warehouse_billing
 #: model:ir.model.fields.selection,name:warehouse_billing.selection__warehouse_billing_config__billing_cycle__monthly
 msgid "Monthly"
 msgstr "Mensuellement"
@@ -346,16 +360,12 @@ msgid "Monthly Flat Fee"
 msgstr "Frais mensuel fixe"
 
 #. module: warehouse_billing
-#. odoo-python
-#: code:addons/warehouse_billing/wizards/wizard_create_quant_history.py:0
-#: code:addons/warehouse_billing/wizards/wizard_generate_quant_history.py:0
 #: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_billing_config__name
 #: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_group__name
 #: model:ir.model.fields,field_description:warehouse_billing.field_wizard_create_quant_history__name
 #: model:ir.model.fields,field_description:warehouse_billing.field_wizard_generate_quant_history__name
 #: model_terms:ir.ui.view,arch_db:warehouse_billing.view_warehouse_billing_config_form
 #: model_terms:ir.ui.view,arch_db:warehouse_billing.view_warehouse_quant_group_search
-#, python-format
 msgid "Name"
 msgstr "Nom"
 
@@ -387,6 +397,12 @@ msgstr "Non implementé"
 #: model:ir.model.fields.selection,name:warehouse_billing.selection__warehouse_quant_group__invoicing_state__not_invoiced
 msgid "Not Invoiced"
 msgstr "Non facturé"
+
+#. module: warehouse_billing
+#: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_group__sale_order_id
+#, fuzzy
+msgid "Order Reference"
+msgstr "Référence"
 
 #. module: warehouse_billing
 #: model:ir.model.fields.selection,name:warehouse_billing.selection__warehouse_billing_config__measurement_type__pallet
@@ -423,6 +439,12 @@ msgid "Product used for billing the warehouse space"
 msgstr "Produit utilisé pour facturer l'espace d'entreposage"
 
 #. module: warehouse_billing
+#: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_history__quant_id
+#, fuzzy
+msgid "Quant"
+msgstr "ID du Quant"
+
+#. module: warehouse_billing
 #: model:ir.ui.menu,name:warehouse_billing.menu_warehouse_quant_group
 msgid "Quant Group"
 msgstr "Group d'historique de stock"
@@ -441,11 +463,6 @@ msgstr "Historique de stock"
 #: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_history__group_id
 msgid "Quant History Group"
 msgstr "Group d'historique de stock"
-
-#. module: warehouse_billing
-#: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_history__quant_id
-msgid "Quant ID"
-msgstr "ID du Quant"
 
 #. module: warehouse_billing
 #: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_history__quantity
@@ -481,11 +498,6 @@ msgid "Run Date"
 msgstr "Date de l'opération"
 
 #. module: warehouse_billing
-#: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_group__sale_order_id
-msgid "Sale Order"
-msgstr "Bon de commande"
-
-#. module: warehouse_billing
 #: model:ir.model.fields,field_description:warehouse_billing.field_warehouse_quant_group__sale_order_line_id
 msgid "Sale Order Line"
 msgstr "Ligne du bon de commande"
@@ -504,6 +516,11 @@ msgstr "Produit (Service)"
 #: model:ir.model.fields.selection,name:warehouse_billing.selection__warehouse_billing_config__measurement_type__square
 msgid "Square Meters"
 msgstr "Mètres carrés"
+
+#. module: warehouse_billing
+#: model:ir.ui.menu,name:warehouse_billing.menu_warehouse_billing_data
+msgid "Stock Data"
+msgstr ""
 
 #. module: warehouse_billing
 #: model_terms:ir.actions.act_window,help:warehouse_billing.action_quant_history
@@ -545,11 +562,6 @@ msgid "Warehouse Billing Configuration"
 msgstr "Configuration de facturation"
 
 #. module: warehouse_billing
-#: model_terms:ir.ui.view,arch_db:warehouse_billing.view_warehouse_billing_config_tree
-msgid "Warehouse Billing Configurations"
-msgstr "Configurations de facturation"
-
-#. module: warehouse_billing
 #. odoo-python
 #: code:addons/warehouse_billing/models/res_partner.py:0
 #, python-format
@@ -588,3 +600,9 @@ msgstr "WizardGenerate_quant_history"
 #: model_terms:ir.ui.view,arch_db:warehouse_billing.view_warehouse_quant_group_form
 msgid "warehouse_quant_group"
 msgstr "warehouse_quant_group"
+
+#~ msgid "Sale Order"
+#~ msgstr "Bon de commande"
+
+#~ msgid "Warehouse Billing Configurations"
+#~ msgstr "Configurations de facturation"

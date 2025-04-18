@@ -23,7 +23,6 @@ class QualityControlPoint(models.Model):
 
     control_point_type = fields.Selection(
         [("stock", "Stock"), ("maintenance", "Maintenance")],
-        string="Control Point Type",
         default="stock",
     )
 
@@ -34,9 +33,9 @@ class QualityControlPoint(models.Model):
         check_company=True,
     )
 
-    check_corrective = fields.Boolean(string="Check Corrective")
+    check_corrective = fields.Boolean()
 
-    check_preventive = fields.Boolean(string="Check Preventive")
+    check_preventive = fields.Boolean()
 
     @api.onchange("control_point_type")
     def _onchange_control_point_type(self):

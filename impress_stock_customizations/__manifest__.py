@@ -3,8 +3,9 @@
     "version": "17.0.0.1.1",
     "depends": ["base", "stock"],
     "author": "Cédric Paradis",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Inventory",
-    "description": """
+    "summary": """
     Customizations for the stock module developped in-house by Impress Foods SEC
     """,
     "license": "GPL-2",

@@ -3,8 +3,9 @@
     "version": "17.0.0.1.1",
     "depends": ["base", "mrp"],
     "author": "Cédric Paradis",
+    "website": "https://github.com/cparadis-impressfoods/impress-odoo",
     "category": "Manufacturing",
-    "description": """"
+    "summary": """"
     Customizations for the manufacturing module
     """,
     "license": "GPL-2",

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<odoo>
-    <data noupdate="1">
+<odoo noupdate="1">
         <record id="warehouse_space_usage_sequence" model="ir.sequence">
             <field name="name">Warehouse Space Usage</field>
             <field name="code">warehouse.space.usage</field>
@@ -15,5 +14,4 @@
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
         </record>
-    </data>
 </odoo>

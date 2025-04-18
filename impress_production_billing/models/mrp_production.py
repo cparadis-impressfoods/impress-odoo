@@ -84,7 +84,7 @@ class MrpProduction(models.Model):
                         )
                     }
 
-                    billing_product = self.product_id.get_production_billing_product()
+                    billing_product = self.bom_id.get_production_billing_product()
 
                     if billing_product in sale_order_line_dict:
                         rec.billing_sale_order_line_id = sale_order_line_dict[
@@ -108,7 +108,7 @@ class MrpProduction(models.Model):
         new_order_line = self.env["sale.order.line"].create(
             {
                 "order_id": self.billing_sale_order_id.id,
-                "product_id": self.product_id.get_production_billing_product().id,
+                "product_id": self.bom_id.get_production_billing_product().id,
                 "product_uom_qty": self.product_uom_qty,
             }
         )

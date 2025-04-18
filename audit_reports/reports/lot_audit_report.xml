@@ -5,7 +5,6 @@
     <record id="report_lot_audit" model="ir.actions.report">
         <field name="name">Lot_audit_report</field>
         <field name="model">lot.audit.report</field>
-        <field name="priority">100</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">audit_reports.report_lot_audit_report_view</field>
         <field name="report_file">audit_reports.report_lot_audit_report</field>

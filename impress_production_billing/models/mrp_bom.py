@@ -6,8 +6,8 @@ from odoo.exceptions import ValidationError
 _logger = logging.getLogger(__name__)
 
 
-class Product(models.Model):
-    _inherit = "product.product"
+class MrpBom(models.Model):
+    _inherit = "mrp.bom"
 
     billing_product_id = fields.Many2one(
         comodel_name="product.product",
@@ -17,10 +17,16 @@ class Product(models.Model):
 
     def get_production_billing_product(self):
         self.ensure_one()
+
         if self.billing_product_id:
             return self.billing_product_id
 
-        reference_to_match = "S" + self.default_code[1:]
+        if self.product_id:
+            base_reference = self.product_id.default_code
+        else:
+            base_reference = self.product_tmpl_id.default_code
+
+        reference_to_match = "S" + base_reference[1:]
         matching_product = self.env["product.product"].search(
             [("default_code", "=", reference_to_match)]
         )
@@ -33,21 +39,3 @@ class Product(models.Model):
                     f"Expected product with reference {reference_to_match}"
                 )
             )
-
-
-class ProductTemplate(models.Model):
-    _inherit = "product.template"
-
-    billing_product_id = fields.Many2one(
-        comodel_name="product.product",
-        string="Billing Product",
-        domain=[("type", "=", "service")],
-        compute="_compute_billing_product",
-        inverse="_inverse_billing_product",
-    )
-
-    def _compute_billing_product(self):
-        self._compute_template_field_from_variant_field("billing_product_id")
-
-    def _inverse_billing_product(self):
-        self._set_product_variant_field("billing_product_id")

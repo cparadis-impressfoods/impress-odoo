@@ -45,7 +45,7 @@ class MrpProduction(models.Model):
         else:
             action.update(
                 {
-                    "name": _("HPP Logs for %s", self.name),
+                    "name": _(f"HPP Logs for {self.name}"),
                     "domain": [("id", "in", self.hpp_log_ids.ids)],
                     "view_mode": "tree,form",
                 }  # type: ignore
@@ -68,7 +68,7 @@ class MrpProduction(models.Model):
         else:
             action.update(
                 {
-                    "name": _("Metal Logs for %s", self.name),
+                    "name": _(f"Metal Logs for {self.name}"),
                     "domain": [("id", "in", self.metal_log_ids.ids)],
                     "view_mode": "tree,form",
                 }  # type: ignore
@@ -91,7 +91,7 @@ class MrpProduction(models.Model):
         else:
             action.update(
                 {
-                    "name": _("LOMA Logs for %s", self.name),
+                    "name": _(f"LOMA Logs for {self.name}"),
                     "domain": [("id", "in", self.loma_log_ids.ids)],
                     "view_mode": "tree,form",
                 }  # type: ignore
@@ -114,7 +114,7 @@ class MrpProduction(models.Model):
         else:
             action.update(
                 {
-                    "name": _("Coding Logs for %s", self.name),
+                    "name": _(f"Coding Logs for {self.name}"),
                     "domain": [("id", "in", self.coding_log_ids.ids)],
                     "view_mode": "tree,form",
                 }  # type: ignore
@@ -137,7 +137,7 @@ class MrpProduction(models.Model):
         else:
             action.update(
                 {
-                    "name": _("X-Ray Logs for %s", self.name),
+                    "name": _(f"X-Ray Logs for {self.name}"),
                     "domain": [("id", "in", self.x_ray_log_ids.ids)],
                     "view_mode": "tree,form",
                 }  # type: ignore
